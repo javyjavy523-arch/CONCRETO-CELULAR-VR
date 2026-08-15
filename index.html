@@ -1,179 +1,679 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Concreto Celular XR - UFSC</title>
+<title>Concreto Celular XR - UFSC</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #101820;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 40px;
-        }
+<style>
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 5px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        h2 {
-            font-weight: normal;
-            color: #cccccc;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0e1821;
+    color: white;
+}
 
-        .painel {
-            width: 600px;
-            max-width: 90%;
-            margin: 40px auto;
-            padding: 30px;
-            background: #1d2a35;
-            border-radius: 15px;
-        }
+header {
+    text-align: center;
+    padding: 25px 20px 10px;
+}
 
-        .controle {
-            margin: 30px 0;
-        }
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
 
-        input[type="range"] {
-            width: 80%;
-        }
+header h2 {
+    margin: 10px;
+    font-size: 19px;
+    font-weight: normal;
+    color: #b9c5ce;
+}
 
-        .valor {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 10px;
-        }
+header p {
+    color: #8ea1af;
+}
 
-        .resultados {
-            margin-top: 30px;
-            padding: 20px;
-            background: #263746;
-            border-radius: 10px;
-        }
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
 
-        .formula {
-            font-size: 24px;
-            margin: 15px;
-        }
-    </style>
+.card {
+    background: #1b2a36;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.card h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.controle {
+    margin: 25px 0;
+}
+
+.controle label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.valor {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.formulas {
+    margin-top: 25px;
+    background: #253b4c;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.formula {
+    font-size: 23px;
+    margin: 10px;
+}
+
+/* PRENSA */
+
+.laboratorio {
+    min-height: 550px;
+    text-align: center;
+}
+
+.prensa {
+    position: relative;
+    height: 390px;
+    margin-top: 15px;
+    background: #111b23;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* COLUNAS */
+
+.coluna {
+    position: absolute;
+    width: 28px;
+    height: 310px;
+    top: 35px;
+    background: linear-gradient(
+        90deg,
+        #586570,
+        #aeb7bd,
+        #586570
+    );
+}
+
+.coluna.esquerda {
+    left: 65px;
+}
+
+.coluna.direita {
+    right: 65px;
+}
+
+/* TRAVESSA SUPERIOR */
+
+.travessa {
+    position: absolute;
+    height: 35px;
+    left: 55px;
+    right: 55px;
+    top: 25px;
+    background: #77838c;
+    border-radius: 5px;
+}
+
+/* PISTÃO */
+
+.pistao {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 60px;
+    left: calc(50% - 35px);
+    background: #a9b3ba;
+    transition: transform 1s;
+}
+
+.pratoSuperior {
+    position: absolute;
+    width: 150px;
+    height: 18px;
+    top: 125px;
+    left: calc(50% - 75px);
+    background: #8c989f;
+    transition: transform 1s;
+}
+
+/* CORPO DE PROVA */
+
+.corpo {
+    position: absolute;
+    width: 110px;
+    height: 170px;
+    left: calc(50% - 55px);
+    top: 145px;
+
+    background:
+        radial-gradient(circle at 20% 20%, #55616a 0 4px, transparent 5px),
+        radial-gradient(circle at 70% 30%, #59656d 0 6px, transparent 7px),
+        radial-gradient(circle at 40% 60%, #56616a 0 5px, transparent 6px),
+        radial-gradient(circle at 80% 75%, #59646c 0 4px, transparent 5px),
+        #b9c0c4;
+
+    border-radius: 55px / 18px;
+
+    border: 2px solid #d7dcdf;
+
+    transition:
+        height 1s,
+        top 1s,
+        width 1s,
+        left 1s;
+}
+
+.corpo::before {
+    content: "";
+    position: absolute;
+    width: 106px;
+    height: 25px;
+    left: 0px;
+    top: -2px;
+    border-radius: 50%;
+    background: #d3d7da;
+}
+
+/* BASE */
+
+.base {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    bottom: 40px;
+    left: calc(50% - 100px);
+    background: #77838c;
+}
+
+/* SETA */
+
+.seta {
+    position: absolute;
+    top: 75px;
+    left: calc(50% + 100px);
+    font-size: 38px;
+}
+
+.forca {
+    position: absolute;
+    top: 80px;
+    left: calc(50% + 140px);
+    font-size: 18px;
+}
+
+/* BOTÃO */
+
+button {
+    margin-top: 20px;
+    background: #1686d9;
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #36a0ed;
+}
+
+/* RESULTADOS */
+
+.resultados {
+    margin-top: 20px;
+    background: #253b4c;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.resultados p {
+    margin: 9px;
+}
+
+.aviso {
+    margin-top: 18px;
+    padding: 12px;
+    border-left: 4px solid #d9a441;
+    background: #17232c;
+    font-size: 13px;
+    color: #cbd3d8;
+}
+
+@media(max-width: 850px) {
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
+<header>
 
-    <h2>
-        Mecânica dos Sólidos e Teoria da Elasticidade
-    </h2>
+<h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
 
-    <p>
-        Modelo preliminar dependente da densidade e da idade
-    </p>
+<h2>
+Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
+</h2>
 
-    <div class="painel">
+<p>
+Modelo preliminar dependente da densidade e da idade
+</p>
 
-        <div class="controle">
-
-            <h3>Densidade ρ</h3>
-
-            <input
-                type="range"
-                id="densidade"
-                min="450"
-                max="800"
-                step="10"
-                value="600"
-            >
-
-            <div class="valor">
-                <span id="valorDensidade">600</span> kg/m³
-            </div>
-
-        </div>
+</header>
 
 
-        <div class="controle">
+<div class="container">
 
-            <h3>Idade de cura t</h3>
+<!-- PAINEL ESQUERDO -->
 
-            <input
-                type="range"
-                id="idade"
-                min="1"
-                max="54"
-                step="1"
-                value="28"
-            >
+<section class="card">
 
-            <div class="valor">
-                <span id="valorIdade">28</span> dias
-            </div>
-
-        </div>
+<h2>Parâmetros do material</h2>
 
 
-        <div class="resultados">
+<div class="controle">
 
-            <h3>Formulação em investigação</h3>
+<label>Densidade ρ</label>
 
-            <div class="formula">
-                f<sub>c</sub> = F(ρ,t)
-            </div>
+<input
+type="range"
+id="densidade"
+min="450"
+max="800"
+step="10"
+value="600"
+>
 
-            <div class="formula">
-                E = G(ρ,t)
-            </div>
+<div class="valor">
 
-            <p>
-                Resistência à compressão:
-                <strong>aguardando modelo experimental</strong>
-            </p>
+<span id="valorDensidade">600</span>
+kg/m³
 
-            <p>
-                Módulo de elasticidade:
-                <strong>aguardando modelo experimental</strong>
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
-    <script>
+<div class="controle">
 
-        const densidade =
-            document.getElementById("densidade");
+<label>Idade de cura t</label>
 
-        const idade =
-            document.getElementById("idade");
+<input
+type="range"
+id="idade"
+min="1"
+max="54"
+step="1"
+value="28"
+>
 
-        const valorDensidade =
-            document.getElementById("valorDensidade");
+<div class="valor">
 
-        const valorIdade =
-            document.getElementById("valorIdade");
+<span id="valorIdade">28</span>
+dias
 
+</div>
 
-        densidade.addEventListener("input", function() {
-
-            valorDensidade.textContent =
-                densidade.value;
-
-        });
+</div>
 
 
-        idade.addEventListener("input", function() {
+<div class="controle">
 
-            valorIdade.textContent =
-                idade.value;
+<label>Carga aplicada P</label>
 
-        });
+<input
+type="range"
+id="carga"
+min="0"
+max="100"
+step="5"
+value="0"
+>
 
-    </script>
+<div class="valor">
+
+<span id="valorCarga">0</span>
+kN
+
+</div>
+
+</div>
+
+
+<div class="formulas">
+
+<h3>Formulação em investigação</h3>
+
+<div class="formula">
+f<sub>c</sub> = F(ρ,t)
+</div>
+
+<div class="formula">
+E = G(ρ,t)
+</div>
+
+</div>
+
+
+<div class="resultados">
+
+<p>
+<strong>Densidade:</strong>
+<span id="rDensidade">600</span> kg/m³
+</p>
+
+<p>
+<strong>Idade:</strong>
+<span id="rIdade">28</span> dias
+</p>
+
+<p>
+<strong>Carga:</strong>
+<span id="rCarga">0</span> kN
+</p>
+
+<p>
+<strong>Resistência f<sub>c</sub>:</strong>
+aguardando modelo experimental
+</p>
+
+<p>
+<strong>Módulo E:</strong>
+aguardando modelo experimental
+</p>
+
+</div>
+
+
+<div class="aviso">
+
+A representação visual dos poros é esquemática e possui finalidade
+didática. Não representa uma caracterização microestrutural experimental.
+
+</div>
+
+</section>
+
+
+
+<!-- LABORATÓRIO -->
+
+<section class="card laboratorio">
+
+<h2>Ensaio Virtual de Compressão</h2>
+
+<div class="prensa">
+
+<div class="travessa"></div>
+
+<div class="coluna esquerda"></div>
+<div class="coluna direita"></div>
+
+<div class="pistao" id="pistao"></div>
+
+<div
+class="pratoSuperior"
+id="pratoSuperior">
+</div>
+
+<div class="seta">↓</div>
+
+<div class="forca">
+P
+</div>
+
+<div
+class="corpo"
+id="corpo">
+</div>
+
+<div class="base"></div>
+
+</div>
+
+
+<button id="botaoCarga">
+
+APLICAR CARGA
+
+</button>
+
+
+<div class="resultados">
+
+<p>
+<strong>Tensão:</strong>
+σ = P / A
+</p>
+
+<p>
+<strong>Deformação:</strong>
+ε = σ / E
+</p>
+
+<p>
+<strong>Deformação longitudinal:</strong>
+ΔL = ε · L
+</p>
+
+<p>
+<strong>Observação:</strong>
+a deformação apresentada será amplificada visualmente
+para fins didáticos.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+
+<script>
+
+const densidade =
+document.getElementById("densidade");
+
+const idade =
+document.getElementById("idade");
+
+const carga =
+document.getElementById("carga");
+
+
+const valorDensidade =
+document.getElementById("valorDensidade");
+
+const valorIdade =
+document.getElementById("valorIdade");
+
+const valorCarga =
+document.getElementById("valorCarga");
+
+
+const rDensidade =
+document.getElementById("rDensidade");
+
+const rIdade =
+document.getElementById("rIdade");
+
+const rCarga =
+document.getElementById("rCarga");
+
+
+const corpo =
+document.getElementById("corpo");
+
+const pistao =
+document.getElementById("pistao");
+
+const pratoSuperior =
+document.getElementById("pratoSuperior");
+
+const botao =
+document.getElementById("botaoCarga");
+
+
+densidade.addEventListener(
+"input",
+function() {
+
+valorDensidade.textContent =
+densidade.value;
+
+rDensidade.textContent =
+densidade.value;
+
+/*
+Representação didática:
+densidades menores apresentam
+maior contraste visual dos poros.
+*/
+
+let brilho =
+180 +
+((densidade.value - 450) / 350) * 50;
+
+corpo.style.filter =
+"brightness(" + brilho / 200 + ")";
+
+});
+
+
+idade.addEventListener(
+"input",
+function() {
+
+valorIdade.textContent =
+idade.value;
+
+rIdade.textContent =
+idade.value;
+
+});
+
+
+carga.addEventListener(
+"input",
+function() {
+
+valorCarga.textContent =
+carga.value;
+
+rCarga.textContent =
+carga.value;
+
+});
+
+
+botao.addEventListener(
+"click",
+function() {
+
+let P =
+parseFloat(carga.value);
+
+if(P === 0) {
+
+alert(
+"Selecione primeiro uma carga maior que zero."
+);
+
+return;
+
+}
+
+/*
+Nesta versão a deformação é
+somente uma animação didática.
+
+Posteriormente será substituída
+por:
+
+epsilon = sigma / E(rho,t)
+*/
+
+let deformacaoVisual =
+Math.min(P / 5, 20);
+
+
+corpo.style.height =
+(170 - deformacaoVisual) + "px";
+
+corpo.style.top =
+(145 + deformacaoVisual) + "px";
+
+
+pistao.style.transform =
+"translateY(" +
+deformacaoVisual +
+"px)";
+
+
+pratoSuperior.style.transform =
+"translateY(" +
+deformacaoVisual +
+"px)";
+
+
+setTimeout(function() {
+
+corpo.style.height =
+"170px";
+
+corpo.style.top =
+"145px";
+
+pistao.style.transform =
+"translateY(0px)";
+
+pratoSuperior.style.transform =
+"translateY(0px)";
+
+}, 1800);
+
+});
+
+</script>
 
 </body>
-
 </html>
