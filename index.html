@@ -5,12 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Concreto Celular XR - UFSC</title>
+<title>Concreto Celular XR - Engenheiro Javier Sanabria</title>
 
 <style>
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -20,9 +24,13 @@ body {
     color: white;
 }
 
+/* ======================================
+   CABEÇALHO
+====================================== */
+
 header {
     text-align: center;
-    padding: 25px 20px 10px;
+    padding: 42px 20px 20px;
 }
 
 header h1 {
@@ -31,59 +39,62 @@ header h1 {
 }
 
 header h2 {
-    margin: 10px;
-    font-size: 19px;
+    margin: 10px 0 6px;
+    font-size: 18px;
     font-weight: normal;
     color: #b9c5ce;
 }
 
-header p {
+.autor {
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #79c9ff;
+}
+
+.subtitulo {
+    margin-top: 6px;
     color: #8ea1af;
 }
 
+/* ======================================
+   ESTRUTURA
+====================================== */
+
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: auto;
     padding: 20px;
 
     display: grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 25px;
 }
 
 .card {
     background: #1b2a36;
-
     border-radius: 16px;
-
-    padding: 25px;
+    padding: 24px;
 }
 
 .card h2 {
     margin-top: 0;
-
     text-align: center;
 }
 
-/* =========================
+/* ======================================
    CONTROLES
-========================= */
+====================================== */
 
 .controle {
-    margin: 25px 0;
+    margin: 22px 0;
 }
 
 .controle label {
     display: block;
-
     text-align: center;
-
     font-weight: bold;
-
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 input[type="range"] {
@@ -92,115 +103,114 @@ input[type="range"] {
 
 .valor {
     text-align: center;
-
-    font-size: 25px;
-
+    font-size: 24px;
     font-weight: bold;
-
     margin-top: 8px;
 }
 
-/* =========================
+.modo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 18px;
+    background: #1686d9;
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #36a0ed;
+}
+
+.modo button {
+    margin-top: 0;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.ativo {
+    outline: 3px solid #79c9ff;
+}
+
+/* ======================================
    FORMULAÇÃO
-========================= */
+====================================== */
 
 .formulas {
-    margin-top: 25px;
-
+    margin-top: 22px;
     background: #253b4c;
-
-    padding: 18px;
-
+    padding: 16px;
     border-radius: 12px;
-
     text-align: center;
 }
 
 .formula {
-    font-size: 23px;
-
-    margin: 10px;
+    font-size: 22px;
+    margin: 8px;
 }
 
-/* =========================
+/* ======================================
    RESULTADOS
-========================= */
+====================================== */
 
 .resultados {
-    margin-top: 20px;
-
+    margin-top: 18px;
     background: #253b4c;
-
     padding: 15px;
-
     border-radius: 10px;
-
     text-align: left;
 }
 
 .resultados p {
-    margin: 9px;
+    margin: 8px;
 }
 
 .aviso {
     margin-top: 18px;
-
     padding: 12px;
-
-    border-left:
-    4px solid #d9a441;
-
+    border-left: 4px solid #d9a441;
     background: #17232c;
-
     font-size: 13px;
-
     color: #cbd3d8;
 }
 
-/* =========================
-   LABORATÓRIO
-========================= */
+/* ======================================
+   PRENSA
+====================================== */
 
 .laboratorio {
-    min-height: 550px;
-
     text-align: center;
 }
 
 .prensa {
     position: relative;
-
-    height: 390px;
-
-    margin-top: 15px;
-
+    height: 440px;
+    margin-top: 10px;
     background: #111b23;
-
     border-radius: 12px;
-
     overflow: hidden;
 }
 
-/* =========================
-   COLUNAS DA PRENSA
-========================= */
-
 .coluna {
     position: absolute;
-
     width: 28px;
-
-    height: 310px;
-
+    height: 340px;
     top: 35px;
-
     background:
-    linear-gradient(
-        90deg,
-        #586570,
-        #aeb7bd,
-        #586570
-    );
+        linear-gradient(
+            90deg,
+            #586570,
+            #aeb7bd,
+            #586570
+        );
 }
 
 .coluna.esquerda {
@@ -211,270 +221,262 @@ input[type="range"] {
     right: 65px;
 }
 
-/* =========================
-   TRAVESSA SUPERIOR
-========================= */
-
 .travessa {
     position: absolute;
-
     height: 35px;
-
     left: 55px;
-
     right: 55px;
-
     top: 25px;
-
     background: #77838c;
-
     border-radius: 5px;
 }
 
-/* =========================
-   PISTÃO
-========================= */
-
 .pistao {
     position: absolute;
-
     width: 70px;
-
     height: 70px;
-
     top: 60px;
-
-    left:
-    calc(50% - 35px);
-
+    left: calc(50% - 35px);
     background: #a9b3ba;
-
-    transition:
-    transform 1s;
+    transition: transform 0.12s linear;
 }
-
-/* =========================
-   PRATO SUPERIOR
-========================= */
 
 .pratoSuperior {
     position: absolute;
-
     width: 150px;
-
     height: 18px;
-
     top: 125px;
-
-    left:
-    calc(50% - 75px);
-
+    left: calc(50% - 75px);
     background: #8c989f;
-
-    transition:
-    transform 1s;
+    transition: transform 0.12s linear;
 }
-
-/* =========================
-   CORPO DE PROVA
-========================= */
 
 .corpo {
     position: absolute;
 
     width: 110px;
-
     height: 170px;
 
-    left:
-    calc(50% - 55px);
-
+    left: calc(50% - 55px);
     top: 145px;
 
     background:
+        radial-gradient(circle at 20% 20%, #55616a 0 4px, transparent 5px),
+        radial-gradient(circle at 70% 30%, #59656d 0 6px, transparent 7px),
+        radial-gradient(circle at 40% 60%, #56616a 0 5px, transparent 6px),
+        radial-gradient(circle at 80% 75%, #59646c 0 4px, transparent 5px),
+        radial-gradient(circle at 35% 82%, #626d74 0 3px, transparent 4px),
+        #b9c0c4;
 
-    radial-gradient(
-        circle at 20% 20%,
-        #55616a 0 4px,
-        transparent 5px
-    ),
-
-    radial-gradient(
-        circle at 70% 30%,
-        #59656d 0 6px,
-        transparent 7px
-    ),
-
-    radial-gradient(
-        circle at 40% 60%,
-        #56616a 0 5px,
-        transparent 6px
-    ),
-
-    radial-gradient(
-        circle at 80% 75%,
-        #59646c 0 4px,
-        transparent 5px
-    ),
-
-    radial-gradient(
-        circle at 35% 82%,
-        #626d74 0 3px,
-        transparent 4px
-    ),
-
-    #b9c0c4;
-
-    border-radius:
-    55px / 18px;
-
-    border:
-    2px solid #d7dcdf;
+    border-radius: 55px / 18px;
+    border: 2px solid #d7dcdf;
 
     transition:
-    height 1s,
-    top 1s,
-    width 1s,
-    left 1s,
-    filter 0.5s;
+        height 0.12s linear,
+        top 0.12s linear,
+        width 0.12s linear,
+        left 0.12s linear,
+        filter 0.5s;
 }
-
-/* TOPO DO CILINDRO */
 
 .corpo::before {
     content: "";
-
     position: absolute;
-
     width: calc(100% - 4px);
-
     height: 25px;
-
     left: 2px;
-
     top: -2px;
-
     border-radius: 50%;
-
     background: #d3d7da;
-
-    transition: width 1s;
 }
-
-/* =========================
-   BASE
-========================= */
 
 .base {
     position: absolute;
-
     width: 200px;
-
     height: 30px;
-
-    bottom: 40px;
-
-    left:
-    calc(50% - 100px);
-
+    bottom: 55px;
+    left: calc(50% - 100px);
     background: #77838c;
 }
 
-/* =========================
-   SETA DA CARGA
-========================= */
-
-.seta {
+.setaCarga {
     position: absolute;
-
-    top: 75px;
-
-    left:
-    calc(50% + 100px);
-
+    top: 72px;
+    left: calc(50% + 100px);
     font-size: 38px;
 }
 
-.forca {
+.textoCarga {
     position: absolute;
-
     top: 80px;
-
-    left:
-    calc(50% + 140px);
-
+    left: calc(50% + 140px);
     font-size: 18px;
 }
 
-/* =========================
-   INFORMAÇÕES DA DEFORMAÇÃO
-========================= */
+/* ======================================
+   COTAS
+====================================== */
 
-.indicadorDeformacao {
-
+.cotaVertical {
     position: absolute;
+    top: 145px;
+    left: calc(50% - 120px);
+    height: 170px;
+    width: 30px;
+    transition: height 0.12s linear, top 0.12s linear;
+}
 
-    left: 15px;
+.linhaVertical {
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #6fd3ff;
+}
 
-    bottom: 8px;
+.setaTopo,
+.setaBase {
+    position: absolute;
+    left: 6px;
+    color: #6fd3ff;
+    font-size: 20px;
+}
 
-    font-size: 12px;
+.setaTopo {
+    top: -8px;
+}
 
-    color: #aebcc6;
+.setaBase {
+    bottom: -8px;
+}
 
+.textoL {
+    position: absolute;
+    left: -42px;
+    top: 70px;
+    font-size: 13px;
+    color: #6fd3ff;
+}
+
+.cotaHorizontal {
+    position: absolute;
+    top: 330px;
+    left: calc(50% - 55px);
+    width: 110px;
+    height: 32px;
+    transition: width 0.12s linear, left 0.12s linear;
+}
+
+.linhaHorizontal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 2px;
+    background: #ffcc66;
+}
+
+.setaEsquerda,
+.setaDireita {
+    position: absolute;
+    top: 3px;
+    color: #ffcc66;
+    font-size: 20px;
+}
+
+.setaEsquerda {
+    left: -4px;
+}
+
+.setaDireita {
+    right: -4px;
+}
+
+.textoD {
+    position: absolute;
+    top: 18px;
+    left: calc(50% - 30px);
+    color: #ffcc66;
+    font-size: 13px;
+}
+
+/* ======================================
+   INSTRUMENTAÇÃO
+====================================== */
+
+.instrumentacao {
+    margin-top: 16px;
+    background: #172734;
+    border: 1px solid #36556b;
+    border-radius: 10px;
+    padding: 16px 18px;
     text-align: left;
+    font-size: 14px;
+    line-height: 1.55;
+    min-height: 160px;
 }
 
-/* =========================
-   BOTÃO
-========================= */
+.instrumentacao strong {
+    color: #79c9ff;
+}
 
-button {
+/* ======================================
+   GRÁFICO
+====================================== */
 
-    margin-top: 20px;
+.grafico-card {
+    grid-column: 1 / -1;
+}
 
-    background: #1686d9;
+.grafico-container {
+    background: #111b23;
+    border-radius: 12px;
+    padding: 20px;
+}
 
-    border: none;
-
-    color: white;
-
-    padding:
-    14px 25px;
-
-    font-size: 17px;
-
+canvas {
+    width: 100%;
+    height: 360px;
+    background: #ffffff;
     border-radius: 8px;
-
-    cursor: pointer;
+    display: block;
 }
 
-button:hover {
-    background: #36a0ed;
+.legendaGrafico {
+    text-align: center;
+    margin-top: 12px;
+    color: #c8d2d9;
+    font-size: 14px;
 }
 
-/* =========================
+.statusGrafico {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #79c9ff;
+}
+
+/* ======================================
    RESPONSIVO
-========================= */
+====================================== */
 
 @media(max-width: 850px) {
 
     .container {
+        grid-template-columns: 1fr;
+    }
 
-        grid-template-columns:
-        1fr;
-
+    .grafico-card {
+        grid-column: auto;
     }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -486,32 +488,45 @@ MODELO CONSTITUTIVO DO CONCRETO CELULAR
 Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
 </h2>
 
-<p>
+<div class="autor">
+Engenheiro Javier Sanabria
+</div>
+
+<div class="subtitulo">
 Modelo preliminar dependente da densidade e da idade
-</p>
+</div>
 
 </header>
 
 
 <div class="container">
 
-
-<!-- =========================
-     PAINEL ESQUERDO
-========================= -->
+<!-- ======================================
+     PARÂMETROS
+====================================== -->
 
 <section class="card">
 
-<h2>
-Parâmetros do material
-</h2>
+<h2>Parâmetros do material</h2>
 
+<div class="modo">
+
+<button
+id="modoDidatico"
+class="ativo">
+MODO DIDÁTICO
+</button>
+
+<button
+id="modoExperimental">
+MODO EXPERIMENTAL
+</button>
+
+</div>
 
 <div class="controle">
 
-<label>
-Densidade ρ
-</label>
+<label>Densidade ρ</label>
 
 <input
 type="range"
@@ -523,23 +538,14 @@ value="600"
 >
 
 <div class="valor">
-
-<span id="valorDensidade">
-600
-</span>
-
-kg/m³
-
+<span id="valorDensidade">600</span> kg/m³
 </div>
 
 </div>
-
 
 <div class="controle">
 
-<label>
-Idade de cura t
-</label>
+<label>Idade de cura t</label>
 
 <input
 type="range"
@@ -551,23 +557,14 @@ value="28"
 >
 
 <div class="valor">
-
-<span id="valorIdade">
-28
-</span>
-
-dias
-
+<span id="valorIdade">28</span> dias
 </div>
 
 </div>
-
 
 <div class="controle">
 
-<label>
-Carga aplicada P
-</label>
+<label>Carga aplicada P</label>
 
 <input
 type="range"
@@ -579,174 +576,119 @@ value="0"
 >
 
 <div class="valor">
-
-<span id="valorCarga">
-0
-</span>
-
-kN
-
+<span id="valorCarga">0</span> kN
 </div>
 
 </div>
-
 
 <div class="formulas">
 
-<h3>
-Formulação em investigação
-</h3>
+<h3>Formulação em investigação</h3>
 
 <div class="formula">
-
-f<sub>c</sub> =
-F(ρ,t)
-
+f<sub>c</sub> = F(ρ,t)
 </div>
 
 <div class="formula">
-
-E =
-G(ρ,t)
-
+E = G(ρ,t)
 </div>
 
 </div>
-
 
 <div class="resultados">
 
 <p>
-
-<strong>
-Densidade:
-</strong>
-
-<span id="rDensidade">
-600
-</span>
-
-kg/m³
-
+<strong>Densidade:</strong>
+<span id="rDensidade">600</span> kg/m³
 </p>
 
-
 <p>
-
-<strong>
-Idade:
-</strong>
-
-<span id="rIdade">
-28
-</span>
-
-dias
-
+<strong>Idade:</strong>
+<span id="rIdade">28</span> dias
 </p>
 
-
 <p>
-
-<strong>
-Carga:
-</strong>
-
-<span id="rCarga">
-0
-</span>
-
-kN
-
+<strong>Carga:</strong>
+<span id="rCarga">0</span> kN
 </p>
 
-
 <p>
-
-<strong>
-Resistência
-f<sub>c</sub>:
-</strong>
-
+<strong>Resistência f<sub>c</sub>:</strong>
+<span id="rFc">
 aguardando modelo experimental
-
+</span>
 </p>
 
-
 <p>
-
-<strong>
-Módulo E:
-</strong>
-
+<strong>Módulo E:</strong>
+<span id="rE">
 aguardando modelo experimental
-
+</span>
 </p>
 
 </div>
 
+<div
+class="aviso"
+id="avisoModo">
 
-<div class="aviso">
-
-A representação visual dos poros e da deformação possui
-finalidade exclusivamente didática.
-
-Nesta versão, a deformação ainda não representa resultados
-experimentais do concreto celular.
+Modo didático ativo.
+A deformação apresentada é amplificada e não corresponde a um resultado experimental.
 
 </div>
-
 
 </section>
 
 
-
-<!-- =========================
-     LABORATÓRIO
-========================= -->
+<!-- ======================================
+     PRENSA
+====================================== -->
 
 <section class="card laboratorio">
 
-
 <h2>
-Ensaio Virtual de Compressão
+Ensaio Virtual Instrumentado de Compressão
 </h2>
-
 
 <div class="prensa">
 
+<div class="travessa"></div>
 
-<div class="travessa">
-</div>
+<div class="coluna esquerda"></div>
 
-
-<div class="coluna esquerda">
-</div>
-
-
-<div class="coluna direita">
-</div>
-
+<div class="coluna direita"></div>
 
 <div
 class="pistao"
 id="pistao">
 </div>
 
-
 <div
 class="pratoSuperior"
 id="pratoSuperior">
 </div>
 
+<div class="setaCarga">↓</div>
 
-<div class="seta">
-↓
+<div class="textoCarga">P</div>
+
+
+<div
+class="cotaVertical"
+id="cotaVertical">
+
+<div class="linhaVertical"></div>
+
+<div class="setaTopo">↑</div>
+
+<div class="setaBase">↓</div>
+
+<div
+class="textoL"
+id="textoL">
+L₀
 </div>
 
-
-<div class="forca">
-P
 </div>
 
 
@@ -756,524 +698,946 @@ id="corpo">
 </div>
 
 
-<div class="base">
-</div>
+<div
+class="cotaHorizontal"
+id="cotaHorizontal">
 
+<div class="linhaHorizontal"></div>
+
+<div class="setaEsquerda">←</div>
+
+<div class="setaDireita">→</div>
 
 <div
-class="indicadorDeformacao"
-id="indicadorDeformacao">
-
-Estado inicial
+class="textoD"
+id="textoD">
+d₀
+</div>
 
 </div>
 
+<div class="base"></div>
 
 </div>
 
 
 <button id="botaoCarga">
-
 APLICAR CARGA
-
 </button>
+
+
+<div
+class="instrumentacao"
+id="instrumentacao">
+
+<strong>PAINEL DE INSTRUMENTAÇÃO</strong>
+<br><br>
+Estado inicial
+<br>
+σ = 0 MPa
+<br>
+εL = 0
+<br>
+εT = 0
+<br>
+ΔL = 0 mm
+<br>
+Δd = 0 mm
+
+</div>
 
 
 <div class="resultados">
 
-
 <p>
-
-<strong>
-Tensão:
-</strong>
-
+<strong>Tensão normal:</strong>
 σ = P / A
-
 </p>
-
 
 <p>
-
-<strong>
-Deformação longitudinal:
-</strong>
-
-ε<sub>L</sub> = ΔL / L
-
+<strong>Deformação longitudinal:</strong>
+ε<sub>L</sub> = ΔL / L₀
 </p>
-
 
 <p>
-
-<strong>
-Deformação transversal:
-</strong>
-
-ε<sub>T</sub> = Δd / d
-
+<strong>Deformação transversal:</strong>
+ε<sub>T</sub> = Δd / d₀
 </p>
-
 
 <p>
-
-<strong>
-Coeficiente de Poisson:
-</strong>
-
-ν = − ε<sub>T</sub> / ε<sub>L</sub>
-
+<strong>Coeficiente de Poisson:</strong>
+ν = −ε<sub>T</sub>/ε<sub>L</sub>
 </p>
-
 
 <p>
-
-<strong>
-Lei de Hooke:
-</strong>
-
-ε = σ / E
-
+<strong>Lei de Hooke:</strong>
+ε = σ/E
 </p>
-
-
-<p>
-
-<strong>
-Observação:
-</strong>
-
-a deformação apresentada é amplificada
-para facilitar sua visualização.
-
-</p>
-
 
 </div>
-
 
 </section>
 
 
+<!-- ======================================
+     GRÁFICO
+====================================== -->
+
+<section class="card grafico-card">
+
+<h2>
+Curva Tensão × Deformação em Tempo Real
+</h2>
+
+<div class="grafico-container">
+
+<canvas
+id="grafico"
+width="1150"
+height="360">
+</canvas>
+
+<div
+class="statusGrafico"
+id="statusGrafico">
+
+Aguardando início do ensaio.
+
 </div>
 
+<div class="legendaGrafico">
+
+Eixo horizontal:
+|ε longitudinal|
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+Eixo vertical:
+σ (MPa)
+
+<br><br>
+
+<strong>Modo didático:</strong>
+a reta representa apenas uma resposta elástica idealizada.
+
+</div>
+
+</div>
+
+</section>
+
+</div>
 
 
 <script>
 
-/* =========================
-   ELEMENTOS DE CONTROLE
-========================= */
+/* ======================================
+   ELEMENTOS
+====================================== */
 
 const densidade =
-document.getElementById(
-"densidade"
-);
+document.getElementById("densidade");
 
 const idade =
-document.getElementById(
-"idade"
-);
+document.getElementById("idade");
 
 const carga =
-document.getElementById(
-"carga"
-);
-
-
-/* =========================
-   VALORES MOSTRADOS
-========================= */
+document.getElementById("carga");
 
 const valorDensidade =
-document.getElementById(
-"valorDensidade"
-);
+document.getElementById("valorDensidade");
 
 const valorIdade =
-document.getElementById(
-"valorIdade"
-);
+document.getElementById("valorIdade");
 
 const valorCarga =
-document.getElementById(
-"valorCarga"
-);
-
-
-/* =========================
-   RESULTADOS
-========================= */
+document.getElementById("valorCarga");
 
 const rDensidade =
-document.getElementById(
-"rDensidade"
-);
+document.getElementById("rDensidade");
 
 const rIdade =
-document.getElementById(
-"rIdade"
-);
+document.getElementById("rIdade");
 
 const rCarga =
-document.getElementById(
-"rCarga"
-);
+document.getElementById("rCarga");
 
+const rFc =
+document.getElementById("rFc");
 
-/* =========================
-   ELEMENTOS DA PRENSA
-========================= */
+const rE =
+document.getElementById("rE");
 
 const corpo =
-document.getElementById(
-"corpo"
-);
+document.getElementById("corpo");
 
 const pistao =
-document.getElementById(
-"pistao"
-);
+document.getElementById("pistao");
 
 const pratoSuperior =
-document.getElementById(
-"pratoSuperior"
-);
+document.getElementById("pratoSuperior");
 
 const botao =
-document.getElementById(
-"botaoCarga"
+document.getElementById("botaoCarga");
+
+const cotaVertical =
+document.getElementById("cotaVertical");
+
+const cotaHorizontal =
+document.getElementById("cotaHorizontal");
+
+const textoL =
+document.getElementById("textoL");
+
+const textoD =
+document.getElementById("textoD");
+
+const instrumentacao =
+document.getElementById("instrumentacao");
+
+const modoDidatico =
+document.getElementById("modoDidatico");
+
+const modoExperimental =
+document.getElementById("modoExperimental");
+
+const avisoModo =
+document.getElementById("avisoModo");
+
+const statusGrafico =
+document.getElementById("statusGrafico");
+
+
+/* ======================================
+   GRÁFICO
+====================================== */
+
+const canvas =
+document.getElementById("grafico");
+
+const ctx =
+canvas.getContext("2d");
+
+let pontosGrafico = [];
+
+
+function desenharEixos() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.strokeStyle = "#222";
+    ctx.lineWidth = 2;
+
+    /* EIXO Y */
+
+    ctx.beginPath();
+    ctx.moveTo(80, 25);
+    ctx.lineTo(80, 305);
+    ctx.stroke();
+
+    /* EIXO X */
+
+    ctx.beginPath();
+    ctx.moveTo(80, 305);
+    ctx.lineTo(1090, 305);
+    ctx.stroke();
+
+    /* GRADE */
+
+    ctx.strokeStyle = "#dddddd";
+    ctx.lineWidth = 1;
+
+    for(let i = 1; i <= 5; i++) {
+
+        let y =
+        305 - (i * 50);
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            80,
+            y
+        );
+
+        ctx.lineTo(
+            1090,
+            y
+        );
+
+        ctx.stroke();
+    }
+
+    for(let i = 1; i <= 10; i++) {
+
+        let x =
+        80 + (i * 95);
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x,
+            25
+        );
+
+        ctx.lineTo(
+            x,
+            305
+        );
+
+        ctx.stroke();
+    }
+
+    /* TÍTULOS */
+
+    ctx.fillStyle = "#111";
+    ctx.font = "16px Arial";
+
+    ctx.fillText(
+        "σ (MPa)",
+        18,
+        30
+    );
+
+    ctx.fillText(
+        "|ε longitudinal|",
+        900,
+        342
+    );
+
+    ctx.fillText(
+        "0",
+        55,
+        325
+    );
+}
+
+
+function desenharPontos() {
+
+    desenharEixos();
+
+    if(
+        pontosGrafico.length === 0
+    ) {
+        return;
+    }
+
+    ctx.strokeStyle = "#1686d9";
+    ctx.lineWidth = 4;
+
+    ctx.beginPath();
+
+    pontosGrafico.forEach(
+        function(ponto, indice) {
+
+            let x =
+            80 +
+            (
+                ponto.epsilon /
+                0.015
+            ) *
+            980;
+
+            let y =
+            305 -
+            (
+                ponto.sigma /
+                15
+            ) *
+            260;
+
+            if(indice === 0) {
+
+                ctx.moveTo(
+                    x,
+                    y
+                );
+
+            } else {
+
+                ctx.lineTo(
+                    x,
+                    y
+                );
+            }
+        }
+    );
+
+    ctx.stroke();
+
+    /* PONTO ATUAL */
+
+    let ultimo =
+    pontosGrafico[
+        pontosGrafico.length - 1
+    ];
+
+    let xAtual =
+    80 +
+    (
+        ultimo.epsilon /
+        0.015
+    ) *
+    980;
+
+    let yAtual =
+    305 -
+    (
+        ultimo.sigma /
+        15
+    ) *
+    260;
+
+    ctx.fillStyle =
+    "#d93636";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        xAtual,
+        yAtual,
+        7,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+
+
+desenharEixos();
+
+
+/* ======================================
+   MODOS
+====================================== */
+
+let modoAtual =
+"didatico";
+
+
+modoDidatico.addEventListener(
+"click",
+function() {
+
+    modoAtual =
+    "didatico";
+
+    modoDidatico.classList.add(
+        "ativo"
+    );
+
+    modoExperimental.classList.remove(
+        "ativo"
+    );
+
+    avisoModo.innerHTML =
+    "Modo didático ativo. " +
+    "A deformação apresentada é amplificada " +
+    "e não corresponde a um resultado experimental.";
+
+    rFc.textContent =
+    "aguardando modelo experimental";
+
+    rE.textContent =
+    "aguardando modelo experimental";
+}
 );
 
-const indicadorDeformacao =
-document.getElementById(
-"indicadorDeformacao"
+
+modoExperimental.addEventListener(
+"click",
+function() {
+
+    modoAtual =
+    "experimental";
+
+    modoExperimental.classList.add(
+        "ativo"
+    );
+
+    modoDidatico.classList.remove(
+        "ativo"
+    );
+
+    avisoModo.innerHTML =
+    "Modo experimental selecionado. " +
+    "Nesta versão ainda não existem dados experimentais integrados.";
+
+    rFc.textContent =
+    "sem dados experimentais integrados";
+
+    rE.textContent =
+    "sem dados experimentais integrados";
+}
 );
 
 
-/* =========================
-   DENSIDADE
-========================= */
+/* ======================================
+   CONTROLES
+====================================== */
 
 densidade.addEventListener(
-
 "input",
-
 function() {
 
+    valorDensidade.textContent =
+    densidade.value;
 
-valorDensidade.textContent =
-densidade.value;
+    rDensidade.textContent =
+    densidade.value;
 
+    let fator =
+    (
+        densidade.value -
+        450
+    ) / 350;
 
-rDensidade.textContent =
-densidade.value;
+    let brilho =
+    0.85 +
+    fator * 0.25;
 
-
-/*
-Representação puramente didática.
-
-Densidades diferentes alteram
-levemente o contraste visual
-do corpo de prova.
-*/
-
-
-let fator =
-
-(
-densidade.value - 450
-)
-
-/ 350;
-
-
-let brilho =
-
-0.85 +
-fator * 0.25;
-
-
-corpo.style.filter =
-
-"brightness(" +
-brilho +
-")";
-
-
+    corpo.style.filter =
+    "brightness(" +
+    brilho +
+    ")";
 }
-
 );
 
-
-/* =========================
-   IDADE
-========================= */
 
 idade.addEventListener(
-
 "input",
-
 function() {
 
+    valorIdade.textContent =
+    idade.value;
 
-valorIdade.textContent =
-idade.value;
-
-
-rIdade.textContent =
-idade.value;
-
-
+    rIdade.textContent =
+    idade.value;
 }
-
 );
 
-
-/* =========================
-   CARGA
-========================= */
 
 carga.addEventListener(
-
 "input",
-
 function() {
 
+    valorCarga.textContent =
+    carga.value;
 
-valorCarga.textContent =
-carga.value;
-
-
-rCarga.textContent =
-carga.value;
-
-
+    rCarga.textContent =
+    carga.value;
 }
-
 );
 
 
-/* =========================
-   ENSAIO DE COMPRESSÃO
-========================= */
+/* ======================================
+   ENSAIO
+====================================== */
 
 botao.addEventListener(
-
 "click",
-
 function() {
 
+    let Pmax =
+    parseFloat(
+        carga.value
+    );
 
-let P =
-parseFloat(
-carga.value
-);
+    if(Pmax === 0) {
+
+        alert(
+            "Selecione primeiro uma carga maior que zero."
+        );
+
+        return;
+    }
+
+    if(
+        modoAtual ===
+        "experimental"
+    ) {
+
+        alert(
+            "O modo experimental ainda não possui dados reais integrados."
+        );
+
+        return;
+    }
 
 
-if(P === 0) {
+    /* LIMPA CURVA */
+
+    pontosGrafico = [];
+
+    desenharEixos();
+
+    statusGrafico.textContent =
+    "Ensaio em andamento...";
 
 
-alert(
+    /* GEOMETRIA DIDÁTICA */
 
-"Selecione primeiro uma carga maior que zero."
+    let d0 =
+    100;
 
-);
+    let L0 =
+    200;
+
+    let area_mm2 =
+
+    Math.PI *
+    Math.pow(
+        d0,
+        2
+    ) / 4;
 
 
-return;
+    let nuDidatico =
+    0.20;
+
+    let amplificacao =
+    30;
 
 
+    let passos =
+    40;
+
+    let passoAtual =
+    0;
+
+
+    /* ======================================
+       ANIMAÇÃO EM TEMPO REAL
+    ====================================== */
+
+    let timer =
+    setInterval(
+    function() {
+
+        passoAtual++;
+
+        let proporcao =
+        passoAtual /
+        passos;
+
+
+        let PkN =
+        Pmax *
+        proporcao;
+
+
+        let PN =
+        PkN *
+        1000;
+
+
+        let sigma =
+        PN /
+        area_mm2;
+
+
+        let epsilonL =
+        -0.00012 *
+        PkN;
+
+
+        let epsilonT =
+        -nuDidatico *
+        epsilonL;
+
+
+        let deltaL =
+        epsilonL *
+        L0;
+
+
+        let deltaD =
+        epsilonT *
+        d0;
+
+
+        /* DEFORMAÇÃO VISUAL */
+
+        let deformacaoVisual =
+
+        Math.abs(
+            epsilonL
+        )
+        *
+        170
+        *
+        amplificacao;
+
+
+        deformacaoVisual =
+        Math.min(
+            deformacaoVisual,
+            24
+        );
+
+
+        let expansaoVisual =
+
+        epsilonT
+        *
+        110
+        *
+        amplificacao;
+
+
+        expansaoVisual =
+        Math.min(
+            expansaoVisual,
+            10
+        );
+
+
+        let novaAltura =
+        170 -
+        deformacaoVisual;
+
+
+        let novoTopo =
+        145 +
+        deformacaoVisual;
+
+
+        let novaLargura =
+        110 +
+        expansaoVisual;
+
+
+        /* CORPO */
+
+        corpo.style.height =
+        novaAltura +
+        "px";
+
+
+        corpo.style.top =
+        novoTopo +
+        "px";
+
+
+        corpo.style.width =
+        novaLargura +
+        "px";
+
+
+        corpo.style.left =
+
+        "calc(50% - " +
+
+        (
+            novaLargura / 2
+        )
+
+        +
+
+        "px)";
+
+
+        /* PISTÃO */
+
+        pistao.style.transform =
+
+        "translateY(" +
+
+        deformacaoVisual +
+
+        "px)";
+
+
+        pratoSuperior.style.transform =
+
+        "translateY(" +
+
+        deformacaoVisual +
+
+        "px)";
+
+
+        /* COTAS */
+
+        cotaVertical.style.height =
+        novaAltura +
+        "px";
+
+
+        cotaVertical.style.top =
+        novoTopo +
+        "px";
+
+
+        cotaHorizontal.style.width =
+        novaLargura +
+        "px";
+
+
+        cotaHorizontal.style.left =
+
+        "calc(50% - " +
+
+        (
+            novaLargura / 2
+        )
+
+        +
+
+        "px)";
+
+
+        textoL.textContent =
+        "L₀ − ΔL";
+
+
+        textoD.textContent =
+        "d₀ + Δd";
+
+
+        /* INSTRUMENTAÇÃO */
+
+        instrumentacao.innerHTML =
+
+        "<strong>PAINEL DE INSTRUMENTAÇÃO</strong><br><br>" +
+
+        "<strong>Ensaio em andamento</strong><br>" +
+
+        "P = " +
+        PkN.toFixed(1) +
+        " kN<br>" +
+
+        "σ = " +
+        sigma.toFixed(3) +
+        " MPa<br>" +
+
+        "εL = " +
+        epsilonL.toExponential(3) +
+        "<br>" +
+
+        "εT = " +
+        epsilonT.toExponential(3) +
+        "<br>" +
+
+        "ΔL = " +
+        deltaL.toFixed(3) +
+        " mm<br>" +
+
+        "Δd = " +
+        deltaD.toFixed(3) +
+        " mm<br>" +
+
+        "ν didático = " +
+        nuDidatico.toFixed(2) +
+        "<br>" +
+
+        "<em>Deformação visual amplificada ×" +
+        amplificacao +
+        "</em>";
+
+
+        /* GRÁFICO */
+
+        pontosGrafico.push(
+        {
+            epsilon:
+            Math.abs(
+                epsilonL
+            ),
+
+            sigma:
+            sigma
+        }
+        );
+
+
+        desenharPontos();
+
+
+        statusGrafico.textContent =
+
+        "σ = " +
+        sigma.toFixed(3) +
+        " MPa | ε = " +
+        Math.abs(
+            epsilonL
+        ).toExponential(3);
+
+
+        /* FIM DO ENSAIO */
+
+        if(
+            passoAtual >=
+            passos
+        ) {
+
+            clearInterval(
+                timer
+            );
+
+
+            statusGrafico.textContent =
+
+            "Ensaio concluído — ponto final destacado em vermelho.";
+
+
+            setTimeout(
+            function() {
+
+                corpo.style.height =
+                "170px";
+
+                corpo.style.top =
+                "145px";
+
+                corpo.style.width =
+                "110px";
+
+                corpo.style.left =
+                "calc(50% - 55px)";
+
+                pistao.style.transform =
+                "translateY(0px)";
+
+                pratoSuperior.style.transform =
+                "translateY(0px)";
+
+                cotaVertical.style.height =
+                "170px";
+
+                cotaVertical.style.top =
+                "145px";
+
+                cotaHorizontal.style.width =
+                "110px";
+
+                cotaHorizontal.style.left =
+                "calc(50% - 55px)";
+
+                textoL.textContent =
+                "L₀";
+
+                textoD.textContent =
+                "d₀";
+
+            },
+            1500
+            );
+        }
+
+    },
+    80
+    );
 }
-
-
-/*
-Nesta versão:
-
-A deformação é apenas visual.
-
-Posteriormente este cálculo será
-substituído por dados reais:
-
-sigma = P / A
-
-epsilon = sigma / E(rho,t)
-
-DeltaL = epsilon * L
-*/
-
-
-let deformacaoVisual =
-
-Math.min(
-
-P / 5,
-
-20
-
-);
-
-
-/*
-Expansão lateral didática.
-
-Posteriormente poderá utilizar:
-
-epsilon_transversal =
--nu * epsilon_longitudinal
-*/
-
-
-let expansaoLateral =
-
-deformacaoVisual *
-0.35;
-
-
-/* =========================
-   COMPRESSÃO VERTICAL
-========================= */
-
-corpo.style.height =
-
-(
-170 -
-deformacaoVisual
-)
-
-+
-"px";
-
-
-corpo.style.top =
-
-(
-145 +
-deformacaoVisual
-)
-
-+
-"px";
-
-
-/* =========================
-   EXPANSÃO LATERAL
-========================= */
-
-let novaLargura =
-
-110 +
-expansaoLateral;
-
-
-corpo.style.width =
-
-novaLargura +
-"px";
-
-
-corpo.style.left =
-
-"calc(50% - " +
-
-(
-novaLargura / 2
-)
-
-+
-
-"px)";
-
-
-/* =========================
-   MOVIMENTO DO PISTÃO
-========================= */
-
-pistao.style.transform =
-
-"translateY(" +
-
-deformacaoVisual +
-
-"px)";
-
-
-pratoSuperior.style.transform =
-
-"translateY(" +
-
-deformacaoVisual +
-
-"px)";
-
-
-/* =========================
-   INFORMAÇÃO DIDÁTICA
-========================= */
-
-indicadorDeformacao.innerHTML =
-
-"Compressão longitudinal ↓" +
-
-"<br>" +
-
-"Expansão transversal ↔" +
-
-"<br>" +
-
-"Deformação visual amplificada";
-
-
-/* =========================
-   RETORNO AO ESTADO INICIAL
-========================= */
-
-setTimeout(
-
-function() {
-
-
-corpo.style.height =
-"170px";
-
-
-corpo.style.top =
-"145px";
-
-
-corpo.style.width =
-"110px";
-
-
-corpo.style.left =
-"calc(50% - 55px)";
-
-
-pistao.style.transform =
-"translateY(0px)";
-
-
-pratoSuperior.style.transform =
-"translateY(0px)";
-
-
-indicadorDeformacao.innerHTML =
-"Estado inicial";
-
-
-},
-
-2200
-
-);
-
-
-}
-
 );
 
 </script>
-
 
 </body>
 
