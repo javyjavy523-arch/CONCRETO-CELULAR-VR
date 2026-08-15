@@ -1,0 +1,179 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concreto Celular XR - UFSC</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #101820;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-weight: normal;
+            color: #cccccc;
+        }
+
+        .painel {
+            width: 600px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 30px;
+            background: #1d2a35;
+            border-radius: 15px;
+        }
+
+        .controle {
+            margin: 30px 0;
+        }
+
+        input[type="range"] {
+            width: 80%;
+        }
+
+        .valor {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .resultados {
+            margin-top: 30px;
+            padding: 20px;
+            background: #263746;
+            border-radius: 10px;
+        }
+
+        .formula {
+            font-size: 24px;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
+
+    <h2>
+        Mecânica dos Sólidos e Teoria da Elasticidade
+    </h2>
+
+    <p>
+        Modelo preliminar dependente da densidade e da idade
+    </p>
+
+    <div class="painel">
+
+        <div class="controle">
+
+            <h3>Densidade ρ</h3>
+
+            <input
+                type="range"
+                id="densidade"
+                min="450"
+                max="800"
+                step="10"
+                value="600"
+            >
+
+            <div class="valor">
+                <span id="valorDensidade">600</span> kg/m³
+            </div>
+
+        </div>
+
+
+        <div class="controle">
+
+            <h3>Idade de cura t</h3>
+
+            <input
+                type="range"
+                id="idade"
+                min="1"
+                max="54"
+                step="1"
+                value="28"
+            >
+
+            <div class="valor">
+                <span id="valorIdade">28</span> dias
+            </div>
+
+        </div>
+
+
+        <div class="resultados">
+
+            <h3>Formulação em investigação</h3>
+
+            <div class="formula">
+                f<sub>c</sub> = F(ρ,t)
+            </div>
+
+            <div class="formula">
+                E = G(ρ,t)
+            </div>
+
+            <p>
+                Resistência à compressão:
+                <strong>aguardando modelo experimental</strong>
+            </p>
+
+            <p>
+                Módulo de elasticidade:
+                <strong>aguardando modelo experimental</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const densidade =
+            document.getElementById("densidade");
+
+        const idade =
+            document.getElementById("idade");
+
+        const valorDensidade =
+            document.getElementById("valorDensidade");
+
+        const valorIdade =
+            document.getElementById("valorIdade");
+
+
+        densidade.addEventListener("input", function() {
+
+            valorDensidade.textContent =
+                densidade.value;
+
+        });
+
+
+        idade.addEventListener("input", function() {
+
+            valorIdade.textContent =
+                idade.value;
+
+        });
+
+    </script>
+
+</body>
+
+</html>
