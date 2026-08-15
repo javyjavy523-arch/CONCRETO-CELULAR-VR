@@ -1,531 +1,435 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Concreto Celular XR - Engenheiro Javier Sanabria</title>
 
 <style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#0e1821;color:#fff}
 
-* {
-    box-sizing: border-box;
+header{text-align:center;padding:42px 20px 20px}
+header h1{margin:0;font-size:32px}
+header h2{margin:10px 0 6px;font-size:18px;font-weight:normal;color:#b9c5ce}
+.autor{margin-top:10px;font-size:17px;font-weight:bold;color:#79c9ff}
+.subtitulo{margin-top:6px;color:#8ea1af}
+
+.container{
+    max-width:1320px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px
 }
 
-html {
-    scroll-behavior: smooth;
+.card{
+    background:#1b2a36;
+    border-radius:16px;
+    padding:24px
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0e1821;
-    color: white;
+.card h2{
+    margin-top:0;
+    text-align:center
 }
 
-/* ======================================
-   CABEÇALHO
-====================================== */
+.controle{margin:22px 0}
 
-header {
-    text-align: center;
-    padding: 42px 20px 20px;
+.controle label{
+    display:block;
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:10px
 }
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
+input[type="range"]{width:100%}
+
+.valor{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:8px
 }
 
-header h2 {
-    margin: 10px 0 6px;
-    font-size: 18px;
-    font-weight: normal;
-    color: #b9c5ce;
+.modo{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+    flex-wrap:wrap
 }
 
-.autor {
-    margin-top: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    color: #79c9ff;
+button{
+    margin-top:18px;
+    background:#1686d9;
+    border:none;
+    color:white;
+    padding:14px 25px;
+    font-size:17px;
+    border-radius:8px;
+    cursor:pointer
 }
 
-.subtitulo {
-    margin-top: 6px;
-    color: #8ea1af;
+button:hover{background:#36a0ed}
+
+button:disabled{
+    opacity:.55;
+    cursor:not-allowed
 }
 
-/* ======================================
-   ESTRUTURA
-====================================== */
-
-.container {
-    max-width: 1320px;
-    margin: auto;
-    padding: 20px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+.modo button{
+    margin-top:0;
+    padding:10px 16px;
+    font-size:14px
 }
 
-.card {
-    background: #1b2a36;
-    border-radius: 16px;
-    padding: 24px;
+.ativo{
+    outline:3px solid #79c9ff
 }
 
-.card h2 {
-    margin-top: 0;
-    text-align: center;
+.formulas{
+    margin-top:22px;
+    background:#253b4c;
+    padding:16px;
+    border-radius:12px;
+    text-align:center
 }
 
-/* ======================================
-   CONTROLES
-====================================== */
-
-.controle {
-    margin: 22px 0;
+.formula{
+    font-size:22px;
+    margin:8px
 }
 
-.controle label {
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
+.resultados{
+    margin-top:18px;
+    background:#253b4c;
+    padding:15px;
+    border-radius:10px;
+    text-align:left
 }
 
-input[type="range"] {
-    width: 100%;
+.resultados p{margin:8px}
+
+.aviso{
+    margin-top:18px;
+    padding:12px;
+    border-left:4px solid #d9a441;
+    background:#17232c;
+    font-size:13px;
+    color:#cbd3d8
 }
 
-.valor {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 8px;
+.laboratorio{text-align:center}
+
+.prensa{
+    position:relative;
+    height:440px;
+    margin-top:10px;
+    background:#111b23;
+    border-radius:12px;
+    overflow:hidden
 }
 
-.modo {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+.coluna{
+    position:absolute;
+    width:28px;
+    height:340px;
+    top:35px;
+    background:linear-gradient(90deg,#586570,#aeb7bd,#586570)
 }
 
-button {
-    margin-top: 18px;
-    background: #1686d9;
-    border: none;
-    color: white;
-    padding: 14px 25px;
-    font-size: 17px;
-    border-radius: 8px;
-    cursor: pointer;
+.coluna.esquerda{left:65px}
+.coluna.direita{right:65px}
+
+.travessa{
+    position:absolute;
+    height:35px;
+    left:55px;
+    right:55px;
+    top:25px;
+    background:#77838c;
+    border-radius:5px
 }
 
-button:hover {
-    background: #36a0ed;
+.pistao{
+    position:absolute;
+    width:70px;
+    height:70px;
+    top:60px;
+    left:calc(50% - 35px);
+    background:#a9b3ba;
+    transition:transform .12s linear
 }
 
-.modo button {
-    margin-top: 0;
-    padding: 10px 16px;
-    font-size: 14px;
+.pratoSuperior{
+    position:absolute;
+    width:150px;
+    height:18px;
+    top:125px;
+    left:calc(50% - 75px);
+    background:#8c989f;
+    transition:transform .12s linear
 }
 
-.ativo {
-    outline: 3px solid #79c9ff;
-}
-
-/* ======================================
-   FORMULAÇÃO
-====================================== */
-
-.formulas {
-    margin-top: 22px;
-    background: #253b4c;
-    padding: 16px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.formula {
-    font-size: 22px;
-    margin: 8px;
-}
-
-/* ======================================
-   RESULTADOS
-====================================== */
-
-.resultados {
-    margin-top: 18px;
-    background: #253b4c;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.resultados p {
-    margin: 8px;
-}
-
-.aviso {
-    margin-top: 18px;
-    padding: 12px;
-    border-left: 4px solid #d9a441;
-    background: #17232c;
-    font-size: 13px;
-    color: #cbd3d8;
-}
-
-/* ======================================
-   PRENSA
-====================================== */
-
-.laboratorio {
-    text-align: center;
-}
-
-.prensa {
-    position: relative;
-    height: 440px;
-    margin-top: 10px;
-    background: #111b23;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.coluna {
-    position: absolute;
-    width: 28px;
-    height: 340px;
-    top: 35px;
-    background:
-        linear-gradient(
-            90deg,
-            #586570,
-            #aeb7bd,
-            #586570
-        );
-}
-
-.coluna.esquerda {
-    left: 65px;
-}
-
-.coluna.direita {
-    right: 65px;
-}
-
-.travessa {
-    position: absolute;
-    height: 35px;
-    left: 55px;
-    right: 55px;
-    top: 25px;
-    background: #77838c;
-    border-radius: 5px;
-}
-
-.pistao {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    top: 60px;
-    left: calc(50% - 35px);
-    background: #a9b3ba;
-    transition: transform 0.12s linear;
-}
-
-.pratoSuperior {
-    position: absolute;
-    width: 150px;
-    height: 18px;
-    top: 125px;
-    left: calc(50% - 75px);
-    background: #8c989f;
-    transition: transform 0.12s linear;
-}
-
-.corpo {
-    position: absolute;
-
-    width: 110px;
-    height: 170px;
-
-    left: calc(50% - 55px);
-    top: 145px;
+.corpo{
+    position:absolute;
+    width:110px;
+    height:170px;
+    left:calc(50% - 55px);
+    top:145px;
 
     background:
-        radial-gradient(circle at 20% 20%, #55616a 0 4px, transparent 5px),
-        radial-gradient(circle at 70% 30%, #59656d 0 6px, transparent 7px),
-        radial-gradient(circle at 40% 60%, #56616a 0 5px, transparent 6px),
-        radial-gradient(circle at 80% 75%, #59646c 0 4px, transparent 5px),
-        radial-gradient(circle at 35% 82%, #626d74 0 3px, transparent 4px),
+        radial-gradient(circle at 20% 20%,#55616a 0 4px,transparent 5px),
+        radial-gradient(circle at 70% 30%,#59656d 0 6px,transparent 7px),
+        radial-gradient(circle at 40% 60%,#56616a 0 5px,transparent 6px),
+        radial-gradient(circle at 80% 75%,#59646c 0 4px,transparent 5px),
+        radial-gradient(circle at 35% 82%,#626d74 0 3px,transparent 4px),
         #b9c0c4;
 
-    border-radius: 55px / 18px;
-    border: 2px solid #d7dcdf;
+    border-radius:55px/18px;
+    border:2px solid #d7dcdf;
 
     transition:
-        height 0.12s linear,
-        top 0.12s linear,
-        width 0.12s linear,
-        left 0.12s linear,
-        filter 0.5s;
+        height .12s linear,
+        top .12s linear,
+        width .12s linear,
+        left .12s linear,
+        filter .5s
 }
 
-.corpo::before {
-    content: "";
-    position: absolute;
-    width: calc(100% - 4px);
-    height: 25px;
-    left: 2px;
-    top: -2px;
-    border-radius: 50%;
-    background: #d3d7da;
+.corpo::before{
+    content:"";
+    position:absolute;
+    width:calc(100% - 4px);
+    height:25px;
+    left:2px;
+    top:-2px;
+    border-radius:50%;
+    background:#d3d7da
 }
 
-.base {
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    bottom: 55px;
-    left: calc(50% - 100px);
-    background: #77838c;
+.base{
+    position:absolute;
+    width:200px;
+    height:30px;
+    bottom:55px;
+    left:calc(50% - 100px);
+    background:#77838c
 }
 
-.setaCarga {
-    position: absolute;
-    top: 72px;
-    left: calc(50% + 100px);
-    font-size: 38px;
+.setaCarga{
+    position:absolute;
+    top:72px;
+    left:calc(50% + 100px);
+    font-size:38px
 }
 
-.textoCarga {
-    position: absolute;
-    top: 80px;
-    left: calc(50% + 140px);
-    font-size: 18px;
+.textoCarga{
+    position:absolute;
+    top:80px;
+    left:calc(50% + 140px);
+    font-size:18px
 }
 
-/* ======================================
-   COTAS
-====================================== */
-
-.cotaVertical {
-    position: absolute;
-    top: 145px;
-    left: calc(50% - 120px);
-    height: 170px;
-    width: 30px;
-    transition: height 0.12s linear, top 0.12s linear;
+.cotaVertical{
+    position:absolute;
+    top:145px;
+    left:calc(50% - 120px);
+    height:170px;
+    width:30px;
+    transition:height .12s linear,top .12s linear
 }
 
-.linhaVertical {
-    position: absolute;
-    left: 14px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #6fd3ff;
+.linhaVertical{
+    position:absolute;
+    left:14px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#6fd3ff
 }
 
 .setaTopo,
-.setaBase {
-    position: absolute;
-    left: 6px;
-    color: #6fd3ff;
-    font-size: 20px;
+.setaBase{
+    position:absolute;
+    left:6px;
+    color:#6fd3ff;
+    font-size:20px
 }
 
-.setaTopo {
-    top: -8px;
+.setaTopo{top:-8px}
+.setaBase{bottom:-8px}
+
+.textoL{
+    position:absolute;
+    left:-42px;
+    top:70px;
+    font-size:13px;
+    color:#6fd3ff
 }
 
-.setaBase {
-    bottom: -8px;
+.cotaHorizontal{
+    position:absolute;
+    top:312px;
+    left:calc(50% - 55px);
+    width:110px;
+    height:32px;
+    transition:width .12s linear,left .12s linear
 }
 
-.textoL {
-    position: absolute;
-    left: -42px;
-    top: 70px;
-    font-size: 13px;
-    color: #6fd3ff;
-}
-
-.cotaHorizontal {
-    position: absolute;
-    top: 330px;
-    left: calc(50% - 55px);
-    width: 110px;
-    height: 32px;
-    transition: width 0.12s linear, left 0.12s linear;
-}
-
-.linhaHorizontal {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 15px;
-    height: 2px;
-    background: #ffcc66;
+.linhaHorizontal{
+    position:absolute;
+    left:0;
+    right:0;
+    top:15px;
+    height:2px;
+    background:#ffcc66
 }
 
 .setaEsquerda,
-.setaDireita {
-    position: absolute;
-    top: 3px;
-    color: #ffcc66;
-    font-size: 20px;
+.setaDireita{
+    position:absolute;
+    top:3px;
+    color:#ffcc66;
+    font-size:20px
 }
 
-.setaEsquerda {
-    left: -4px;
+.setaEsquerda{left:-4px}
+.setaDireita{right:-4px}
+
+.textoD{
+    position:absolute;
+    top:18px;
+    left:calc(50% - 30px);
+    color:#ffcc66;
+    font-size:13px
 }
 
-.setaDireita {
-    right: -4px;
+.estadoEnsaio{
+    display:inline-block;
+    margin-top:14px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#253b4c;
+    border:1px solid #36556b;
+    color:#c8d2d9;
+    font-size:13px;
+    font-weight:bold
 }
 
-.textoD {
-    position: absolute;
-    top: 18px;
-    left: calc(50% - 30px);
-    color: #ffcc66;
-    font-size: 13px;
+.estadoEnsaio.andamento{
+    background:#17374a;
+    color:#79c9ff;
+    border-color:#1686d9
 }
 
-/* ======================================
-   INSTRUMENTAÇÃO
-====================================== */
-
-.instrumentacao {
-    margin-top: 16px;
-    background: #172734;
-    border: 1px solid #36556b;
-    border-radius: 10px;
-    padding: 16px 18px;
-    text-align: left;
-    font-size: 14px;
-    line-height: 1.55;
-    min-height: 160px;
+.estadoEnsaio.concluido{
+    background:#243a2b;
+    color:#a7e3b4;
+    border-color:#4f8a5b
 }
 
-.instrumentacao strong {
-    color: #79c9ff;
+.acoesEnsaio{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap
 }
 
-/* ======================================
-   GRÁFICO
-====================================== */
-
-.grafico-card {
-    grid-column: 1 / -1;
+.botaoSecundario{
+    background:#344b5e
 }
 
-.grafico-container {
-    background: #111b23;
-    border-radius: 12px;
-    padding: 20px;
+.botaoSecundario:hover{
+    background:#48667e
 }
 
-canvas {
-    width: 100%;
-    height: 360px;
-    background: #ffffff;
-    border-radius: 8px;
-    display: block;
+.instrumentacao{
+    margin-top:16px;
+    background:#172734;
+    border:1px solid #36556b;
+    border-radius:10px;
+    padding:18px 20px;
+    text-align:left;
+    font-size:15px;
+    line-height:1.6;
+    min-height:185px
 }
 
-.legendaGrafico {
-    text-align: center;
-    margin-top: 12px;
-    color: #c8d2d9;
-    font-size: 14px;
+.instrumentacao strong{
+    color:#79c9ff
 }
 
-.statusGrafico {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 15px;
-    color: #79c9ff;
+.grafico-card{
+    grid-column:1/-1
 }
 
-/* ======================================
-   RESPONSIVO
-====================================== */
-
-@media(max-width: 850px) {
-
-    .container {
-        grid-template-columns: 1fr;
-    }
-
-    .grafico-card {
-        grid-column: auto;
-    }
-
+.grafico-container{
+    background:#111b23;
+    border-radius:12px;
+    padding:20px
 }
 
+canvas{
+    width:100%;
+    height:360px;
+    background:white;
+    border-radius:8px;
+    display:block
+}
+
+.legendaGrafico{
+    text-align:center;
+    margin-top:12px;
+    color:#c8d2d9;
+    font-size:14px
+}
+
+.statusGrafico{
+    margin-top:10px;
+    text-align:center;
+    font-size:15px;
+    color:#79c9ff
+}
+
+@media(max-width:850px){
+    .container{grid-template-columns:1fr}
+    .grafico-card{grid-column:auto}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>
-MODELO CONSTITUTIVO DO CONCRETO CELULAR
-</h1>
-
-<h2>
-Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
-</h2>
-
-<div class="autor">
-Engenheiro Javier Sanabria
-</div>
-
+<h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
+<h2>Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade</h2>
+<div class="autor">Engenheiro Javier Sanabria</div>
 <div class="subtitulo">
-Modelo preliminar dependente da densidade e da idade
+Modelo preliminar dependente da densidade e da idade — V0.6.1
 </div>
-
 </header>
 
-
 <div class="container">
-
-<!-- ======================================
-     PARÂMETROS
-====================================== -->
 
 <section class="card">
 
 <h2>Parâmetros do material</h2>
 
 <div class="modo">
-
-<button
-id="modoDidatico"
-class="ativo">
+<button id="modoDidatico" class="ativo">
 MODO DIDÁTICO
 </button>
 
-<button
-id="modoExperimental">
+<button id="modoExperimental">
 MODO EXPERIMENTAL
 </button>
-
 </div>
 
 <div class="controle">
-
 <label>Densidade ρ</label>
 
 <input
@@ -534,17 +438,14 @@ id="densidade"
 min="450"
 max="800"
 step="10"
-value="600"
->
+value="600">
 
 <div class="valor">
 <span id="valorDensidade">600</span> kg/m³
 </div>
-
 </div>
 
 <div class="controle">
-
 <label>Idade de cura t</label>
 
 <input
@@ -553,17 +454,14 @@ id="idade"
 min="1"
 max="54"
 step="1"
-value="28"
->
+value="28">
 
 <div class="valor">
 <span id="valorIdade">28</span> dias
 </div>
-
 </div>
 
 <div class="controle">
-
 <label>Carga aplicada P</label>
 
 <input
@@ -572,13 +470,11 @@ id="carga"
 min="0"
 max="100"
 step="5"
-value="0"
->
+value="0">
 
 <div class="valor">
 <span id="valorCarga">0</span> kN
 </div>
-
 </div>
 
 <div class="formulas">
@@ -628,21 +524,12 @@ aguardando modelo experimental
 
 </div>
 
-<div
-class="aviso"
-id="avisoModo">
-
-Modo didático ativo.
-A deformação apresentada é amplificada e não corresponde a um resultado experimental.
-
+<div class="aviso" id="avisoModo">
+Modo didático ativo. A deformação apresentada é amplificada e não corresponde a um resultado experimental.
 </div>
 
 </section>
 
-
-<!-- ======================================
-     PRENSA
-====================================== -->
 
 <section class="card laboratorio">
 
@@ -655,23 +542,22 @@ Ensaio Virtual Instrumentado de Compressão
 <div class="travessa"></div>
 
 <div class="coluna esquerda"></div>
-
 <div class="coluna direita"></div>
 
-<div
-class="pistao"
-id="pistao">
-</div>
+<div class="pistao" id="pistao"></div>
 
 <div
 class="pratoSuperior"
 id="pratoSuperior">
 </div>
 
-<div class="setaCarga">↓</div>
+<div class="setaCarga">
+↓
+</div>
 
-<div class="textoCarga">P</div>
-
+<div class="textoCarga">
+P
+</div>
 
 <div
 class="cotaVertical"
@@ -679,9 +565,13 @@ id="cotaVertical">
 
 <div class="linhaVertical"></div>
 
-<div class="setaTopo">↑</div>
+<div class="setaTopo">
+↑
+</div>
 
-<div class="setaBase">↓</div>
+<div class="setaBase">
+↓
+</div>
 
 <div
 class="textoL"
@@ -691,12 +581,10 @@ L₀
 
 </div>
 
-
 <div
 class="corpo"
 id="corpo">
 </div>
-
 
 <div
 class="cotaHorizontal"
@@ -704,9 +592,13 @@ id="cotaHorizontal">
 
 <div class="linhaHorizontal"></div>
 
-<div class="setaEsquerda">←</div>
+<div class="setaEsquerda">
+←
+</div>
 
-<div class="setaDireita">→</div>
+<div class="setaDireita">
+→
+</div>
 
 <div
 class="textoD"
@@ -720,19 +612,39 @@ d₀
 
 </div>
 
+<div
+class="estadoEnsaio"
+id="estadoEnsaio">
+ESTADO INICIAL
+</div>
+
+<div class="acoesEnsaio">
 
 <button id="botaoCarga">
 APLICAR CARGA
 </button>
 
+<button
+id="botaoReset"
+class="botaoSecundario">
+REINICIAR ENSAIO
+</button>
+
+</div>
 
 <div
 class="instrumentacao"
 id="instrumentacao">
 
-<strong>PAINEL DE INSTRUMENTAÇÃO</strong>
+<strong>
+PAINEL DE INSTRUMENTAÇÃO
+</strong>
+
 <br><br>
+
 Estado inicial
+<br>
+P = 0.0 kN
 <br>
 σ = 0 MPa
 <br>
@@ -743,9 +655,10 @@ Estado inicial
 ΔL = 0 mm
 <br>
 Δd = 0 mm
+<br>
+E didático = 0 GPa
 
 </div>
-
 
 <div class="resultados">
 
@@ -779,10 +692,6 @@ Estado inicial
 </section>
 
 
-<!-- ======================================
-     GRÁFICO
-====================================== -->
-
 <section class="card grafico-card">
 
 <h2>
@@ -800,9 +709,7 @@ height="360">
 <div
 class="statusGrafico"
 id="statusGrafico">
-
 Aguardando início do ensaio.
-
 </div>
 
 <div class="legendaGrafico">
@@ -817,8 +724,12 @@ Eixo vertical:
 
 <br><br>
 
-<strong>Modo didático:</strong>
+<strong>
+Modo didático:
+</strong>
+
 a reta representa apenas uma resposta elástica idealizada.
+O módulo E exibido é a inclinação σ/|ε| desta simulação.
 
 </div>
 
@@ -830,10 +741,6 @@ a reta representa apenas uma resposta elástica idealizada.
 
 
 <script>
-
-/* ======================================
-   ELEMENTOS
-====================================== */
 
 const densidade =
 document.getElementById("densidade");
@@ -880,6 +787,9 @@ document.getElementById("pratoSuperior");
 const botao =
 document.getElementById("botaoCarga");
 
+const botaoReset =
+document.getElementById("botaoReset");
+
 const cotaVertical =
 document.getElementById("cotaVertical");
 
@@ -907,10 +817,8 @@ document.getElementById("avisoModo");
 const statusGrafico =
 document.getElementById("statusGrafico");
 
-
-/* ======================================
-   GRÁFICO
-====================================== */
+const estadoEnsaio =
+document.getElementById("estadoEnsaio");
 
 const canvas =
 document.getElementById("grafico");
@@ -918,10 +826,24 @@ document.getElementById("grafico");
 const ctx =
 canvas.getContext("2d");
 
+
 let pontosGrafico = [];
 
+let modoAtual =
+"didatico";
 
-function desenharEixos() {
+let ensaioEmAndamento =
+false;
+
+let timerEnsaio =
+null;
+
+
+/* =====================================
+   GRÁFICO
+===================================== */
+
+function desenharEixos(){
 
     ctx.clearRect(
         0,
@@ -930,171 +852,353 @@ function desenharEixos() {
         canvas.height
     );
 
-    ctx.strokeStyle = "#222";
-    ctx.lineWidth = 2;
+    const x0 =
+    80;
 
-    /* EIXO Y */
+    const y0 =
+    305;
 
-    ctx.beginPath();
-    ctx.moveTo(80, 25);
-    ctx.lineTo(80, 305);
-    ctx.stroke();
+    const xMax =
+    1090;
 
-    /* EIXO X */
+    const yTop =
+    25;
 
-    ctx.beginPath();
-    ctx.moveTo(80, 305);
-    ctx.lineTo(1090, 305);
-    ctx.stroke();
+    const epsilonMax =
+    0.015;
 
-    /* GRADE */
+    const sigmaMax =
+    15;
 
-    ctx.strokeStyle = "#dddddd";
-    ctx.lineWidth = 1;
 
-    for(let i = 1; i <= 5; i++) {
+    ctx.font =
+    "13px Arial";
+
+    ctx.fillStyle =
+    "#333";
+
+    ctx.strokeStyle =
+    "#dddddd";
+
+    ctx.lineWidth =
+    1;
+
+
+    for(
+        let i = 0;
+        i <= 5;
+        i++
+    ){
+
+        let sigmaTick =
+
+        (
+            sigmaMax /
+            5
+        )
+
+        *
+
+        i;
+
 
         let y =
-        305 - (i * 50);
+
+        y0 -
+
+        (
+            (
+                y0 -
+                yTop
+            )
+            /
+            5
+        )
+
+        *
+
+        i;
+
 
         ctx.beginPath();
 
         ctx.moveTo(
-            80,
+            x0,
             y
         );
 
         ctx.lineTo(
-            1090,
+            xMax,
             y
         );
 
         ctx.stroke();
+
+
+        ctx.fillText(
+
+            sigmaTick.toFixed(0),
+
+            45,
+
+            y + 4
+
+        );
+
     }
 
-    for(let i = 1; i <= 10; i++) {
+
+    for(
+        let i = 0;
+        i <= 10;
+        i++
+    ){
+
+        let epsilonTick =
+
+        (
+            epsilonMax /
+            10
+        )
+
+        *
+
+        i;
+
 
         let x =
-        80 + (i * 95);
+
+        x0 +
+
+        (
+            (
+                xMax -
+                x0
+            )
+            /
+            10
+        )
+
+        *
+
+        i;
+
 
         ctx.beginPath();
 
         ctx.moveTo(
             x,
-            25
+            yTop
         );
 
         ctx.lineTo(
             x,
-            305
+            y0
         );
 
         ctx.stroke();
+
+
+        ctx.fillText(
+
+            epsilonTick.toFixed(4),
+
+            x - 18,
+
+            325
+
+        );
+
     }
 
-    /* TÍTULOS */
 
-    ctx.fillStyle = "#111";
-    ctx.font = "16px Arial";
+    ctx.strokeStyle =
+    "#222";
+
+    ctx.lineWidth =
+    2;
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x0,
+        yTop
+    );
+
+    ctx.lineTo(
+        x0,
+        y0
+    );
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x0,
+        y0
+    );
+
+    ctx.lineTo(
+        xMax,
+        y0
+    );
+
+    ctx.stroke();
+
+
+    ctx.fillStyle =
+    "#111";
+
+    ctx.font =
+    "16px Arial";
+
 
     ctx.fillText(
         "σ (MPa)",
-        18,
+        15,
         30
     );
+
 
     ctx.fillText(
         "|ε longitudinal|",
         900,
-        342
+        350
     );
 
-    ctx.fillText(
-        "0",
-        55,
-        325
-    );
 }
 
 
-function desenharPontos() {
+function desenharPontos(){
 
     desenharEixos();
 
+
     if(
-        pontosGrafico.length === 0
-    ) {
+        pontosGrafico.length ===
+        0
+    ){
+
         return;
+
     }
 
-    ctx.strokeStyle = "#1686d9";
-    ctx.lineWidth = 4;
+
+    ctx.strokeStyle =
+    "#1686d9";
+
+    ctx.lineWidth =
+    4;
 
     ctx.beginPath();
 
+
     pontosGrafico.forEach(
-        function(ponto, indice) {
+
+        function(
+            ponto,
+            indice
+        ){
 
             let x =
+
             80 +
+
             (
                 ponto.epsilon /
                 0.015
-            ) *
+            )
+
+            *
+
             980;
 
+
             let y =
+
             305 -
+
             (
                 ponto.sigma /
                 15
-            ) *
+            )
+
+            *
+
             260;
 
-            if(indice === 0) {
+
+            if(
+                indice ===
+                0
+            ){
 
                 ctx.moveTo(
                     x,
                     y
                 );
 
-            } else {
+            }
+
+            else{
 
                 ctx.lineTo(
                     x,
                     y
                 );
+
             }
+
         }
+
     );
+
 
     ctx.stroke();
 
-    /* PONTO ATUAL */
 
     let ultimo =
+
     pontosGrafico[
-        pontosGrafico.length - 1
+        pontosGrafico.length -
+        1
     ];
 
+
     let xAtual =
+
     80 +
+
     (
         ultimo.epsilon /
         0.015
-    ) *
+    )
+
+    *
+
     980;
 
+
     let yAtual =
+
     305 -
+
     (
         ultimo.sigma /
         15
-    ) *
+    )
+
+    *
+
     260;
+
 
     ctx.fillStyle =
     "#d93636";
+
 
     ctx.beginPath();
 
@@ -1107,325 +1211,580 @@ function desenharPontos() {
     );
 
     ctx.fill();
+
 }
 
 
-desenharEixos();
+/* =====================================
+   ESTADO INICIAL
+===================================== */
+
+function restaurarEstadoInicial(
+    limparGrafico = true
+){
+
+    if(
+        timerEnsaio
+    ){
+
+        clearInterval(
+            timerEnsaio
+        );
+
+        timerEnsaio =
+        null;
+
+    }
 
 
-/* ======================================
+    ensaioEmAndamento =
+    false;
+
+
+    corpo.style.height =
+    "170px";
+
+    corpo.style.top =
+    "145px";
+
+    corpo.style.width =
+    "110px";
+
+    corpo.style.left =
+    "calc(50% - 55px)";
+
+
+    pistao.style.transform =
+    "translateY(0px)";
+
+
+    pratoSuperior.style.transform =
+    "translateY(0px)";
+
+
+    cotaVertical.style.height =
+    "170px";
+
+    cotaVertical.style.top =
+    "145px";
+
+
+    cotaHorizontal.style.width =
+    "110px";
+
+    cotaHorizontal.style.left =
+    "calc(50% - 55px)";
+
+
+    textoL.textContent =
+    "L₀";
+
+
+    textoD.textContent =
+    "d₀";
+
+
+    instrumentacao.innerHTML =
+
+    "<strong>PAINEL DE INSTRUMENTAÇÃO</strong><br><br>" +
+
+    "Estado inicial<br>" +
+
+    "P = 0.0 kN<br>" +
+
+    "σ = 0 MPa<br>" +
+
+    "εL = 0<br>" +
+
+    "εT = 0<br>" +
+
+    "ΔL = 0 mm<br>" +
+
+    "Δd = 0 mm<br>" +
+
+    "E didático = 0 GPa";
+
+
+    estadoEnsaio.textContent =
+    "ESTADO INICIAL";
+
+
+    estadoEnsaio.className =
+    "estadoEnsaio";
+
+
+    botao.disabled =
+    false;
+
+
+    if(
+        limparGrafico
+    ){
+
+        pontosGrafico =
+        [];
+
+        desenharEixos();
+
+        statusGrafico.textContent =
+        "Aguardando início do ensaio.";
+
+    }
+
+}
+
+
+/* =====================================
    MODOS
-====================================== */
-
-let modoAtual =
-"didatico";
-
+===================================== */
 
 modoDidatico.addEventListener(
+
 "click",
-function() {
+
+function(){
 
     modoAtual =
     "didatico";
+
 
     modoDidatico.classList.add(
         "ativo"
     );
 
+
     modoExperimental.classList.remove(
         "ativo"
     );
 
-    avisoModo.innerHTML =
+
+    avisoModo.textContent =
+
     "Modo didático ativo. " +
+
     "A deformação apresentada é amplificada " +
+
     "e não corresponde a um resultado experimental.";
+
 
     rFc.textContent =
     "aguardando modelo experimental";
 
+
     rE.textContent =
     "aguardando modelo experimental";
+
 }
+
 );
 
 
 modoExperimental.addEventListener(
+
 "click",
-function() {
+
+function(){
 
     modoAtual =
     "experimental";
+
 
     modoExperimental.classList.add(
         "ativo"
     );
 
+
     modoDidatico.classList.remove(
         "ativo"
     );
 
-    avisoModo.innerHTML =
+
+    avisoModo.textContent =
+
     "Modo experimental selecionado. " +
+
     "Nesta versão ainda não existem dados experimentais integrados.";
+
 
     rFc.textContent =
     "sem dados experimentais integrados";
 
+
     rE.textContent =
     "sem dados experimentais integrados";
+
 }
+
 );
 
 
-/* ======================================
+/* =====================================
    CONTROLES
-====================================== */
+===================================== */
 
 densidade.addEventListener(
+
 "input",
-function() {
+
+function(){
 
     valorDensidade.textContent =
     densidade.value;
 
+
     rDensidade.textContent =
     densidade.value;
 
+
     let fator =
+
     (
         densidade.value -
         450
-    ) / 350;
+    )
+
+    /
+    350;
+
 
     let brilho =
+
     0.85 +
-    fator * 0.25;
+
+    fator *
+
+    0.25;
+
 
     corpo.style.filter =
+
     "brightness(" +
+
     brilho +
+
     ")";
+
 }
+
 );
 
 
 idade.addEventListener(
+
 "input",
-function() {
+
+function(){
 
     valorIdade.textContent =
     idade.value;
 
+
     rIdade.textContent =
     idade.value;
+
 }
+
 );
 
 
 carga.addEventListener(
+
 "input",
-function() {
+
+function(){
 
     valorCarga.textContent =
     carga.value;
 
+
     rCarga.textContent =
     carga.value;
+
 }
+
 );
 
 
-/* ======================================
+botaoReset.addEventListener(
+
+"click",
+
+function(){
+
+    restaurarEstadoInicial(
+        true
+    );
+
+}
+
+);
+
+
+/* =====================================
    ENSAIO
-====================================== */
+===================================== */
 
 botao.addEventListener(
+
 "click",
-function() {
+
+function(){
+
+
+    if(
+        ensaioEmAndamento
+    ){
+
+        return;
+
+    }
+
 
     let Pmax =
+
     parseFloat(
         carga.value
     );
 
-    if(Pmax === 0) {
+
+    if(
+        Pmax ===
+        0
+    ){
 
         alert(
             "Selecione primeiro uma carga maior que zero."
         );
 
         return;
+
     }
+
 
     if(
         modoAtual ===
         "experimental"
-    ) {
+    ){
 
         alert(
             "O modo experimental ainda não possui dados reais integrados."
         );
 
         return;
+
     }
 
 
-    /* LIMPA CURVA */
+    ensaioEmAndamento =
+    true;
 
-    pontosGrafico = [];
+
+    botao.disabled =
+    true;
+
+
+    estadoEnsaio.textContent =
+    "ENSAIO EM ANDAMENTO";
+
+
+    estadoEnsaio.className =
+    "estadoEnsaio andamento";
+
+
+    pontosGrafico =
+    [];
+
 
     desenharEixos();
+
 
     statusGrafico.textContent =
     "Ensaio em andamento...";
 
 
-    /* GEOMETRIA DIDÁTICA */
-
-    let d0 =
+    const d0 =
     100;
 
-    let L0 =
+
+    const L0 =
     200;
 
-    let area_mm2 =
+
+    const area =
 
     Math.PI *
+
     Math.pow(
         d0,
         2
-    ) / 4;
+    )
+
+    /
+    4;
 
 
-    let nuDidatico =
+    const nu =
     0.20;
 
-    let amplificacao =
+
+    const amplificacao =
     30;
 
 
-    let passos =
+    const passos =
     40;
 
-    let passoAtual =
+
+    let passo =
     0;
 
 
-    /* ======================================
-       ANIMAÇÃO EM TEMPO REAL
-    ====================================== */
+    timerEnsaio =
 
-    let timer =
     setInterval(
-    function() {
 
-        passoAtual++;
+    function(){
+
+
+        passo++;
+
 
         let proporcao =
-        passoAtual /
+
+        passo /
         passos;
 
 
         let PkN =
+
         Pmax *
         proporcao;
 
 
         let PN =
+
         PkN *
         1000;
 
 
         let sigma =
+
         PN /
-        area_mm2;
+        area;
 
 
         let epsilonL =
+
         -0.00012 *
         PkN;
 
 
         let epsilonT =
-        -nuDidatico *
+
+        -nu *
         epsilonL;
 
 
         let deltaL =
+
         epsilonL *
         L0;
 
 
         let deltaD =
+
         epsilonT *
         d0;
 
 
-        /* DEFORMAÇÃO VISUAL */
+        let E =
 
-        let deformacaoVisual =
+        sigma /
 
         Math.abs(
             epsilonL
         )
-        *
-        170
-        *
-        amplificacao;
+
+        /
+
+        1000;
 
 
-        deformacaoVisual =
+        let deformacaoVisual =
+
         Math.min(
-            deformacaoVisual,
+
+            Math.abs(
+                epsilonL
+            )
+
+            *
+
+            170
+
+            *
+
+            amplificacao,
+
             24
+
         );
 
 
         let expansaoVisual =
 
-        epsilonT
-        *
-        110
-        *
-        amplificacao;
-
-
-        expansaoVisual =
         Math.min(
-            expansaoVisual,
+
+            epsilonT
+
+            *
+
+            110
+
+            *
+
+            amplificacao,
+
             10
+
         );
 
 
         let novaAltura =
+
         170 -
+
         deformacaoVisual;
 
 
         let novoTopo =
+
         145 +
+
         deformacaoVisual;
 
 
         let novaLargura =
+
         110 +
+
         expansaoVisual;
 
 
-        /* CORPO */
-
         corpo.style.height =
+
         novaAltura +
         "px";
 
 
         corpo.style.top =
+
         novoTopo +
         "px";
 
 
         corpo.style.width =
+
         novaLargura +
         "px";
 
@@ -1435,15 +1794,14 @@ function() {
         "calc(50% - " +
 
         (
-            novaLargura / 2
+            novaLargura /
+            2
         )
 
         +
 
         "px)";
 
-
-        /* PISTÃO */
 
         pistao.style.transform =
 
@@ -1463,19 +1821,20 @@ function() {
         "px)";
 
 
-        /* COTAS */
-
         cotaVertical.style.height =
+
         novaAltura +
         "px";
 
 
         cotaVertical.style.top =
+
         novoTopo +
         "px";
 
 
         cotaHorizontal.style.width =
+
         novaLargura +
         "px";
 
@@ -1485,7 +1844,8 @@ function() {
         "calc(50% - " +
 
         (
-            novaLargura / 2
+            novaLargura /
+            2
         )
 
         +
@@ -1500,8 +1860,6 @@ function() {
         textoD.textContent =
         "d₀ + Δd";
 
-
-        /* INSTRUMENTAÇÃO */
 
         instrumentacao.innerHTML =
 
@@ -1533,8 +1891,12 @@ function() {
         deltaD.toFixed(3) +
         " mm<br>" +
 
+        "E didático = " +
+        E.toFixed(3) +
+        " GPa<br>" +
+
         "ν didático = " +
-        nuDidatico.toFixed(2) +
+        nu.toFixed(2) +
         "<br>" +
 
         "<em>Deformação visual amplificada ×" +
@@ -1542,18 +1904,21 @@ function() {
         "</em>";
 
 
-        /* GRÁFICO */
-
         pontosGrafico.push(
+
         {
+
             epsilon:
+
             Math.abs(
                 epsilonL
             ),
 
             sigma:
             sigma
+
         }
+
         );
 
 
@@ -1564,81 +1929,89 @@ function() {
 
         "σ = " +
         sigma.toFixed(3) +
+
         " MPa | ε = " +
+
         Math.abs(
             epsilonL
-        ).toExponential(3);
+        ).toExponential(3) +
 
+        " | E = " +
 
-        /* FIM DO ENSAIO */
+        E.toFixed(3) +
+
+        " GPa";
+
 
         if(
-            passoAtual >=
+            passo >=
             passos
-        ) {
+        ){
 
             clearInterval(
-                timer
+                timerEnsaio
             );
+
+
+            timerEnsaio =
+            null;
+
+
+            ensaioEmAndamento =
+            false;
+
+
+            botao.disabled =
+            false;
+
+
+            estadoEnsaio.textContent =
+            "ENSAIO CONCLUÍDO";
+
+
+            estadoEnsaio.className =
+            "estadoEnsaio concluido";
 
 
             statusGrafico.textContent =
 
-            "Ensaio concluído — ponto final destacado em vermelho.";
+            "Ensaio concluído — E didático = " +
+
+            E.toFixed(3) +
+
+            " GPa";
 
 
             setTimeout(
-            function() {
 
-                corpo.style.height =
-                "170px";
+            function(){
 
-                corpo.style.top =
-                "145px";
-
-                corpo.style.width =
-                "110px";
-
-                corpo.style.left =
-                "calc(50% - 55px)";
-
-                pistao.style.transform =
-                "translateY(0px)";
-
-                pratoSuperior.style.transform =
-                "translateY(0px)";
-
-                cotaVertical.style.height =
-                "170px";
-
-                cotaVertical.style.top =
-                "145px";
-
-                cotaHorizontal.style.width =
-                "110px";
-
-                cotaHorizontal.style.left =
-                "calc(50% - 55px)";
-
-                textoL.textContent =
-                "L₀";
-
-                textoD.textContent =
-                "d₀";
+                restaurarEstadoInicial(
+                    false
+                );
 
             },
+
             1500
+
             );
+
         }
 
     },
+
     80
+
     );
+
 }
+
 );
+
+
+desenharEixos();
 
 </script>
 
 </body>
-
 </html>
