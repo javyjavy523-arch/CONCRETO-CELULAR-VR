@@ -2,435 +2,509 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Concreto Celular XR - Engenheiro Javier Sanabria</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,sans-serif;background:#0e1821;color:#fff}
-
-header{text-align:center;padding:42px 20px 20px}
-header h1{margin:0;font-size:32px}
-header h2{margin:10px 0 6px;font-size:18px;font-weight:normal;color:#b9c5ce}
-.autor{margin-top:10px;font-size:17px;font-weight:bold;color:#79c9ff}
-.subtitulo{margin-top:6px;color:#8ea1af}
+header{text-align:center;padding:34px 20px 18px}
+header h1{margin:0;font-size:30px}
+header h2{margin:8px 0 5px;font-size:17px;font-weight:normal;color:#b9c5ce}
+.autor{margin-top:8px;font-size:17px;font-weight:bold;color:#79c9ff}
+.subtitulo{margin-top:5px;color:#8ea1af}
 
 .container{
-    max-width:1320px;
-    margin:auto;
-    padding:20px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px
+max-width:1320px;
+margin:auto;
+padding:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px
 }
 
 .card{
-    background:#1b2a36;
-    border-radius:16px;
-    padding:24px
+background:#1b2a36;
+border-radius:16px;
+padding:22px
 }
 
 .card h2{
-    margin-top:0;
-    text-align:center
+margin-top:0;
+text-align:center
 }
 
-.controle{margin:22px 0}
+.full{grid-column:1/-1}
+
+.controle{margin:20px 0}
 
 .controle label{
-    display:block;
-    text-align:center;
-    font-weight:bold;
-    margin-bottom:10px
+display:block;
+text-align:center;
+font-weight:bold;
+margin-bottom:8px
 }
 
-input[type="range"]{width:100%}
+input[type=range]{width:100%}
+
+input[type=number]{
+width:100%;
+padding:9px;
+border-radius:7px;
+border:1px solid #456076;
+background:#0f1c26;
+color:#fff;
+font-size:14px
+}
 
 .valor{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    margin-top:8px
+text-align:center;
+font-size:23px;
+font-weight:bold;
+margin-top:7px
 }
 
-.modo{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-bottom:20px;
-    flex-wrap:wrap
+.modo,.acoes{
+display:flex;
+justify-content:center;
+gap:9px;
+flex-wrap:wrap
 }
+
+.modo{margin-bottom:18px}
 
 button{
-    margin-top:18px;
-    background:#1686d9;
-    border:none;
-    color:white;
-    padding:14px 25px;
-    font-size:17px;
-    border-radius:8px;
-    cursor:pointer
+margin-top:16px;
+background:#1686d9;
+border:none;
+color:#fff;
+padding:12px 22px;
+font-size:15px;
+border-radius:8px;
+cursor:pointer
 }
 
 button:hover{background:#36a0ed}
 
 button:disabled{
-    opacity:.55;
-    cursor:not-allowed
+opacity:.55;
+cursor:not-allowed
 }
 
 .modo button{
-    margin-top:0;
-    padding:10px 16px;
-    font-size:14px
+margin-top:0;
+padding:9px 14px;
+font-size:13px
 }
 
 .ativo{
-    outline:3px solid #79c9ff
+outline:3px solid #79c9ff
 }
 
-.formulas{
-    margin-top:22px;
-    background:#253b4c;
-    padding:16px;
-    border-radius:12px;
-    text-align:center
+.secundario{
+background:#344b5e
 }
+
+.perigo{
+background:#8d3540
+}
+
+.formulas,.resultados{
+margin-top:18px;
+background:#253b4c;
+padding:14px;
+border-radius:10px
+}
+
+.formulas{text-align:center}
 
 .formula{
-    font-size:22px;
-    margin:8px
+font-size:21px;
+margin:7px
 }
 
-.resultados{
-    margin-top:18px;
-    background:#253b4c;
-    padding:15px;
-    border-radius:10px;
-    text-align:left
-}
+.resultados{text-align:left}
 
-.resultados p{margin:8px}
+.resultados p{margin:7px}
 
 .aviso{
-    margin-top:18px;
-    padding:12px;
-    border-left:4px solid #d9a441;
-    background:#17232c;
-    font-size:13px;
-    color:#cbd3d8
+margin-top:16px;
+padding:11px;
+border-left:4px solid #d9a441;
+background:#17232c;
+font-size:12px;
+color:#cbd3d8;
+line-height:1.5
 }
 
-.laboratorio{text-align:center}
+.avisoCritico{
+border-left-color:#d95d5d;
+background:#2b1c20
+}
+
+.selo{
+display:inline-block;
+padding:5px 9px;
+border-radius:999px;
+font-size:11px;
+font-weight:bold;
+border:1px solid #36556b;
+background:#253b4c
+}
+
+.selo.exato{
+color:#a7e3b4;
+border-color:#4f8a5b;
+background:#243a2b
+}
+
+.selo.interp{
+color:#79c9ff;
+border-color:#1686d9;
+background:#17374a
+}
+
+.selo.extra{
+color:#ffd28c;
+border-color:#b67a20;
+background:#3b2b16
+}
+
+/* PRENSA */
 
 .prensa{
-    position:relative;
-    height:440px;
-    margin-top:10px;
-    background:#111b23;
-    border-radius:12px;
-    overflow:hidden
+position:relative;
+height:430px;
+margin-top:8px;
+background:#111b23;
+border-radius:12px;
+overflow:hidden
 }
 
 .coluna{
-    position:absolute;
-    width:28px;
-    height:340px;
-    top:35px;
-    background:linear-gradient(90deg,#586570,#aeb7bd,#586570)
+position:absolute;
+width:28px;
+height:335px;
+top:35px;
+background:linear-gradient(90deg,#586570,#aeb7bd,#586570)
 }
 
 .coluna.esquerda{left:65px}
 .coluna.direita{right:65px}
 
 .travessa{
-    position:absolute;
-    height:35px;
-    left:55px;
-    right:55px;
-    top:25px;
-    background:#77838c;
-    border-radius:5px
+position:absolute;
+height:35px;
+left:55px;
+right:55px;
+top:25px;
+background:#77838c;
+border-radius:5px
 }
 
 .pistao{
-    position:absolute;
-    width:70px;
-    height:70px;
-    top:60px;
-    left:calc(50% - 35px);
-    background:#a9b3ba;
-    transition:transform .12s linear
+position:absolute;
+width:70px;
+height:70px;
+top:60px;
+left:calc(50% - 35px);
+background:#a9b3ba;
+transition:transform .25s linear
 }
 
 .pratoSuperior{
-    position:absolute;
-    width:150px;
-    height:18px;
-    top:125px;
-    left:calc(50% - 75px);
-    background:#8c989f;
-    transition:transform .12s linear
+position:absolute;
+width:150px;
+height:18px;
+top:125px;
+left:calc(50% - 75px);
+background:#8c989f;
+transition:transform .25s linear
 }
 
 .corpo{
-    position:absolute;
-    width:110px;
-    height:170px;
-    left:calc(50% - 55px);
-    top:145px;
+position:absolute;
+width:110px;
+height:170px;
+left:calc(50% - 55px);
+top:145px;
 
-    background:
-        radial-gradient(circle at 20% 20%,#55616a 0 4px,transparent 5px),
-        radial-gradient(circle at 70% 30%,#59656d 0 6px,transparent 7px),
-        radial-gradient(circle at 40% 60%,#56616a 0 5px,transparent 6px),
-        radial-gradient(circle at 80% 75%,#59646c 0 4px,transparent 5px),
-        radial-gradient(circle at 35% 82%,#626d74 0 3px,transparent 4px),
-        #b9c0c4;
+background:
+radial-gradient(circle at 20% 20%,#55616a 0 4px,transparent 5px),
+radial-gradient(circle at 70% 30%,#59656d 0 6px,transparent 7px),
+radial-gradient(circle at 40% 60%,#56616a 0 5px,transparent 6px),
+radial-gradient(circle at 80% 75%,#59646c 0 4px,transparent 5px),
+radial-gradient(circle at 35% 82%,#626d74 0 3px,transparent 4px),
+#b9c0c4;
 
-    border-radius:55px/18px;
-    border:2px solid #d7dcdf;
+border-radius:55px/18px;
+border:2px solid #d7dcdf;
 
-    transition:
-        height .12s linear,
-        top .12s linear,
-        width .12s linear,
-        left .12s linear,
-        filter .5s
+transition:
+height .25s linear,
+top .25s linear,
+width .25s linear,
+left .25s linear,
+filter .4s
 }
 
 .corpo::before{
-    content:"";
-    position:absolute;
-    width:calc(100% - 4px);
-    height:25px;
-    left:2px;
-    top:-2px;
-    border-radius:50%;
-    background:#d3d7da
+content:"";
+position:absolute;
+width:calc(100% - 4px);
+height:25px;
+left:2px;
+top:-2px;
+border-radius:50%;
+background:#d3d7da
 }
 
 .base{
-    position:absolute;
-    width:200px;
-    height:30px;
-    bottom:55px;
-    left:calc(50% - 100px);
-    background:#77838c
+position:absolute;
+width:200px;
+height:30px;
+bottom:55px;
+left:calc(50% - 100px);
+background:#77838c
 }
 
 .setaCarga{
-    position:absolute;
-    top:72px;
-    left:calc(50% + 100px);
-    font-size:38px
+position:absolute;
+top:72px;
+left:calc(50% + 100px);
+font-size:38px
 }
 
 .textoCarga{
-    position:absolute;
-    top:80px;
-    left:calc(50% + 140px);
-    font-size:18px
-}
-
-.cotaVertical{
-    position:absolute;
-    top:145px;
-    left:calc(50% - 120px);
-    height:170px;
-    width:30px;
-    transition:height .12s linear,top .12s linear
-}
-
-.linhaVertical{
-    position:absolute;
-    left:14px;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:#6fd3ff
-}
-
-.setaTopo,
-.setaBase{
-    position:absolute;
-    left:6px;
-    color:#6fd3ff;
-    font-size:20px
-}
-
-.setaTopo{top:-8px}
-.setaBase{bottom:-8px}
-
-.textoL{
-    position:absolute;
-    left:-42px;
-    top:70px;
-    font-size:13px;
-    color:#6fd3ff
-}
-
-.cotaHorizontal{
-    position:absolute;
-    top:312px;
-    left:calc(50% - 55px);
-    width:110px;
-    height:32px;
-    transition:width .12s linear,left .12s linear
-}
-
-.linhaHorizontal{
-    position:absolute;
-    left:0;
-    right:0;
-    top:15px;
-    height:2px;
-    background:#ffcc66
-}
-
-.setaEsquerda,
-.setaDireita{
-    position:absolute;
-    top:3px;
-    color:#ffcc66;
-    font-size:20px
-}
-
-.setaEsquerda{left:-4px}
-.setaDireita{right:-4px}
-
-.textoD{
-    position:absolute;
-    top:18px;
-    left:calc(50% - 30px);
-    color:#ffcc66;
-    font-size:13px
+position:absolute;
+top:80px;
+left:calc(50% + 140px);
+font-size:18px
 }
 
 .estadoEnsaio{
-    display:inline-block;
-    margin-top:14px;
-    padding:8px 14px;
-    border-radius:999px;
-    background:#253b4c;
-    border:1px solid #36556b;
-    color:#c8d2d9;
-    font-size:13px;
-    font-weight:bold
+display:inline-block;
+margin-top:12px;
+padding:7px 13px;
+border-radius:999px;
+background:#253b4c;
+border:1px solid #36556b;
+font-size:12px;
+font-weight:bold
 }
 
-.estadoEnsaio.andamento{
-    background:#17374a;
-    color:#79c9ff;
-    border-color:#1686d9
-}
-
-.estadoEnsaio.concluido{
-    background:#243a2b;
-    color:#a7e3b4;
-    border-color:#4f8a5b
-}
-
-.acoesEnsaio{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap
-}
-
-.botaoSecundario{
-    background:#344b5e
-}
-
-.botaoSecundario:hover{
-    background:#48667e
+.concluido{
+background:#243a2b;
+color:#a7e3b4
 }
 
 .instrumentacao{
-    margin-top:16px;
-    background:#172734;
-    border:1px solid #36556b;
-    border-radius:10px;
-    padding:18px 20px;
-    text-align:left;
-    font-size:15px;
-    line-height:1.6;
-    min-height:185px
+margin-top:14px;
+background:#172734;
+border:1px solid #36556b;
+border-radius:10px;
+padding:16px 18px;
+text-align:left;
+font-size:14px;
+line-height:1.55
 }
 
 .instrumentacao strong{
-    color:#79c9ff
+color:#79c9ff
 }
 
-.grafico-card{
-    grid-column:1/-1
+/* BANCO */
+
+.gradeEntrada{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px
+}
+
+.gradeEntrada label{
+font-size:12px;
+color:#b9c5ce
+}
+
+.tabelaWrap{
+margin-top:18px;
+overflow:auto
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#172734
+}
+
+th,td{
+padding:9px;
+border:1px solid #36556b;
+text-align:center
+}
+
+th{
+background:#253b4c;
+color:#79c9ff
+}
+
+.botaoExcluir{
+padding:6px 10px;
+font-size:12px;
+margin:0;
+background:#8d3540
+}
+
+.contador{
+margin-top:10px;
+font-size:13px;
+color:#b9c5ce
+}
+
+/* MODELO */
+
+.modelo-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
+}
+
+.modelo-box{
+background:#172734;
+border:1px solid #36556b;
+border-radius:10px;
+padding:15px
+}
+
+.equacao{
+font-size:16px;
+color:#79c9ff;
+margin:8px 0;
+word-break:break-word
+}
+
+.metricas{
+line-height:1.6
+}
+
+.interpretacao{
+background:#101c25;
+border:1px solid #36556b;
+border-radius:10px;
+padding:15px;
+line-height:1.55
+}
+
+.matriz{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:12px
+}
+
+.matriz .item{
+background:#172734;
+border:1px solid #36556b;
+border-radius:8px;
+padding:10px;
+text-align:center
+}
+
+.matriz .v{
+font-size:20px;
+font-weight:bold;
+color:#79c9ff
+}
+
+/* GRÁFICOS */
+
+.graficos-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
 
 .grafico-container{
-    background:#111b23;
-    border-radius:12px;
-    padding:20px
+background:#111b23;
+border-radius:12px;
+padding:15px
 }
 
 canvas{
-    width:100%;
-    height:360px;
-    background:white;
-    border-radius:8px;
-    display:block
-}
-
-.legendaGrafico{
-    text-align:center;
-    margin-top:12px;
-    color:#c8d2d9;
-    font-size:14px
+width:100%;
+height:320px;
+background:#fff;
+border-radius:8px;
+display:block
 }
 
 .statusGrafico{
-    margin-top:10px;
-    text-align:center;
-    font-size:15px;
-    color:#79c9ff
+text-align:center;
+color:#79c9ff;
+margin-top:9px;
+font-size:13px
 }
 
-@media(max-width:850px){
-    .container{grid-template-columns:1fr}
-    .grafico-card{grid-column:auto}
+@media(max-width:900px){
+.container{grid-template-columns:1fr}
+.full{grid-column:auto}
+.gradeEntrada,.modelo-grid,.graficos-grid,.matriz{
+grid-template-columns:1fr 1fr
 }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
-<h2>Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade</h2>
-<div class="autor">Engenheiro Javier Sanabria</div>
-<div class="subtitulo">
-Modelo preliminar dependente da densidade e da idade — V0.6.1
+
+<h1>
+MODELO CONSTITUTIVO DO CONCRETO CELULAR
+</h1>
+
+<h2>
+Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
+</h2>
+
+<div class="autor">
+Engenheiro Javier Sanabria
 </div>
+
+<div class="subtitulo">
+Calibração experimental e interpretação cautelosa — V1.0
+</div>
+
 </header>
 
 <div class="container">
 
 <section class="card">
 
-<h2>Parâmetros do material</h2>
+<h2>
+Parâmetros do material
+</h2>
 
 <div class="modo">
-<button id="modoDidatico" class="ativo">
+
+<button
+id="modoDidatico"
+class="ativo">
 MODO DIDÁTICO
 </button>
 
 <button id="modoExperimental">
 MODO EXPERIMENTAL
 </button>
+
 </div>
 
 <div class="controle">
-<label>Densidade ρ</label>
+
+<label>
+Densidade ρ
+</label>
 
 <input
 type="range"
@@ -441,28 +515,48 @@ step="10"
 value="600">
 
 <div class="valor">
-<span id="valorDensidade">600</span> kg/m³
+
+<span id="valorDensidade">
+600
+</span>
+
+kg/m³
+
 </div>
+
 </div>
 
 <div class="controle">
-<label>Idade de cura t</label>
+
+<label>
+Idade de cura t
+</label>
 
 <input
 type="range"
 id="idade"
 min="1"
-max="54"
+max="56"
 step="1"
 value="28">
 
 <div class="valor">
-<span id="valorIdade">28</span> dias
+
+<span id="valorIdade">
+28
+</span>
+
+dias
+
 </div>
+
 </div>
 
 <div class="controle">
-<label>Carga aplicada P</label>
+
+<label>
+Carga aplicada P
+</label>
 
 <input
 type="range"
@@ -470,16 +564,25 @@ id="carga"
 min="0"
 max="100"
 step="5"
-value="0">
+value="50">
 
 <div class="valor">
-<span id="valorCarga">0</span> kN
+
+<span id="valorCarga">
+50
+</span>
+
+kN
+
 </div>
+
 </div>
 
 <div class="formulas">
 
-<h3>Formulação em investigação</h3>
+<h3>
+Relações em investigação
+</h3>
 
 <div class="formula">
 f<sub>c</sub> = F(ρ,t)
@@ -504,37 +607,46 @@ E = G(ρ,t)
 </p>
 
 <p>
-<strong>Carga:</strong>
-<span id="rCarga">0</span> kN
+<strong>f<sub>c</sub>:</strong>
+<span id="rFc">—</span>
 </p>
 
 <p>
-<strong>Resistência f<sub>c</sub>:</strong>
-<span id="rFc">
-aguardando modelo experimental
-</span>
+<strong>E:</strong>
+<span id="rE">—</span>
 </p>
 
 <p>
-<strong>Módulo E:</strong>
-<span id="rE">
-aguardando modelo experimental
+<strong>Origem:</strong>
+<span id="rOrigem">modo didático</span>
+</p>
+
+<p>
+<span
+id="seloOrigem"
+class="selo">
+DIDÁTICO
 </span>
 </p>
 
 </div>
 
-<div class="aviso" id="avisoModo">
-Modo didático ativo. A deformação apresentada é amplificada e não corresponde a um resultado experimental.
+<div
+id="avisoModo"
+class="aviso">
+
+Modo didático ativo.
+Nenhum resultado experimental é inferido neste modo.
+
 </div>
 
 </section>
 
 
-<section class="card laboratorio">
+<section class="card">
 
 <h2>
-Ensaio Virtual Instrumentado de Compressão
+Ensaio Virtual de Compressão
 </h2>
 
 <div class="prensa">
@@ -542,9 +654,13 @@ Ensaio Virtual Instrumentado de Compressão
 <div class="travessa"></div>
 
 <div class="coluna esquerda"></div>
+
 <div class="coluna direita"></div>
 
-<div class="pistao" id="pistao"></div>
+<div
+class="pistao"
+id="pistao">
+</div>
 
 <div
 class="pratoSuperior"
@@ -560,52 +676,8 @@ P
 </div>
 
 <div
-class="cotaVertical"
-id="cotaVertical">
-
-<div class="linhaVertical"></div>
-
-<div class="setaTopo">
-↑
-</div>
-
-<div class="setaBase">
-↓
-</div>
-
-<div
-class="textoL"
-id="textoL">
-L₀
-</div>
-
-</div>
-
-<div
 class="corpo"
 id="corpo">
-</div>
-
-<div
-class="cotaHorizontal"
-id="cotaHorizontal">
-
-<div class="linhaHorizontal"></div>
-
-<div class="setaEsquerda">
-←
-</div>
-
-<div class="setaDireita">
-→
-</div>
-
-<div
-class="textoD"
-id="textoD">
-d₀
-</div>
-
 </div>
 
 <div class="base"></div>
@@ -613,12 +685,14 @@ d₀
 </div>
 
 <div
-class="estadoEnsaio"
-id="estadoEnsaio">
+id="estadoEnsaio"
+class="estadoEnsaio">
+
 ESTADO INICIAL
+
 </div>
 
-<div class="acoesEnsaio">
+<div class="acoes">
 
 <button id="botaoCarga">
 APLICAR CARGA
@@ -626,15 +700,15 @@ APLICAR CARGA
 
 <button
 id="botaoReset"
-class="botaoSecundario">
-REINICIAR ENSAIO
+class="secundario">
+REINICIAR
 </button>
 
 </div>
 
 <div
-class="instrumentacao"
-id="instrumentacao">
+id="instrumentacao"
+class="instrumentacao">
 
 <strong>
 PAINEL DE INSTRUMENTAÇÃO
@@ -642,94 +716,367 @@ PAINEL DE INSTRUMENTAÇÃO
 
 <br><br>
 
-Estado inicial
-<br>
-P = 0.0 kN
-<br>
-σ = 0 MPa
-<br>
-εL = 0
-<br>
-εT = 0
-<br>
-ΔL = 0 mm
-<br>
-Δd = 0 mm
-<br>
-E didático = 0 GPa
-
-</div>
-
-<div class="resultados">
-
-<p>
-<strong>Tensão normal:</strong>
-σ = P / A
-</p>
-
-<p>
-<strong>Deformação longitudinal:</strong>
-ε<sub>L</sub> = ΔL / L₀
-</p>
-
-<p>
-<strong>Deformação transversal:</strong>
-ε<sub>T</sub> = Δd / d₀
-</p>
-
-<p>
-<strong>Coeficiente de Poisson:</strong>
-ν = −ε<sub>T</sub>/ε<sub>L</sub>
-</p>
-
-<p>
-<strong>Lei de Hooke:</strong>
-ε = σ/E
-</p>
+Estado inicial.
 
 </div>
 
 </section>
 
 
-<section class="card grafico-card">
+<section class="card full">
 
 <h2>
-Curva Tensão × Deformação em Tempo Real
+Banco de Dados Experimental
+</h2>
+
+<p>
+
+Os quatro ensaios fornecidos estão pré-carregados nesta V1.0.
+O ensaio de 56 dias é mantido exatamente como informado e
+sinalizado por ultrapassar a janela principal anterior de 54 dias.
+
+</p>
+
+<div class="gradeEntrada">
+
+<div>
+
+<label>
+Densidade (kg/m³)
+</label>
+
+<input
+type="number"
+id="expDensidade"
+min="450"
+max="800"
+value="600">
+
+</div>
+
+<div>
+
+<label>
+Idade (dias)
+</label>
+
+<input
+type="number"
+id="expIdade"
+min="1"
+max="56"
+value="28">
+
+</div>
+
+<div>
+
+<label>
+f₍c₎ (MPa)
+</label>
+
+<input
+type="number"
+id="expFc"
+step="0.001"
+placeholder="valor medido">
+
+</div>
+
+<div>
+
+<label>
+E (GPa)
+</label>
+
+<input
+type="number"
+id="expE"
+step="0.001"
+placeholder="valor medido">
+
+</div>
+
+</div>
+
+<button id="adicionarEnsaio">
+ADICIONAR / ATUALIZAR ENSAIO
+</button>
+
+<button
+id="restaurarBase"
+class="secundario">
+RESTAURAR 4 ENSAIOS INICIAIS
+</button>
+
+<button
+id="limparBanco"
+class="perigo">
+LIMPAR BANCO
+</button>
+
+<div
+id="contador"
+class="contador">
+</div>
+
+<div class="tabelaWrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Densidade</th>
+
+<th>Idade</th>
+
+<th>f₍c₎</th>
+
+<th>E</th>
+
+<th>Observação</th>
+
+<th>Ação</th>
+
+</tr>
+
+</thead>
+
+<tbody id="corpoTabela">
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card full">
+
+<h2>
+Leitura Experimental e Limitações
+</h2>
+
+<div
+class="interpretacao"
+id="interpretacao">
+</div>
+
+<div class="matriz">
+
+<div class="item">
+
+<div
+class="v"
+id="nEnsaios">
+0
+</div>
+
+<div>
+Ensaios
+</div>
+
+</div>
+
+<div class="item">
+
+<div
+class="v"
+id="nDensidades">
+0
+</div>
+
+<div>
+Densidades distintas
+</div>
+
+</div>
+
+<div class="item">
+
+<div
+class="v"
+id="nIdades">
+0
+</div>
+
+<div>
+Idades distintas
+</div>
+
+</div>
+
+<div class="item">
+
+<div
+class="v"
+id="grausLiberdade">
+0
+</div>
+
+<div>
+Graus de liberdade do ajuste
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card full">
+
+<h2>
+Modelo Constitutivo Exploratório
+</h2>
+
+<div class="modelo-grid">
+
+<div class="modelo-box">
+
+<h3>
+Resistência à compressão
+</h3>
+
+<div
+class="equacao"
+id="eqFc">
+—
+</div>
+
+<div
+class="metricas"
+id="metFc">
+—
+</div>
+
+</div>
+
+<div class="modelo-box">
+
+<h3>
+Módulo de elasticidade
+</h3>
+
+<div
+class="equacao"
+id="eqE">
+—
+</div>
+
+<div
+class="metricas"
+id="metE">
+—
+</div>
+
+</div>
+
+</div>
+
+<div class="aviso">
+
+<strong>
+Modelo usado nesta etapa:
+</strong>
+
+<br><br>
+
+y = β₀ + β₁xρ + β₂xt
+
+<br>
+
+xρ=(ρ−625)/175
+
+&nbsp; | &nbsp;
+
+xt=(t−28)/28
+
+<br><br>
+
+Ajuste linear aditivo e exploratório.
+
+A interação ρ·t não é usada com apenas quatro ensaios,
+porque um modelo de quatro parâmetros poderia atravessar
+exatamente os quatro pontos e sugerir uma precisão artificial.
+
+</div>
+
+</section>
+
+
+<section class="card full">
+
+<h2>
+Gráficos Experimentais
+</h2>
+
+<div class="graficos-grid">
+
+<div class="grafico-container">
+
+<canvas
+id="graficoFc"
+width="600"
+height="340">
+</canvas>
+
+<div class="statusGrafico">
+
+Densidade × resistência.
+A idade aparece junto de cada ponto.
+
+</div>
+
+</div>
+
+<div class="grafico-container">
+
+<canvas
+id="graficoE"
+width="600"
+height="340">
+</canvas>
+
+<div class="statusGrafico">
+
+Densidade × módulo E.
+A idade aparece junto de cada ponto.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card full">
+
+<h2>
+Curva Tensão × Deformação do Ensaio Virtual
 </h2>
 
 <div class="grafico-container">
 
 <canvas
-id="grafico"
+id="graficoSE"
 width="1150"
 height="360">
 </canvas>
 
 <div
-class="statusGrafico"
-id="statusGrafico">
-Aguardando início do ensaio.
-</div>
+id="statusGraficoSE"
+class="statusGrafico">
 
-<div class="legendaGrafico">
-
-Eixo horizontal:
-|ε longitudinal|
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-Eixo vertical:
-σ (MPa)
-
-<br><br>
-
-<strong>
-Modo didático:
-</strong>
-
-a reta representa apenas uma resposta elástica idealizada.
-O módulo E exibido é a inclinação σ/|ε| desta simulação.
+Aguardando ensaio.
 
 </div>
 
@@ -742,676 +1089,3170 @@ O módulo E exibido é a inclinação σ/|ε| desta simulação.
 
 <script>
 
-const densidade =
-document.getElementById("densidade");
+const $ =
+id =>
+document.getElementById(id);
 
-const idade =
-document.getElementById("idade");
-
-const carga =
-document.getElementById("carga");
-
-const valorDensidade =
-document.getElementById("valorDensidade");
-
-const valorIdade =
-document.getElementById("valorIdade");
-
-const valorCarga =
-document.getElementById("valorCarga");
-
-const rDensidade =
-document.getElementById("rDensidade");
-
-const rIdade =
-document.getElementById("rIdade");
-
-const rCarga =
-document.getElementById("rCarga");
-
-const rFc =
-document.getElementById("rFc");
-
-const rE =
-document.getElementById("rE");
-
-const corpo =
-document.getElementById("corpo");
-
-const pistao =
-document.getElementById("pistao");
-
-const pratoSuperior =
-document.getElementById("pratoSuperior");
-
-const botao =
-document.getElementById("botaoCarga");
-
-const botaoReset =
-document.getElementById("botaoReset");
-
-const cotaVertical =
-document.getElementById("cotaVertical");
-
-const cotaHorizontal =
-document.getElementById("cotaHorizontal");
-
-const textoL =
-document.getElementById("textoL");
-
-const textoD =
-document.getElementById("textoD");
-
-const instrumentacao =
-document.getElementById("instrumentacao");
-
-const modoDidatico =
-document.getElementById("modoDidatico");
-
-const modoExperimental =
-document.getElementById("modoExperimental");
-
-const avisoModo =
-document.getElementById("avisoModo");
-
-const statusGrafico =
-document.getElementById("statusGrafico");
-
-const estadoEnsaio =
-document.getElementById("estadoEnsaio");
-
-const canvas =
-document.getElementById("grafico");
-
-const ctx =
-canvas.getContext("2d");
+const fmt =
+(v,n=3) =>
+Number(v).toFixed(n);
 
 
-let pontosGrafico = [];
+/* =====================================
+   DADOS EXPERIMENTAIS INICIAIS
+===================================== */
+
+const DADOS_INICIAIS = [
+
+{
+id:1,
+densidade:450,
+idade:28,
+fc:1.2,
+E:1.0
+},
+
+{
+id:2,
+densidade:700,
+idade:14,
+fc:2.4,
+E:2.5
+},
+
+{
+id:3,
+densidade:800,
+idade:56,
+fc:8.0,
+E:8.3
+},
+
+{
+id:4,
+densidade:650,
+idade:28,
+fc:1.8,
+E:2.1
+}
+
+];
+
+
+const STORAGE_KEY =
+"concretoCelularEnsaiosV10";
+
+
+let banco =
+carregarBanco();
+
 
 let modoAtual =
 "didatico";
 
-let ensaioEmAndamento =
-false;
 
-let timerEnsaio =
+let modeloFc =
+null;
+
+
+let modeloE =
 null;
 
 
 /* =====================================
-   GRÁFICO
+   BANCO LOCAL
 ===================================== */
 
-function desenharEixos(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    const x0 =
-    80;
-
-    const y0 =
-    305;
-
-    const xMax =
-    1090;
-
-    const yTop =
-    25;
-
-    const epsilonMax =
-    0.015;
-
-    const sigmaMax =
-    15;
-
-
-    ctx.font =
-    "13px Arial";
-
-    ctx.fillStyle =
-    "#333";
-
-    ctx.strokeStyle =
-    "#dddddd";
-
-    ctx.lineWidth =
-    1;
-
-
-    for(
-        let i = 0;
-        i <= 5;
-        i++
-    ){
-
-        let sigmaTick =
-
-        (
-            sigmaMax /
-            5
-        )
-
-        *
-
-        i;
-
-
-        let y =
-
-        y0 -
-
-        (
-            (
-                y0 -
-                yTop
-            )
-            /
-            5
-        )
-
-        *
-
-        i;
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x0,
-            y
-        );
-
-        ctx.lineTo(
-            xMax,
-            y
-        );
-
-        ctx.stroke();
-
-
-        ctx.fillText(
-
-            sigmaTick.toFixed(0),
-
-            45,
-
-            y + 4
-
-        );
-
-    }
-
-
-    for(
-        let i = 0;
-        i <= 10;
-        i++
-    ){
-
-        let epsilonTick =
-
-        (
-            epsilonMax /
-            10
-        )
-
-        *
-
-        i;
-
-
-        let x =
-
-        x0 +
-
-        (
-            (
-                xMax -
-                x0
-            )
-            /
-            10
-        )
-
-        *
-
-        i;
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x,
-            yTop
-        );
-
-        ctx.lineTo(
-            x,
-            y0
-        );
-
-        ctx.stroke();
-
-
-        ctx.fillText(
-
-            epsilonTick.toFixed(4),
-
-            x - 18,
-
-            325
-
-        );
-
-    }
-
-
-    ctx.strokeStyle =
-    "#222";
-
-    ctx.lineWidth =
-    2;
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x0,
-        yTop
-    );
-
-    ctx.lineTo(
-        x0,
-        y0
-    );
-
-    ctx.stroke();
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x0,
-        y0
-    );
-
-    ctx.lineTo(
-        xMax,
-        y0
-    );
-
-    ctx.stroke();
-
-
-    ctx.fillStyle =
-    "#111";
-
-    ctx.font =
-    "16px Arial";
-
-
-    ctx.fillText(
-        "σ (MPa)",
-        15,
-        30
-    );
-
-
-    ctx.fillText(
-        "|ε longitudinal|",
-        900,
-        350
-    );
+function cloneBase(){
+
+return DADOS_INICIAIS.map(
+x => ({...x})
+);
 
 }
 
 
-function desenharPontos(){
+function carregarBanco(){
 
-    desenharEixos();
+try{
 
+const raw =
+localStorage.getItem(
+STORAGE_KEY
+);
 
-    if(
-        pontosGrafico.length ===
-        0
-    ){
+if(!raw){
 
-        return;
+return cloneBase();
 
-    }
+}
 
+const x =
+JSON.parse(
+raw
+);
 
-    ctx.strokeStyle =
-    "#1686d9";
+return Array.isArray(x) && x.length
+?
+x
+:
+cloneBase();
 
-    ctx.lineWidth =
-    4;
+}
 
-    ctx.beginPath();
+catch(e){
 
+return cloneBase();
 
-    pontosGrafico.forEach(
+}
 
-        function(
-            ponto,
-            indice
-        ){
-
-            let x =
-
-            80 +
-
-            (
-                ponto.epsilon /
-                0.015
-            )
-
-            *
-
-            980;
+}
 
 
-            let y =
+function salvarBanco(){
 
-            305 -
+localStorage.setItem(
 
-            (
-                ponto.sigma /
-                15
-            )
+STORAGE_KEY,
 
-            *
+JSON.stringify(
+banco
+)
 
-            260;
-
-
-            if(
-                indice ===
-                0
-            ){
-
-                ctx.moveTo(
-                    x,
-                    y
-                );
-
-            }
-
-            else{
-
-                ctx.lineTo(
-                    x,
-                    y
-                );
-
-            }
-
-        }
-
-    );
-
-
-    ctx.stroke();
-
-
-    let ultimo =
-
-    pontosGrafico[
-        pontosGrafico.length -
-        1
-    ];
-
-
-    let xAtual =
-
-    80 +
-
-    (
-        ultimo.epsilon /
-        0.015
-    )
-
-    *
-
-    980;
-
-
-    let yAtual =
-
-    305 -
-
-    (
-        ultimo.sigma /
-        15
-    )
-
-    *
-
-    260;
-
-
-    ctx.fillStyle =
-    "#d93636";
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        xAtual,
-        yAtual,
-        7,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fill();
+);
 
 }
 
 
 /* =====================================
-   ESTADO INICIAL
+   ÁLGEBRA MATRICIAL
 ===================================== */
 
-function restaurarEstadoInicial(
-    limparGrafico = true
-){
+function matrizTransposta(X){
 
-    if(
-        timerEnsaio
-    ){
+return X[0].map(
 
-        clearInterval(
-            timerEnsaio
-        );
+(_,i) =>
 
-        timerEnsaio =
-        null;
+X.map(
+r => r[i]
+)
 
-    }
-
-
-    ensaioEmAndamento =
-    false;
-
-
-    corpo.style.height =
-    "170px";
-
-    corpo.style.top =
-    "145px";
-
-    corpo.style.width =
-    "110px";
-
-    corpo.style.left =
-    "calc(50% - 55px)";
-
-
-    pistao.style.transform =
-    "translateY(0px)";
-
-
-    pratoSuperior.style.transform =
-    "translateY(0px)";
-
-
-    cotaVertical.style.height =
-    "170px";
-
-    cotaVertical.style.top =
-    "145px";
-
-
-    cotaHorizontal.style.width =
-    "110px";
-
-    cotaHorizontal.style.left =
-    "calc(50% - 55px)";
-
-
-    textoL.textContent =
-    "L₀";
-
-
-    textoD.textContent =
-    "d₀";
-
-
-    instrumentacao.innerHTML =
-
-    "<strong>PAINEL DE INSTRUMENTAÇÃO</strong><br><br>" +
-
-    "Estado inicial<br>" +
-
-    "P = 0.0 kN<br>" +
-
-    "σ = 0 MPa<br>" +
-
-    "εL = 0<br>" +
-
-    "εT = 0<br>" +
-
-    "ΔL = 0 mm<br>" +
-
-    "Δd = 0 mm<br>" +
-
-    "E didático = 0 GPa";
-
-
-    estadoEnsaio.textContent =
-    "ESTADO INICIAL";
-
-
-    estadoEnsaio.className =
-    "estadoEnsaio";
-
-
-    botao.disabled =
-    false;
-
-
-    if(
-        limparGrafico
-    ){
-
-        pontosGrafico =
-        [];
-
-        desenharEixos();
-
-        statusGrafico.textContent =
-        "Aguardando início do ensaio.";
-
-    }
+);
 
 }
+
+
+function multiplicarMatrizes(A,B){
+
+return A.map(
+
+r =>
+
+B[0].map(
+
+(_,j) =>
+
+r.reduce(
+
+(s,v,k) =>
+
+s + v * B[k][j],
+
+0
+
+)
+
+)
+
+);
+
+}
+
+
+function multiplicarMatrizVetor(A,v){
+
+return A.map(
+
+r =>
+
+r.reduce(
+
+(s,x,i) =>
+
+s + x * v[i],
+
+0
+
+)
+
+);
+
+}
+
+
+/* =====================================
+   RESOLVER SISTEMA LINEAR
+===================================== */
+
+function resolverSistema(A,b){
+
+const n =
+b.length;
+
+const M =
+
+A.map(
+
+(r,i) =>
+
+[
+...r,
+b[i]
+]
+
+);
+
+
+for(
+let i=0;
+i<n;
+i++
+){
+
+let p =
+i;
+
+
+for(
+let k=i+1;
+k<n;
+k++
+){
+
+if(
+
+Math.abs(
+M[k][i]
+)
+
+>
+
+Math.abs(
+M[p][i]
+)
+
+){
+
+p =
+k;
+
+}
+
+}
+
+
+[
+M[i],
+M[p]
+]
+
+=
+
+[
+M[p],
+M[i]
+];
+
+
+if(
+
+Math.abs(
+M[i][i]
+)
+
+<
+1e-10
+
+){
+
+return null;
+
+}
+
+
+for(
+let k=i+1;
+k<n;
+k++
+){
+
+const f =
+
+M[k][i]
+/
+M[i][i];
+
+
+for(
+let j=i;
+j<=n;
+j++
+){
+
+M[k][j] -=
+f * M[i][j];
+
+}
+
+}
+
+}
+
+
+const x =
+Array(n).fill(0);
+
+
+for(
+let i=n-1;
+i>=0;
+i--
+){
+
+let s =
+M[i][n];
+
+
+for(
+let j=i+1;
+j<n;
+j++
+){
+
+s -=
+M[i][j] * x[j];
+
+}
+
+
+x[i] =
+s / M[i][i];
+
+}
+
+
+return x;
+
+}
+
+
+/* =====================================
+   VARIÁVEIS NORMALIZADAS
+===================================== */
+
+function features(p){
+
+return [
+
+1,
+
+(
+p.densidade -
+625
+)
+/
+175,
+
+(
+p.idade -
+28
+)
+/
+28
+
+];
+
+}
+
+
+/* =====================================
+   AJUSTE MÍNIMO
+===================================== */
+
+function ajustarMinimo(chave,dados){
+
+if(
+dados.length <
+3
+){
+
+return null;
+
+}
+
+
+const X =
+dados.map(
+features
+);
+
+
+const y =
+
+dados.map(
+
+p =>
+Number(
+p[chave]
+)
+
+);
+
+
+const Xt =
+
+matrizTransposta(
+X
+);
+
+
+const beta =
+
+resolverSistema(
+
+multiplicarMatrizes(
+Xt,
+X
+),
+
+multiplicarMatrizVetor(
+Xt,
+y
+)
+
+);
+
+
+return beta
+?
+{beta}
+:
+null;
+
+}
+
+
+/* =====================================
+   PREVISÃO COM BETA
+===================================== */
+
+function preverComBeta(beta,p){
+
+return features(p).reduce(
+
+(s,v,i) =>
+
+s +
+v * beta[i],
+
+0
+
+);
+
+}
+
+
+/* =====================================
+   AJUSTE PRINCIPAL
+===================================== */
+
+function ajustar(chave,dados=banco){
+
+if(
+dados.length <
+4
+){
+
+return null;
+
+}
+
+
+const X =
+dados.map(
+features
+);
+
+
+const y =
+
+dados.map(
+
+p =>
+Number(
+p[chave]
+)
+
+);
+
+
+const Xt =
+matrizTransposta(
+X
+);
+
+
+const beta =
+
+resolverSistema(
+
+multiplicarMatrizes(
+Xt,
+X
+),
+
+multiplicarMatrizVetor(
+Xt,
+y
+)
+
+);
+
+
+if(
+!beta
+){
+
+return null;
+
+}
+
+
+const pred =
+
+X.map(
+
+r =>
+
+r.reduce(
+
+(s,v,i) =>
+
+s +
+v * beta[i],
+
+0
+
+)
+
+);
+
+
+const media =
+
+y.reduce(
+(a,b)=>a+b,
+0
+)
+/
+y.length;
+
+
+const sse =
+
+y.reduce(
+
+(s,v,i) =>
+
+s +
+
+(
+v -
+pred[i]
+)
+
+**2,
+
+0
+
+);
+
+
+const sst =
+
+y.reduce(
+
+(s,v) =>
+
+s +
+
+(
+v -
+media
+)
+
+**2,
+
+0
+
+);
+
+
+const r2 =
+
+sst > 0
+?
+1 -
+sse /
+sst
+:
+1;
+
+
+const rmse =
+
+Math.sqrt(
+
+sse /
+y.length
+
+);
+
+
+const dof =
+
+Math.max(
+
+0,
+
+y.length -
+beta.length
+
+);
+
+
+/* leave-one-out */
+
+let erros =
+[];
+
+
+for(
+let i=0;
+i<dados.length;
+i++
+){
+
+const treino =
+
+dados.filter(
+
+(_,j) =>
+j !== i
+
+);
+
+
+const m =
+
+ajustarMinimo(
+chave,
+treino
+);
+
+
+if(
+m
+){
+
+const pv =
+
+preverComBeta(
+
+m.beta,
+
+dados[i]
+
+);
+
+
+if(
+Number.isFinite(pv)
+){
+
+erros.push(
+
+dados[i][chave] -
+pv
+
+);
+
+}
+
+}
+
+}
+
+
+const rmseCV =
+
+erros.length ===
+dados.length
+
+?
+
+Math.sqrt(
+
+erros.reduce(
+
+(s,e) =>
+
+s +
+e * e,
+
+0
+
+)
+/
+erros.length
+
+)
+
+:
+
+null;
+
+
+return {
+
+beta,
+
+r2,
+
+rmse,
+
+rmseCV,
+
+dof,
+
+n:
+dados.length
+
+};
+
+}
+
+
+/* =====================================
+   PREVISÃO
+===================================== */
+
+function prever(modelo,rho,t){
+
+return modelo
+?
+preverComBeta(
+
+modelo.beta,
+
+{
+densidade:rho,
+idade:t
+}
+
+)
+:
+null;
+
+}
+
+
+/* =====================================
+   EQUAÇÃO
+===================================== */
+
+function equacao(modelo,unidade){
+
+if(
+!modelo
+){
+
+return "Dados insuficientes para ajuste.";
+
+}
+
+
+const b =
+modelo.beta;
+
+
+const sinal =
+
+v =>
+
+`${v >= 0 ? "+" : "−"} ${Math.abs(v).toFixed(4)}`;
+
+
+return
+
+`y = ${b[0].toFixed(4)} ` +
+
+`${sinal(b[1])}·xρ ` +
+
+`${sinal(b[2])}·xt ` +
+
+`(${unidade})`;
+
+}
+
+
+/* =====================================
+   MÉTRICAS
+===================================== */
+
+function metricasHTML(m,u){
+
+if(
+!m
+){
+
+return "Dados insuficientes ou matriz singular.";
+
+}
+
+
+const cv =
+
+m.rmseCV === null
+
+?
+
+"não disponível"
+
+:
+
+`${fmt(m.rmseCV,4)} ${u}`;
+
+
+return `
+
+R² descritivo =
+<strong>
+${fmt(m.r2,4)}
+</strong>
+
+<br>
+
+RMSE do ajuste =
+<strong>
+${fmt(m.rmse,4)} ${u}
+</strong>
+
+<br>
+
+RMSE leave-one-out =
+<strong>
+${cv}
+</strong>
+
+<br>
+
+n =
+${m.n}
+
+<br>
+
+graus de liberdade residuais =
+${m.dof}
+
+`;
+
+}
+
+
+/* =====================================
+   ATUALIZAR MODELOS
+===================================== */
+
+function atualizarModelos(){
+
+modeloFc =
+ajustar(
+"fc"
+);
+
+
+modeloE =
+ajustar(
+"E"
+);
+
+
+$("eqFc").textContent =
+
+equacao(
+modeloFc,
+"MPa"
+);
+
+
+$("eqE").textContent =
+
+equacao(
+modeloE,
+"GPa"
+);
+
+
+$("metFc").innerHTML =
+
+metricasHTML(
+modeloFc,
+"MPa"
+);
+
+
+$("metE").innerHTML =
+
+metricasHTML(
+modeloE,
+"GPa"
+);
+
+}
+
+
+/* =====================================
+   ENVELOPE EXPERIMENTAL
+===================================== */
+
+function convexHull(points){
+
+const pts =
+
+[
+...points
+].sort(
+
+(a,b) =>
+
+a.x -
+b.x
+
+||
+
+a.y -
+b.y
+
+);
+
+
+if(
+pts.length <=
+2
+){
+
+return pts;
+
+}
+
+
+const cross =
+
+(o,a,b) =>
+
+(
+a.x -
+o.x
+)
+*
+(
+b.y -
+o.y
+)
+
+-
+
+(
+a.y -
+o.y
+)
+*
+(
+b.x -
+o.x
+);
+
+
+const lower =
+[];
+
+const upper =
+[];
+
+
+for(
+const p of pts
+){
+
+while(
+
+lower.length >=
+2
+
+&&
+
+cross(
+
+lower[
+lower.length -
+2
+],
+
+lower[
+lower.length -
+1
+],
+
+p
+
+)
+
+<=
+0
+
+){
+
+lower.pop();
+
+}
+
+
+lower.push(
+p
+);
+
+}
+
+
+for(
+let i=pts.length-1;
+i>=0;
+i--
+){
+
+const p =
+pts[i];
+
+
+while(
+
+upper.length >=
+2
+
+&&
+
+cross(
+
+upper[
+upper.length -
+2
+],
+
+upper[
+upper.length -
+1
+],
+
+p
+
+)
+
+<=
+0
+
+){
+
+upper.pop();
+
+}
+
+
+upper.push(
+p
+);
+
+}
+
+
+lower.pop();
+
+upper.pop();
+
+
+return lower.concat(
+upper
+);
+
+}
+
+
+/* =====================================
+   PONTO DENTRO DO POLÍGONO
+===================================== */
+
+function pontoNoPoligono(pt,poly){
+
+if(
+poly.length <
+3
+){
+
+return false;
+
+}
+
+
+let inside =
+false;
+
+
+for(
+
+let i=0,
+j=poly.length-1;
+
+i<poly.length;
+
+j=i++
+
+){
+
+const xi =
+poly[i].x;
+
+const yi =
+poly[i].y;
+
+const xj =
+poly[j].x;
+
+const yj =
+poly[j].y;
+
+
+const hit =
+
+(
+(yi > pt.y)
+!=
+(yj > pt.y)
+)
+
+&&
+
+(
+pt.x
+
+<
+
+(
+xj -
+xi
+)
+
+*
+(
+pt.y -
+yi
+)
+
+/
+(
+yj -
+yi +
+1e-12
+)
+
++
+xi
+
+);
+
+
+if(
+hit
+){
+
+inside =
+!inside;
+
+}
+
+}
+
+
+return inside;
+
+}
+
+
+/* =====================================
+   CLASSIFICAÇÃO DA CONSULTA
+===================================== */
+
+function classificarConsulta(rho,t){
+
+const ex =
+
+banco.find(
+
+p =>
+
+p.densidade ===
+rho
+
+&&
+
+p.idade ===
+t
+
+);
+
+
+if(
+ex
+){
+
+return {
+
+tipo:
+"exato",
+
+texto:
+"ensaio experimental exato"
+
+};
+
+}
+
+
+const hull =
+
+convexHull(
+
+banco.map(
+
+p =>
+
+({
+x:
+p.densidade,
+
+y:
+p.idade
+})
+
+)
+
+);
+
+
+const dentro =
+
+pontoNoPoligono(
+
+{
+x:rho,
+y:t
+},
+
+hull
+
+);
+
+
+return dentro
+
+?
+
+{
+
+tipo:
+"interp",
+
+texto:
+"interpolação dentro do envelope experimental"
+
+}
+
+:
+
+{
+
+tipo:
+"extra",
+
+texto:
+"extrapolação fora do envelope experimental"
+
+};
+
+}
+
+
+/* =====================================
+   RESULTADOS SUPERIORES
+===================================== */
+
+function atualizarResultados(){
+
+const rho =
+
+Number(
+$("densidade").value
+);
+
+
+const t =
+
+Number(
+$("idade").value
+);
+
+
+$("rDensidade").textContent =
+rho;
+
+
+$("rIdade").textContent =
+t;
+
+
+/* modo didático */
+
+if(
+modoAtual ===
+"didatico"
+){
+
+$("rFc").textContent =
+"—";
+
+
+$("rE").textContent =
+"—";
+
+
+$("rOrigem").textContent =
+"modo didático";
+
+
+$("seloOrigem").className =
+"selo";
+
+
+$("seloOrigem").textContent =
+"DIDÁTICO";
+
+
+$("avisoModo").className =
+"aviso";
+
+
+$("avisoModo").textContent =
+
+"Modo didático ativo. Nenhum resultado experimental é inferido neste modo.";
+
+
+return;
+
+}
+
+
+/* dado exato */
+
+const ex =
+
+banco.find(
+
+p =>
+
+p.densidade ===
+rho
+
+&&
+
+p.idade ===
+t
+
+);
+
+
+if(
+ex
+){
+
+$("rFc").textContent =
+
+`${fmt(ex.fc)} MPa`;
+
+
+$("rE").textContent =
+
+`${fmt(ex.E)} GPa`;
+
+
+$("rOrigem").textContent =
+
+"ensaio experimental exato";
+
+
+$("seloOrigem").className =
+
+"selo exato";
+
+
+$("seloOrigem").textContent =
+
+"EXPERIMENTAL";
+
+
+$("avisoModo").className =
+"aviso";
+
+
+$("avisoModo").innerHTML =
+
+`Valor medido disponível para ρ=${rho} kg/m³ e t=${t} dias.`;
+
+
+return;
+
+}
+
+
+/* previsão */
+
+const c =
+
+classificarConsulta(
+rho,
+t
+);
+
+
+const fc =
+
+prever(
+modeloFc,
+rho,
+t
+);
+
+
+const E =
+
+prever(
+modeloE,
+rho,
+t
+);
+
+
+if(
+fc === null
+||
+E === null
+){
+
+$("rFc").textContent =
+"sem previsão";
+
+
+$("rE").textContent =
+"sem previsão";
+
+
+$("rOrigem").textContent =
+"dados insuficientes";
+
+
+$("seloOrigem").className =
+"selo extra";
+
+
+$("seloOrigem").textContent =
+"SEM MODELO";
+
+
+return;
+
+}
+
+
+$("rFc").textContent =
+
+`${fmt(fc)} MPa`;
+
+
+$("rE").textContent =
+
+`${fmt(E)} GPa`;
+
+
+$("rOrigem").textContent =
+
+c.texto;
+
+
+$("seloOrigem").className =
+
+`selo ${c.tipo}`;
+
+
+$("seloOrigem").textContent =
+
+c.tipo ===
+"interp"
+
+?
+
+"INTERPOLAÇÃO"
+
+:
+
+"EXTRAPOLAÇÃO";
+
+
+$("avisoModo").className =
+
+c.tipo ===
+"extra"
+
+?
+
+"aviso avisoCritico"
+
+:
+
+"aviso";
+
+
+$("avisoModo").innerHTML =
+
+c.tipo ===
+"extra"
+
+?
+
+`<strong>Atenção:</strong>
+ρ=${rho} kg/m³ e t=${t} dias estão fora do envelope geométrico dos ensaios.
+O valor é extrapolação matemática e não medição.`
+
+:
+
+`A combinação está dentro do envelope geométrico,
+mas continua sendo <strong>previsão do modelo</strong>, não medição.`;
+
+}
+
+
+/* =====================================
+   INTERPRETAÇÃO
+===================================== */
+
+function atualizarInterpretacao(){
+
+const n =
+banco.length;
+
+
+const dens =
+
+[
+...new Set(
+
+banco.map(
+
+p =>
+p.densidade
+
+)
+
+)
+];
+
+
+const idades =
+
+[
+...new Set(
+
+banco.map(
+
+p =>
+p.idade
+
+)
+
+)
+];
+
+
+$("nEnsaios").textContent =
+n;
+
+
+$("nDensidades").textContent =
+dens.length;
+
+
+$("nIdades").textContent =
+idades.length;
+
+
+$("grausLiberdade").textContent =
+
+Math.max(
+0,
+n -
+3
+);
+
+
+const notas =
+[];
+
+
+if(
+n <=
+4
+){
+
+notas.push(
+
+"<strong>Amostra extremamente pequena:</strong> quatro pontos permitem apenas calibração exploratória."
+
+);
+
+}
+
+
+if(
+idades.length <
+4
+){
+
+notas.push(
+
+"<strong>Efeito da idade pouco identificado:</strong> há poucas idades distintas e não existe uma série completa de cura para cada densidade."
+
+);
+
+}
+
+
+if(
+
+banco.some(
+
+p =>
+p.idade ===
+56
+
+)
+
+){
+
+notas.push(
+
+"<strong>Ensaio de 56 dias:</strong> mantido exatamente como informado; ultrapassa a janela principal anterior de 54 dias e deve ser identificado separadamente na metodologia."
+
+);
+
+}
+
+
+const p28 =
+
+banco.filter(
+
+p =>
+p.idade ===
+28
+
+);
+
+
+if(
+p28.length >=
+2
+){
+
+notas.push(
+
+`<strong>Comparação mais limpa de densidade:</strong> existem ${p28.length} ensaios aos 28 dias, permitindo comparação com idade constante nesse subconjunto.`
+
+);
+
+}
+
+
+const maxRho =
+
+Math.max(
+
+...banco.map(
+
+p =>
+p.densidade
+
+)
+
+);
+
+
+const maxAge =
+
+Math.max(
+
+...banco.map(
+
+p =>
+p.idade
+
+)
+
+);
+
+
+if(
+
+banco.find(
+
+p =>
+
+p.densidade ===
+maxRho
+
+&&
+
+p.idade ===
+maxAge
+
+)
+
+){
+
+notas.push(
+
+"<strong>Confundimento importante:</strong> o ponto de maior densidade também é o de maior idade; o aumento de resistência e E não pode ser atribuído exclusivamente à densidade ou à cura."
+
+);
+
+}
+
+
+notas.push(
+
+"<strong>R² não é validação:</strong> com poucos ensaios, um R² alto pode ser instável. Por isso mostramos também RMSE e leave-one-out."
+
+);
+
+
+$("interpretacao").innerHTML =
+
+notas.map(
+
+x =>
+`<p>${x}</p>`
+
+).join("");
+
+}
+
+
+/* =====================================
+   TABELA
+===================================== */
+
+function atualizarTabela(){
+
+banco.sort(
+
+(a,b) =>
+
+a.densidade -
+b.densidade
+
+||
+
+a.idade -
+b.idade
+
+);
+
+
+$("corpoTabela").innerHTML =
+"";
+
+
+banco.forEach(
+
+(p,i) =>{
+
+
+const obs =
+
+p.idade >
+54
+
+?
+
+"56 dias: fora da janela principal 1–54"
+
+:
+
+"—";
+
+
+const tr =
+
+document.createElement(
+"tr"
+);
+
+
+tr.innerHTML =
+
+`
+
+<td>
+${p.id ?? i+1}
+</td>
+
+<td>
+${p.densidade} kg/m³
+</td>
+
+<td>
+${p.idade} dias
+</td>
+
+<td>
+${fmt(p.fc)} MPa
+</td>
+
+<td>
+${fmt(p.E)} GPa
+</td>
+
+<td>
+${obs}
+</td>
+
+<td>
+
+<button
+class="botaoExcluir"
+onclick="excluirEnsaio(${i})">
+
+Excluir
+
+</button>
+
+</td>
+
+`;
+
+
+$("corpoTabela").appendChild(
+tr
+);
+
+}
+
+);
+
+
+$("contador").textContent =
+
+`${banco.length} ensaio(s) cadastrado(s).`;
+
+}
+
+
+/* =====================================
+   GRÁFICOS EXPERIMENTAIS
+===================================== */
+
+function desenharScatter(
+canvasId,
+chave,
+unidade,
+titulo
+){
+
+const c =
+$(canvasId);
+
+
+const g =
+c.getContext(
+"2d"
+);
+
+
+g.clearRect(
+0,
+0,
+c.width,
+c.height
+);
+
+
+g.fillStyle =
+"#111";
+
+
+g.font =
+"13px Arial";
+
+
+g.fillText(
+titulo,
+10,
+18
+);
+
+
+if(
+!banco.length
+){
+
+return;
+
+}
+
+
+const m = {
+
+l:65,
+r:20,
+t:30,
+b:50
+
+};
+
+
+const W =
+c.width -
+m.l -
+m.r;
+
+
+const H =
+c.height -
+m.t -
+m.b;
+
+
+const xs =
+
+banco.map(
+
+p =>
+p.densidade
+
+);
+
+
+const ys =
+
+banco.map(
+
+p =>
+p[chave]
+
+);
+
+
+const xmin =
+Math.min(
+...xs
+)
+-
+20;
+
+
+const xmax =
+Math.max(
+...xs
+)
++
+20;
+
+
+const ymin =
+
+Math.min(
+
+0,
+
+Math.min(
+...ys
+)
+*
+.9
+
+);
+
+
+const ymax =
+
+Math.max(
+...ys
+)
+*
+1.1
+||
+1;
+
+
+const X =
+
+x =>
+
+m.l +
+
+(
+x -
+xmin
+)
+
+/
+(
+xmax -
+xmin
+||
+1
+)
+*
+W;
+
+
+const Y =
+
+y =>
+
+m.t +
+
+H -
+
+(
+y -
+ymin
+)
+
+/
+(
+ymax -
+ymin
+||
+1
+)
+*
+H;
+
+
+g.strokeStyle =
+"#ddd";
+
+
+g.lineWidth =
+1;
+
+
+for(
+let i=0;
+i<=5;
+i++
+){
+
+let yy =
+
+m.t +
+i *
+H /
+5;
+
+
+g.beginPath();
+
+g.moveTo(
+m.l,
+yy
+);
+
+g.lineTo(
+m.l +
+W,
+yy
+);
+
+g.stroke();
+
+
+let xx =
+
+m.l +
+i *
+W /
+5;
+
+
+g.beginPath();
+
+g.moveTo(
+xx,
+m.t
+);
+
+g.lineTo(
+xx,
+m.t +
+H
+);
+
+g.stroke();
+
+}
+
+
+g.strokeStyle =
+"#222";
+
+
+g.lineWidth =
+2;
+
+
+g.beginPath();
+
+
+g.moveTo(
+m.l,
+m.t
+);
+
+
+g.lineTo(
+m.l,
+m.t +
+H
+);
+
+
+g.lineTo(
+m.l +
+W,
+m.t +
+H
+);
+
+
+g.stroke();
+
+
+g.fillStyle =
+"#111";
+
+
+g.font =
+"12px Arial";
+
+
+g.fillText(
+"Densidade (kg/m³)",
+c.width -
+150,
+c.height -
+12
+);
+
+
+g.fillText(
+unidade,
+8,
+32
+);
+
+
+banco.forEach(
+
+p =>{
+
+
+const x =
+X(
+p.densidade
+);
+
+
+const y =
+Y(
+p[chave]
+);
+
+
+g.fillStyle =
+"#1686d9";
+
+
+g.beginPath();
+
+
+g.arc(
+x,
+y,
+6,
+0,
+Math.PI *
+2
+);
+
+
+g.fill();
+
+
+g.fillStyle =
+"#222";
+
+
+g.font =
+"11px Arial";
+
+
+g.fillText(
+`${p.idade} d`,
+x +
+8,
+y -
+5
+);
+
+}
+
+);
+
+}
+
+
+function desenharGraficosExperimentais(){
+
+desenharScatter(
+
+"graficoFc",
+"fc",
+"f₍c₎ (MPa)",
+"Dados experimentais — resistência"
+
+);
+
+
+desenharScatter(
+
+"graficoE",
+"E",
+"E (GPa)",
+"Dados experimentais — módulo"
+
+);
+
+}
+
+
+/* =====================================
+   EIXOS TENSÃO × DEFORMAÇÃO
+===================================== */
+
+function desenharEixosSE(){
+
+const c =
+$("graficoSE");
+
+
+const g =
+c.getContext(
+"2d"
+);
+
+
+g.clearRect(
+0,
+0,
+c.width,
+c.height
+);
+
+
+g.strokeStyle =
+"#ddd";
+
+
+g.lineWidth =
+1;
+
+
+for(
+let i=0;
+i<=5;
+i++
+){
+
+const y =
+305 -
+i *
+50;
+
+
+g.beginPath();
+
+g.moveTo(
+80,
+y
+);
+
+g.lineTo(
+1090,
+y
+);
+
+g.stroke();
+
+}
+
+
+for(
+let i=0;
+i<=10;
+i++
+){
+
+const x =
+80 +
+i *
+95;
+
+
+g.beginPath();
+
+g.moveTo(
+x,
+25
+);
+
+g.lineTo(
+x,
+305
+);
+
+g.stroke();
+
+}
+
+
+g.strokeStyle =
+"#222";
+
+
+g.lineWidth =
+2;
+
+
+g.beginPath();
+
+
+g.moveTo(
+80,
+25
+);
+
+
+g.lineTo(
+80,
+305
+);
+
+
+g.lineTo(
+1090,
+305
+);
+
+
+g.stroke();
+
+
+g.fillStyle =
+"#111";
+
+
+g.font =
+"16px Arial";
+
+
+g.fillText(
+"σ (MPa)",
+15,
+30
+);
+
+
+g.fillText(
+"|ε longitudinal|",
+900,
+345
+);
+
+}
+
+
+/* =====================================
+   CURVA TENSÃO × DEFORMAÇÃO
+===================================== */
+
+function desenharCurvaSE(
+sigmaMax,
+epsilonMax,
+excede
+){
+
+desenharEixosSE();
+
+
+const c =
+$("graficoSE");
+
+
+const g =
+c.getContext(
+"2d"
+);
+
+
+const sigmaEsc =
+
+Math.max(
+
+15,
+
+sigmaMax *
+1.2
+
+);
+
+
+const epsEsc =
+
+Math.max(
+
+.015,
+
+epsilonMax *
+1.2
+
+);
+
+
+g.strokeStyle =
+"#1686d9";
+
+
+g.lineWidth =
+4;
+
+
+g.beginPath();
+
+
+for(
+let i=0;
+i<=40;
+i++
+){
+
+const p =
+i /
+40;
+
+
+const s =
+sigmaMax *
+p;
+
+
+const e =
+epsilonMax *
+p;
+
+
+const x =
+
+80 +
+
+(
+e /
+epsEsc
+)
+*
+980;
+
+
+const y =
+
+305 -
+
+(
+s /
+sigmaEsc
+)
+*
+260;
+
+
+if(
+i ===
+0
+){
+
+g.moveTo(
+x,
+y
+);
+
+}
+
+else{
+
+g.lineTo(
+x,
+y
+);
+
+}
+
+}
+
+
+g.stroke();
+
+
+const x =
+
+80 +
+
+(
+epsilonMax /
+epsEsc
+)
+*
+980;
+
+
+const y =
+
+305 -
+
+(
+sigmaMax /
+sigmaEsc
+)
+*
+260;
+
+
+g.fillStyle =
+
+excede
+
+?
+
+"#b43a3a"
+
+:
+
+"#d93636";
+
+
+g.beginPath();
+
+
+g.arc(
+x,
+y,
+7,
+0,
+Math.PI *
+2
+);
+
+
+g.fill();
+
+}
+
+
+/* =====================================
+   ORIGEM MECÂNICA
+===================================== */
+
+function origemMecanica(){
+
+if(
+modoAtual ===
+"didatico"
+){
+
+return {
+
+E:
+1.061,
+
+fc:
+null,
+
+origem:
+"modo didático",
+
+classe:
+"didatico"
+
+};
+
+}
+
+
+const rho =
+
+Number(
+$("densidade").value
+);
+
+
+const t =
+
+Number(
+$("idade").value
+);
+
+
+const ex =
+
+banco.find(
+
+p =>
+
+p.densidade ===
+rho
+
+&&
+
+p.idade ===
+t
+
+);
+
+
+if(
+ex
+){
+
+return {
+
+E:
+ex.E,
+
+fc:
+ex.fc,
+
+origem:
+"ensaio experimental exato",
+
+classe:
+"exato"
+
+};
+
+}
+
+
+const c =
+
+classificarConsulta(
+rho,
+t
+);
+
+
+const E =
+
+prever(
+modeloE,
+rho,
+t
+);
+
+
+const fc =
+
+prever(
+modeloFc,
+rho,
+t
+);
+
+
+if(
+E === null
+||
+fc === null
+||
+E <= 0
+||
+fc <= 0
+){
+
+return null;
+
+}
+
+
+return {
+
+E,
+
+fc,
+
+origem:
+c.texto,
+
+classe:
+c.tipo
+
+};
+
+}
+
+
+/* =====================================
+   RESETAR ENSAIO
+===================================== */
+
+function resetarEnsaio(){
+
+$("corpo").style.height =
+"170px";
+
+
+$("corpo").style.top =
+"145px";
+
+
+$("corpo").style.width =
+"110px";
+
+
+$("corpo").style.left =
+"calc(50% - 55px)";
+
+
+$("pistao").style.transform =
+"translateY(0px)";
+
+
+$("pratoSuperior").style.transform =
+"translateY(0px)";
+
+
+$("estadoEnsaio").textContent =
+"ESTADO INICIAL";
+
+
+$("estadoEnsaio").className =
+"estadoEnsaio";
+
+
+$("instrumentacao").innerHTML =
+
+"<strong>PAINEL DE INSTRUMENTAÇÃO</strong><br><br>Estado inicial.";
+
+
+$("statusGraficoSE").textContent =
+"Aguardando ensaio.";
+
+
+desenharEixosSE();
+
+}
+
+
+/* =====================================
+   FUNÇÃO CENTRAL
+===================================== */
+
+function atualizarSistemaCompleto(){
+
+salvarBanco();
+
+atualizarTabela();
+
+atualizarModelos();
+
+atualizarInterpretacao();
+
+atualizarResultados();
+
+desenharGraficosExperimentais();
+
+}
+
+
+/* =====================================
+   EXCLUIR ENSAIO
+===================================== */
+
+window.excluirEnsaio =
+
+i =>{
+
+banco.splice(
+i,
+1
+);
+
+
+atualizarSistemaCompleto();
+
+};
+
+
+/* =====================================
+   ADICIONAR ENSAIO
+===================================== */
+
+$("adicionarEnsaio").addEventListener(
+
+"click",
+
+()=>{
+
+
+const rho =
+
+Number(
+$("expDensidade").value
+);
+
+
+const t =
+
+Number(
+$("expIdade").value
+);
+
+
+const fc =
+
+Number(
+$("expFc").value
+);
+
+
+const E =
+
+Number(
+$("expE").value
+);
+
+
+if(
+rho < 450
+||
+rho > 800
+){
+
+return alert(
+
+"Densidade deve estar entre 450 e 800 kg/m³."
+
+);
+
+}
+
+
+if(
+t < 1
+||
+t > 56
+){
+
+return alert(
+
+"Idade deve estar entre 1 e 56 dias nesta versão."
+
+);
+
+}
+
+
+if(
+!Number.isFinite(fc)
+||
+fc <= 0
+){
+
+return alert(
+
+"Informe f₍c₎ válido."
+
+);
+
+}
+
+
+if(
+!Number.isFinite(E)
+||
+E <= 0
+){
+
+return alert(
+
+"Informe E válido."
+
+);
+
+}
+
+
+const idx =
+
+banco.findIndex(
+
+p =>
+
+p.densidade ===
+rho
+
+&&
+
+p.idade ===
+t
+
+);
+
+
+const novo = {
+
+id:
+
+idx >= 0
+
+?
+
+banco[idx].id
+
+:
+
+Math.max(
+
+0,
+
+...banco.map(
+
+p =>
+p.id ||
+0
+
+)
+
+)
+
++
+1,
+
+densidade:
+rho,
+
+idade:
+t,
+
+fc,
+
+E
+
+};
+
+
+if(
+idx >=
+0
+){
+
+banco[idx] =
+novo;
+
+}
+
+else{
+
+banco.push(
+novo
+);
+
+}
+
+
+$("expFc").value =
+"";
+
+
+$("expE").value =
+"";
+
+
+atualizarSistemaCompleto();
+
+}
+
+);
+
+
+/* =====================================
+   RESTAURAR BASE
+===================================== */
+
+$("restaurarBase").addEventListener(
+
+"click",
+
+()=>{
+
+
+if(
+
+confirm(
+
+"Restaurar exatamente os quatro ensaios iniciais fornecidos?"
+
+)
+
+){
+
+banco =
+cloneBase();
+
+
+atualizarSistemaCompleto();
+
+}
+
+}
+
+);
+
+
+/* =====================================
+   LIMPAR BANCO
+===================================== */
+
+$("limparBanco").addEventListener(
+
+"click",
+
+()=>{
+
+
+if(
+
+confirm(
+
+"Apagar todos os ensaios cadastrados?"
+
+)
+
+){
+
+banco =
+[];
+
+
+atualizarSistemaCompleto();
+
+}
+
+}
+
+);
 
 
 /* =====================================
    MODOS
 ===================================== */
 
-modoDidatico.addEventListener(
+$("modoDidatico").addEventListener(
 
 "click",
 
-function(){
-
-    modoAtual =
-    "didatico";
+()=>{
 
 
-    modoDidatico.classList.add(
-        "ativo"
-    );
+modoAtual =
+"didatico";
 
 
-    modoExperimental.classList.remove(
-        "ativo"
-    );
+$("modoDidatico").classList.add(
+"ativo"
+);
 
 
-    avisoModo.textContent =
-
-    "Modo didático ativo. " +
-
-    "A deformação apresentada é amplificada " +
-
-    "e não corresponde a um resultado experimental.";
+$("modoExperimental").classList.remove(
+"ativo"
+);
 
 
-    rFc.textContent =
-    "aguardando modelo experimental";
-
-
-    rE.textContent =
-    "aguardando modelo experimental";
+atualizarResultados();
 
 }
 
 );
 
 
-modoExperimental.addEventListener(
+$("modoExperimental").addEventListener(
 
 "click",
 
-function(){
-
-    modoAtual =
-    "experimental";
+()=>{
 
 
-    modoExperimental.classList.add(
-        "ativo"
-    );
+modoAtual =
+"experimental";
 
 
-    modoDidatico.classList.remove(
-        "ativo"
-    );
+$("modoExperimental").classList.add(
+"ativo"
+);
 
 
-    avisoModo.textContent =
-
-    "Modo experimental selecionado. " +
-
-    "Nesta versão ainda não existem dados experimentais integrados.";
+$("modoDidatico").classList.remove(
+"ativo"
+);
 
 
-    rFc.textContent =
-    "sem dados experimentais integrados";
-
-
-    rE.textContent =
-    "sem dados experimentais integrados";
+atualizarResultados();
 
 }
 
@@ -1419,101 +4260,77 @@ function(){
 
 
 /* =====================================
-   CONTROLES
+   SLIDERS
 ===================================== */
 
-densidade.addEventListener(
+$("densidade").addEventListener(
 
 "input",
 
-function(){
-
-    valorDensidade.textContent =
-    densidade.value;
+()=>{
 
 
-    rDensidade.textContent =
-    densidade.value;
+$("valorDensidade").textContent =
+
+$("densidade").value;
 
 
-    let fator =
+const f =
 
-    (
-        densidade.value -
-        450
-    )
+(
+Number(
+$("densidade").value
+)
 
-    /
-    350;
+-
+450
 
-
-    let brilho =
-
-    0.85 +
-
-    fator *
-
-    0.25;
+)
+/
+350;
 
 
-    corpo.style.filter =
+$("corpo").style.filter =
 
-    "brightness(" +
+`brightness(${.85 + f * .25})`;
 
-    brilho +
 
-    ")";
+atualizarResultados();
 
 }
 
 );
 
 
-idade.addEventListener(
+$("idade").addEventListener(
 
 "input",
 
-function(){
-
-    valorIdade.textContent =
-    idade.value;
+()=>{
 
 
-    rIdade.textContent =
-    idade.value;
+$("valorIdade").textContent =
+
+$("idade").value;
+
+
+atualizarResultados();
 
 }
 
 );
 
 
-carga.addEventListener(
+$("carga").addEventListener(
 
 "input",
 
-function(){
-
-    valorCarga.textContent =
-    carga.value;
+()=>{
 
 
-    rCarga.textContent =
-    carga.value;
+$("valorCarga").textContent =
 
-}
-
-);
-
-
-botaoReset.addEventListener(
-
-"click",
-
-function(){
-
-    restaurarEstadoInicial(
-        true
-    );
+$("carga").value;
 
 }
 
@@ -1521,495 +4338,411 @@ function(){
 
 
 /* =====================================
-   ENSAIO
+   BOTÃO RESET
 ===================================== */
 
-botao.addEventListener(
+$("botaoReset").addEventListener(
 
 "click",
 
-function(){
+resetarEnsaio
 
+);
 
-    if(
-        ensaioEmAndamento
-    ){
 
-        return;
+/* =====================================
+   APLICAR CARGA
+===================================== */
 
-    }
+$("botaoCarga").addEventListener(
 
+"click",
 
-    let Pmax =
+()=>{
 
-    parseFloat(
-        carga.value
-    );
 
+const PkN =
 
-    if(
-        Pmax ===
-        0
-    ){
+Number(
+$("carga").value
+);
 
-        alert(
-            "Selecione primeiro uma carga maior que zero."
-        );
 
-        return;
+if(
+PkN <= 0
+){
 
-    }
+return alert(
 
+"Selecione uma carga maior que zero."
 
-    if(
-        modoAtual ===
-        "experimental"
-    ){
+);
 
-        alert(
-            "O modo experimental ainda não possui dados reais integrados."
-        );
+}
 
-        return;
 
-    }
+const fonte =
 
+origemMecanica();
 
-    ensaioEmAndamento =
-    true;
 
+if(
+!fonte
+){
 
-    botao.disabled =
-    true;
+return alert(
 
+"Não há E válido para esta combinação."
 
-    estadoEnsaio.textContent =
-    "ENSAIO EM ANDAMENTO";
+);
 
+}
 
-    estadoEnsaio.className =
-    "estadoEnsaio andamento";
 
+/* geometria virtual */
 
-    pontosGrafico =
-    [];
+const d0 =
+100;
 
 
-    desenharEixos();
+const L0 =
+200;
 
 
-    statusGrafico.textContent =
-    "Ensaio em andamento...";
+const area =
 
+Math.PI *
+d0 *
+d0
+/
+4;
 
-    const d0 =
-    100;
 
+/* tensão */
 
-    const L0 =
-    200;
+const sigma =
 
+PkN *
+1000
+/
+area;
 
-    const area =
 
-    Math.PI *
+/* elasticidade */
 
-    Math.pow(
-        d0,
-        2
-    )
+const E_MPa =
 
-    /
-    4;
+fonte.E *
+1000;
 
 
-    const nu =
-    0.20;
+const epsilonL =
 
+-sigma /
+E_MPa;
 
-    const amplificacao =
-    30;
 
+/*
+Poisson ainda é didático
+nesta versão
+*/
 
-    const passos =
-    40;
+const nu =
+.20;
 
 
-    let passo =
-    0;
+const epsilonT =
 
+-nu *
+epsilonL;
 
-    timerEnsaio =
 
-    setInterval(
+const deltaL =
 
-    function(){
+epsilonL *
+L0;
 
 
-        passo++;
+const deltaD =
 
+epsilonT *
+d0;
 
-        let proporcao =
 
-        passo /
-        passos;
+/* amplificação visual */
 
+const fatorVisual =
+25;
 
-        let PkN =
 
-        Pmax *
-        proporcao;
+const deformacaoVisual =
 
+Math.min(
 
-        let PN =
+Math.abs(
+epsilonL
+)
 
-        PkN *
-        1000;
+*
+170
+*
+fatorVisual,
 
+24
 
-        let sigma =
+);
 
-        PN /
-        area;
 
+const expansaoVisual =
 
-        let epsilonL =
+Math.min(
 
-        -0.00012 *
-        PkN;
+epsilonT
+*
+110
+*
+fatorVisual,
 
+10
 
-        let epsilonT =
+);
 
-        -nu *
-        epsilonL;
 
+const h =
 
-        let deltaL =
+170 -
+deformacaoVisual;
 
-        epsilonL *
-        L0;
 
+const top =
 
-        let deltaD =
+145 +
+deformacaoVisual;
 
-        epsilonT *
-        d0;
 
+const w =
 
-        let E =
+110 +
+expansaoVisual;
 
-        sigma /
 
-        Math.abs(
-            epsilonL
-        )
+/*
+corpo permanece deformado
+até REINICIAR
+*/
 
-        /
+$("corpo").style.height =
 
-        1000;
+`${h}px`;
 
 
-        let deformacaoVisual =
+$("corpo").style.top =
 
-        Math.min(
+`${top}px`;
 
-            Math.abs(
-                epsilonL
-            )
 
-            *
+$("corpo").style.width =
 
-            170
+`${w}px`;
 
-            *
 
-            amplificacao,
+$("corpo").style.left =
 
-            24
+`calc(50% - ${w/2}px)`;
 
-        );
 
+$("pistao").style.transform =
 
-        let expansaoVisual =
+`translateY(${deformacaoVisual}px)`;
 
-        Math.min(
 
-            epsilonT
+$("pratoSuperior").style.transform =
 
-            *
+`translateY(${deformacaoVisual}px)`;
 
-            110
 
-            *
+/* estado */
 
-            amplificacao,
+$("estadoEnsaio").textContent =
 
-            10
+"ENSAIO CONCLUÍDO";
 
-        );
 
+$("estadoEnsaio").className =
 
-        let novaAltura =
+"estadoEnsaio concluido";
 
-        170 -
 
-        deformacaoVisual;
+/* resistência */
 
+const excede =
 
-        let novoTopo =
+fonte.fc !==
+null
 
-        145 +
+&&
 
-        deformacaoVisual;
+sigma >
+fonte.fc;
 
 
-        let novaLargura =
+const nota =
 
-        110 +
+excede
 
-        expansaoVisual;
+?
 
+`
 
-        corpo.style.height =
+<br>
 
-        novaAltura +
-        "px";
+<strong>
+ALERTA:
+</strong>
 
+σ =
+${fmt(sigma)}
+MPa
 
-        corpo.style.top =
+supera
 
-        novoTopo +
-        "px";
+f₍c₎ =
+${fmt(fonte.fc)}
+MPa.
 
+A hipótese elástica linear
+não é apropriada.
 
-        corpo.style.width =
+Esta versão não modela
+ruptura ou comportamento pós-pico.
 
-        novaLargura +
-        "px";
+`
 
+:
 
-        corpo.style.left =
+fonte.fc !==
+null
 
-        "calc(50% - " +
+?
 
-        (
-            novaLargura /
-            2
-        )
+`
 
-        +
+<br>
 
-        "px)";
+σ/f₍c₎ =
+${fmt(
+sigma /
+fonte.fc,
+3
+)}
 
+`
 
-        pistao.style.transform =
+:
 
-        "translateY(" +
+"";
 
-        deformacaoVisual +
 
-        "px)";
+/* painel */
 
+$("instrumentacao").innerHTML =
 
-        pratoSuperior.style.transform =
+`
 
-        "translateY(" +
+<strong>
+PAINEL DE INSTRUMENTAÇÃO
+</strong>
 
-        deformacaoVisual +
+<br><br>
 
-        "px)";
+Origem de E:
+${fonte.origem}
 
+<br>
 
-        cotaVertical.style.height =
+P =
+${fmt(PkN,1)}
+kN
 
-        novaAltura +
-        "px";
+<br>
 
+σ =
+${fmt(sigma)}
+MPa
 
-        cotaVertical.style.top =
+<br>
 
-        novoTopo +
-        "px";
+E =
+${fmt(fonte.E)}
+GPa
 
+<br>
 
-        cotaHorizontal.style.width =
+εL =
+${epsilonL.toExponential(3)}
 
-        novaLargura +
-        "px";
+<br>
 
+εT =
+${epsilonT.toExponential(3)}
 
-        cotaHorizontal.style.left =
+<br>
 
-        "calc(50% - " +
+ΔL =
+${fmt(deltaL)}
+mm
 
-        (
-            novaLargura /
-            2
-        )
+<br>
 
-        +
+Δd =
+${fmt(deltaD)}
+mm
 
-        "px)";
+<br>
 
+ν =
+${fmt(nu,2)}
 
-        textoL.textContent =
-        "L₀ − ΔL";
+<em>
+(didático, não experimental)
+</em>
 
+${nota}
 
-        textoD.textContent =
-        "d₀ + Δd";
+`;
 
 
-        instrumentacao.innerHTML =
+/* curva */
 
-        "<strong>PAINEL DE INSTRUMENTAÇÃO</strong><br><br>" +
+desenharCurvaSE(
 
-        "<strong>Ensaio em andamento</strong><br>" +
+sigma,
 
-        "P = " +
-        PkN.toFixed(1) +
-        " kN<br>" +
+Math.abs(
+epsilonL
+),
 
-        "σ = " +
-        sigma.toFixed(3) +
-        " MPa<br>" +
+excede
 
-        "εL = " +
-        epsilonL.toExponential(3) +
-        "<br>" +
+);
 
-        "εT = " +
-        epsilonT.toExponential(3) +
-        "<br>" +
 
-        "ΔL = " +
-        deltaL.toFixed(3) +
-        " mm<br>" +
+$("statusGraficoSE").textContent =
 
-        "Δd = " +
-        deltaD.toFixed(3) +
-        " mm<br>" +
-
-        "E didático = " +
-        E.toFixed(3) +
-        " GPa<br>" +
-
-        "ν didático = " +
-        nu.toFixed(2) +
-        "<br>" +
-
-        "<em>Deformação visual amplificada ×" +
-        amplificacao +
-        "</em>";
-
-
-        pontosGrafico.push(
-
-        {
-
-            epsilon:
-
-            Math.abs(
-                epsilonL
-            ),
-
-            sigma:
-            sigma
-
-        }
-
-        );
-
-
-        desenharPontos();
-
-
-        statusGrafico.textContent =
-
-        "σ = " +
-        sigma.toFixed(3) +
-
-        " MPa | ε = " +
-
-        Math.abs(
-            epsilonL
-        ).toExponential(3) +
-
-        " | E = " +
-
-        E.toFixed(3) +
-
-        " GPa";
-
-
-        if(
-            passo >=
-            passos
-        ){
-
-            clearInterval(
-                timerEnsaio
-            );
-
-
-            timerEnsaio =
-            null;
-
-
-            ensaioEmAndamento =
-            false;
-
-
-            botao.disabled =
-            false;
-
-
-            estadoEnsaio.textContent =
-            "ENSAIO CONCLUÍDO";
-
-
-            estadoEnsaio.className =
-            "estadoEnsaio concluido";
-
-
-            statusGrafico.textContent =
-
-            "Ensaio concluído — E didático = " +
-
-            E.toFixed(3) +
-
-            " GPa";
-
-
-            setTimeout(
-
-            function(){
-
-                restaurarEstadoInicial(
-                    false
-                );
-
-            },
-
-            1500
-
-            );
-
-        }
-
-    },
-
-    80
-
-    );
+`Curva elástica linear usando E=${fmt(fonte.E)} GPa (${fonte.origem}). O corpo permanece deformado até REINICIAR.`;
 
 }
 
 );
 
 
-desenharEixos();
+/* =====================================
+   INICIALIZAÇÃO
+===================================== */
+
+atualizarSistemaCompleto();
+
+desenharEixosSE();
 
 </script>
 
