@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,21 +45,32 @@ header p {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     gap: 25px;
 }
 
 .card {
     background: #1b2a36;
+
     border-radius: 16px;
+
     padding: 25px;
 }
 
 .card h2 {
     margin-top: 0;
+
     text-align: center;
 }
+
+/* =========================
+   CONTROLES
+========================= */
 
 .controle {
     margin: 25px 0;
@@ -64,8 +78,11 @@ header p {
 
 .controle label {
     display: block;
+
     text-align: center;
+
     font-weight: bold;
+
     margin-bottom: 12px;
 }
 
@@ -75,48 +92,110 @@ input[type="range"] {
 
 .valor {
     text-align: center;
+
     font-size: 25px;
+
     font-weight: bold;
+
     margin-top: 8px;
 }
 
+/* =========================
+   FORMULAÇÃO
+========================= */
+
 .formulas {
     margin-top: 25px;
+
     background: #253b4c;
+
     padding: 18px;
+
     border-radius: 12px;
+
     text-align: center;
 }
 
 .formula {
     font-size: 23px;
+
     margin: 10px;
 }
 
-/* PRENSA */
+/* =========================
+   RESULTADOS
+========================= */
+
+.resultados {
+    margin-top: 20px;
+
+    background: #253b4c;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+.resultados p {
+    margin: 9px;
+}
+
+.aviso {
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border-left:
+    4px solid #d9a441;
+
+    background: #17232c;
+
+    font-size: 13px;
+
+    color: #cbd3d8;
+}
+
+/* =========================
+   LABORATÓRIO
+========================= */
 
 .laboratorio {
     min-height: 550px;
+
     text-align: center;
 }
 
 .prensa {
     position: relative;
+
     height: 390px;
+
     margin-top: 15px;
+
     background: #111b23;
+
     border-radius: 12px;
+
     overflow: hidden;
 }
 
-/* COLUNAS */
+/* =========================
+   COLUNAS DA PRENSA
+========================= */
 
 .coluna {
     position: absolute;
+
     width: 28px;
+
     height: 310px;
+
     top: 35px;
-    background: linear-gradient(
+
+    background:
+    linear-gradient(
         90deg,
         #586570,
         #aeb7bd,
@@ -132,115 +211,241 @@ input[type="range"] {
     right: 65px;
 }
 
-/* TRAVESSA SUPERIOR */
+/* =========================
+   TRAVESSA SUPERIOR
+========================= */
 
 .travessa {
     position: absolute;
+
     height: 35px;
+
     left: 55px;
+
     right: 55px;
+
     top: 25px;
+
     background: #77838c;
+
     border-radius: 5px;
 }
 
-/* PISTÃO */
+/* =========================
+   PISTÃO
+========================= */
 
 .pistao {
     position: absolute;
+
     width: 70px;
+
     height: 70px;
+
     top: 60px;
-    left: calc(50% - 35px);
+
+    left:
+    calc(50% - 35px);
+
     background: #a9b3ba;
-    transition: transform 1s;
+
+    transition:
+    transform 1s;
 }
+
+/* =========================
+   PRATO SUPERIOR
+========================= */
 
 .pratoSuperior {
     position: absolute;
+
     width: 150px;
+
     height: 18px;
+
     top: 125px;
-    left: calc(50% - 75px);
+
+    left:
+    calc(50% - 75px);
+
     background: #8c989f;
-    transition: transform 1s;
+
+    transition:
+    transform 1s;
 }
 
-/* CORPO DE PROVA */
+/* =========================
+   CORPO DE PROVA
+========================= */
 
 .corpo {
     position: absolute;
+
     width: 110px;
+
     height: 170px;
-    left: calc(50% - 55px);
+
+    left:
+    calc(50% - 55px);
+
     top: 145px;
 
     background:
-        radial-gradient(circle at 20% 20%, #55616a 0 4px, transparent 5px),
-        radial-gradient(circle at 70% 30%, #59656d 0 6px, transparent 7px),
-        radial-gradient(circle at 40% 60%, #56616a 0 5px, transparent 6px),
-        radial-gradient(circle at 80% 75%, #59646c 0 4px, transparent 5px),
-        #b9c0c4;
 
-    border-radius: 55px / 18px;
+    radial-gradient(
+        circle at 20% 20%,
+        #55616a 0 4px,
+        transparent 5px
+    ),
 
-    border: 2px solid #d7dcdf;
+    radial-gradient(
+        circle at 70% 30%,
+        #59656d 0 6px,
+        transparent 7px
+    ),
+
+    radial-gradient(
+        circle at 40% 60%,
+        #56616a 0 5px,
+        transparent 6px
+    ),
+
+    radial-gradient(
+        circle at 80% 75%,
+        #59646c 0 4px,
+        transparent 5px
+    ),
+
+    radial-gradient(
+        circle at 35% 82%,
+        #626d74 0 3px,
+        transparent 4px
+    ),
+
+    #b9c0c4;
+
+    border-radius:
+    55px / 18px;
+
+    border:
+    2px solid #d7dcdf;
 
     transition:
-        height 1s,
-        top 1s,
-        width 1s,
-        left 1s;
+    height 1s,
+    top 1s,
+    width 1s,
+    left 1s,
+    filter 0.5s;
 }
+
+/* TOPO DO CILINDRO */
 
 .corpo::before {
     content: "";
+
     position: absolute;
-    width: 106px;
+
+    width: calc(100% - 4px);
+
     height: 25px;
-    left: 0px;
+
+    left: 2px;
+
     top: -2px;
+
     border-radius: 50%;
+
     background: #d3d7da;
+
+    transition: width 1s;
 }
 
-/* BASE */
+/* =========================
+   BASE
+========================= */
 
 .base {
     position: absolute;
+
     width: 200px;
+
     height: 30px;
+
     bottom: 40px;
-    left: calc(50% - 100px);
+
+    left:
+    calc(50% - 100px);
+
     background: #77838c;
 }
 
-/* SETA */
+/* =========================
+   SETA DA CARGA
+========================= */
 
 .seta {
     position: absolute;
+
     top: 75px;
-    left: calc(50% + 100px);
+
+    left:
+    calc(50% + 100px);
+
     font-size: 38px;
 }
 
 .forca {
     position: absolute;
+
     top: 80px;
-    left: calc(50% + 140px);
+
+    left:
+    calc(50% + 140px);
+
     font-size: 18px;
 }
 
-/* BOTÃO */
+/* =========================
+   INFORMAÇÕES DA DEFORMAÇÃO
+========================= */
+
+.indicadorDeformacao {
+
+    position: absolute;
+
+    left: 15px;
+
+    bottom: 8px;
+
+    font-size: 12px;
+
+    color: #aebcc6;
+
+    text-align: left;
+}
+
+/* =========================
+   BOTÃO
+========================= */
 
 button {
+
     margin-top: 20px;
+
     background: #1686d9;
+
     border: none;
+
     color: white;
-    padding: 14px 25px;
+
+    padding:
+    14px 25px;
+
     font-size: 17px;
+
     border-radius: 8px;
+
     cursor: pointer;
 }
 
@@ -248,46 +453,34 @@ button:hover {
     background: #36a0ed;
 }
 
-/* RESULTADOS */
-
-.resultados {
-    margin-top: 20px;
-    background: #253b4c;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.resultados p {
-    margin: 9px;
-}
-
-.aviso {
-    margin-top: 18px;
-    padding: 12px;
-    border-left: 4px solid #d9a441;
-    background: #17232c;
-    font-size: 13px;
-    color: #cbd3d8;
-}
+/* =========================
+   RESPONSIVO
+========================= */
 
 @media(max-width: 850px) {
 
     .container {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+        1fr;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <header>
 
-<h1>MODELO CONSTITUTIVO DO CONCRETO CELULAR</h1>
+<h1>
+MODELO CONSTITUTIVO DO CONCRETO CELULAR
+</h1>
 
 <h2>
 Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
@@ -302,16 +495,23 @@ Modelo preliminar dependente da densidade e da idade
 
 <div class="container">
 
-<!-- PAINEL ESQUERDO -->
+
+<!-- =========================
+     PAINEL ESQUERDO
+========================= -->
 
 <section class="card">
 
-<h2>Parâmetros do material</h2>
+<h2>
+Parâmetros do material
+</h2>
 
 
 <div class="controle">
 
-<label>Densidade ρ</label>
+<label>
+Densidade ρ
+</label>
 
 <input
 type="range"
@@ -324,7 +524,10 @@ value="600"
 
 <div class="valor">
 
-<span id="valorDensidade">600</span>
+<span id="valorDensidade">
+600
+</span>
+
 kg/m³
 
 </div>
@@ -334,7 +537,9 @@ kg/m³
 
 <div class="controle">
 
-<label>Idade de cura t</label>
+<label>
+Idade de cura t
+</label>
 
 <input
 type="range"
@@ -347,7 +552,10 @@ value="28"
 
 <div class="valor">
 
-<span id="valorIdade">28</span>
+<span id="valorIdade">
+28
+</span>
+
 dias
 
 </div>
@@ -357,7 +565,9 @@ dias
 
 <div class="controle">
 
-<label>Carga aplicada P</label>
+<label>
+Carga aplicada P
+</label>
 
 <input
 type="range"
@@ -370,7 +580,10 @@ value="0"
 
 <div class="valor">
 
-<span id="valorCarga">0</span>
+<span id="valorCarga">
+0
+</span>
+
 kN
 
 </div>
@@ -380,14 +593,22 @@ kN
 
 <div class="formulas">
 
-<h3>Formulação em investigação</h3>
+<h3>
+Formulação em investigação
+</h3>
 
 <div class="formula">
-f<sub>c</sub> = F(ρ,t)
+
+f<sub>c</sub> =
+F(ρ,t)
+
 </div>
 
 <div class="formula">
-E = G(ρ,t)
+
+E =
+G(ρ,t)
+
 </div>
 
 </div>
@@ -396,28 +617,70 @@ E = G(ρ,t)
 <div class="resultados">
 
 <p>
-<strong>Densidade:</strong>
-<span id="rDensidade">600</span> kg/m³
+
+<strong>
+Densidade:
+</strong>
+
+<span id="rDensidade">
+600
+</span>
+
+kg/m³
+
 </p>
 
-<p>
-<strong>Idade:</strong>
-<span id="rIdade">28</span> dias
-</p>
 
 <p>
-<strong>Carga:</strong>
-<span id="rCarga">0</span> kN
+
+<strong>
+Idade:
+</strong>
+
+<span id="rIdade">
+28
+</span>
+
+dias
+
 </p>
 
+
 <p>
-<strong>Resistência f<sub>c</sub>:</strong>
+
+<strong>
+Carga:
+</strong>
+
+<span id="rCarga">
+0
+</span>
+
+kN
+
+</p>
+
+
+<p>
+
+<strong>
+Resistência
+f<sub>c</sub>:
+</strong>
+
 aguardando modelo experimental
+
 </p>
 
+
 <p>
-<strong>Módulo E:</strong>
+
+<strong>
+Módulo E:
+</strong>
+
 aguardando modelo experimental
+
 </p>
 
 </div>
@@ -425,47 +688,86 @@ aguardando modelo experimental
 
 <div class="aviso">
 
-A representação visual dos poros é esquemática e possui finalidade
-didática. Não representa uma caracterização microestrutural experimental.
+A representação visual dos poros e da deformação possui
+finalidade exclusivamente didática.
+
+Nesta versão, a deformação ainda não representa resultados
+experimentais do concreto celular.
 
 </div>
+
 
 </section>
 
 
 
-<!-- LABORATÓRIO -->
+<!-- =========================
+     LABORATÓRIO
+========================= -->
 
 <section class="card laboratorio">
 
-<h2>Ensaio Virtual de Compressão</h2>
+
+<h2>
+Ensaio Virtual de Compressão
+</h2>
+
 
 <div class="prensa">
 
-<div class="travessa"></div>
 
-<div class="coluna esquerda"></div>
-<div class="coluna direita"></div>
+<div class="travessa">
+</div>
 
-<div class="pistao" id="pistao"></div>
+
+<div class="coluna esquerda">
+</div>
+
+
+<div class="coluna direita">
+</div>
+
+
+<div
+class="pistao"
+id="pistao">
+</div>
+
 
 <div
 class="pratoSuperior"
 id="pratoSuperior">
 </div>
 
-<div class="seta">↓</div>
+
+<div class="seta">
+↓
+</div>
+
 
 <div class="forca">
 P
 </div>
+
 
 <div
 class="corpo"
 id="corpo">
 </div>
 
-<div class="base"></div>
+
+<div class="base">
+</div>
+
+
+<div
+class="indicadorDeformacao"
+id="indicadorDeformacao">
+
+Estado inicial
+
+</div>
+
 
 </div>
 
@@ -479,30 +781,79 @@ APLICAR CARGA
 
 <div class="resultados">
 
+
 <p>
-<strong>Tensão:</strong>
+
+<strong>
+Tensão:
+</strong>
+
 σ = P / A
+
 </p>
 
+
 <p>
-<strong>Deformação:</strong>
+
+<strong>
+Deformação longitudinal:
+</strong>
+
+ε<sub>L</sub> = ΔL / L
+
+</p>
+
+
+<p>
+
+<strong>
+Deformação transversal:
+</strong>
+
+ε<sub>T</sub> = Δd / d
+
+</p>
+
+
+<p>
+
+<strong>
+Coeficiente de Poisson:
+</strong>
+
+ν = − ε<sub>T</sub> / ε<sub>L</sub>
+
+</p>
+
+
+<p>
+
+<strong>
+Lei de Hooke:
+</strong>
+
 ε = σ / E
+
 </p>
 
-<p>
-<strong>Deformação longitudinal:</strong>
-ΔL = ε · L
-</p>
 
 <p>
-<strong>Observação:</strong>
-a deformação apresentada será amplificada visualmente
-para fins didáticos.
+
+<strong>
+Observação:
+</strong>
+
+a deformação apresentada é amplificada
+para facilitar sua visualização.
+
 </p>
+
 
 </div>
 
+
 </section>
+
 
 </div>
 
@@ -510,170 +861,420 @@ para fins didáticos.
 
 <script>
 
+/* =========================
+   ELEMENTOS DE CONTROLE
+========================= */
+
 const densidade =
-document.getElementById("densidade");
+document.getElementById(
+"densidade"
+);
 
 const idade =
-document.getElementById("idade");
+document.getElementById(
+"idade"
+);
 
 const carga =
-document.getElementById("carga");
+document.getElementById(
+"carga"
+);
 
+
+/* =========================
+   VALORES MOSTRADOS
+========================= */
 
 const valorDensidade =
-document.getElementById("valorDensidade");
+document.getElementById(
+"valorDensidade"
+);
 
 const valorIdade =
-document.getElementById("valorIdade");
+document.getElementById(
+"valorIdade"
+);
 
 const valorCarga =
-document.getElementById("valorCarga");
+document.getElementById(
+"valorCarga"
+);
 
+
+/* =========================
+   RESULTADOS
+========================= */
 
 const rDensidade =
-document.getElementById("rDensidade");
+document.getElementById(
+"rDensidade"
+);
 
 const rIdade =
-document.getElementById("rIdade");
+document.getElementById(
+"rIdade"
+);
 
 const rCarga =
-document.getElementById("rCarga");
+document.getElementById(
+"rCarga"
+);
 
+
+/* =========================
+   ELEMENTOS DA PRENSA
+========================= */
 
 const corpo =
-document.getElementById("corpo");
+document.getElementById(
+"corpo"
+);
 
 const pistao =
-document.getElementById("pistao");
+document.getElementById(
+"pistao"
+);
 
 const pratoSuperior =
-document.getElementById("pratoSuperior");
+document.getElementById(
+"pratoSuperior"
+);
 
 const botao =
-document.getElementById("botaoCarga");
+document.getElementById(
+"botaoCarga"
+);
 
+const indicadorDeformacao =
+document.getElementById(
+"indicadorDeformacao"
+);
+
+
+/* =========================
+   DENSIDADE
+========================= */
 
 densidade.addEventListener(
+
 "input",
+
 function() {
+
 
 valorDensidade.textContent =
 densidade.value;
 
+
 rDensidade.textContent =
 densidade.value;
 
+
 /*
-Representação didática:
-densidades menores apresentam
-maior contraste visual dos poros.
+Representação puramente didática.
+
+Densidades diferentes alteram
+levemente o contraste visual
+do corpo de prova.
 */
 
+
+let fator =
+
+(
+densidade.value - 450
+)
+
+/ 350;
+
+
 let brilho =
-180 +
-((densidade.value - 450) / 350) * 50;
+
+0.85 +
+fator * 0.25;
+
 
 corpo.style.filter =
-"brightness(" + brilho / 200 + ")";
 
-});
+"brightness(" +
+brilho +
+")";
 
+
+}
+
+);
+
+
+/* =========================
+   IDADE
+========================= */
 
 idade.addEventListener(
+
 "input",
+
 function() {
+
 
 valorIdade.textContent =
 idade.value;
 
+
 rIdade.textContent =
 idade.value;
 
-});
 
+}
+
+);
+
+
+/* =========================
+   CARGA
+========================= */
 
 carga.addEventListener(
+
 "input",
+
 function() {
+
 
 valorCarga.textContent =
 carga.value;
 
+
 rCarga.textContent =
 carga.value;
 
-});
-
-
-botao.addEventListener(
-"click",
-function() {
-
-let P =
-parseFloat(carga.value);
-
-if(P === 0) {
-
-alert(
-"Selecione primeiro uma carga maior que zero."
-);
-
-return;
 
 }
 
-/*
-Nesta versão a deformação é
-somente uma animação didática.
+);
 
-Posteriormente será substituída
-por:
+
+/* =========================
+   ENSAIO DE COMPRESSÃO
+========================= */
+
+botao.addEventListener(
+
+"click",
+
+function() {
+
+
+let P =
+parseFloat(
+carga.value
+);
+
+
+if(P === 0) {
+
+
+alert(
+
+"Selecione primeiro uma carga maior que zero."
+
+);
+
+
+return;
+
+
+}
+
+
+/*
+Nesta versão:
+
+A deformação é apenas visual.
+
+Posteriormente este cálculo será
+substituído por dados reais:
+
+sigma = P / A
 
 epsilon = sigma / E(rho,t)
+
+DeltaL = epsilon * L
 */
 
-let deformacaoVisual =
-Math.min(P / 5, 20);
 
+let deformacaoVisual =
+
+Math.min(
+
+P / 5,
+
+20
+
+);
+
+
+/*
+Expansão lateral didática.
+
+Posteriormente poderá utilizar:
+
+epsilon_transversal =
+-nu * epsilon_longitudinal
+*/
+
+
+let expansaoLateral =
+
+deformacaoVisual *
+0.35;
+
+
+/* =========================
+   COMPRESSÃO VERTICAL
+========================= */
 
 corpo.style.height =
-(170 - deformacaoVisual) + "px";
+
+(
+170 -
+deformacaoVisual
+)
+
++
+"px";
+
 
 corpo.style.top =
-(145 + deformacaoVisual) + "px";
 
+(
+145 +
+deformacaoVisual
+)
+
++
+"px";
+
+
+/* =========================
+   EXPANSÃO LATERAL
+========================= */
+
+let novaLargura =
+
+110 +
+expansaoLateral;
+
+
+corpo.style.width =
+
+novaLargura +
+"px";
+
+
+corpo.style.left =
+
+"calc(50% - " +
+
+(
+novaLargura / 2
+)
+
++
+
+"px)";
+
+
+/* =========================
+   MOVIMENTO DO PISTÃO
+========================= */
 
 pistao.style.transform =
+
 "translateY(" +
+
 deformacaoVisual +
+
 "px)";
 
 
 pratoSuperior.style.transform =
+
 "translateY(" +
+
 deformacaoVisual +
+
 "px)";
 
 
-setTimeout(function() {
+/* =========================
+   INFORMAÇÃO DIDÁTICA
+========================= */
+
+indicadorDeformacao.innerHTML =
+
+"Compressão longitudinal ↓" +
+
+"<br>" +
+
+"Expansão transversal ↔" +
+
+"<br>" +
+
+"Deformação visual amplificada";
+
+
+/* =========================
+   RETORNO AO ESTADO INICIAL
+========================= */
+
+setTimeout(
+
+function() {
+
 
 corpo.style.height =
 "170px";
 
+
 corpo.style.top =
 "145px";
+
+
+corpo.style.width =
+"110px";
+
+
+corpo.style.left =
+"calc(50% - 55px)";
+
 
 pistao.style.transform =
 "translateY(0px)";
 
+
 pratoSuperior.style.transform =
 "translateY(0px)";
 
-}, 1800);
 
-});
+indicadorDeformacao.innerHTML =
+"Estado inicial";
+
+
+},
+
+2200
+
+);
+
+
+}
+
+);
 
 </script>
 
+
 </body>
+
 </html>
