@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste WebXR - Concreto Celular VR</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #0b1620;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        #status {
+            margin: 30px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 18px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CONCRETO CELULAR VR</h1>
+
+    <p>Teste de compatibilidade WebXR</p>
+
+    <div id="status">
+        Verificando dispositivo...
+    </div>
+
+    <button id="entrarVR" disabled>
+        ENTRAR EM VR
+    </button>
+
+    <script>
+
+        const status = document.getElementById("status");
+        const botao = document.getElementById("entrarVR");
+
+        async function verificarVR() {
+
+            if (!navigator.xr) {
+
+                status.innerHTML =
+                    "WebXR não está disponível neste navegador.";
+
+                return;
+            }
+
+            const suportado =
+                await navigator.xr.isSessionSupported("immersive-vr");
+
+            if (suportado) {
+
+                status.innerHTML =
+                    "WebXR disponível. Meta Quest pronto para VR.";
+
+                botao.disabled = false;
+
+            } else {
+
+                status.innerHTML =
+                    "WebXR detectado, mas VR imersivo não está disponível.";
+            }
+        }
+
+        botao.addEventListener("click", async () => {
+
+            try {
+
+                const sessao =
+                    await navigator.xr.requestSession("immersive-vr");
+
+                status.innerHTML =
+                    "Sessão VR iniciada com sucesso.";
+
+                sessao.addEventListener("end", () => {
+
+                    status.innerHTML =
+                        "Sessão VR encerrada.";
+                });
+
+            } catch (erro) {
+
+                status.innerHTML =
+                    "Não foi possível iniciar VR: " + erro.message;
+            }
+        });
+
+        verificarVR();
+
+    </script>
+
+</body>
+</html>
