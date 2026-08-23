@@ -947,12 +947,11 @@ canvas{
 
 <header>
 
-
-<h1 id="txtTitulo">
+<h1>
 MODELO CONSTITUTIVO DO CONCRETO CELULAR
 </h1>
 
-<h2 id="txtDisciplina">
+<h2>
 Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
 </h2>
 
@@ -961,25 +960,9 @@ Engenheiro Javier Sanabria
 </div>
 
 <div class="subtitulo">
-L<span id="txtSubtitulo">
-    Limite de resistência e ruptura virtual — V1.2
-</span>
+Limite de resistência e ruptura virtual — V1.1.1
 </div>
-<!-- =====================================================
-     V1.2 — SELETOR DE IDIOMA PT / EN
-===================================================== -->
 
-<div class="seletor-idioma">
-    <button id="btnPT" class="idioma-ativo" type="button">
-        PT
-    </button>
-
-    <span class="separador-idioma">|</span>
-
-    <button id="btnEN" type="button">
-        EN
-    </button>
-</div>
 </header>
 
 
@@ -992,7 +975,7 @@ L<span id="txtSubtitulo">
 
 <section class="card">
 
-<h2 id="txtParametros">
+<h2>
 Parâmetros do material
 </h2>
 
@@ -1003,11 +986,11 @@ Parâmetros do material
     id="modoDidatico"
     class="ativo"
 >
-<span id="txtModoDidatico">MODO DIDÁTICO</span>
+MODO DIDÁTICO
 </button>
 
 <button id="modoExperimental">
-<span id="txtModoExperimental">MODO EXPERIMENTAL</span>
+MODO EXPERIMENTAL
 </button>
 
 </div>
@@ -1015,9 +998,10 @@ Parâmetros do material
 
 <div class="controle">
 
-<label id="txtDensidade">
+<label>
 Densidade ρ
 </label>
+
 <input
     type="range"
     id="densidade"
@@ -1042,8 +1026,8 @@ kg/m³
 
 <div class="controle">
 
-<label id="txtIdade">
-    Idade de cura t
+<label>
+Idade de cura t
 </label>
 
 <input
@@ -1070,8 +1054,8 @@ dias
 
 <div class="controle">
 
-<label id="txtCarga">
-    Carga aplicada P
+<label>
+Carga aplicada P
 </label>
 
 <input
@@ -1098,8 +1082,8 @@ kN
 
 <div class="formulas">
 
-<h3 id="txtRelacoes">
-    Relações constitutivas em investigação
+<h3>
+Relações constitutivas em investigação
 </h3>
 
 <div class="formula">
@@ -1138,7 +1122,7 @@ dias
 </p>
 
 <p>
-<strong><span id="txtOrigemResultado">Origem do resultado:</span></strong>
+<strong>Origem do resultado:</strong>
 <span id="rOrigem">modo didático</span>
 </p>
 
@@ -1158,10 +1142,10 @@ DIDÁTICO
     id="avisoModo"
     class="aviso"
 >
-    <span id="txtAvisoModo">
-        Modo didático ativo.<br>
-        Nenhum resultado experimental é estimado neste modo.
-    </span>
+
+Modo didático ativo.
+Nenhum resultado experimental é estimado neste modo.
+
 </div>
 
 </section>
@@ -1173,7 +1157,7 @@ DIDÁTICO
 
 <section class="card">
 
-<h2 id="txtEnsaioVirtual">
+<h2>
 Ensaio Virtual de Compressão
 </h2>
 
@@ -1215,23 +1199,26 @@ P
 
 
 <div
+    id="estadoEnsaio"
     class="estadoEnsaio"
 >
-    <span id="txtEstadoInicial">ESTADO INICIAL</span>
+
+ESTADO INICIAL
+
 </div>
 
 
 <div class="acoes">
 
 <button id="botaoCarga">
-    <span id="txtAplicarCarga">APLICAR CARGA</span>
+APLICAR CARGA
 </button>
 
 <button
     id="botaoReset"
     class="secundario"
 >
-    <span id="txtReiniciar">REINICIAR</span>
+REINICIAR
 </button>
 
 </div>
@@ -1243,12 +1230,12 @@ P
 >
 
 <strong>
-    <span id="txtPainelInstrumentacao">PAINEL DE INSTRUMENTAÇÃO</span>
+PAINEL DE INSTRUMENTAÇÃO
 </strong>
 
 <br><br>
 
-<span id="txtEstadoInicialPainel">Estado inicial.</span>
+Estado inicial.
 
 </div>
 
@@ -1261,15 +1248,18 @@ P
 
 <section class="card full">
 
-<h2 id="txtBancoExperimental">
+<h2>
 Banco de Dados Experimental
 </h2>
 
-<p id="txtDescricaoBanco">
+<p>
+
 Os quatro ensaios iniciais permanecem pré-carregados.
+
 O resultado correspondente a 56 dias é preservado exatamente
 como informado e identificado separadamente por ultrapassar
 a faixa temporal principal anteriormente adotada de 54 dias.
+
 </p>
 
 
@@ -1278,7 +1268,7 @@ a faixa temporal principal anteriormente adotada de 54 dias.
 
 <div>
 
-<label id="txtBancoDensidade">
+<label>
 Densidade (kg/m³)
 </label>
 
@@ -1295,7 +1285,7 @@ Densidade (kg/m³)
 
 <div>
 
-<label id="txtBancoIdade">
+<label>
 Idade (dias)
 </label>
 
@@ -1312,8 +1302,8 @@ Idade (dias)
 
 <div>
 
-<label id="txtBancoFc">
-fc (MPa)
+<label>
+f₍c₎ (MPa)
 </label>
 
 <input
@@ -1328,7 +1318,7 @@ fc (MPa)
 
 <div>
 
-<label id="txtBancoE">
+<label>
 E (GPa)
 </label>
 
@@ -1346,22 +1336,23 @@ E (GPa)
 
 
 <button id="adicionarEnsaio">
-    <span id="txtAdicionarEnsaio">ADICIONAR / ATUALIZAR ENSAIO</span>
+ADICIONAR / ATUALIZAR ENSAIO
 </button>
 
 <button
     id="restaurarBase"
     class="secundario"
 >
-    <span id="txtRestaurarBase">RESTAURAR 4 ENSAIOS INICIAIS</span>
+RESTAURAR 4 ENSAIOS INICIAIS
 </button>
 
 <button
     id="limparBanco"
     class="perigo"
 >
-    <span id="txtLimparBanco">LIMPAR BANCO</span>
+LIMPAR BANCO
 </button>
+
 
 <div
     id="contador"
@@ -1377,19 +1368,19 @@ E (GPa)
 
 <tr>
 
-    <th>#</th>
+<th>#</th>
 
-    <th id="txtTabelaDensidade">Densidade</th>
+<th>Densidade</th>
 
-    <th id="txtTabelaIdade">Idade</th>
+<th>Idade</th>
 
-    <th id="txtTabelaFc">f<sub>c</sub></th>
+<th>f₍c₎</th>
 
-    <th id="txtTabelaE">E</th>
+<th>E</th>
 
-    <th id="txtTabelaObservacao">Observação</th>
+<th>Observação</th>
 
-    <th id="txtTabelaAcao">Ação</th>
+<th>Ação</th>
 
 </tr>
 
@@ -1410,7 +1401,7 @@ E (GPa)
 
 <section class="card full">
 
-<h2 id="txtLeituraExperimental">
+<h2>
 Leitura Experimental e Limitações do Conjunto de Dados
 </h2>
 
@@ -1432,7 +1423,7 @@ Leitura Experimental e Limitações do Conjunto de Dados
 </div>
 
 <div>
-    <span id="txtMatrizEnsaios">Ensaios</span>
+Ensaios
 </div>
 
 </div>
@@ -1448,7 +1439,7 @@ Leitura Experimental e Limitações do Conjunto de Dados
 </div>
 
 <div>
-    <span id="txtMatrizDensidades">Densidades distintas</span>
+Densidades distintas
 </div>
 
 </div>
@@ -1464,7 +1455,7 @@ Leitura Experimental e Limitações do Conjunto de Dados
 </div>
 
 <div>
-    <span id="txtMatrizIdades">Idades distintas</span>
+Idades distintas
 </div>
 
 </div>
@@ -1480,7 +1471,7 @@ Leitura Experimental e Limitações do Conjunto de Dados
 </div>
 
 <div>
-    <span id="txtMatrizGrausLiberdade">Graus de liberdade do ajuste</span>
+Graus de liberdade do ajuste
 </div>
 
 </div>
@@ -1497,17 +1488,18 @@ Leitura Experimental e Limitações do Conjunto de Dados
 
 <section class="card full">
 
-<h2 id="txtModeloConstitutivo">
-    Modelo Constitutivo Exploratório
+<h2>
+Modelo Constitutivo Exploratório
 </h2>
+
 
 <div class="modelo-grid">
 
 
 <div class="modelo-box">
 
-<h3 id="txtModeloResistencia">
-    Resistência à compressão
+<h3>
+Resistência à compressão
 </h3>
 
 <div
@@ -1529,8 +1521,8 @@ Leitura Experimental e Limitações do Conjunto de Dados
 
 <div class="modelo-box">
 
-<h3 id="txtModeloElasticidade">
-    Módulo de elasticidade
+<h3>
+Módulo de elasticidade
 </h3>
 
 <div
@@ -1556,7 +1548,7 @@ Leitura Experimental e Limitações do Conjunto de Dados
 <div class="aviso">
 
 <strong>
-    <span id="txtModeloMatematico">Modelo matemático empregado nesta etapa:</span>
+Modelo matemático empregado nesta etapa:
 </strong>
 
 <br><br>
@@ -1573,7 +1565,7 @@ xt=(t−28)/28
 
 <br><br>
 
-<span id="txtAjusteExploratorio">Trata-se de um ajuste linear aditivo e exploratório.</span>
+Trata-se de um ajuste linear aditivo e exploratório.
 
 O termo de interação ρ·t ainda não é empregado devido
 ao número reduzido de ensaios disponíveis.
@@ -1593,7 +1585,7 @@ além desse ponto.
 
 <section class="card full">
 
-<h2 id="txtResultadosExperimentais">
+<h2>
 Resultados Experimentais
 </h2>
 
@@ -1610,10 +1602,10 @@ Resultados Experimentais
 ></canvas>
 
 <div class="statusGrafico">
-    <span id="txtStatusGraficoFc">
-        Densidade × resistência à compressão.<br>
-        A idade de cura é indicada junto a cada ponto experimental.
-    </span>
+
+Densidade × resistência à compressão.
+A idade de cura é indicada junto a cada ponto experimental.
+
 </div>
 
 </div>
@@ -1628,10 +1620,10 @@ Resultados Experimentais
 ></canvas>
 
 <div class="statusGrafico">
-    <span id="txtStatusGraficoE">
-        Densidade × módulo de elasticidade.<br>
-        A idade de cura é indicada junto a cada ponto experimental.
-    </span>
+
+Densidade × módulo de elasticidade.
+A idade de cura é indicada junto a cada ponto experimental.
+
 </div>
 
 </div>
@@ -1648,7 +1640,7 @@ Resultados Experimentais
 
 <section class="card full">
 
-<h2 id="txtTituloCurvaSE">
+<h2>
 Curva Tensão × Deformação do Ensaio Virtual
 </h2>
 
@@ -1676,28 +1668,19 @@ Aguardando ensaio.
 
 <span class="pontoAzul"></span>
 
-<span id="txtLegendaElastica">Trecho elástico linear simplificado</span>
+Trecho elástico linear simplificado
 
 &nbsp;&nbsp;
 
 <span class="pontoVermelho"></span>
 
-<span id="txtLegendaLimiteFc">
-    Limite de resistência f(c).
-</span>
+Limite de resistência f₍c₎.
 
-<br><br>
+Se a tensão solicitada ultrapassar f₍c₎,
+a V1.1.1 interrompe a curva nesse ponto.
 
-<span id="txtLegendaInterrupcao">
-    Se a tensão solicitada ultrapassar f(c),
-    a V1.1.1 interrompe a curva nesse ponto.
-</span>
+O comportamento pós-pico não é modelado nesta versão.
 
-<br><br>
-
-<span id="txtLegendaPosPico">
-    O comportamento pós-pico não é modelado nesta versão.
-</span>
 </div>
 
 
@@ -2895,30 +2878,29 @@ function atualizarResultados(){
             "—";
 
 
-        $("rOrigem").textContent =
-    idiomaAtual === "en"
-        ? "educational mode"
-        : "modo didático";
+        $("rOrigem").textContent=
+            "modo didático";
 
 
-        $("seloOrigem").textContent =
-    idiomaAtual === "en"
-        ? "EDUCATIONAL"
-        : "DIDÁTICO";
+        $("seloOrigem").className=
+            "selo";
+
+
+        $("seloOrigem").textContent=
+            "DIDÁTICO";
 
 
         $("avisoModo").className=
             "aviso";
 
 
-        $("avisoModo").innerHTML =
-    idiomaAtual === "en"
-        ?
-        "Educational mode active.<br>" +
-        "No experimental result is estimated in this mode."
-        :
-        "Modo didático ativo.<br>" +
-        "Nenhum resultado experimental é estimado neste modo.";
+        $("avisoModo").textContent=
+
+            "Modo didático ativo. "
+            +
+            "Nenhum resultado experimental "
+            +
+            "é estimado neste modo.";
 
 
         return;
@@ -2947,32 +2929,34 @@ function atualizarResultados(){
             `${fmt(ex.fc)} MPa`;
 
 
-       $("rOrigem").textContent =
-    idiomaAtual === "en"
-        ? "corresponding experimental test"
-        : "ensaio experimental correspondente";
+        $("rE").textContent=
+            `${fmt(ex.E)} GPa`;
 
-$("seloOrigem").className =
-    "selo exato";
 
-$("seloOrigem").textContent =
-    "EXPERIMENTAL";
+        $("rOrigem").textContent=
+            "ensaio experimental correspondente";
 
-$("avisoModo").className =
-    "aviso";
 
-$("avisoModo").innerHTML =
-    idiomaAtual === "en"
-        ?
-        `Experimental value available for<br>
-ρ=${rho} kg/m³ and<br>
-t=${t} days.`
-        :
-        `Valor experimental disponível para<br>
-ρ=${rho} kg/m³ e<br>
-t=${t} dias.`;
+        $("seloOrigem").className=
+            "selo exato";
 
-return;
+
+        $("seloOrigem").textContent=
+            "EXPERIMENTAL";
+
+
+        $("avisoModo").className=
+            "aviso";
+
+
+        $("avisoModo").innerHTML=
+
+            `Valor experimental disponível para
+            ρ=${rho} kg/m³ e
+            t=${t} dias.`;
+
+
+        return;
 
     }
 
@@ -3047,20 +3031,18 @@ return;
         `selo ${c.tipo}`;
 
 
-    $("seloOrigem").textContent =
-    c.tipo === "interp"
+    $("seloOrigem").textContent=
+
+        c.tipo==="interp"
+
         ?
-        (
-            idiomaAtual === "en"
-                ? "INTERPOLATION"
-                : "INTERPOLAÇÃO"
-        )
+
+        "INTERPOLAÇÃO"
+
         :
-        (
-            idiomaAtual === "en"
-                ? "EXTRAPOLATION"
-                : "EXTRAPOLAÇÃO"
-        );
+
+        "EXTRAPOLAÇÃO";
+
 
     $("avisoModo").className=
 
@@ -3075,21 +3057,13 @@ return;
         "aviso";
 
 
-    $("avisoModo").innerHTML =
-    c.tipo === "extra"
-    ?
-    (
-        idiomaAtual === "en"
+    $("avisoModo").innerHTML=
+
+        c.tipo==="extra"
+
         ?
-        `<strong>Attention:</strong><br>
-        ρ=${rho} kg/m³ and
-        t=${t} days are outside the experimental
-        envelope defined by the available tests.
-        The result constitutes a mathematical
-        extrapolation and not an experimental
-        measurement.`
-        :
-        `<strong>Atenção:</strong><br>
+
+        `<strong>Atenção:</strong>
         ρ=${rho} kg/m³ e
         t=${t} dias encontram-se fora da
         envoltória experimental definida
@@ -3097,24 +3071,15 @@ return;
         O resultado constitui uma
         extrapolação matemática e não
         uma medição experimental.`
-    )
-    :
-    (
-        idiomaAtual === "en"
-        ?
-        `The combination of density and age
-        lies within the experimental envelope.
-        The result, however, remains a
-        <strong>model prediction</strong>
-        and not a direct measurement.`
+
         :
+
         `A combinação de densidade e idade
         encontra-se dentro da envoltória
         experimental. O resultado,
         entretanto, continua sendo uma
         <strong>previsão do modelo</strong>
-        e não uma medição direta.`
-    );
+        e não uma medição direta.`;
 
 }
 
@@ -4349,46 +4314,28 @@ function resetarEnsaio(){
         "translateY(0px)";
 
 
-    $("estadoEnsaio").textContent =
-    idiomaAtual === "en"
-        ? "INITIAL STATE"
-        : "ESTADO INICIAL";
+    $("estadoEnsaio").textContent=
+        "ESTADO INICIAL";
 
 
     $("estadoEnsaio").className=
         "estadoEnsaio";
 
 
+    $("instrumentacao").innerHTML=
 
-    $("estadoEnsaio").textContent =
-    idiomaAtual === "en"
-        ? "INITIAL STATE"
-        : "ESTADO INICIAL";
-
-$("estadoEnsaio").className =
-    "estadoEnsaio";
-
-$("instrumentacao").innerHTML =
-    idiomaAtual === "en"
-        ?
-        "<strong>VIRTUAL INSTRUMENTATION</strong>"
-        +
-        "<br><br>"
-        +
-        "Initial state."
-        :
         "<strong>PAINEL DE INSTRUMENTAÇÃO</strong>"
         +
         "<br><br>"
         +
         "Estado inicial.";
 
-$("statusGraficoSE").textContent =
-    idiomaAtual === "en"
-        ? "Waiting for test."
-        : "Aguardando ensaio.";
 
-desenharEixosSE();
+    $("statusGraficoSE").textContent=
+        "Aguardando ensaio.";
+
+
+    desenharEixosSE();
 
 }
 
@@ -5221,47 +5168,22 @@ $("botaoCarga")
         `;
 
 
-        $("statusGraficoSE").textContent =
+        $("statusGraficoSE").textContent=
 
-    curva.rompe
+            curva.rompe
 
-    ?
+            ?
 
-    (
-        idiomaAtual === "en"
+            `A tensão solicitada ultrapassa o limite de resistência.
+            A curva foi interrompida em
+            f₍c₎=${fmt(fonte.fc)} MPa.
+            O comportamento pós-pico não é modelado.`
 
-        ?
+            :
 
-        `The applied stress exceeds the strength limit.
-The curve was interrupted at
-f(c)=${fmt(fonte.fc)} MPa.
-Post-peak behavior is not modeled.`
-
-        :
-
-        `A tensão solicitada ultrapassa o limite de resistência.
-A curva foi interrompida em
-f(c)=${fmt(fonte.fc)} MPa.
-O comportamento pós-pico não é modelado.`
-    )
-
-    :
-
-    (
-        idiomaAtual === "en"
-
-        ?
-
-        `Simplified linear elastic curve using
-E=${fmt(fonte.E)} GPa
-(${fonte.origem}).`
-
-        :
-
-        `Curva elástica linear simplificada utilizando
-E=${fmt(fonte.E)} GPa
-(${fonte.origem}).`
-    );
+            `Curva elástica linear simplificada utilizando
+            E=${fmt(fonte.E)} GPa
+            (${fonte.origem}).`;
 
     }
 
@@ -5272,491 +5194,25 @@ E=${fmt(fonte.E)} GPa
 /* =========================================================
    INICIALIZAÇÃO
 ========================================================= */
+
 atualizarSistemaCompleto();
 
 desenharEixosSE();
 
-console.log(
-    "CONCRETO CELULAR XR — V1.2"
-);
 
 console.log(
-    "V1.2 — Interface científica bilíngue PT / EN."
-);
 
-
-/* =========================================================
-   V1.2-A
-   MOTOR BILÍNGUE PT / EN
-   CABEÇALHO E PARÂMETROS
-
-   IMPORTANTE:
-   Esta rotina altera apenas textos da interface.
-   Nenhum dado experimental, equação ou cálculo é modificado.
-========================================================= */
-
-var idiomaAtual = "pt";
-
-
-const textosV12 = {
-
-    pt: {
-
-        titulo:
-            "MODELO CONSTITUTIVO DO CONCRETO CELULAR",
-
-        disciplina:
-            "Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade",
-
-        subtitulo:
-            "Limite de resistência e ruptura virtual — V1.2",
-
-        parametros:
-            "Parâmetros do material",
-
-        modoDidatico:
-            "MODO DIDÁTICO",
-
-        modoExperimental:
-            "MODO EXPERIMENTAL",
-
-        densidade:
-            "Densidade ρ",
-
-        idade:
-            "Idade de cura t",
-
-        carga:
-            "Carga aplicada P",
-
-        relacoes:
-            "Relações constitutivas em investigação",relacoes:
-    "Relações constitutivas em investigação",
-
-ensaioVirtual:
-    "Ensaio Virtual",
-
-estadoInicial:
-    "Estado inicial",
-
-aplicarCarga:
-    "Aplicar carga",
-
-reiniciar:
-    "Reiniciar",
-
-instrumentacao:
-    "Instrumentação virtual",
-
-bancoExperimental:
-    "Banco experimental",
-
-descricaoBanco:
-    "Os quatro ensaios iniciais permanecem pré-carregados. O resultado correspondente a 56 dias é preservado exatamente como informado e identificado separadamente por ultrapassar a faixa temporal principal anteriormente adotada de 54 dias.",
-
-bancoDensidade:
-    "Densidade (kg/m³)",
-
-bancoIdade:
-    "Idade (dias)",
-
-bancoFc:
-    "fc (MPa)",
-
-bancoE:
-    "E (GPa)",
-
-btnAdicionarEnsaio:
-    "ADICIONAR / ATUALIZAR ENSAIO",
-
-btnRestaurarEnsaios:
-    "RESTAURAR 4 ENSAIOS INICIAIS",
-
-btnLimparBanco:
-    "LIMPAR BANCO",
-
-leituraExperimental:
-    "Leitura Experimental e Limitações do Conjunto de Dados",
-
-ensaios:
-    "Ensaios",
-
-densidadesDistintas:
-    "Densidades distintas",
-
-idadesDistintas:
-    "Idades distintas",
-
-grausLiberdade:
-    "Graus de liberdade do ajuste",
-
-modeloConstitutivo:
-    "Modelo Constitutivo Exploratório",
-
-resistenciaCompressao:
-    "Resistência à compressão",
-
-moduloElasticidade:
-    "Módulo de elasticidade",
-
-ajusteExploratorio:
-    "Trata-se de um ajuste linear aditivo e exploratório.",
-
-resultadosExperimentais:
-    "Resultados Experimentais",
-
-graficoFc:
-    "Densidade × resistência à compressão.",
-
-graficoE:
-    "Densidade × módulo de elasticidade.",
-
-curvaTensaoDeformacao:
-    "Curva Tensão × Deformação do Ensaio Virtual",
-
-aguardandoEnsaio:
-    "Aguardando ensaio.",
-
-limiteFc:
-    "Limite de resistência f(c).",
-
-interrupcao:
-    "Se a tensão solicitada ultrapassar f(c), a V1.2.1 interrompe a curva nesse ponto.",
-
-posPico:
-    "O comportamento pós-pico não é modelado nesta versão."
-
-    },
-
-
-    en: {
-
-        titulo:
-            "CONSTITUTIVE MODEL OF CELLULAR CONCRETE",
-
-        disciplina:
-            "Fundamentals of Solid Mechanics and Theory of Elasticity",
-
-        subtitulo:
-            "Strength limit and virtual failure — V1.2",
-
-        parametros:
-            "Material Parameters",
-
-        modoDidatico:
-            "EDUCATIONAL MODE",
-
-        modoExperimental:
-            "EXPERIMENTAL MODE",
-
-        densidade:
-            "Density ρ",
-
-        idade:
-            "Curing age t",
-
-        carga:
-            "Applied load P",
-
-        relacoes:
-            "Constitutive relationships under investigation", relacoes:
-    "Constitutive relationships under investigation",
-
-ensaioVirtual:
-    "Virtual Test",
-
-estadoInicial:
-    "Initial state",
-
-aplicarCarga:
-    "Apply load",
-
-reiniciar:
-    "Reset",
-
-instrumentacao:
-    "Virtual instrumentation",
-
-bancoExperimental:
-    "Experimental database",
-
-    descricaoBanco:
-    "The four initial tests remain preloaded. The result corresponding to 56 days is preserved exactly as reported and identified separately because it exceeds the previously adopted main temporal range of 54 days.",
-
-bancoDensidade:
-    "Density (kg/m³)",
-
-bancoIdade:
-    "Age (days)",
-
-bancoFc:
-    "fc (MPa)",
-
-bancoE:
-    "E (GPa)",
-
-btnAdicionarEnsaio:
-    "ADD / UPDATE TEST",
-
-btnRestaurarEnsaios:
-    "RESTORE 4 INITIAL TESTS",
-
-btnLimparBanco:
-    "CLEAR DATABASE",
-
-leituraExperimental:
-    "Experimental Data Interpretation and Dataset Limitations",
-
-ensaios:
-    "Tests",
-
-densidadesDistintas:
-    "Different densities",
-
-idadesDistintas:
-    "Different curing ages",
-
-grausLiberdade:
-    "Degrees of freedom of the fit",
-
-modeloConstitutivo:
-    "Exploratory Constitutive Model",
-
-resistenciaCompressao:
-    "Compressive strength",
-
-moduloElasticidade:
-    "Elastic modulus",
-
-ajusteExploratorio:
-    "This is an exploratory additive linear fit.",
-
-resultadosExperimentais:
-    "Experimental Results",
-
-graficoFc:
-    "Density × compressive strength.",
-
-graficoE:
-    "Density × elastic modulus.",
-
-curvaTensaoDeformacao:
-    "Stress × Strain Curve of the Virtual Test",
-
-aguardandoEnsaio:
-    "Waiting for test.",
-
-limiteFc:
-    "Strength limit f(c).",
-
-interrupcao:
-    "If the applied stress exceeds f(c), V1.2.1 stops the curve at this point.",
-
-posPico:
-    "Post-peak behavior is not modeled in this version."
-
-    }
-
-};
-
-
-function aplicarIdiomaV12(){
-
-    const T =
-        textosV12[idiomaAtual];
-
-
-    $("txtTitulo").textContent =
-        T.titulo;
-
-
-    $("txtDisciplina").textContent =
-        T.disciplina;
-
-
-    $("txtSubtitulo").textContent =
-        T.subtitulo;
-
-     $("txtEstadoInicialPainel").textContent =
-    idiomaAtual === "en"
-        ? "Initial state."
-        : "Estado inicial.";   
-
-
-    $("txtParametros").textContent =
-        T.parametros;
-
-
-    $("txtModoDidatico").textContent =
-        T.modoDidatico;
-
-
-    $("txtModoExperimental").textContent =
-        T.modoExperimental;
-
-
-    $("txtDensidade").textContent =
-        T.densidade;
-
-
-    $("txtIdade").textContent =
-        T.idade;
-
-
-    $("txtCarga").textContent =
-        T.carga;
-
-
-    $("txtRelacoes").textContent =
-        T.relacoes;
-
-
-    $("btnPT").classList.toggle(
-        "idioma-ativo",
-        idiomaAtual === "pt"
-    );
-
-
-    $("btnEN").classList.toggle(
-        "idioma-ativo",
-        idiomaAtual === "en"
-    );
-
-
-    document.documentElement.lang =
-        idiomaAtual === "pt"
-        ? "pt-BR"
-        : "en";
-
-$("txtEnsaioVirtual").textContent =
-    T.ensaioVirtual;
-
-$("txtEstadoInicial").textContent =
-    T.estadoInicial;
-
-$("txtAplicarCarga").textContent =
-    T.aplicarCarga;
-
-$("txtReiniciar").textContent =
-    T.reiniciar;
-
-$("txtPainelInstrumentacao").textContent =
-    T.instrumentacao;
-
-$("txtBancoExperimental").textContent =
-    T.bancoExperimental;
-$("txtDescricaoBanco").textContent =
-    T.descricaoBanco;
-
-$("txtBancoDensidade").textContent =
-    T.bancoDensidade;
-
-$("txtBancoIdade").textContent =
-    T.bancoIdade;
-
-$("txtBancoFc").textContent =
-    T.bancoFc;
-
-$("txtBancoE").textContent =
-    T.bancoE;
-
-$("btnAdicionarEnsaio").textContent =
-    T.btnAdicionarEnsaio;
-
-$("btnRestaurarEnsaios").textContent =
-    T.btnRestaurarEnsaios;
-
-$("btnLimparBanco").textContent =
-    T.btnLimparBanco;
-$("txtLeituraExperimental").textContent =
-    T.leituraExperimental;
-
-$("txtMatrizEnsaios").textContent =
-    T.ensaios;
-
-$("txtMatrizDensidades").textContent =
-    T.densidadesDistintas;
-
-$("txtMatrizIdades").textContent =
-    T.idadesDistintas;
-
-$("txtMatrizGrausLiberdade").textContent =
-    T.grausLiberdade;
-
-$("txtModeloConstitutivo").textContent =
-    T.modeloConstitutivo;
-
-$("txtModeloResistencia").textContent =
-    T.resistenciaCompressao;
-
-$("txtModeloElasticidade").textContent =
-    T.moduloElasticidade;
-
-$("txtAjusteExploratorio").textContent =
-    T.ajusteExploratorio;
-
-$("txtResultadosExperimentais").textContent =
-    T.resultadosExperimentais;
-
-$("txtTituloCurvaSE").textContent =
-    T.curvaTensaoDeformacao;
-
-$("txtLegendaLimiteFc").textContent =
-    T.limiteFc;
-
-$("txtLegendaInterrupcao").textContent =
-    T.interrupcao;
-
-$("txtLegendaPosPico").textContent =
-    T.posPico;
-
-atualizarResultados();}
-
-/* =========================================================
-   BOTÃO PORTUGUÊS
-========================================================= */
-
-$("btnPT").addEventListener(
-
-    "click",
-
-    ()=>{
-
-        idiomaAtual =
-            "pt";
-
-        aplicarIdiomaV12();
-
-    }
+    "CONCRETO CELULAR XR — V1.1.1"
 
 );
 
 
-/* =========================================================
-   BOTÃO INGLÊS
-========================================================= */
+console.log(
 
-$("btnEN").addEventListener(
-
-    "click",
-
-    ()=>{
-
-        idiomaAtual =
-            "en";
-
-        aplicarIdiomaV12();
-
-    }
+    "Revisão científica da terminologia em português."
 
 );
 
-
-/* =========================================================
-   ATIVA PORTUGUÊS AO CARREGAR
-========================================================= */
-
-aplicarIdiomaV12();
 
 </script>
 
