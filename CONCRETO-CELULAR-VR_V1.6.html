@@ -5896,24 +5896,120 @@ aplicarIdiomaV12();
         position="2 4 2">
     </a-entity>
 
-    <!-- PISO -->
-    <a-plane
-        position="0 0 -3"
-        rotation="-90 0 0"
-        width="12"
-        height="12"
-        color="#6f7478">
-    </a-plane>
+    <!-- =====================================================
+     AMBIENTE DO LABORATÓRIO - V1.6
+     ===================================================== -->
 
-    <!-- PAREDE DE FUNDO -->
-    <a-plane
-        position="0 2 -6"
-        width="12"
-        height="4"
-        color="#d9dde0">
-    </a-plane>
+<!-- PISO INDUSTRIAL -->
+<a-plane
+    position="0 0 -3"
+    rotation="-90 0 0"
+    width="14"
+    height="14"
+    color="#8d9499"
+    material="roughness: 0.85; metalness: 0.05">
+</a-plane>
 
-    <!-- ===============================
+<!-- FAIXA CENTRAL DO PISO -->
+<a-plane
+    position="0 0.006 -3"
+    rotation="-90 0 0"
+    width="4.5"
+    height="12"
+    color="#747c82"
+    material="roughness: 0.9">
+</a-plane>
+
+<!-- PAREDE DE FUNDO -->
+<a-plane
+    position="0 3 -8"
+    width="14"
+    height="6"
+    color="#d8d8d4"
+    material="roughness: 0.9">
+</a-plane>
+
+<!-- RODAPE DA PAREDE DE FUNDO -->
+<a-box
+    position="0 0.18 -7.94"
+    width="14"
+    height="0.36"
+    depth="0.10"
+    color="#555d63"
+    material="roughness: 0.75">
+</a-box>
+
+<!-- FAIXA TECNICA NA PAREDE -->
+<a-box
+    position="0 1.05 -7.93"
+    width="14"
+    height="0.10"
+    depth="0.04"
+    color="#68737b">
+</a-box>
+ 
+<!-- =====================================================
+     PAREDES LATERAIS DO LABORATORIO
+     ===================================================== -->
+
+<!-- PAREDE LATERAL ESQUERDA -->
+<a-plane
+    position="-7 3 -3"
+    rotation="0 90 0"
+    width="10"
+    height="6"
+    color="#e1e1dd"
+    material="roughness: 0.92">
+</a-plane>
+
+<!-- PAREDE LATERAL DIREITA -->
+<a-plane
+    position="7 3 -3"
+    rotation="0 -90 0"
+    width="10"
+    height="6"
+    color="#e1e1dd"
+    material="roughness: 0.92">
+</a-plane>
+
+<!-- TETO -->
+<a-plane
+    position="0 6 -3"
+    rotation="90 0 0"
+    width="14"
+    height="10"
+    color="#edede8"
+    material="roughness: 0.95">
+</a-plane>
+
+<!-- LUMINARIA LED ESQUERDA -->
+<a-box
+    position="-2.3 5.88 -3"
+    width="2.2"
+    height="0.06"
+    depth="0.45"
+    color="#ffffff"
+    material="emissive: #ffffff; emissiveIntensity: 0.8">
+</a-box>
+
+<!-- LUMINARIA LED DIREITA -->
+<a-box
+    position="2.3 5.88 -3"
+    width="2.2"
+    height="0.06"
+    depth="0.45"
+    color="#ffffff"
+    material="emissive: #ffffff; emissiveIntensity: 0.8">
+</a-box>
+
+<!-- LUZ PRINCIPAL DO LABORATORIO -->
+<a-entity
+    light="type: point; intensity: 0.8; distance: 14; decay: 1.5"
+    position="0 5.5 -3">
+</a-entity>
+
+
+<!-- ===============================
          PRENSA DE COMPRESSÃO
          =============================== -->
 
@@ -5966,14 +6062,7 @@ aplicarIdiomaV12();
         align="center">
     </a-text>
 
-    <!-- IDENTIFICACAO TECNICA -->
-    <a-text
-        value="CONCRETO CELULAR"
-        position="0 2.73 0.287"
-        width="2.2"
-        color="#d9e2e8"
-        align="center">
-    </a-text>
+    <!-- ID
 
     <!-- PISTAO HIDRAULICO -->
     <a-cylinder
