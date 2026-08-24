@@ -1,0 +1,6118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+Concreto Celular XR - Engenheiro Javier Sanabria
+</title>
+
+
+<style>
+
+*{
+    box-sizing:border-box
+}
+
+html{
+    scroll-behavior:smooth
+}
+
+body{
+
+    margin:0;
+
+    font-family:Arial,sans-serif;
+
+    background:#0e1821;
+
+    color:#fff
+}
+
+
+header{
+
+    text-align:center;
+
+    padding:34px 20px 18px
+}
+
+
+header h1{
+
+    margin:0;
+
+    font-size:30px
+}
+
+
+header h2{
+
+    margin:8px 0 5px;
+
+    font-size:17px;
+
+    font-weight:normal;
+
+    color:#b9c5ce
+}
+
+
+.autor{
+
+    margin-top:8px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#79c9ff
+}
+
+
+.subtitulo{
+
+    margin-top:5px;
+
+    color:#8ea1af
+}
+
+
+.container{
+
+    max-width:1320px;
+
+    margin:auto;
+
+    padding:18px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px
+}
+
+
+.card{
+
+    background:#1b2a36;
+
+    border-radius:16px;
+
+    padding:22px
+}
+
+
+.card h2{
+
+    margin-top:0;
+
+    text-align:center
+}
+
+
+.full{
+
+    grid-column:1/-1
+}
+
+
+.controle{
+
+    margin:20px 0
+}
+
+
+.controle label{
+
+    display:block;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    margin-bottom:8px
+}
+
+
+input[type=range]{
+
+    width:100%
+}
+
+
+input[type=number]{
+
+    width:100%;
+
+    padding:9px;
+
+    border-radius:7px;
+
+    border:1px solid #456076;
+
+    background:#0f1c26;
+
+    color:#fff;
+
+    font-size:14px
+}
+
+
+.valor{
+
+    text-align:center;
+
+    font-size:23px;
+
+    font-weight:bold;
+
+    margin-top:7px
+}
+
+
+.modo,
+.acoes{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:9px;
+
+    flex-wrap:wrap
+}
+
+
+.modo{
+
+    margin-bottom:18px
+}
+
+
+button{
+
+    margin-top:16px;
+
+    background:#1686d9;
+
+    border:none;
+
+    color:#fff;
+
+    padding:12px 22px;
+
+    font-size:15px;
+
+    border-radius:8px;
+
+    cursor:pointer
+}
+
+
+button:hover{
+
+    background:#36a0ed
+}
+
+
+.modo button{
+
+    margin-top:0;
+
+    padding:9px 14px;
+
+    font-size:13px
+}
+
+
+.ativo{
+
+    outline:3px solid #79c9ff
+}
+
+
+.secundario{
+
+    background:#344b5e
+}
+
+
+.perigo{
+
+    background:#8d3540
+}
+
+
+.formulas,
+.resultados{
+
+    margin-top:18px;
+
+    background:#253b4c;
+
+    padding:14px;
+
+    border-radius:10px
+}
+
+
+.formulas{
+
+    text-align:center
+}
+
+
+.formula{
+
+    font-size:21px;
+
+    margin:7px
+}
+
+
+.resultados p{
+
+    margin:7px
+}
+
+
+.aviso{
+
+    margin-top:16px;
+
+    padding:11px;
+
+    border-left:4px solid #d9a441;
+
+    background:#17232c;
+
+    font-size:12px;
+
+    color:#cbd3d8;
+
+    line-height:1.5
+}
+
+
+.avisoCritico{
+
+    border-left-color:#d95d5d;
+
+    background:#2b1c20
+}
+
+
+.selo{
+
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    border:1px solid #36556b;
+
+    background:#253b4c
+}
+
+
+.selo.exato{
+
+    color:#a7e3b4;
+
+    border-color:#4f8a5b;
+
+    background:#243a2b
+}
+
+
+.selo.interp{
+
+    color:#79c9ff;
+
+    border-color:#1686d9;
+
+    background:#17374a
+}
+
+
+.selo.extra{
+
+    color:#ffd28c;
+
+    border-color:#b67a20;
+
+    background:#3b2b16
+}
+
+
+/* =========================================================
+   REPRESENTAÇÃO VISUAL DA PRENSA
+========================================================= */
+
+.prensa{
+
+    position:relative;
+
+    height:430px;
+
+    margin-top:8px;
+
+    background:#111b23;
+
+    border-radius:12px;
+
+    overflow:hidden
+}
+
+
+.coluna{
+
+    position:absolute;
+
+    width:28px;
+
+    height:335px;
+
+    top:35px;
+
+    background:linear-gradient(
+        90deg,
+        #586570,
+        #aeb7bd,
+        #586570
+    )
+}
+
+
+.coluna.esquerda{
+
+    left:65px
+}
+
+
+.coluna.direita{
+
+    right:65px
+}
+
+
+.travessa{
+
+    position:absolute;
+
+    height:35px;
+
+    left:55px;
+
+    right:55px;
+
+    top:25px;
+
+    background:#77838c;
+
+    border-radius:5px
+}
+
+
+.pistao{
+
+    position:absolute;
+
+    width:70px;
+
+    height:70px;
+
+    top:60px;
+
+    left:calc(50% - 35px);
+
+    background:#a9b3ba;
+
+    transition:transform .25s linear
+}
+
+
+.pratoSuperior{
+
+    position:absolute;
+
+    width:150px;
+
+    height:18px;
+
+    top:125px;
+
+    left:calc(50% - 75px);
+
+    background:#8c989f;
+
+    transition:transform .25s linear
+}
+
+
+.corpo{
+
+    position:absolute;
+
+    width:110px;
+
+    height:170px;
+
+    left:calc(50% - 55px);
+
+    top:145px;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #55616a 0 4px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 70% 30%,
+            #59656d 0 6px,
+            transparent 7px
+        ),
+
+        radial-gradient(
+            circle at 40% 60%,
+            #56616a 0 5px,
+            transparent 6px
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            #59646c 0 4px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 35% 82%,
+            #626d74 0 3px,
+            transparent 4px
+        ),
+
+        #b9c0c4;
+
+    border-radius:55px/18px;
+
+    border:2px solid #d7dcdf;
+
+    transition:
+        height .25s linear,
+        top .25s linear,
+        width .25s linear,
+        left .25s linear,
+        filter .4s,
+        box-shadow .25s
+}
+
+
+.corpo::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:calc(100% - 4px);
+
+    height:25px;
+
+    left:2px;
+
+    top:-2px;
+
+    border-radius:50%;
+
+    background:#d3d7da
+}
+
+
+.corpo.ruptura{
+
+    box-shadow:
+
+        0 0 0 4px rgba(255,86,86,.45),
+
+        0 0 24px rgba(255,86,86,.45)
+}
+
+
+.base{
+
+    position:absolute;
+
+    width:200px;
+
+    height:30px;
+
+    bottom:55px;
+
+    left:calc(50% - 100px);
+
+    background:#77838c
+}
+
+
+.setaCarga{
+
+    position:absolute;
+
+    top:72px;
+
+    left:calc(50% + 100px);
+
+    font-size:38px
+}
+
+
+.textoCarga{
+
+    position:absolute;
+
+    top:80px;
+
+    left:calc(50% + 140px);
+
+    font-size:18px
+}
+
+
+.estadoEnsaio{
+
+    display:inline-block;
+
+    margin-top:12px;
+
+    padding:7px 13px;
+
+    border-radius:999px;
+
+    background:#253b4c;
+
+    border:1px solid #36556b;
+
+    font-size:12px;
+
+    font-weight:bold
+}
+
+
+.concluido{
+
+    background:#243a2b;
+
+    color:#a7e3b4
+}
+
+
+.rupturaEstado{
+
+    background:#4a2020;
+
+    color:#ffb3b3;
+
+    border-color:#a94444
+}
+
+
+.instrumentacao{
+
+    margin-top:14px;
+
+    background:#172734;
+
+    border:1px solid #36556b;
+
+    border-radius:10px;
+
+    padding:16px 18px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    line-height:1.55
+}
+
+
+.instrumentacao strong{
+
+    color:#79c9ff
+}
+
+
+.gradeEntrada{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px
+}
+
+
+.gradeEntrada label{
+
+    font-size:12px;
+
+    color:#b9c5ce
+}
+
+
+.tabelaWrap{
+
+    margin-top:18px;
+
+    overflow:auto
+}
+
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#172734
+}
+
+
+th,
+td{
+
+    padding:9px;
+
+    border:1px solid #36556b;
+
+    text-align:center
+}
+
+
+th{
+
+    background:#253b4c;
+
+    color:#79c9ff
+}
+
+
+.botaoExcluir{
+
+    padding:6px 10px;
+
+    font-size:12px;
+
+    margin:0;
+
+    background:#8d3540
+}
+
+
+.contador{
+
+    margin-top:10px;
+
+    font-size:13px;
+
+    color:#b9c5ce
+}
+
+
+.modelo-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px
+}
+
+
+.modelo-box{
+
+    background:#172734;
+
+    border:1px solid #36556b;
+
+    border-radius:10px;
+
+    padding:15px
+}
+
+
+.equacao{
+
+    font-size:16px;
+
+    color:#79c9ff;
+
+    margin:8px 0;
+
+    word-break:break-word
+}
+
+
+.metricas{
+
+    line-height:1.6
+}
+
+
+.interpretacao{
+
+    background:#101c25;
+
+    border:1px solid #36556b;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    line-height:1.55
+}
+
+
+.matriz{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+
+    margin-top:12px
+}
+
+
+.matriz .item{
+
+    background:#172734;
+
+    border:1px solid #36556b;
+
+    border-radius:8px;
+
+    padding:10px;
+
+    text-align:center
+}
+
+
+.matriz .v{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#79c9ff
+}
+
+
+.graficos-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px
+}
+
+
+.grafico-container{
+
+    background:#111b23;
+
+    border-radius:12px;
+
+    padding:15px
+}
+
+
+canvas{
+
+    width:100%;
+
+    height:320px;
+
+    background:#fff;
+
+    border-radius:8px;
+
+    display:block
+}
+
+
+.statusGrafico{
+
+    text-align:center;
+
+    color:#79c9ff;
+
+    margin-top:9px;
+
+    font-size:13px
+}
+
+
+.legendaRuptura{
+
+    margin-top:12px;
+
+    padding:10px;
+
+    background:#172734;
+
+    border:1px solid #36556b;
+
+    border-radius:8px;
+
+    font-size:12px;
+
+    line-height:1.5
+}
+
+
+.pontoAzul,
+.pontoVermelho{
+
+    display:inline-block;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    margin-right:6px
+}
+
+
+.pontoAzul{
+
+    background:#1686d9
+}
+
+
+.pontoVermelho{
+
+    background:#d93636
+}
+
+
+@media(max-width:900px){
+
+    .container{
+
+        grid-template-columns:1fr
+    }
+
+    .full{
+
+        grid-column:auto
+    }
+
+    .gradeEntrada,
+    .modelo-grid,
+    .graficos-grid,
+    .matriz{
+
+        grid-template-columns:1fr 1fr
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+<h1 id="txtTitulo">
+MODELO CONSTITUTIVO DO CONCRETO CELULAR
+</h1>
+
+<h2 id="txtDisciplina">
+Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade
+</h2>
+
+<div class="autor">
+Engenheiro Javier Sanabria
+</div>
+
+<div class="subtitulo">
+L<span id="txtSubtitulo">
+    Limite de resistência e ruptura virtual — V1.2
+</span>
+</div>
+<!-- =====================================================
+     V1.2 — SELETOR DE IDIOMA PT / EN
+===================================================== -->
+
+<div class="seletor-idioma">
+    <button id="btnPT" class="idioma-ativo" type="button">
+        PT
+    </button>
+
+    <span class="separador-idioma">|</span>
+
+    <button id="btnEN" type="button">
+        EN
+    </button>
+</div>
+</header>
+
+
+<div class="container">
+
+
+<!-- ======================================================
+     PARÂMETROS DO MATERIAL
+====================================================== -->
+
+<section class="card">
+
+<h2 id="txtParametros">
+Parâmetros do material
+</h2>
+
+
+<div class="modo">
+
+<button
+    id="modoDidatico"
+    class="ativo"
+>
+<span id="txtModoDidatico">MODO DIDÁTICO</span>
+</button>
+
+<button id="modoExperimental">
+<span id="txtModoExperimental">MODO EXPERIMENTAL</span>
+</button>
+
+</div>
+
+
+<div class="controle">
+
+<label id="txtDensidade">
+Densidade ρ
+</label>
+<input
+    type="range"
+    id="densidade"
+    min="450"
+    max="800"
+    step="10"
+    value="600"
+>
+
+<div class="valor">
+
+<span id="valorDensidade">
+600
+</span>
+
+kg/m³
+
+</div>
+
+</div>
+
+
+<div class="controle">
+
+<label id="txtIdade">
+    Idade de cura t
+</label>
+
+<input
+    type="range"
+    id="idade"
+    min="1"
+    max="56"
+    step="1"
+    value="28"
+>
+
+<div class="valor">
+
+<span id="valorIdade">
+28
+</span>
+
+dias
+
+</div>
+
+</div>
+
+
+<div class="controle">
+
+<label id="txtCarga">
+    Carga aplicada P
+</label>
+
+<input
+    type="range"
+    id="carga"
+    min="0"
+    max="100"
+    step="5"
+    value="50"
+>
+
+<div class="valor">
+
+<span id="valorCarga">
+50
+</span>
+
+kN
+
+</div>
+
+</div>
+
+
+<div class="formulas">
+
+<h3 id="txtRelacoes">
+    Relações constitutivas em investigação
+</h3>
+
+<div class="formula">
+f<sub>c</sub> = F(ρ,t)
+</div>
+
+<div class="formula">
+E = G(ρ,t)
+</div>
+
+</div>
+
+
+<div class="resultados">
+
+<p>
+<strong>Densidade:</strong>
+<span id="rDensidade">600</span>
+kg/m³
+</p>
+
+<p>
+<strong>Idade:</strong>
+<span id="rIdade">28</span>
+dias
+</p>
+
+<p>
+<strong>f<sub>c</sub>:</strong>
+<span id="rFc">—</span>
+</p>
+
+<p>
+<strong>E:</strong>
+<span id="rE">—</span>
+</p>
+
+<p>
+<strong><span id="txtOrigemResultado">Origem do resultado:</span></strong>
+<span id="rOrigem">modo didático</span>
+</p>
+
+<p>
+<span
+    id="seloOrigem"
+    class="selo"
+>
+DIDÁTICO
+</span>
+</p>
+
+</div>
+
+
+<div
+    id="avisoModo"
+    class="aviso"
+>
+    <span id="txtAvisoModo">
+        Modo didático ativo.<br>
+        Nenhum resultado experimental é estimado neste modo.
+    </span>
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     ENSAIO VIRTUAL
+====================================================== -->
+
+<section class="card">
+
+<h2 id="txtEnsaioVirtual">
+Ensaio Virtual de Compressão
+</h2>
+
+
+<div class="prensa">
+
+<div class="travessa"></div>
+
+<div class="coluna esquerda"></div>
+
+<div class="coluna direita"></div>
+
+<div
+    class="pistao"
+    id="pistao"
+></div>
+
+<div
+    class="pratoSuperior"
+    id="pratoSuperior"
+></div>
+
+<div class="setaCarga">
+↓
+</div>
+
+<div class="textoCarga">
+P
+</div>
+
+<div
+    class="corpo"
+    id="corpo"
+></div>
+
+<div class="base"></div>
+
+</div>
+
+
+<div
+    class="estadoEnsaio"
+>
+    <span id="txtEstadoInicial">ESTADO INICIAL</span>
+</div>
+
+
+<div class="acoes">
+
+<button id="botaoCarga">
+    <span id="txtAplicarCarga">APLICAR CARGA</span>
+</button>
+
+<button
+    id="botaoReset"
+    class="secundario"
+>
+    <span id="txtReiniciar">REINICIAR</span>
+</button>
+
+</div>
+
+
+<div
+    id="instrumentacao"
+    class="instrumentacao"
+>
+
+<strong>
+    <span id="txtPainelInstrumentacao">PAINEL DE INSTRUMENTAÇÃO</span>
+</strong>
+
+<br><br>
+
+<span id="txtEstadoInicialPainel">Estado inicial.</span>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     BANCO EXPERIMENTAL
+====================================================== -->
+
+<section class="card full">
+
+<h2 id="txtBancoExperimental">
+Banco de Dados Experimental
+</h2>
+
+<p id="txtDescricaoBanco">
+Os quatro ensaios iniciais permanecem pré-carregados.
+O resultado correspondente a 56 dias é preservado exatamente
+como informado e identificado separadamente por ultrapassar
+a faixa temporal principal anteriormente adotada de 54 dias.
+</p>
+
+
+<div class="gradeEntrada">
+
+
+<div>
+
+<label id="txtBancoDensidade">
+Densidade (kg/m³)
+</label>
+
+<input
+    type="number"
+    id="expDensidade"
+    min="450"
+    max="800"
+    value="600"
+>
+
+</div>
+
+
+<div>
+
+<label id="txtBancoIdade">
+Idade (dias)
+</label>
+
+<input
+    type="number"
+    id="expIdade"
+    min="1"
+    max="56"
+    value="28"
+>
+
+</div>
+
+
+<div>
+
+<label id="txtBancoFc">
+fc (MPa)
+</label>
+
+<input
+    type="number"
+    id="expFc"
+    step="0.001"
+    placeholder="valor medido"
+>
+
+</div>
+
+
+<div>
+
+<label id="txtBancoE">
+E (GPa)
+</label>
+
+<input
+    type="number"
+    id="expE"
+    step="0.001"
+    placeholder="valor medido"
+>
+
+</div>
+
+
+</div>
+
+
+<button id="adicionarEnsaio">
+    <span id="txtAdicionarEnsaio">ADICIONAR / ATUALIZAR ENSAIO</span>
+</button>
+
+<button
+    id="restaurarBase"
+    class="secundario"
+>
+    <span id="txtRestaurarBase">RESTAURAR 4 ENSAIOS INICIAIS</span>
+</button>
+
+<button
+    id="limparBanco"
+    class="perigo"
+>
+    <span id="txtLimparBanco">LIMPAR BANCO</span>
+</button>
+
+<div
+    id="contador"
+    class="contador"
+></div>
+
+
+<div class="tabelaWrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>#</th>
+
+    <th id="txtTabelaDensidade">Densidade</th>
+
+    <th id="txtTabelaIdade">Idade</th>
+
+    <th id="txtTabelaFc">f<sub>c</sub></th>
+
+    <th id="txtTabelaE">E</th>
+
+    <th id="txtTabelaObservacao">Observação</th>
+
+    <th id="txtTabelaAcao">Ação</th>
+
+</tr>
+
+</thead>
+
+<tbody id="corpoTabela"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     INTERPRETAÇÃO DOS DADOS
+====================================================== -->
+
+<section class="card full">
+
+<h2 id="txtLeituraExperimental">
+Leitura Experimental e Limitações do Conjunto de Dados
+</h2>
+
+<div
+    class="interpretacao"
+    id="interpretacao"
+></div>
+
+
+<div class="matriz">
+
+<div class="item">
+
+<div
+    class="v"
+    id="nEnsaios"
+>
+0
+</div>
+
+<div>
+    <span id="txtMatrizEnsaios">Ensaios</span>
+</div>
+
+</div>
+
+
+<div class="item">
+
+<div
+    class="v"
+    id="nDensidades"
+>
+0
+</div>
+
+<div>
+    <span id="txtMatrizDensidades">Densidades distintas</span>
+</div>
+
+</div>
+
+
+<div class="item">
+
+<div
+    class="v"
+    id="nIdades"
+>
+0
+</div>
+
+<div>
+    <span id="txtMatrizIdades">Idades distintas</span>
+</div>
+
+</div>
+
+
+<div class="item">
+
+<div
+    class="v"
+    id="grausLiberdade"
+>
+0
+</div>
+
+<div>
+    <span id="txtMatrizGrausLiberdade">Graus de liberdade do ajuste</span>
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     MODELO CONSTITUTIVO
+====================================================== -->
+
+<section class="card full">
+
+<h2 id="txtModeloConstitutivo">
+    Modelo Constitutivo Exploratório
+</h2>
+
+<div class="modelo-grid">
+
+
+<div class="modelo-box">
+
+<h3 id="txtModeloResistencia">
+    Resistência à compressão
+</h3>
+
+<div
+    class="equacao"
+    id="eqFc"
+>
+—
+</div>
+
+<div
+    class="metricas"
+    id="metFc"
+>
+—
+</div>
+
+</div>
+
+
+<div class="modelo-box">
+
+<h3 id="txtModeloElasticidade">
+    Módulo de elasticidade
+</h3>
+
+<div
+    class="equacao"
+    id="eqE"
+>
+—
+</div>
+
+<div
+    class="metricas"
+    id="metE"
+>
+—
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="aviso">
+
+<strong>
+    <span id="txtModeloMatematico">Modelo matemático empregado nesta etapa:</span>
+</strong>
+
+<br><br>
+
+y = β₀ + β₁xρ + β₂xt
+
+<br>
+
+xρ=(ρ−625)/175
+
+&nbsp; | &nbsp;
+
+xt=(t−28)/28
+
+<br><br>
+
+<span id="txtAjusteExploratorio">Trata-se de um ajuste linear aditivo e exploratório.</span>
+
+O termo de interação ρ·t ainda não é empregado devido
+ao número reduzido de ensaios disponíveis.
+
+Na V1.1.1, f₍c₎ é tratado como limite de resistência do
+ensaio virtual, sem extrapolar a resposta elástica para
+além desse ponto.
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     GRÁFICOS
+====================================================== -->
+
+<section class="card full">
+
+<h2 id="txtResultadosExperimentais">
+Resultados Experimentais
+</h2>
+
+
+<div class="graficos-grid">
+
+
+<div class="grafico-container">
+
+<canvas
+    id="graficoFc"
+    width="600"
+    height="340"
+></canvas>
+
+<div class="statusGrafico">
+    <span id="txtStatusGraficoFc">
+        Densidade × resistência à compressão.<br>
+        A idade de cura é indicada junto a cada ponto experimental.
+    </span>
+</div>
+
+</div>
+
+
+<div class="grafico-container">
+
+<canvas
+    id="graficoE"
+    width="600"
+    height="340"
+></canvas>
+
+<div class="statusGrafico">
+    <span id="txtStatusGraficoE">
+        Densidade × módulo de elasticidade.<br>
+        A idade de cura é indicada junto a cada ponto experimental.
+    </span>
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     CURVA TENSÃO DEFORMAÇÃO
+====================================================== -->
+
+<section class="card full">
+
+<h2 id="txtTituloCurvaSE">
+Curva Tensão × Deformação do Ensaio Virtual
+</h2>
+
+
+<div class="grafico-container">
+
+<canvas
+    id="graficoSE"
+    width="1150"
+    height="360"
+></canvas>
+
+
+<div
+    id="statusGraficoSE"
+    class="statusGrafico"
+>
+
+Aguardando ensaio.
+
+</div>
+
+
+<div class="legendaRuptura">
+
+<span class="pontoAzul"></span>
+
+<span id="txtLegendaElastica">Trecho elástico linear simplificado</span>
+
+&nbsp;&nbsp;
+
+<span class="pontoVermelho"></span>
+
+<span id="txtLegendaLimiteFc">
+    Limite de resistência f(c).
+</span>
+
+<br><br>
+
+<span id="txtLegendaInterrupcao">
+    Se a tensão solicitada ultrapassar f(c),
+    a V1.1.1 interrompe a curva nesse ponto.
+</span>
+
+<br><br>
+
+<span id="txtLegendaPosPico">
+    O comportamento pós-pico não é modelado nesta versão.
+</span>
+</div>
+
+
+</div>
+
+</section>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   FUNÇÕES BÁSICAS
+========================================================= */
+
+const $ =
+    id =>
+    document.getElementById(id);
+
+
+const fmt =
+    (v,n=3) =>
+    Number(v).toFixed(n);
+
+
+
+/* =========================================================
+   BASE EXPERIMENTAL INICIAL
+========================================================= */
+
+const DADOS_INICIAIS=[
+
+    {
+        id:1,
+        densidade:450,
+        idade:28,
+        fc:1.2,
+        E:1.0
+    },
+
+    {
+        id:2,
+        densidade:700,
+        idade:14,
+        fc:2.4,
+        E:2.5
+    },
+
+    {
+        id:3,
+        densidade:800,
+        idade:56,
+        fc:8.0,
+        E:8.3
+    },
+
+    {
+        id:4,
+        densidade:650,
+        idade:28,
+        fc:1.8,
+        E:2.1
+    }
+
+];
+
+
+const STORAGE_KEY =
+    "concretoCelularEnsaiosV11";
+
+
+let banco =
+    carregarBanco();
+
+
+let modoAtual =
+    "didatico";
+
+
+let modeloFc=null;
+
+let modeloE=null;
+
+
+
+function cloneBase(){
+
+    return DADOS_INICIAIS.map(
+        x=>({...x})
+    );
+
+}
+
+
+
+function carregarBanco(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+        if(!raw)
+            return cloneBase();
+
+        const x =
+            JSON.parse(raw);
+
+        return
+            Array.isArray(x)&&x.length
+            ? x
+            : cloneBase();
+
+    }
+
+    catch(e){
+
+        return cloneBase();
+
+    }
+
+}
+
+
+/*
+ATENÇÃO:
+A função acima será mantida com a mesma lógica da V1.1.
+Para evitar alteração funcional durante a revisão textual,
+utilizar a versão compacta original abaixo.
+*/
+
+function carregarBanco(){
+
+    try{
+
+        const raw=
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+        if(!raw)
+            return cloneBase();
+
+        const x=
+            JSON.parse(raw);
+
+        return Array.isArray(x)&&x.length
+            ? x
+            : cloneBase();
+
+    }
+
+    catch(e){
+
+        return cloneBase();
+
+    }
+
+}
+
+
+
+function salvarBanco(){
+
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify(banco)
+
+    );
+
+}
+
+
+
+/* =========================================================
+   OPERAÇÕES MATRICIAIS
+========================================================= */
+
+function matrizTransposta(X){
+
+    return X[0].map(
+
+        (_,i)=>
+        X.map(
+            r=>r[i]
+        )
+
+    );
+
+}
+
+
+
+function multiplicarMatrizes(A,B){
+
+    return A.map(
+
+        r=>
+
+        B[0].map(
+
+            (_,j)=>
+
+            r.reduce(
+
+                (s,v,k)=>
+                s+v*B[k][j],
+
+                0
+
+            )
+
+        )
+
+    );
+
+}
+
+
+
+function multiplicarMatrizVetor(A,v){
+
+    return A.map(
+
+        r=>
+
+        r.reduce(
+
+            (s,x,i)=>
+            s+x*v[i],
+
+            0
+
+        )
+
+    );
+
+}
+
+
+
+/* =========================================================
+   SOLUÇÃO DO SISTEMA LINEAR
+========================================================= */
+
+function resolverSistema(A,b){
+
+    const n=b.length;
+
+    const M=A.map(
+
+        (r,i)=>
+        [...r,b[i]]
+
+    );
+
+
+    for(let i=0;i<n;i++){
+
+        let p=i;
+
+        for(let k=i+1;k<n;k++){
+
+            if(
+                Math.abs(M[k][i])
+                >
+                Math.abs(M[p][i])
+            )
+
+                p=k;
+
+        }
+
+
+        [M[i],M[p]]=
+        [M[p],M[i]];
+
+
+        if(
+            Math.abs(M[i][i])
+            <
+            1e-10
+        )
+
+            return null;
+
+
+        for(let k=i+1;k<n;k++){
+
+            const f=
+                M[k][i]
+                /
+                M[i][i];
+
+
+            for(let j=i;j<=n;j++)
+
+                M[k][j]-=
+                    f*M[i][j];
+
+        }
+
+    }
+
+
+    const x=
+        Array(n).fill(0);
+
+
+    for(
+        let i=n-1;
+        i>=0;
+        i--
+    ){
+
+        let s=
+            M[i][n];
+
+
+        for(
+            let j=i+1;
+            j<n;
+            j++
+        )
+
+            s-=
+                M[i][j]
+                *
+                x[j];
+
+
+        x[i]=
+            s/M[i][i];
+
+    }
+
+
+    return x;
+
+}
+
+
+
+/* =========================================================
+   VARIÁVEIS NORMALIZADAS
+========================================================= */
+
+function features(p){
+
+    return [
+
+        1,
+
+        (
+            p.densidade
+            -
+            625
+        )
+        /
+        175,
+
+        (
+            p.idade
+            -
+            28
+        )
+        /
+        28
+
+    ];
+
+}
+
+
+
+/* =========================================================
+   AJUSTE EXPLORATÓRIO
+========================================================= */
+
+function ajustarMinimo(
+    chave,
+    dados
+){
+
+    if(
+        dados.length<3
+    )
+
+        return null;
+
+
+    const X=
+        dados.map(
+            features
+        );
+
+
+    const y=
+        dados.map(
+            p=>
+            Number(
+                p[chave]
+            )
+        );
+
+
+    const Xt=
+        matrizTransposta(X);
+
+
+    const beta=
+        resolverSistema(
+
+            multiplicarMatrizes(
+                Xt,
+                X
+            ),
+
+            multiplicarMatrizVetor(
+                Xt,
+                y
+            )
+
+        );
+
+
+    return beta
+        ?
+        {beta}
+        :
+        null;
+
+}
+
+
+
+function preverComBeta(
+    beta,
+    p
+){
+
+    return features(p).reduce(
+
+        (s,v,i)=>
+        s+v*beta[i],
+
+        0
+
+    );
+
+}
+
+
+
+function ajustar(
+    chave,
+    dados=banco
+){
+
+    if(
+        dados.length<4
+    )
+
+        return null;
+
+
+    const X=
+        dados.map(
+            features
+        );
+
+
+    const y=
+        dados.map(
+
+            p=>
+            Number(
+                p[chave]
+            )
+
+        );
+
+
+    const Xt=
+        matrizTransposta(X);
+
+
+    const beta=
+        resolverSistema(
+
+            multiplicarMatrizes(
+                Xt,
+                X
+            ),
+
+            multiplicarMatrizVetor(
+                Xt,
+                y
+            )
+
+        );
+
+
+    if(!beta)
+        return null;
+
+
+    const pred=
+        X.map(
+
+            r=>
+
+            r.reduce(
+
+                (s,v,i)=>
+                s+v*beta[i],
+
+                0
+
+            )
+
+        );
+
+
+    const media=
+
+        y.reduce(
+            (a,b)=>
+            a+b,
+            0
+        )
+        /
+        y.length;
+
+
+    const sse=
+
+        y.reduce(
+
+            (s,v,i)=>
+            s+
+            (
+                v-pred[i]
+            )**2,
+
+            0
+
+        );
+
+
+    const sst=
+
+        y.reduce(
+
+            (s,v)=>
+            s+
+            (
+                v-media
+            )**2,
+
+            0
+
+        );
+
+
+    const r2=
+
+        sst>0
+        ?
+        1-sse/sst
+        :
+        1;
+
+
+    const rmse=
+
+        Math.sqrt(
+            sse/y.length
+        );
+
+
+    const dof=
+
+        Math.max(
+            0,
+            y.length-beta.length
+        );
+
+
+    let erros=[];
+
+
+    for(
+        let i=0;
+        i<dados.length;
+        i++
+    ){
+
+        const treino=
+            dados.filter(
+                (_,j)=>
+                j!==i
+            );
+
+
+        const m=
+            ajustarMinimo(
+                chave,
+                treino
+            );
+
+
+        if(m){
+
+            const pv=
+                preverComBeta(
+                    m.beta,
+                    dados[i]
+                );
+
+
+            if(
+                Number.isFinite(pv)
+            )
+
+                erros.push(
+                    dados[i][chave]
+                    -
+                    pv
+                );
+
+        }
+
+    }
+
+
+    const rmseCV=
+
+        erros.length===dados.length
+
+        ?
+
+        Math.sqrt(
+
+            erros.reduce(
+
+                (s,e)=>
+                s+e*e,
+
+                0
+
+            )
+            /
+            erros.length
+
+        )
+
+        :
+
+        null;
+
+
+    return{
+
+        beta,
+
+        r2,
+
+        rmse,
+
+        rmseCV,
+
+        dof,
+
+        n:dados.length
+
+    };
+
+}
+
+
+
+function prever(
+    modelo,
+    rho,
+    t
+){
+
+    return modelo
+
+        ?
+
+        preverComBeta(
+
+            modelo.beta,
+
+            {
+                densidade:rho,
+                idade:t
+            }
+
+        )
+
+        :
+
+        null;
+
+}
+
+
+
+/* =========================================================
+   APRESENTAÇÃO DAS EQUAÇÕES E MÉTRICAS
+========================================================= */
+
+function equacao(
+    modelo,
+    unidade
+){
+
+    if(!modelo)
+
+        return
+        "Dados insuficientes para o ajuste.";
+
+
+    const b=
+        modelo.beta;
+
+
+    const sinal=
+        v=>
+        `${v>=0?"+":"−"} ${Math.abs(v).toFixed(4)}`;
+
+
+    return
+
+        `y = ${b[0].toFixed(4)} `
+
+        +
+
+        `${sinal(b[1])}·xρ `
+
+        +
+
+        `${sinal(b[2])}·xt `
+
+        +
+
+        `(${unidade})`;
+
+}
+
+
+
+function metricasHTML(
+    m,
+    u
+){
+
+    if(!m)
+
+        return
+        "Dados insuficientes ou matriz singular.";
+
+
+    const cv=
+
+        m.rmseCV===null
+
+        ?
+
+        "não disponível"
+
+        :
+
+        `${fmt(m.rmseCV,4)} ${u}`;
+
+
+    return`
+
+R² descritivo =
+<strong>
+${fmt(m.r2,4)}
+</strong>
+
+<br>
+
+RMSE do ajuste =
+<strong>
+${fmt(m.rmse,4)} ${u}
+</strong>
+
+<br>
+
+RMSE de validação leave-one-out =
+<strong>
+${cv}
+</strong>
+
+<br>
+
+n = ${m.n}
+
+<br>
+
+graus de liberdade residuais =
+${m.dof}
+
+`;
+
+}
+
+
+
+function atualizarModelos(){
+
+    modeloFc=
+        ajustar("fc");
+
+    modeloE=
+        ajustar("E");
+
+
+    $("eqFc").textContent=
+        equacao(
+            modeloFc,
+            "MPa"
+        );
+
+
+    $("eqE").textContent=
+        equacao(
+            modeloE,
+            "GPa"
+        );
+
+
+    $("metFc").innerHTML=
+        metricasHTML(
+            modeloFc,
+            "MPa"
+        );
+
+
+    $("metE").innerHTML=
+        metricasHTML(
+            modeloE,
+            "GPa"
+        );
+
+}
+
+
+
+/* =========================================================
+   ENVOLTÓRIA EXPERIMENTAL
+========================================================= */
+
+function convexHull(points){
+
+    const pts=
+        [...points].sort(
+
+            (a,b)=>
+            a.x-b.x
+            ||
+            a.y-b.y
+
+        );
+
+
+    if(
+        pts.length<=2
+    )
+
+        return pts;
+
+
+    const cross=
+
+        (o,a,b)=>
+
+        (a.x-o.x)
+        *
+        (b.y-o.y)
+
+        -
+
+        (a.y-o.y)
+        *
+        (b.x-o.x);
+
+
+    const lower=[];
+
+    const upper=[];
+
+
+    for(
+        const p of pts
+    ){
+
+        while(
+
+            lower.length>=2
+
+            &&
+
+            cross(
+
+                lower[
+                    lower.length-2
+                ],
+
+                lower[
+                    lower.length-1
+                ],
+
+                p
+
+            )<=0
+
+        )
+
+            lower.pop();
+
+
+        lower.push(p);
+
+    }
+
+
+    for(
+        let i=
+            pts.length-1;
+
+        i>=0;
+
+        i--
+    ){
+
+        const p=
+            pts[i];
+
+
+        while(
+
+            upper.length>=2
+
+            &&
+
+            cross(
+
+                upper[
+                    upper.length-2
+                ],
+
+                upper[
+                    upper.length-1
+                ],
+
+                p
+
+            )<=0
+
+        )
+
+            upper.pop();
+
+
+        upper.push(p);
+
+    }
+
+
+    lower.pop();
+
+    upper.pop();
+
+
+    return
+        lower.concat(upper);
+
+}
+
+
+
+function pontoNoPoligono(
+    pt,
+    poly
+){
+
+    if(
+        poly.length<3
+    )
+
+        return false;
+
+
+    let inside=false;
+
+
+    for(
+        let i=0,
+            j=poly.length-1;
+
+        i<poly.length;
+
+        j=i++
+    ){
+
+        const xi=
+            poly[i].x;
+
+        const yi=
+            poly[i].y;
+
+        const xj=
+            poly[j].x;
+
+        const yj=
+            poly[j].y;
+
+
+        const hit=
+
+            (
+                (yi>pt.y)
+                !=
+                (yj>pt.y)
+            )
+
+            &&
+
+            (
+                pt.x
+                <
+                (
+                    (xj-xi)
+                    *
+                    (pt.y-yi)
+                    /
+                    (yj-yi+1e-12)
+                    +
+                    xi
+                )
+            );
+
+
+        if(hit)
+
+            inside=
+                !inside;
+
+    }
+
+
+    return inside;
+
+}
+
+
+
+function classificarConsulta(
+    rho,
+    t
+){
+
+    const ex=
+
+        banco.find(
+
+            p=>
+            p.densidade===rho
+            &&
+            p.idade===t
+
+        );
+
+
+    if(ex)
+
+        return{
+
+            tipo:"exato",
+
+            texto:
+            "ensaio experimental correspondente"
+
+        };
+
+
+    const hull=
+
+        convexHull(
+
+            banco.map(
+
+                p=>({
+
+                    x:p.densidade,
+
+                    y:p.idade
+
+                })
+
+            )
+
+        );
+
+
+    return
+
+        pontoNoPoligono(
+
+            {
+                x:rho,
+                y:t
+            },
+
+            hull
+
+        )
+
+        ?
+
+        {
+
+            tipo:"interp",
+
+            texto:
+            "interpolação dentro da envoltória experimental"
+
+        }
+
+        :
+
+        {
+
+            tipo:"extra",
+
+            texto:
+            "extrapolação fora da envoltória experimental"
+
+        };
+
+}
+
+
+
+/* =========================================================
+   RESULTADOS DA CONSULTA
+========================================================= */
+
+function atualizarResultados(){
+
+    const rho=
+        Number(
+            $("densidade").value
+        );
+
+
+    const t=
+        Number(
+            $("idade").value
+        );
+
+
+    $("rDensidade").textContent=
+        rho;
+
+
+    $("rIdade").textContent=
+        t;
+
+
+    if(
+        modoAtual==="didatico"
+    ){
+
+        $("rFc").textContent=
+            "—";
+
+
+        $("rE").textContent=
+            "—";
+
+
+        $("rOrigem").textContent =
+    idiomaAtual === "en"
+        ? "educational mode"
+        : "modo didático";
+
+
+        $("seloOrigem").textContent =
+    idiomaAtual === "en"
+        ? "EDUCATIONAL"
+        : "DIDÁTICO";
+
+
+        $("avisoModo").className=
+            "aviso";
+
+
+        $("avisoModo").innerHTML =
+    idiomaAtual === "en"
+        ?
+        "Educational mode active.<br>" +
+        "No experimental result is estimated in this mode."
+        :
+        "Modo didático ativo.<br>" +
+        "Nenhum resultado experimental é estimado neste modo.";
+
+
+        return;
+
+    }
+
+
+    const ex=
+
+        banco.find(
+
+            p=>
+
+            p.densidade===rho
+
+            &&
+
+            p.idade===t
+
+        );
+
+
+    if(ex){
+
+        $("rFc").textContent=
+            `${fmt(ex.fc)} MPa`;
+
+
+       $("rOrigem").textContent =
+    idiomaAtual === "en"
+        ? "corresponding experimental test"
+        : "ensaio experimental correspondente";
+
+$("seloOrigem").className =
+    "selo exato";
+
+$("seloOrigem").textContent =
+    "EXPERIMENTAL";
+
+$("avisoModo").className =
+    "aviso";
+
+$("avisoModo").innerHTML =
+    idiomaAtual === "en"
+        ?
+        `Experimental value available for<br>
+ρ=${rho} kg/m³ and<br>
+t=${t} days.`
+        :
+        `Valor experimental disponível para<br>
+ρ=${rho} kg/m³ e<br>
+t=${t} dias.`;
+
+return;
+
+    }
+
+
+    const c=
+        classificarConsulta(
+            rho,
+            t
+        );
+
+
+    const fc=
+        prever(
+            modeloFc,
+            rho,
+            t
+        );
+
+
+    const E=
+        prever(
+            modeloE,
+            rho,
+            t
+        );
+
+
+    if(
+        fc===null
+        ||
+        E===null
+    ){
+
+        $("rFc").textContent=
+            "sem previsão";
+
+
+        $("rE").textContent=
+            "sem previsão";
+
+
+        $("rOrigem").textContent=
+            "dados insuficientes";
+
+
+        $("seloOrigem").className=
+            "selo extra";
+
+
+        $("seloOrigem").textContent=
+            "SEM MODELO";
+
+
+        return;
+
+    }
+
+
+    $("rFc").textContent=
+        `${fmt(fc)} MPa`;
+
+
+    $("rE").textContent=
+        `${fmt(E)} GPa`;
+
+
+    $("rOrigem").textContent=
+        c.texto;
+
+
+    $("seloOrigem").className=
+        `selo ${c.tipo}`;
+
+
+    $("seloOrigem").textContent =
+    c.tipo === "interp"
+        ?
+        (
+            idiomaAtual === "en"
+                ? "INTERPOLATION"
+                : "INTERPOLAÇÃO"
+        )
+        :
+        (
+            idiomaAtual === "en"
+                ? "EXTRAPOLATION"
+                : "EXTRAPOLAÇÃO"
+        );
+
+    $("avisoModo").className=
+
+        c.tipo==="extra"
+
+        ?
+
+        "aviso avisoCritico"
+
+        :
+
+        "aviso";
+
+
+    $("avisoModo").innerHTML =
+    c.tipo === "extra"
+    ?
+    (
+        idiomaAtual === "en"
+        ?
+        `<strong>Attention:</strong><br>
+        ρ=${rho} kg/m³ and
+        t=${t} days are outside the experimental
+        envelope defined by the available tests.
+        The result constitutes a mathematical
+        extrapolation and not an experimental
+        measurement.`
+        :
+        `<strong>Atenção:</strong><br>
+        ρ=${rho} kg/m³ e
+        t=${t} dias encontram-se fora da
+        envoltória experimental definida
+        pelos ensaios disponíveis.
+        O resultado constitui uma
+        extrapolação matemática e não
+        uma medição experimental.`
+    )
+    :
+    (
+        idiomaAtual === "en"
+        ?
+        `The combination of density and age
+        lies within the experimental envelope.
+        The result, however, remains a
+        <strong>model prediction</strong>
+        and not a direct measurement.`
+        :
+        `A combinação de densidade e idade
+        encontra-se dentro da envoltória
+        experimental. O resultado,
+        entretanto, continua sendo uma
+        <strong>previsão do modelo</strong>
+        e não uma medição direta.`
+    );
+
+}
+
+
+
+/* =========================================================
+   INTERPRETAÇÃO CIENTÍFICA DA BASE
+========================================================= */
+
+function atualizarInterpretacao(){
+
+    const n=
+        banco.length;
+
+
+    const dens=
+
+        [
+            ...new Set(
+
+                banco.map(
+                    p=>
+                    p.densidade
+                )
+
+            )
+        ];
+
+
+    const idades=
+
+        [
+            ...new Set(
+
+                banco.map(
+                    p=>
+                    p.idade
+                )
+
+            )
+        ];
+
+
+    $("nEnsaios").textContent=
+        n;
+
+
+    $("nDensidades").textContent=
+        dens.length;
+
+
+    $("nIdades").textContent=
+        idades.length;
+
+
+    $("grausLiberdade").textContent=
+
+        Math.max(
+            0,
+            n-3
+        );
+
+
+    const notas=[];
+
+
+    if(
+        n<=4
+    )
+
+        notas.push(
+
+            "<strong>Base experimental reduzida:</strong> "
+            +
+            "o número atual de ensaios permite somente "
+            +
+            "uma calibração exploratória do modelo."
+        );
+
+
+    if(
+        idades.length<4
+    )
+
+        notas.push(
+
+            "<strong>Efeito da idade ainda pouco caracterizado:</strong> "
+            +
+            "há poucas idades distintas e ainda não existe "
+            +
+            "uma série completa de evolução da resistência "
+            +
+            "para cada densidade."
+        );
+
+
+    if(
+        banco.some(
+            p=>
+            p.idade===56
+        )
+    )
+
+        notas.push(
+
+            "<strong>Ensaio aos 56 dias:</strong> "
+            +
+            "o resultado foi preservado exatamente como informado. "
+            +
+            "Por ultrapassar a faixa temporal principal anteriormente "
+            +
+            "considerada de 54 dias, deve permanecer identificado "
+            +
+            "separadamente na metodologia."
+        );
+
+
+    const p28=
+
+        banco.filter(
+            p=>
+            p.idade===28
+        );
+
+
+    if(
+        p28.length>=2
+    )
+
+        notas.push(
+
+            `<strong>Comparação direta do efeito da densidade:</strong>
+            existem ${p28.length} ensaios aos 28 dias,
+            permitindo comparar densidades diferentes
+            mantendo a idade constante nesse subconjunto.`
+        );
+
+
+    const maxRho=
+
+        Math.max(
+            ...banco.map(
+                p=>
+                p.densidade
+            )
+        );
+
+
+    const maxAge=
+
+        Math.max(
+            ...banco.map(
+                p=>
+                p.idade
+            )
+        );
+
+
+    if(
+
+        banco.find(
+
+            p=>
+
+            p.densidade===maxRho
+
+            &&
+
+            p.idade===maxAge
+
+        )
+
+    )
+
+        notas.push(
+
+            "<strong>Sobreposição dos efeitos de densidade e idade:</strong> "
+            +
+            "o ponto correspondente à maior densidade também apresenta "
+            +
+            "a maior idade de cura. Com a base atual, o aumento observado "
+            +
+            "de resistência à compressão e módulo de elasticidade não pode "
+            +
+            "ser atribuído isoladamente à densidade ou à idade."
+        );
+
+
+    notas.push(
+
+        "<strong>R² isoladamente não constitui validação:</strong> "
+        +
+        "em conjuntos experimentais reduzidos, valores elevados de R² "
+        +
+        "podem apresentar baixa estabilidade. Por esse motivo, "
+        +
+        "o programa também apresenta RMSE e validação leave-one-out."
+    );
+
+
+    $("interpretacao").innerHTML=
+
+        notas.map(
+
+            x=>
+            `<p>${x}</p>`
+
+        ).join("");
+
+}
+
+
+
+/* =========================================================
+   TABELA EXPERIMENTAL
+========================================================= */
+
+function atualizarTabela(){
+
+    banco.sort(
+
+        (a,b)=>
+
+        a.densidade-b.densidade
+
+        ||
+
+        a.idade-b.idade
+
+    );
+
+
+    $("corpoTabela").innerHTML=
+        "";
+
+
+    banco.forEach(
+
+        (p,i)=>{
+
+
+            const obs=
+
+                p.idade>54
+
+                ?
+
+                "56 dias: fora da faixa temporal principal de 1–54 dias"
+
+                :
+
+                "—";
+
+
+            const tr=
+
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML=
+
+            `
+            <td>
+            ${p.id??i+1}
+            </td>
+
+            <td>
+            ${p.densidade} kg/m³
+            </td>
+
+            <td>
+            ${p.idade} dias
+            </td>
+
+            <td>
+            ${fmt(p.fc)} MPa
+            </td>
+
+            <td>
+            ${fmt(p.E)} GPa
+            </td>
+
+            <td>
+            ${obs}
+            </td>
+
+            <td>
+
+            <button
+                class="botaoExcluir"
+                onclick="excluirEnsaio(${i})"
+            >
+
+            Excluir
+
+            </button>
+
+            </td>
+            `;
+
+
+            $("corpoTabela")
+            .appendChild(tr);
+
+        }
+
+    );
+
+
+    $("contador").textContent=
+
+        `${banco.length}
+        ensaio(s) cadastrado(s).`;
+
+}
+
+
+
+/* =========================================================
+   GRÁFICOS EXPERIMENTAIS
+========================================================= */
+
+function desenharScatter(
+    canvasId,
+    chave,
+    unidade,
+    titulo
+){
+
+    const c=
+        $(canvasId);
+
+
+    const g=
+        c.getContext("2d");
+
+
+    g.clearRect(
+        0,
+        0,
+        c.width,
+        c.height
+    );
+
+
+    g.fillStyle=
+        "#111";
+
+
+    g.font=
+        "13px Arial";
+
+
+    g.fillText(
+        titulo,
+        10,
+        18
+    );
+
+
+    if(
+        !banco.length
+    )
+
+        return;
+
+
+    const m={
+        l:65,
+        r:20,
+        t:30,
+        b:50
+    };
+
+
+    const W=
+        c.width-m.l-m.r;
+
+
+    const H=
+        c.height-m.t-m.b;
+
+
+    const xs=
+        banco.map(
+            p=>
+            p.densidade
+        );
+
+
+    const ys=
+        banco.map(
+            p=>
+            p[chave]
+        );
+
+
+    const xmin=
+        Math.min(...xs)-20;
+
+
+    const xmax=
+        Math.max(...xs)+20;
+
+
+    const ymin=
+        Math.min(
+            0,
+            Math.min(...ys)*.9
+        );
+
+
+    const ymax=
+        Math.max(...ys)*1.1
+        ||
+        1;
+
+
+    const X=
+
+        x=>
+
+        m.l
+
+        +
+
+        (
+            x-xmin
+        )
+        /
+        (
+            xmax-xmin
+            ||
+            1
+        )
+        *
+        W;
+
+
+    const Y=
+
+        y=>
+
+        m.t
+
+        +
+
+        H
+
+        -
+
+        (
+            y-ymin
+        )
+        /
+        (
+            ymax-ymin
+            ||
+            1
+        )
+        *
+        H;
+
+
+    g.strokeStyle=
+        "#ddd";
+
+
+    g.lineWidth=
+        1;
+
+
+    for(
+        let i=0;
+        i<=5;
+        i++
+    ){
+
+        const yy=
+            m.t+i*H/5;
+
+
+        g.beginPath();
+
+        g.moveTo(
+            m.l,
+            yy
+        );
+
+        g.lineTo(
+            m.l+W,
+            yy
+        );
+
+        g.stroke();
+
+
+        const xx=
+            m.l+i*W/5;
+
+
+        g.beginPath();
+
+        g.moveTo(
+            xx,
+            m.t
+        );
+
+        g.lineTo(
+            xx,
+            m.t+H
+        );
+
+        g.stroke();
+
+    }
+
+
+    g.strokeStyle=
+        "#222";
+
+
+    g.lineWidth=
+        2;
+
+
+    g.beginPath();
+
+    g.moveTo(
+        m.l,
+        m.t
+    );
+
+    g.lineTo(
+        m.l,
+        m.t+H
+    );
+
+    g.lineTo(
+        m.l+W,
+        m.t+H
+    );
+
+    g.stroke();
+
+
+    g.fillStyle=
+        "#111";
+
+
+    g.font=
+        "12px Arial";
+
+
+    g.fillText(
+
+        "Densidade (kg/m³)",
+
+        c.width-150,
+
+        c.height-12
+
+    );
+
+
+    g.fillText(
+        unidade,
+        8,
+        32
+    );
+
+
+    banco.forEach(
+
+        p=>{
+
+
+            const x=
+                X(
+                    p.densidade
+                );
+
+
+            const y=
+                Y(
+                    p[chave]
+                );
+
+
+            g.fillStyle=
+                "#1686d9";
+
+
+            g.beginPath();
+
+
+            g.arc(
+                x,
+                y,
+                6,
+                0,
+                Math.PI*2
+            );
+
+
+            g.fill();
+
+
+            g.fillStyle=
+                "#222";
+
+
+            g.font=
+                "11px Arial";
+
+
+            g.fillText(
+
+                `${p.idade} d`,
+
+                x+8,
+
+                y-5
+
+            );
+
+        }
+
+    );
+
+}
+
+
+
+function desenharGraficosExperimentais(){
+
+    desenharScatter(
+
+        "graficoFc",
+
+        "fc",
+
+        "f₍c₎ (MPa)",
+
+        "Dados experimentais — resistência à compressão"
+
+    );
+
+
+    desenharScatter(
+
+        "graficoE",
+
+        "E",
+
+        "E (GPa)",
+
+        "Dados experimentais — módulo de elasticidade"
+
+    );
+
+}
+
+
+
+/* =========================================================
+   CURVA TENSÃO × DEFORMAÇÃO
+========================================================= */
+
+function desenharEixosSE(){
+
+    const c=
+        $("graficoSE");
+
+
+    const g=
+        c.getContext("2d");
+
+
+    g.clearRect(
+        0,
+        0,
+        c.width,
+        c.height
+    );
+
+
+    g.strokeStyle=
+        "#ddd";
+
+
+    g.lineWidth=
+        1;
+
+
+    for(
+        let i=0;
+        i<=5;
+        i++
+    ){
+
+        const y=
+            305-i*50;
+
+
+        g.beginPath();
+
+        g.moveTo(
+            80,
+            y
+        );
+
+        g.lineTo(
+            1090,
+            y
+        );
+
+        g.stroke();
+
+    }
+
+
+    for(
+        let i=0;
+        i<=10;
+        i++
+    ){
+
+        const x=
+            80+i*95;
+
+
+        g.beginPath();
+
+        g.moveTo(
+            x,
+            25
+        );
+
+        g.lineTo(
+            x,
+            305
+        );
+
+        g.stroke();
+
+    }
+
+
+    g.strokeStyle=
+        "#222";
+
+
+    g.lineWidth=
+        2;
+
+
+    g.beginPath();
+
+    g.moveTo(
+        80,
+        25
+    );
+
+    g.lineTo(
+        80,
+        305
+    );
+
+    g.lineTo(
+        1090,
+        305
+    );
+
+    g.stroke();
+
+
+    g.fillStyle=
+        "#111";
+
+
+    g.font=
+        "16px Arial";
+
+
+    g.fillText(
+        "σ (MPa)",
+        15,
+        30
+    );
+
+
+    g.fillText(
+        "|ε longitudinal|",
+        900,
+        345
+    );
+
+}
+
+
+
+function desenharCurvaSE(
+
+    sigmaSolicitada,
+
+    epsilonSolicitada,
+
+    fc,
+
+    E_MPa,
+
+    temLimite
+
+){
+
+    desenharEixosSE();
+
+
+    const c=
+        $("graficoSE");
+
+
+    const g=
+        c.getContext("2d");
+
+
+    let sigmaFim=
+        sigmaSolicitada;
+
+
+    let epsilonFim=
+        epsilonSolicitada;
+
+
+    let rompe=false;
+
+
+    if(
+
+        temLimite
+
+        &&
+
+        fc>0
+
+        &&
+
+        sigmaSolicitada>=fc
+
+    ){
+
+        sigmaFim=
+            fc;
+
+
+        epsilonFim=
+            fc/E_MPa;
+
+
+        rompe=true;
+
+    }
+
+
+    const sigmaEsc=
+
+        Math.max(
+            15,
+            sigmaFim*1.25
+        );
+
+
+    const epsEsc=
+
+        Math.max(
+            .015,
+            epsilonFim*1.25
+        );
+
+
+    g.strokeStyle=
+        "#1686d9";
+
+
+    g.lineWidth=
+        4;
+
+
+    g.beginPath();
+
+
+    for(
+        let i=0;
+        i<=40;
+        i++
+    ){
+
+        const p=
+            i/40;
+
+
+        const s=
+            sigmaFim*p;
+
+
+        const e=
+            epsilonFim*p;
+
+
+        const x=
+
+            80
+
+            +
+
+            (
+                e/epsEsc
+            )
+            *
+            980;
+
+
+        const y=
+
+            305
+
+            -
+
+            (
+                s/sigmaEsc
+            )
+            *
+            260;
+
+
+        if(i===0)
+
+            g.moveTo(
+                x,
+                y
+            );
+
+        else
+
+            g.lineTo(
+                x,
+                y
+            );
+
+    }
+
+
+    g.stroke();
+
+
+    const x=
+
+        80
+
+        +
+
+        (
+            epsilonFim/epsEsc
+        )
+        *
+        980;
+
+
+    const y=
+
+        305
+
+        -
+
+        (
+            sigmaFim/sigmaEsc
+        )
+        *
+        260;
+
+
+    g.fillStyle=
+
+        rompe
+
+        ?
+
+        "#d93636"
+
+        :
+
+        "#1686d9";
+
+
+    g.beginPath();
+
+
+    g.arc(
+        x,
+        y,
+        8,
+        0,
+        Math.PI*2
+    );
+
+
+    g.fill();
+
+
+    if(rompe){
+
+        g.fillStyle=
+            "#b32020";
+
+
+        g.font=
+            "bold 14px Arial";
+
+
+        g.fillText(
+
+            "f₍c₎ — limite de resistência",
+
+            Math.min(
+                x+14,
+                870
+            ),
+
+            Math.max(
+                y-12,
+                30
+            )
+
+        );
+
+    }
+
+
+    return{
+
+        rompe,
+
+        sigmaFim,
+
+        epsilonFim
+
+    };
+
+}
+
+
+
+/* =========================================================
+   ORIGEM DOS PARÂMETROS MECÂNICOS
+========================================================= */
+
+function origemMecanica(){
+
+    if(
+        modoAtual==="didatico"
+    )
+
+        return{
+
+            E:1.061,
+
+            fc:null,
+
+            origem:
+            "modo didático",
+
+            classe:
+            "didatico",
+
+            limiteValido:false
+
+        };
+
+
+    const rho=
+
+        Number(
+            $("densidade").value
+        );
+
+
+    const t=
+
+        Number(
+            $("idade").value
+        );
+
+
+    const ex=
+
+        banco.find(
+
+            p=>
+
+            p.densidade===rho
+
+            &&
+
+            p.idade===t
+
+        );
+
+
+    if(ex)
+
+        return{
+
+            E:ex.E,
+
+            fc:ex.fc,
+
+            origem:
+            "ensaio experimental correspondente",
+
+            classe:
+            "exato",
+
+            limiteValido:true
+
+        };
+
+
+    const c=
+
+        classificarConsulta(
+            rho,
+            t
+        );
+
+
+    const E=
+
+        prever(
+            modeloE,
+            rho,
+            t
+        );
+
+
+    const fc=
+
+        prever(
+            modeloFc,
+            rho,
+            t
+        );
+
+
+    if(
+
+        E===null
+
+        ||
+
+        fc===null
+
+        ||
+
+        E<=0
+
+        ||
+
+        fc<=0
+
+    )
+
+        return null;
+
+
+    return{
+
+        E,
+
+        fc,
+
+        origem:
+        c.texto,
+
+        classe:
+        c.tipo,
+
+        limiteValido:true
+
+    };
+
+}
+
+
+
+/* =========================================================
+   REINICIALIZAÇÃO DO ENSAIO
+========================================================= */
+
+function resetarEnsaio(){
+
+    $("corpo").style.height=
+        "170px";
+
+
+    $("corpo").style.top=
+        "145px";
+
+
+    $("corpo").style.width=
+        "110px";
+
+
+    $("corpo").style.left=
+        "calc(50% - 55px)";
+
+
+    $("corpo")
+    .classList
+    .remove(
+        "ruptura"
+    );
+
+
+    $("pistao").style.transform=
+        "translateY(0px)";
+
+
+    $("pratoSuperior").style.transform=
+        "translateY(0px)";
+
+
+    $("estadoEnsaio").textContent =
+    idiomaAtual === "en"
+        ? "INITIAL STATE"
+        : "ESTADO INICIAL";
+
+
+    $("estadoEnsaio").className=
+        "estadoEnsaio";
+
+
+
+    $("estadoEnsaio").textContent =
+    idiomaAtual === "en"
+        ? "INITIAL STATE"
+        : "ESTADO INICIAL";
+
+$("estadoEnsaio").className =
+    "estadoEnsaio";
+
+$("instrumentacao").innerHTML =
+    idiomaAtual === "en"
+        ?
+        "<strong>VIRTUAL INSTRUMENTATION</strong>"
+        +
+        "<br><br>"
+        +
+        "Initial state."
+        :
+        "<strong>PAINEL DE INSTRUMENTAÇÃO</strong>"
+        +
+        "<br><br>"
+        +
+        "Estado inicial.";
+
+$("statusGraficoSE").textContent =
+    idiomaAtual === "en"
+        ? "Waiting for test."
+        : "Aguardando ensaio.";
+
+desenharEixosSE();
+
+}
+
+
+
+/* =========================================================
+   ATUALIZAÇÃO GERAL
+========================================================= */
+
+function atualizarSistemaCompleto(){
+
+    salvarBanco();
+
+    atualizarTabela();
+
+    atualizarModelos();
+
+    atualizarInterpretacao();
+
+    atualizarResultados();
+
+    desenharGraficosExperimentais();
+
+}
+
+
+
+window.excluirEnsaio=
+
+    i=>{
+
+        banco.splice(
+            i,
+            1
+        );
+
+        atualizarSistemaCompleto();
+
+    };
+
+
+
+/* =========================================================
+   CADASTRO DE ENSAIOS
+========================================================= */
+
+$("adicionarEnsaio")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+
+        const rho=
+
+            Number(
+                $("expDensidade").value
+            );
+
+
+        const t=
+
+            Number(
+                $("expIdade").value
+            );
+
+
+        const fc=
+
+            Number(
+                $("expFc").value
+            );
+
+
+        const E=
+
+            Number(
+                $("expE").value
+            );
+
+
+        if(
+            rho<450
+            ||
+            rho>800
+        )
+
+            return alert(
+
+                "A densidade deve estar entre 450 e 800 kg/m³."
+
+            );
+
+
+        if(
+            t<1
+            ||
+            t>56
+        )
+
+            return alert(
+
+                "A idade deve estar entre 1 e 56 dias nesta versão."
+
+            );
+
+
+        if(
+            !Number.isFinite(fc)
+            ||
+            fc<=0
+        )
+
+            return alert(
+
+                "Informe um valor válido de resistência à compressão f₍c₎."
+
+            );
+
+
+        if(
+            !Number.isFinite(E)
+            ||
+            E<=0
+        )
+
+            return alert(
+
+                "Informe um valor válido de módulo de elasticidade E."
+
+            );
+
+
+        const idx=
+
+            banco.findIndex(
+
+                p=>
+
+                p.densidade===rho
+
+                &&
+
+                p.idade===t
+
+            );
+
+
+        const novo={
+
+            id:
+
+                idx>=0
+
+                ?
+
+                banco[idx].id
+
+                :
+
+                Math.max(
+                    0,
+                    ...banco.map(
+                        p=>
+                        p.id||0
+                    )
+                )
+                +
+                1,
+
+            densidade:rho,
+
+            idade:t,
+
+            fc,
+
+            E
+
+        };
+
+
+        if(
+            idx>=0
+        )
+
+            banco[idx]=novo;
+
+        else
+
+            banco.push(novo);
+
+
+        $("expFc").value=
+            "";
+
+
+        $("expE").value=
+            "";
+
+
+        atualizarSistemaCompleto();
+
+    }
+
+);
+
+
+
+$("restaurarBase")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+        if(
+
+            confirm(
+
+                "Restaurar exatamente os quatro ensaios iniciais?"
+
+            )
+
+        ){
+
+            banco=
+                cloneBase();
+
+            atualizarSistemaCompleto();
+
+        }
+
+    }
+
+);
+
+
+
+$("limparBanco")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+        if(
+
+            confirm(
+
+                "Deseja realmente apagar todos os ensaios cadastrados?"
+
+            )
+
+        ){
+
+            banco=[];
+
+            atualizarSistemaCompleto();
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================================
+   SELEÇÃO DOS MODOS
+========================================================= */
+
+$("modoDidatico")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+        modoAtual=
+            "didatico";
+
+
+        $("modoDidatico")
+        .classList
+        .add(
+            "ativo"
+        );
+
+
+        $("modoExperimental")
+        .classList
+        .remove(
+            "ativo"
+        );
+
+
+        atualizarResultados();
+
+        resetarEnsaio();
+
+    }
+
+);
+
+
+
+$("modoExperimental")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+        modoAtual=
+            "experimental";
+
+
+        $("modoExperimental")
+        .classList
+        .add(
+            "ativo"
+        );
+
+
+        $("modoDidatico")
+        .classList
+        .remove(
+            "ativo"
+        );
+
+
+        atualizarResultados();
+
+        resetarEnsaio();
+
+    }
+
+);
+
+
+
+/* =========================================================
+   CONTROLES
+========================================================= */
+
+$("densidade")
+.addEventListener(
+
+    "input",
+
+    ()=>{
+
+
+        $("valorDensidade").textContent=
+
+            $("densidade").value;
+
+
+        const f=
+
+            (
+                Number(
+                    $("densidade").value
+                )
+                -
+                450
+            )
+            /
+            350;
+
+
+        $("corpo").style.filter=
+
+            `brightness(${.85+f*.25})`;
+
+
+        atualizarResultados();
+
+        resetarEnsaio();
+
+    }
+
+);
+
+
+
+$("idade")
+.addEventListener(
+
+    "input",
+
+    ()=>{
+
+        $("valorIdade").textContent=
+
+            $("idade").value;
+
+
+        atualizarResultados();
+
+        resetarEnsaio();
+
+    }
+
+);
+
+
+
+$("carga")
+.addEventListener(
+
+    "input",
+
+    ()=>{
+
+        $("valorCarga").textContent=
+
+            $("carga").value;
+
+
+        resetarEnsaio();
+
+    }
+
+);
+
+
+
+$("botaoReset")
+.addEventListener(
+
+    "click",
+
+    resetarEnsaio
+
+);
+
+
+
+/* =========================================================
+   ENSAIO VIRTUAL DE COMPRESSÃO
+========================================================= */
+
+$("botaoCarga")
+.addEventListener(
+
+    "click",
+
+    ()=>{
+
+
+        const PkN=
+
+            Number(
+                $("carga").value
+            );
+
+
+        if(
+            PkN<=0
+        )
+
+            return alert(
+
+                "Selecione uma carga superior a zero."
+
+            );
+
+
+        const fonte=
+            origemMecanica();
+
+
+        if(!fonte)
+
+            return alert(
+
+                "Não há um valor válido de módulo de elasticidade E para esta combinação."
+
+            );
+
+
+        const d0=
+            100;
+
+
+        const L0=
+            200;
+
+
+        const area=
+
+            Math.PI
+            *
+            d0
+            *
+            d0
+            /
+            4;
+
+
+        const sigmaSolicitada=
+
+            PkN
+            *
+            1000
+            /
+            area;
+
+
+        const E_MPa=
+
+            fonte.E
+            *
+            1000;
+
+
+        const epsilonSolicitada=
+
+            sigmaSolicitada
+            /
+            E_MPa;
+
+
+        const curva=
+
+            desenharCurvaSE(
+
+                sigmaSolicitada,
+
+                epsilonSolicitada,
+
+                fonte.fc,
+
+                E_MPa,
+
+                fonte.limiteValido
+
+            );
+
+
+        const sigmaUsada=
+
+            curva.sigmaFim;
+
+
+        const epsilonL=
+
+            -curva.epsilonFim;
+
+
+        const nu=
+            .20;
+
+
+        const epsilonT=
+
+            -nu
+            *
+            epsilonL;
+
+
+        const deltaL=
+
+            epsilonL
+            *
+            L0;
+
+
+        const deltaD=
+
+            epsilonT
+            *
+            d0;
+
+
+        /*
+        A deformação representada graficamente é ampliada
+        exclusivamente para facilitar sua visualização.
+        */
+
+
+        const fatorVisual=
+            25;
+
+
+        const deformacaoVisual=
+
+            Math.min(
+
+                Math.abs(epsilonL)
+                *
+                170
+                *
+                fatorVisual,
+
+                24
+
+            );
+
+
+        const expansaoVisual=
+
+            Math.min(
+
+                epsilonT
+                *
+                110
+                *
+                fatorVisual,
+
+                10
+
+            );
+
+
+        const h=
+
+            170
+            -
+            deformacaoVisual;
+
+
+        const top=
+
+            145
+            +
+            deformacaoVisual;
+
+
+        const w=
+
+            110
+            +
+            expansaoVisual;
+
+
+        $("corpo").style.height=
+
+            `${h}px`;
+
+
+        $("corpo").style.top=
+
+            `${top}px`;
+
+
+        $("corpo").style.width=
+
+            `${w}px`;
+
+
+        $("corpo").style.left=
+
+            `calc(50% - ${w/2}px)`;
+
+
+        $("pistao").style.transform=
+
+            `translateY(${deformacaoVisual}px)`;
+
+
+        $("pratoSuperior").style.transform=
+
+            `translateY(${deformacaoVisual}px)`;
+
+
+        if(
+            curva.rompe
+        ){
+
+            $("corpo")
+            .classList
+            .add(
+                "ruptura"
+            );
+
+
+            $("estadoEnsaio").textContent=
+
+                "LIMITE DE RESISTÊNCIA ATINGIDO";
+
+
+            $("estadoEnsaio").className=
+
+                "estadoEnsaio rupturaEstado";
+
+        }
+
+        else{
+
+            $("corpo")
+            .classList
+            .remove(
+                "ruptura"
+            );
+
+
+            $("estadoEnsaio").textContent=
+
+                "ENSAIO CONCLUÍDO";
+
+
+            $("estadoEnsaio").className=
+
+                "estadoEnsaio concluido";
+
+        }
+
+
+        const origemLimite=
+
+            fonte.classe==="exato"
+
+            ?
+
+            "f₍c₎ experimental"
+
+            :
+
+            "f₍c₎ proveniente do modelo exploratório";
+
+
+        const notaLimite=
+
+            fonte.fc===null
+
+            ?
+
+            "<br><em>Modo didático: não há valor experimental de f₍c₎ associado ao ensaio.</em>"
+
+            :
+
+            curva.rompe
+
+            ?
+
+            `<br>
+            <strong>LIMITAÇÃO DO MODELO:</strong>
+            a carga solicitada produziria
+            σ=${fmt(sigmaSolicitada)} MPa,
+            valor superior a
+            f₍c₎=${fmt(fonte.fc)} MPa.
+            A curva foi interrompida no limite de resistência.
+            O comportamento pós-pico não é modelado nesta versão.
+            <br>
+            <em>
+            Origem do limite:
+            ${origemLimite}.
+            </em>`
+
+            :
+
+            `<br>
+            Relação σ/f₍c₎ =
+            ${fmt(
+                sigmaSolicitada/fonte.fc,
+                3
+            )}
+            <br>
+            <em>
+            Origem do limite:
+            ${origemLimite}.
+            </em>`;
+
+
+        $("instrumentacao").innerHTML=
+
+        `
+        <strong>
+        PAINEL DE INSTRUMENTAÇÃO
+        </strong>
+
+        <br><br>
+
+        Origem de E:
+        ${fonte.origem}
+
+        <br>
+
+        P solicitado =
+        ${fmt(PkN,1)} kN
+
+        <br>
+
+        σ solicitada =
+        ${fmt(sigmaSolicitada)} MPa
+
+        <br>
+
+        σ utilizada no modelo =
+        ${fmt(sigmaUsada)} MPa
+
+        <br>
+
+        E =
+        ${fmt(fonte.E)} GPa
+
+        <br>
+
+        εL =
+        ${epsilonL.toExponential(3)}
+
+        <br>
+
+        εT =
+        ${epsilonT.toExponential(3)}
+
+        <br>
+
+        ΔL =
+        ${fmt(deltaL)} mm
+
+        <br>
+
+        Δd =
+        ${fmt(deltaD)} mm
+
+        <br>
+
+        ν =
+        ${fmt(nu,2)}
+
+        <em>
+        (valor didático, não experimental)
+        </em>
+
+        ${notaLimite}
+        `;
+
+
+        $("statusGraficoSE").textContent =
+
+    curva.rompe
+
+    ?
+
+    (
+        idiomaAtual === "en"
+
+        ?
+
+        `The applied stress exceeds the strength limit.
+The curve was interrupted at
+f(c)=${fmt(fonte.fc)} MPa.
+Post-peak behavior is not modeled.`
+
+        :
+
+        `A tensão solicitada ultrapassa o limite de resistência.
+A curva foi interrompida em
+f(c)=${fmt(fonte.fc)} MPa.
+O comportamento pós-pico não é modelado.`
+    )
+
+    :
+
+    (
+        idiomaAtual === "en"
+
+        ?
+
+        `Simplified linear elastic curve using
+E=${fmt(fonte.E)} GPa
+(${fonte.origem}).`
+
+        :
+
+        `Curva elástica linear simplificada utilizando
+E=${fmt(fonte.E)} GPa
+(${fonte.origem}).`
+    );
+
+    }
+
+);
+
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+atualizarSistemaCompleto();
+
+desenharEixosSE();
+
+console.log(
+    "CONCRETO CELULAR XR — V1.2"
+);
+
+console.log(
+    "V1.2 — Interface científica bilíngue PT / EN."
+);
+
+
+/* =========================================================
+   V1.2-A
+   MOTOR BILÍNGUE PT / EN
+   CABEÇALHO E PARÂMETROS
+
+   IMPORTANTE:
+   Esta rotina altera apenas textos da interface.
+   Nenhum dado experimental, equação ou cálculo é modificado.
+========================================================= */
+
+var idiomaAtual = "pt";
+
+
+const textosV12 = {
+
+    pt: {
+
+        titulo:
+            "MODELO CONSTITUTIVO DO CONCRETO CELULAR",
+
+        disciplina:
+            "Fundamentos de Mecânica dos Sólidos e Teoria da Elasticidade",
+
+        subtitulo:
+            "Limite de resistência e ruptura virtual — V1.2",
+
+        parametros:
+            "Parâmetros do material",
+
+        modoDidatico:
+            "MODO DIDÁTICO",
+
+        modoExperimental:
+            "MODO EXPERIMENTAL",
+
+        densidade:
+            "Densidade ρ",
+
+        idade:
+            "Idade de cura t",
+
+        carga:
+            "Carga aplicada P",
+
+        relacoes:
+            "Relações constitutivas em investigação",relacoes:
+    "Relações constitutivas em investigação",
+
+ensaioVirtual:
+    "Ensaio Virtual",
+
+estadoInicial:
+    "Estado inicial",
+
+aplicarCarga:
+    "Aplicar carga",
+
+reiniciar:
+    "Reiniciar",
+
+instrumentacao:
+    "Instrumentação virtual",
+
+bancoExperimental:
+    "Banco experimental",
+
+descricaoBanco:
+    "Os quatro ensaios iniciais permanecem pré-carregados. O resultado correspondente a 56 dias é preservado exatamente como informado e identificado separadamente por ultrapassar a faixa temporal principal anteriormente adotada de 54 dias.",
+
+bancoDensidade:
+    "Densidade (kg/m³)",
+
+bancoIdade:
+    "Idade (dias)",
+
+bancoFc:
+    "fc (MPa)",
+
+bancoE:
+    "E (GPa)",
+
+btnAdicionarEnsaio:
+    "ADICIONAR / ATUALIZAR ENSAIO",
+
+btnRestaurarEnsaios:
+    "RESTAURAR 4 ENSAIOS INICIAIS",
+
+btnLimparBanco:
+    "LIMPAR BANCO",
+
+leituraExperimental:
+    "Leitura Experimental e Limitações do Conjunto de Dados",
+
+ensaios:
+    "Ensaios",
+
+densidadesDistintas:
+    "Densidades distintas",
+
+idadesDistintas:
+    "Idades distintas",
+
+grausLiberdade:
+    "Graus de liberdade do ajuste",
+
+modeloConstitutivo:
+    "Modelo Constitutivo Exploratório",
+
+resistenciaCompressao:
+    "Resistência à compressão",
+
+moduloElasticidade:
+    "Módulo de elasticidade",
+
+ajusteExploratorio:
+    "Trata-se de um ajuste linear aditivo e exploratório.",
+
+resultadosExperimentais:
+    "Resultados Experimentais",
+
+graficoFc:
+    "Densidade × resistência à compressão.",
+
+graficoE:
+    "Densidade × módulo de elasticidade.",
+
+curvaTensaoDeformacao:
+    "Curva Tensão × Deformação do Ensaio Virtual",
+
+aguardandoEnsaio:
+    "Aguardando ensaio.",
+
+limiteFc:
+    "Limite de resistência f(c).",
+
+interrupcao:
+    "Se a tensão solicitada ultrapassar f(c), a V1.2.1 interrompe a curva nesse ponto.",
+
+posPico:
+    "O comportamento pós-pico não é modelado nesta versão."
+
+    },
+
+
+    en: {
+
+        titulo:
+            "CONSTITUTIVE MODEL OF CELLULAR CONCRETE",
+
+        disciplina:
+            "Fundamentals of Solid Mechanics and Theory of Elasticity",
+
+        subtitulo:
+            "Strength limit and virtual failure — V1.2",
+
+        parametros:
+            "Material Parameters",
+
+        modoDidatico:
+            "EDUCATIONAL MODE",
+
+        modoExperimental:
+            "EXPERIMENTAL MODE",
+
+        densidade:
+            "Density ρ",
+
+        idade:
+            "Curing age t",
+
+        carga:
+            "Applied load P",
+
+        relacoes:
+            "Constitutive relationships under investigation", relacoes:
+    "Constitutive relationships under investigation",
+
+ensaioVirtual:
+    "Virtual Test",
+
+estadoInicial:
+    "Initial state",
+
+aplicarCarga:
+    "Apply load",
+
+reiniciar:
+    "Reset",
+
+instrumentacao:
+    "Virtual instrumentation",
+
+bancoExperimental:
+    "Experimental database",
+
+    descricaoBanco:
+    "The four initial tests remain preloaded. The result corresponding to 56 days is preserved exactly as reported and identified separately because it exceeds the previously adopted main temporal range of 54 days.",
+
+bancoDensidade:
+    "Density (kg/m³)",
+
+bancoIdade:
+    "Age (days)",
+
+bancoFc:
+    "fc (MPa)",
+
+bancoE:
+    "E (GPa)",
+
+btnAdicionarEnsaio:
+    "ADD / UPDATE TEST",
+
+btnRestaurarEnsaios:
+    "RESTORE 4 INITIAL TESTS",
+
+btnLimparBanco:
+    "CLEAR DATABASE",
+
+leituraExperimental:
+    "Experimental Data Interpretation and Dataset Limitations",
+
+ensaios:
+    "Tests",
+
+densidadesDistintas:
+    "Different densities",
+
+idadesDistintas:
+    "Different curing ages",
+
+grausLiberdade:
+    "Degrees of freedom of the fit",
+
+modeloConstitutivo:
+    "Exploratory Constitutive Model",
+
+resistenciaCompressao:
+    "Compressive strength",
+
+moduloElasticidade:
+    "Elastic modulus",
+
+ajusteExploratorio:
+    "This is an exploratory additive linear fit.",
+
+resultadosExperimentais:
+    "Experimental Results",
+
+graficoFc:
+    "Density × compressive strength.",
+
+graficoE:
+    "Density × elastic modulus.",
+
+curvaTensaoDeformacao:
+    "Stress × Strain Curve of the Virtual Test",
+
+aguardandoEnsaio:
+    "Waiting for test.",
+
+limiteFc:
+    "Strength limit f(c).",
+
+interrupcao:
+    "If the applied stress exceeds f(c), V1.2.1 stops the curve at this point.",
+
+posPico:
+    "Post-peak behavior is not modeled in this version."
+
+    }
+
+};
+
+
+function aplicarIdiomaV12(){
+
+    const T =
+        textosV12[idiomaAtual];
+
+
+    $("txtTitulo").textContent =
+        T.titulo;
+
+
+    $("txtDisciplina").textContent =
+        T.disciplina;
+
+
+    $("txtSubtitulo").textContent =
+        T.subtitulo;
+
+     $("txtEstadoInicialPainel").textContent =
+    idiomaAtual === "en"
+        ? "Initial state."
+        : "Estado inicial.";   
+
+
+    $("txtParametros").textContent =
+        T.parametros;
+
+
+    $("txtModoDidatico").textContent =
+        T.modoDidatico;
+
+
+    $("txtModoExperimental").textContent =
+        T.modoExperimental;
+
+
+    $("txtDensidade").textContent =
+        T.densidade;
+
+
+    $("txtIdade").textContent =
+        T.idade;
+
+
+    $("txtCarga").textContent =
+        T.carga;
+
+
+    $("txtRelacoes").textContent =
+        T.relacoes;
+
+
+    $("btnPT").classList.toggle(
+        "idioma-ativo",
+        idiomaAtual === "pt"
+    );
+
+
+    $("btnEN").classList.toggle(
+        "idioma-ativo",
+        idiomaAtual === "en"
+    );
+
+
+    document.documentElement.lang =
+        idiomaAtual === "pt"
+        ? "pt-BR"
+        : "en";
+
+$("txtEnsaioVirtual").textContent =
+    T.ensaioVirtual;
+
+$("txtEstadoInicial").textContent =
+    T.estadoInicial;
+
+$("txtAplicarCarga").textContent =
+    T.aplicarCarga;
+
+$("txtReiniciar").textContent =
+    T.reiniciar;
+
+$("txtPainelInstrumentacao").textContent =
+    T.instrumentacao;
+
+$("txtBancoExperimental").textContent =
+    T.bancoExperimental;
+$("txtDescricaoBanco").textContent =
+    T.descricaoBanco;
+
+$("txtBancoDensidade").textContent =
+    T.bancoDensidade;
+
+$("txtBancoIdade").textContent =
+    T.bancoIdade;
+
+$("txtBancoFc").textContent =
+    T.bancoFc;
+
+$("txtBancoE").textContent =
+    T.bancoE;
+
+$("btnAdicionarEnsaio").textContent =
+    T.btnAdicionarEnsaio;
+
+$("btnRestaurarEnsaios").textContent =
+    T.btnRestaurarEnsaios;
+
+$("btnLimparBanco").textContent =
+    T.btnLimparBanco;
+$("txtLeituraExperimental").textContent =
+    T.leituraExperimental;
+
+$("txtMatrizEnsaios").textContent =
+    T.ensaios;
+
+$("txtMatrizDensidades").textContent =
+    T.densidadesDistintas;
+
+$("txtMatrizIdades").textContent =
+    T.idadesDistintas;
+
+$("txtMatrizGrausLiberdade").textContent =
+    T.grausLiberdade;
+
+$("txtModeloConstitutivo").textContent =
+    T.modeloConstitutivo;
+
+$("txtModeloResistencia").textContent =
+    T.resistenciaCompressao;
+
+$("txtModeloElasticidade").textContent =
+    T.moduloElasticidade;
+
+$("txtAjusteExploratorio").textContent =
+    T.ajusteExploratorio;
+
+$("txtResultadosExperimentais").textContent =
+    T.resultadosExperimentais;
+
+$("txtTituloCurvaSE").textContent =
+    T.curvaTensaoDeformacao;
+
+$("txtLegendaLimiteFc").textContent =
+    T.limiteFc;
+
+$("txtLegendaInterrupcao").textContent =
+    T.interrupcao;
+
+$("txtLegendaPosPico").textContent =
+    T.posPico;
+
+atualizarResultados();}
+
+/* =========================================================
+   BOTÃO PORTUGUÊS
+========================================================= */
+
+$("btnPT").addEventListener(
+
+    "click",
+
+    ()=>{
+
+        idiomaAtual =
+            "pt";
+
+        aplicarIdiomaV12();
+
+    }
+
+);
+
+
+/* =========================================================
+   BOTÃO INGLÊS
+========================================================= */
+
+$("btnEN").addEventListener(
+
+    "click",
+
+    ()=>{
+
+        idiomaAtual =
+            "en";
+
+        aplicarIdiomaV12();
+
+    }
+
+);
+
+
+/* =========================================================
+   ATIVA PORTUGUÊS AO CARREGAR
+========================================================= */
+
+aplicarIdiomaV12();
+
+</script>
+<!-- =========================================================
+     V1.4 - PRIMEIRA INTEGRAÇÃO WEBXR
+     ========================================================= -->
+
+<div id="painelVR" style="
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    background: #0e1821;
+    border: 1px solid #2d90d7;
+    border-radius: 10px;
+    padding: 14px;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 18px rgba(0,0,0,.35);
+">
+    <div style="font-weight:bold; margin-bottom:8px;">
+        Meta Quest / WebXR
+    </div>
+
+    <div id="statusVR" style="
+        font-size: 13px;
+        margin-bottom: 10px;
+        max-width: 260px;
+    ">
+        Verificando compatibilidade WebXR...
+    </div>
+
+    <button id="btnEntrarVR" disabled style="
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 6px;
+        background: #168fe5;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    ">
+        ENTRAR EM VR
+    </button>
+</div>
+
+<script>
+(async function iniciarWebXRV14() {
+
+    const status = document.getElementById("statusVR");
+    const botao = document.getElementById("btnEntrarVR");
+
+    if (!("xr" in navigator)) {
+        status.textContent =
+            "WebXR não está disponível neste navegador.";
+        botao.disabled = true;
+        return;
+    }
+
+    try {
+
+        const disponivel =
+            await navigator.xr.isSessionSupported("immersive-vr");
+
+        if (disponivel) {
+
+            status.textContent =
+                "WebXR disponível. Meta Quest pronto para VR.";
+
+            botao.disabled = false;
+
+        } else {
+
+            status.textContent =
+                "WebXR detectado, mas VR imersivo não está disponível.";
+
+            botao.disabled = true;
+        }
+
+    } catch (erro) {
+
+        status.textContent =
+            "Erro ao verificar WebXR: " + erro.message;
+
+        botao.disabled = true;
+    }
+
+ botao.addEventListener("click", async () => {
+
+    try {
+
+        const cena = document.getElementById("cenaVR");
+
+        if (!cena) {
+            throw new Error("Cena VR não encontrada.");
+        }
+
+        status.textContent =
+            "Iniciando laboratório virtual...";
+
+        await cena.enterVR();
+
+        status.textContent =
+            "Laboratório VR iniciado.";
+
+    } catch (erro) {
+
+        status.textContent =
+            "Não foi possível iniciar VR: " + erro.message;
+    }
+
+});
+
+      
+})();
+</script>
+
+
+<!-- ================================================
+     V1.6 - LABORATORIO VIRTUAL DE CONCRETO CELULAR
+     ETAPA 1 - PROTOTIPO DIDATICO PARA META QUEST
+     CELUBRAS
+     ================================================ -->
+
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+<a-scene
+    id="cenaVR"
+    embedded
+    vr-mode-ui="enabled: true"
+    background="color: #101820"
+    renderer="antialias: true">
+
+    <!-- ILUMINAÇÃO -->
+    <a-entity light="type: ambient; intensity: 0.8"></a-entity>
+
+    <a-entity
+        light="type: directional; intensity: 1.2"
+        position="2 4 2">
+    </a-entity>
+
+    <!-- PISO -->
+    <a-plane
+        position="0 0 -3"
+        rotation="-90 0 0"
+        width="12"
+        height="12"
+        color="#6f7478">
+    </a-plane>
+
+    <!-- PAREDE DE FUNDO -->
+    <a-plane
+        position="0 2 -6"
+        width="12"
+        height="4"
+        color="#d9dde0">
+    </a-plane>
+
+    <!-- ===============================
+         PRENSA DE COMPRESSÃO
+         =============================== -->
+
+    <a-entity
+        id="prensa"
+        position="0 0 -3">
+
+           <!-- BASE -->
+    <a-box
+        position="0 0.15 0"
+        width="2.8"
+        height="0.30"
+        depth="1.4"
+        color="#30363b">
+    </a-box>
+
+    <!-- COLUNA ESQUERDA -->
+    <a-box
+        position="-1 1.5 0"
+        width="0.30"
+        height="3.0"
+        depth="0.45"
+        color="#4d555c">
+    </a-box>
+
+    <!-- COLUNA DIREITA -->
+    <a-box
+        position="1 1.5 0"
+        width="0.30"
+        height="3.0"
+        depth="0.45"
+        color="#4d555c">
+    </a-box>
+
+            <!-- TRAVESSA SUPERIOR -->
+    <a-box
+        position="0 2.90 0"
+        width="2.6"
+        height="0.38"
+        depth="0.55"
+        color="#30363b">
+    </a-box>
+
+    <!-- NOME CELUBRAS NA FRENTE DA PRENSA -->
+    <a-text
+        value="CELUBRAS"
+        position="0 2.92 0.286"
+        width="3.2"
+        color="#ffffff"
+        align="center">
+    </a-text>
+
+    <!-- IDENTIFICACAO TECNICA -->
+    <a-text
+        value="CONCRETO CELULAR"
+        position="0 2.73 0.287"
+        width="2.2"
+        color="#d9e2e8"
+        align="center">
+    </a-text>
+
+    <!-- PISTAO HIDRAULICO -->
+    <a-cylinder
+        position="0 2.30 0"
+        radius="0.28"
+        height="0.90"
+        color="#b4bdc4"
+        metalness="0.65"
+        roughness="0.30">
+    </a-cylinder>
+
+    <!-- PRATO SUPERIOR -->
+    <a-cylinder
+        position="0 1.82 0"
+        radius="0.48"
+        height="0.12"
+        color="#555d63"
+        metalness="0.70"
+        roughness="0.25">
+    </a-cylinder>
+
+           <!-- CORPO DE PROVA - CONCRETO CELULAR -->
+    <a-cylinder
+        id="corpoProvaVR"
+        position="0 1.10 0"
+        radius="0.35"
+        height="1.20"
+        color="#d5d8d6"
+        segments-radial="48"
+        roughness="0.95"
+        metalness="0.00">
+    </a-cylinder>
+
+    <!-- POROS VISUAIS FRONTAIS -->
+    <a-sphere
+        position="-0.12 1.42 0.33"
+        radius="0.045"
+        color="#7e8588">
+    </a-sphere>
+
+    <a-sphere
+        position="0.13 1.30 0.33"
+        radius="0.055"
+        color="#747b7f">
+    </a-sphere>
+
+    <a-sphere
+        position="-0.08 1.05 0.34"
+        radius="0.040"
+        color="#82898c">
+    </a-sphere>
+
+    <a-sphere
+        position="0.16 0.88 0.32"
+        radius="0.038"
+        color="#70777b">
+    </a-sphere>
+
+    <a-sphere
+        position="-0.15 0.74 0.31"
+        radius="0.030"
+        color="#858c8f">
+    </a-sphere>
+            
+
+            <!-- PRATO INFERIOR -->
+    <a-cylinder
+        position="0 0.45 0"
+        radius="0.50"
+        height="0.14"
+        color="#555d63"
+        metalness="0.70"
+        roughness="0.25">
+    </a-cylinder>
+
+    <!-- BASE DE APOIO DO CORPO DE PROVA -->
+    <a-cylinder
+        position="0 0.36 0"
+        radius="0.62"
+        height="0.10"
+        color="#30363b"
+        metalness="0.75"
+        roughness="0.30">
+    </a-cylinder>
+
+    </a-entity>
+
+    <!-- ===============================
+         PAINEL DIDÁTICO
+         =============================== -->
+
+    <a-plane
+        position="2.4 1.8 -3"
+        width="2.3"
+        height="1.6"
+        color="#172b3a">
+    </a-plane>
+
+    <a-text
+        value="CONCRETO CELULAR\nENSAIO DE COMPRESSAO"
+        position="1.45 2.35 -2.98"
+        width="2.8"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        value="Densidade: 600 kg/m3"
+        position="1.45 1.95 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        value="Idade: 28 dias"
+        position="1.45 1.65 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        value="Carga: 50 kN"
+        position="1.45 1.35 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+
+    <!-- CÂMERA -->
+    <a-entity
+        id="rig"
+        position="0 1.6 0">
+
+        <a-camera
+            look-controls="pointerLockEnabled: false">
+        </a-camera>
+
+    </a-entity>
+
+</a-scene>
+
+</body>
+
+/html>
