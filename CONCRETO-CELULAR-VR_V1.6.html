@@ -6397,7 +6397,23 @@ aplicarIdiomaV12();
         width="2.6"
         color="#ffffff">
     </a-text>
+<!-- RESISTENCIA A COMPRESSAO -->
+<a-text
+    id="painelFcVR"
+    value="fc: 1.80 MPa"
+    position="1.45 1.48 -2.98"
+    width="1.25"
+    color="#8ed8ff">
+</a-text>
 
+<!-- MODULO DE ELASTICIDADE -->
+<a-text
+    id="painelEVR"
+    value="E: 2.10 GPa"
+    position="2.55 1.48 -2.98"
+    width="1.25"
+    color="#8ed8ff">
+</a-text>
     <a-text
         value="Carga: 50 kN"
         position="1.45 1.35 -2.98"
@@ -6469,17 +6485,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     densidadeSelecionada = cp.densidade;
 
+    let fcSelecionado = 0;
+let ESelecionado = 0;
+
+if (densidadeSelecionada === 450) {
+    fcSelecionado = 1.20;
+    ESelecionado = 1.00;
+}
+
+if (densidadeSelecionada === 600) {
+    fcSelecionado = 1.80;
+    ESelecionado = 2.10;
+}
+
+if (densidadeSelecionada === 800) {
+    fcSelecionado = 3.10;
+    ESelecionado = 3.50;
+}
+
     cp.elemento.setAttribute("color", "#40c4ff");
     cp.elemento.setAttribute("scale", "1.10 1.10 1.10");
 
     const painelDensidade = document.getElementById("painelDensidadeVR");
-
     if (painelDensidade) {
         painelDensidade.setAttribute(
             "value",
             "Densidade: " + densidadeSelecionada + " kg/m3"
         );
-    }
+  } 
+    const painelFc = document.getElementById("painelFcVR");
+const painelE = document.getElementById("painelEVR");
+
+if (painelFc) {
+    painelFc.setAttribute(
+        "value",
+        "fc: " + fcSelecionado.toFixed(2) + " MPa"
+    );
+}
+if (painelE) {
+    painelE.setAttribute(
+        "value",
+        "E: " + ESelecionado.toFixed(2) + " GPa"
+    );
+}
+     
+   
 const corpoPrensa = document.getElementById("corpoProvaVR");
 
 if (corpoPrensa) {
