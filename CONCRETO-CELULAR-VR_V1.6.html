@@ -6068,6 +6068,14 @@ aplicarIdiomaV12();
 
   <!-- CORPO DE PROVA 01 -->
 <a-cylinder
+<!-- IDENTIFICACAO 450 -->
+<a-text
+    value="450 kg/m³"
+    position="-1.0 2.10 0"
+    width="1.35"
+    align="center"
+    color="#202428">
+</a-text>
     id="cp450"
     class="clickable"
     position="-1.0 1.42 0"
@@ -6079,6 +6087,15 @@ aplicarIdiomaV12();
 </a-cylinder>
 
 <!-- CORPO DE PROVA 02 -->
+<!-- IDENTIFICACAO 600 -->
+<a-text
+    value="600 kg/m³"
+    position="0 2.10 0"
+    width="1.35"
+    align="center"
+    color="#202428">
+</a-text>
+
 <a-cylinder
     id="cp600"
     class="clickable"
@@ -6092,6 +6109,15 @@ aplicarIdiomaV12();
 
 <!-- CORPO DE PROVA 03 -->
 <a-cylinder
+<!-- IDENTIFICACAO 800 -->
+<a-text
+    value="800 kg/m³"
+    position="1.0 2.10 0"
+    width="1.35"
+    align="center"
+    color="#202428">
+</a-text>
+
     id="cp800"
     class="clickable"
     position="1.0 1.42 0"
@@ -6401,8 +6427,8 @@ aplicarIdiomaV12();
 <a-text
     id="painelFcVR"
     value="fc: 1.80 MPa"
-    position="1.45 1.48 -2.98"
-    width="1.25"
+   position="1.30 1.48 -2.98"
+width="1.90"
     color="#8ed8ff">
 </a-text>
 
@@ -6410,8 +6436,8 @@ aplicarIdiomaV12();
 <a-text
     id="painelEVR"
     value="E: 2.10 GPa"
-    position="2.55 1.48 -2.98"
-    width="1.25"
+    position="2.35 1.48 -2.98"
+width="1.90"
     color="#8ed8ff">
 </a-text>
     <a-text
@@ -6532,38 +6558,41 @@ if (painelE) {
    
 const corpoPrensa = document.getElementById("corpoProvaVR");
 
-if (corpoPrensa) {
-
-    if (densidadeSelecionada === 450) {
-        corpoPrensa.setAttribute("color", "#f1f3f2");
-    }
-
-    if (densidadeSelecionada === 600) {
-        corpoPrensa.setAttribute("color", "#d5d8d6");
-    }
-
-    if (densidadeSelecionada === 800) {
-        corpoPrensa.setAttribute("color", "#b8bebc");
-    }
-}
-
-const porosCorpo = document.getElementById("porosCorpoProvaVR");
-
 if (porosCorpo) {
 
+    // Mantém as posições dos poros fixas dentro do cilindro
+    porosCorpo.setAttribute("scale", "1 1 1");
+
+    const poros = porosCorpo.querySelectorAll("a-sphere");
+
+    let fatorPoros = 1.00;
+
     if (densidadeSelecionada === 450) {
-        porosCorpo.setAttribute("scale", "1.35 1.35 1.35");
+        fatorPoros = 1.35;
     }
 
     if (densidadeSelecionada === 600) {
-        porosCorpo.setAttribute("scale", "1 1 1");
+        fatorPoros = 1.00;
     }
 
     if (densidadeSelecionada === 800) {
-        porosCorpo.setAttribute("scale", "0.65 0.65 0.65");
+        fatorPoros = 0.65;
     }
-}
 
+    poros.forEach(function (poro) {
+
+        if (!poro.dataset.raioOriginal) {
+            poro.dataset.raioOriginal = poro.getAttribute("radius");
+        }
+
+        const raioOriginal = parseFloat(poro.dataset.raioOriginal);
+
+        poro.setAttribute(
+            "radius",
+            (raioOriginal * fatorPoros).toFixed(3)
+        );
+    });
+}
 
     console.log(
         "Corpo de prova selecionado:",
