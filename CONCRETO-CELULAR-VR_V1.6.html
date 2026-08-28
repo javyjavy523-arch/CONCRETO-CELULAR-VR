@@ -6066,35 +6066,41 @@ aplicarIdiomaV12();
     id="amostrasBancada"
     position="-3.8 0 -5.8">
 
-    <!-- CORPO DE PROVA 01 -->
-    <a-cylinder
-        position="-1.0 1.42 0"
-        radius="0.22"
-        height="0.60"
-        color="#d7d9d6"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
+  <!-- CORPO DE PROVA 01 -->
+<a-cylinder
+    id="cp450"
+    class="clickable"
+    position="-1.0 1.42 0"
+    radius="0.22"
+    height="0.60"
+    color="#d7d9d6"
+    segments-radial="40"
+    material="roughness: 0.95; metalness: 0.0">
+</a-cylinder>
 
-    <!-- CORPO DE PROVA 02 -->
-    <a-cylinder
-        position="0 1.42 0"
-        radius="0.22"
-        height="0.60"
-        color="#d1d4d1"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
+<!-- CORPO DE PROVA 02 -->
+<a-cylinder
+    id="cp600"
+    class="clickable"
+    position="0 1.42 0"
+    radius="0.22"
+    height="0.60"
+    color="#d1d4d1"
+    segments-radial="40"
+    material="roughness: 0.95; metalness: 0.0">
+</a-cylinder>
 
-    <!-- CORPO DE PROVA 03 -->
-    <a-cylinder
-        position="1.0 1.42 0"
-        radius="0.22"
-        height="0.60"
-        color="#d9dbd8"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
+<!-- CORPO DE PROVA 03 -->
+<a-cylinder
+    id="cp800"
+    class="clickable"
+    position="1.0 1.42 0"
+    radius="0.22"
+    height="0.60"
+    color="#d9dbd8"
+    segments-radial="40"
+    material="roughness: 0.95; metalness: 0.0">
+</a-cylinder>
 
     <!-- ETIQUETA 01 -->
     <a-text
@@ -6399,13 +6405,88 @@ aplicarIdiomaV12();
         id="rig"
         position="0 1.6 0">
 
-        <a-camera
-            look-controls="pointerLockEnabled: false">
-        </a-camera>
+       <a-camera
+    look-controls="pointerLockEnabled: false">
 
-    </a-entity>
+    <!-- CURSOR CENTRAL PARA SELECAO NO VR -->
+    <a-cursor
+        id="cursorVR"
+        fuse="true"
+        fuse-timeout="1000"
+        raycaster="objects: .clickable"
+        color="#40c4ff"
+        scale="0.7 0.7 0.7">
+    </a-cursor>
+
+</a-camera>
+
+</a-entity>
 
 </a-scene>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cp450 = document.getElementById("cp450");
+    const cp600 = document.getElementById("cp600");
+    const cp800 = document.getElementById("cp800");
+
+    const corposDeProva = [
+        {
+            elemento: cp450,
+            densidade: 450,
+            corOriginal: "#d7d9d6"
+        },
+        {
+            elemento: cp600,
+            densidade: 600,
+            corOriginal: "#d1d4d1"
+        },
+        {
+            elemento: cp800,
+            densidade: 800,
+            corOriginal: "#d9dbd8"
+        }
+    ];
+
+    function limparSelecao() {
+        corposDeProva.forEach(function (cp) {
+            if (cp.elemento) {
+                cp.elemento.setAttribute("color", cp.corOriginal);
+                cp.elemento.setAttribute("scale", "1 1 1");
+            }
+        });
+    }
+
+    function selecionarCorpoDeProva(cp) {
+
+        limparSelecao();
+
+        cp.elemento.setAttribute("color", "#40c4ff");
+        cp.elemento.setAttribute("scale", "1.10 1.10 1.10");
+
+        console.log(
+            "Corpo de prova selecionado:",
+            cp.densidade,
+            "kg/m3"
+        );
+    }
+
+    corposDeProva.forEach(function (cp) {
+
+        if (!cp.elemento) {
+            return;
+        }
+
+        cp.elemento.addEventListener("click", function () {
+            selecionarCorpoDeProva(cp);
+        });
+
+    });
+
+});
+</script>
+
 
 </body>
 
