@@ -6008,25 +6008,48 @@ aplicarIdiomaV12();
     position="0 5.5 -3">
 </a-entity>
 
-<!-- =====================================================
-     BANCADA DO LABORATORIO
-     ===================================================== -->
+<!-- ===================================================== -->
+<!-- BANCADA + CORPOS DE PROVA - CONJUNTO UNICO             -->
+<!-- ATRAS E A ESQUERDA DA PRENSA                           -->
+<!-- ===================================================== -->
 
 <a-entity
     id="bancadaLaboratorio"
-    position="-3.8 0 -5.8">
+    position="-3.8 0 -5.8"
+    rotation="0 0 0">
 
-    <!-- TAMPO DA BANCADA -->
+<!-- TESTE DE VERSAO / CACHE -->
+<a-text
+    value="TESTE BANCADA V16 NOVA"
+    position="0 2.40 0"
+    width="4"
+    align="center"
+    anchor="center"
+    color="#ff0000">
+</a-text>
+
+    <!-- ================================================= -->
+    <!-- TAMPO DA BANCADA                                  -->
+    <!-- Centro Y = 1.05                                   -->
+    <!-- Altura = 0.16                                     -->
+    <!-- Superficie superior = 1.13                        -->
+    <!-- ================================================= -->
+
     <a-box
+        id="tampoBancada"
         position="0 1.05 0"
-        width="3.6"
+        width="3.60"
         height="0.16"
         depth="0.90"
         color="#555d63"
         material="roughness: 0.55; metalness: 0.15">
     </a-box>
 
-    <!-- PERNA ESQUERDA -->
+
+    <!-- ================================================= -->
+    <!-- PERNA ESQUERDA                                    -->
+    <!-- ================================================= -->
+
     <a-box
         position="-1.55 0.52 0"
         width="0.16"
@@ -6036,7 +6059,11 @@ aplicarIdiomaV12();
         material="roughness: 0.70; metalness: 0.25">
     </a-box>
 
-    <!-- PERNA DIREITA -->
+
+    <!-- ================================================= -->
+    <!-- PERNA DIREITA                                     -->
+    <!-- ================================================= -->
+
     <a-box
         position="1.55 0.52 0"
         width="0.16"
@@ -6046,128 +6073,160 @@ aplicarIdiomaV12();
         material="roughness: 0.70; metalness: 0.25">
     </a-box>
 
-    <!-- PRATELEIRA INFERIOR -->
+
+    <!-- ================================================= -->
+    <!-- PRATELEIRA INFERIOR                               -->
+    <!-- ================================================= -->
+
     <a-box
         position="0 0.32 0"
-        width="3.2"
+        width="3.20"
         height="0.10"
         depth="0.72"
         color="#697177"
         material="roughness: 0.75">
     </a-box>
 
+
+    <!-- ================================================= -->
+    <!-- CORPOS DE PROVA                                   -->
+    <!-- ORIGEM EXATAMENTE SOBRE O TAMPO: Y = 1.13         -->
+    <!-- ================================================= -->
+
+    <a-entity
+        id="amostrasBancada"
+        position="0 1.13 0">
+
+
+        <!-- ================================================= -->
+        <!-- CORPO DE PROVA 450 kg/m3                          -->
+        <!-- ================================================= -->
+
+        <a-entity
+            id="grupo450"
+            position="-1.05 0 0">
+
+            <a-cylinder
+                id="cp450"
+                class="clickable corpo-prova"
+                data-densidade="450"
+                position="0 0.30 0"
+                radius="0.22"
+                height="0.60"
+                color="#d7d9d6"
+                segments-radial="40"
+                material="roughness: 0.95; metalness: 0.0">
+            </a-cylinder>
+
+            <a-plane
+                position="0 0.82 0.02"
+                width="0.85"
+                height="0.24"
+                color="#172b3a">
+            </a-plane>
+
+            <a-text
+                value="450 kg/m3"
+                position="0 0.82 0.03"
+                width="2.00"
+                align="center"
+                anchor="center"
+                color="#ffffff">
+            </a-text>
+
+        </a-entity>
+
+
+        <!-- ================================================= -->
+        <!-- CORPO DE PROVA 600 kg/m3                          -->
+        <!-- ================================================= -->
+
+        <a-entity
+            id="grupo600"
+            position="0 0 0">
+
+            <a-cylinder
+                id="cp600"
+                class="clickable corpo-prova"
+                data-densidade="600"
+                position="0 0.30 0"
+                radius="0.22"
+                height="0.60"
+                color="#d1d4d1"
+                segments-radial="40"
+                material="roughness: 0.95; metalness: 0.0">
+            </a-cylinder>
+
+            <a-plane
+                position="0 0.82 0.02"
+                width="0.85"
+                height="0.24"
+                color="#172b3a">
+            </a-plane>
+
+            <a-text
+                value="600 kg/m3"
+                position="0 0.82 0.03"
+                width="2.00"
+                align="center"
+                anchor="center"
+                color="#ffffff">
+            </a-text>
+
+        </a-entity>
+
+
+        <!-- ================================================= -->
+        <!-- CORPO DE PROVA 800 kg/m3                          -->
+        <!-- ================================================= -->
+
+        <a-entity
+            id="grupo800"
+            position="1.05 0 0">
+
+            <a-cylinder
+                id="cp800"
+                class="clickable corpo-prova"
+                data-densidade="800"
+                position="0 0.30 0"
+                radius="0.22"
+                height="0.60"
+                color="#d9dbd8"
+                segments-radial="40"
+                material="roughness: 0.95; metalness: 0.0">
+            </a-cylinder>
+
+            <a-plane
+                position="0 0.82 0.02"
+                width="0.85"
+                height="0.24"
+                color="#172b3a">
+            </a-plane>
+
+            <a-text
+                value="800 kg/m3"
+                position="0 0.82 0.03"
+                width="2.00"
+                align="center"
+                anchor="center"
+                color="#ffffff">
+            </a-text>
+
+        </a-entity>
+
+
+    </a-entity>
+    <!-- FIM amostrasBancada -->
+
+
 </a-entity>
+<!-- FIM bancadaLaboratorio -->
+
 
 <!-- ===================================================== -->
-<!-- CORPOS DE PROVA SOBRE O TAMPO DA BANCADA              -->
+<!-- PRENSA DE COMPRESSÃO                                  -->
 <!-- ===================================================== -->
-
-<a-entity id="amostrasBancada">
-
-    <!-- ================================================= -->
-    <!-- CORPO DE PROVA 450 kg/m3                          -->
-    <!-- ================================================= -->
-
-    <!-- LEGENDA 450 -->
-    <a-plane
-        position="-1.00 1.95 0"
-        width="0.85"
-        height="0.26"
-        color="#172b3a">
-    </a-plane>
-
-    <a-text
-        value="450 kg/m3"
-        position="-1.00 1.95 0.01"
-        width="2.10"
-        align="center"
-        color="#ffffff">
-    </a-text>
-
-    <!-- CORPO 450 -->
-    <a-cylinder
-        id="cp450"
-        class="clickable"
-        position="-1.00 1.43 0"
-        radius="0.22"
-        height="0.60"
-        color="#d7d9d6"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
-
-
-    <!-- ================================================= -->
-    <!-- CORPO DE PROVA 600 kg/m3                          -->
-    <!-- ================================================= -->
-
-    <!-- LEGENDA 600 -->
-    <a-plane
-        position="0 1.95 0"
-        width="0.85"
-        height="0.26"
-        color="#172b3a">
-    </a-plane>
-
-    <a-text
-        value="600 kg/m3"
-        position="0 1.95 0.01"
-        width="2.10"
-        align="center"
-        color="#ffffff">
-    </a-text>
-
-    <!-- CORPO 600 -->
-    <a-cylinder
-        id="cp600"
-        class="clickable"
-        position="0 1.43 0"
-        radius="0.22"
-        height="0.60"
-        color="#d1d4d1"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
-
-
-    <!-- ================================================= -->
-    <!-- CORPO DE PROVA 800 kg/m3                          -->
-    <!-- ================================================= -->
-
-    <!-- LEGENDA 800 -->
-    <a-plane
-        position="1.00 1.95 0"
-        width="0.85"
-        height="0.26"
-        color="#172b3a">
-    </a-plane>
-
-    <a-text
-        value="800 kg/m3"
-        position="1.00 1.95 0.01"
-        width="2.10"
-        align="center"
-        color="#ffffff">
-    </a-text>
-
-    <!-- CORPO 800 -->
-    <a-cylinder
-        id="cp800"
-        class="clickable"
-        position="1.00 1.43 0"
-        radius="0.22"
-        height="0.60"
-        color="#d9dbd8"
-        segments-radial="40"
-        material="roughness: 0.95; metalness: 0.0">
-    </a-cylinder>
-
-</a-entity>
    
-<!-- =========================
-     PRENSA DE COMPRESSÃO
-========================== -->
-
 <!-- =====================================================
      MODULO DE INSTRUMENTACAO DO LABORATORIO
      ===================================================== -->
