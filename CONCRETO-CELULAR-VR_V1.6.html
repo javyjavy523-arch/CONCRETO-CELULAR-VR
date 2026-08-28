@@ -6059,97 +6059,110 @@ aplicarIdiomaV12();
 </a-entity>
 
 <!-- ===================================================== -->
-<!-- CORPOS DE PROVA SOBRE A BANCADA                       -->
+<!-- CORPOS DE PROVA SOBRE O TAMPO DA BANCADA              -->
 <!-- ===================================================== -->
 
-<!-- CORPO DE PROVA 01 - 450 kg/m3 -->
+<a-entity id="amostrasBancada">
 
-<!-- IDENTIFICACAO 450 -->
-<a-plane
-    position="-0.75 2.02 0"
-    width="0.90"
-    height="0.28"
-    color="#172b3a">
-</a-plane>
+    <!-- ================================================= -->
+    <!-- CORPO DE PROVA 450 kg/m3                          -->
+    <!-- ================================================= -->
 
-<a-text
-    value="450 kg/m3"
-    position="-0.75 2.02 0.01"
-    width="2.20"
-    align="center"
-    color="#ffffff">
-</a-text>
+    <!-- LEGENDA 450 -->
+    <a-plane
+        position="-1.00 1.95 0"
+        width="0.85"
+        height="0.26"
+        color="#172b3a">
+    </a-plane>
 
-<a-cylinder
-    id="cp450"
-    class="clickable"
-    position="-0.75 1.43 0"
-    radius="0.22"
-    height="0.60"
-    color="#d7d9d6"
-    segments-radial="40"
-    material="roughness: 0.95; metalness: 0.0">
-</a-cylinder>
+    <a-text
+        value="450 kg/m3"
+        position="-1.00 1.95 0.01"
+        width="2.10"
+        align="center"
+        color="#ffffff">
+    </a-text>
 
-
-<!-- CORPO DE PROVA 02 - 600 kg/m3 -->
-
-<!-- IDENTIFICACAO 600 -->
-<a-plane
-    position="0 2.02 0"
-    width="0.90"
-    height="0.28"
-    color="#172b3a">
-</a-plane>
-
-<a-text
-    value="600 kg/m3"
-    position="0 2.02 0.01"
-    width="2.20"
-    align="center"
-    color="#ffffff">
-</a-text>
-
-<a-cylinder
-    id="cp600"
-    class="clickable"
-    position="0 1.43 0"
-    radius="0.22"
-    height="0.60"
-    color="#d1d4d1"
-    segments-radial="40"
-    material="roughness: 0.95; metalness: 0.0">
-</a-cylinder>
+    <!-- CORPO 450 -->
+    <a-cylinder
+        id="cp450"
+        class="clickable"
+        position="-1.00 1.43 0"
+        radius="0.22"
+        height="0.60"
+        color="#d7d9d6"
+        segments-radial="40"
+        material="roughness: 0.95; metalness: 0.0">
+    </a-cylinder>
 
 
-<!-- CORPO DE PROVA 03 - 800 kg/m3 -->
+    <!-- ================================================= -->
+    <!-- CORPO DE PROVA 600 kg/m3                          -->
+    <!-- ================================================= -->
 
-<!-- IDENTIFICACAO 800 -->
-<a-plane
-    position="0.75 2.02 0"
-    width="0.90"
-    height="0.28"
-    color="#172b3a">
-</a-plane>
+    <!-- LEGENDA 600 -->
+    <a-plane
+        position="0 1.95 0"
+        width="0.85"
+        height="0.26"
+        color="#172b3a">
+    </a-plane>
 
-<a-text
-    value="800 kg/m3"
-    position="0.75 2.02 0.01"
-    width="2.20"
-    align="center"
-    color="#ffffff">
-</a-text>
+    <a-text
+        value="600 kg/m3"
+        position="0 1.95 0.01"
+        width="2.10"
+        align="center"
+        color="#ffffff">
+    </a-text>
 
-<a-cylinder
-    id="cp800"
-    class="clickable"
-    position="0.75 1.43 0"
-    radius="0.22"
-    height="0.60"
-    color="#d9dbd8"
-    segments-radial="40"
-    material="roughness: 0.95; metalness: 0.0">
-</a-cylinder>
+    <!-- CORPO 600 -->
+    <a-cylinder
+        id="cp600"
+        class="clickable"
+        position="0 1.43 0"
+        radius="0.22"
+        height="0.60"
+        color="#d1d4d1"
+        segments-radial="40"
+        material="roughness: 0.95; metalness: 0.0">
+    </a-cylinder>
+
+
+    <!-- ================================================= -->
+    <!-- CORPO DE PROVA 800 kg/m3                          -->
+    <!-- ================================================= -->
+
+    <!-- LEGENDA 800 -->
+    <a-plane
+        position="1.00 1.95 0"
+        width="0.85"
+        height="0.26"
+        color="#172b3a">
+    </a-plane>
+
+    <a-text
+        value="800 kg/m3"
+        position="1.00 1.95 0.01"
+        width="2.10"
+        align="center"
+        color="#ffffff">
+    </a-text>
+
+    <!-- CORPO 800 -->
+    <a-cylinder
+        id="cp800"
+        class="clickable"
+        position="1.00 1.43 0"
+        radius="0.22"
+        height="0.60"
+        color="#d9dbd8"
+        segments-radial="40"
+        material="roughness: 0.95; metalness: 0.0">
+    </a-cylinder>
+
+</a-entity>
    
 <!-- =========================
      PRENSA DE COMPRESSÃO
