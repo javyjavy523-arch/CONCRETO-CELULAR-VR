@@ -6380,7 +6380,8 @@ aplicarIdiomaV12();
     </a-text>
 
     <a-text
-        value="Densidade: 600 kg/m3"
+        id="painelDensidadeVR"
+    value="Densidade: 600 kg/m3"
         position="1.45 1.95 -2.98"
         width="2.6"
         color="#ffffff">
@@ -6460,17 +6461,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function selecionarCorpoDeProva(cp) {
 
-        limparSelecao();
+    limparSelecao();
 
-        cp.elemento.setAttribute("color", "#40c4ff");
-        cp.elemento.setAttribute("scale", "1.10 1.10 1.10");
+    densidadeSelecionada = cp.densidade;
 
-        console.log(
-            "Corpo de prova selecionado:",
-            cp.densidade,
-            "kg/m3"
+    cp.elemento.setAttribute("color", "#40c4ff");
+    cp.elemento.setAttribute("scale", "1.10 1.10 1.10");
+
+    const painelDensidade = document.getElementById("painelDensidadeVR");
+
+    if (painelDensidade) {
+        painelDensidade.setAttribute(
+            "value",
+            "Densidade: " + densidadeSelecionada + " kg/m3"
         );
     }
+
+    console.log(
+        "Corpo de prova selecionado:",
+        cp.densidade,
+        "kg/m3"
+    );
+}
 
     corposDeProva.forEach(function (cp) {
 
