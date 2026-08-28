@@ -6306,8 +6306,10 @@ aplicarIdiomaV12();
         roughness="0.95"
         metalness="0.00">
     </a-cylinder>
+<!-- POROS VISUAIS FRONTAIS -->
 
-    <!-- POROS VISUAIS FRONTAIS -->
+<a-entity id="porosCorpoProvaVR">
+
     <a-sphere
         position="-0.12 1.42 0.33"
         radius="0.045"
@@ -6337,7 +6339,9 @@ aplicarIdiomaV12();
         radius="0.030"
         color="#858c8f">
     </a-sphere>
-            
+
+</a-entity>
+           
 
             <!-- PRATO INFERIOR -->
     <a-cylinder
@@ -6476,6 +6480,40 @@ document.addEventListener("DOMContentLoaded", function () {
             "Densidade: " + densidadeSelecionada + " kg/m3"
         );
     }
+const corpoPrensa = document.getElementById("corpoProvaVR");
+
+if (corpoPrensa) {
+
+    if (densidadeSelecionada === 450) {
+        corpoPrensa.setAttribute("color", "#f1f3f2");
+    }
+
+    if (densidadeSelecionada === 600) {
+        corpoPrensa.setAttribute("color", "#d5d8d6");
+    }
+
+    if (densidadeSelecionada === 800) {
+        corpoPrensa.setAttribute("color", "#b8bebc");
+    }
+}
+
+const porosCorpo = document.getElementById("porosCorpoProvaVR");
+
+if (porosCorpo) {
+
+    if (densidadeSelecionada === 450) {
+        porosCorpo.setAttribute("scale", "1.35 1.35 1.35");
+    }
+
+    if (densidadeSelecionada === 600) {
+        porosCorpo.setAttribute("scale", "1 1 1");
+    }
+
+    if (densidadeSelecionada === 800) {
+        porosCorpo.setAttribute("scale", "0.65 0.65 0.65");
+    }
+}
+
 
     console.log(
         "Corpo de prova selecionado:",
