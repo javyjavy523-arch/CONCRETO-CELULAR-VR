@@ -2887,12 +2887,29 @@ function atualizarResultados(){
         modoAtual==="didatico"
     ){
 
-        $("rFc").textContent=
-            "—";
+       const fcDidatico =
+    prever(
+        modeloFc,
+        rho,
+        t
+    );
 
+const EDidatico =
+    prever(
+        modeloE,
+        rho,
+        t
+    );
 
-        $("rE").textContent=
-            "—";
+$("rFc").textContent =
+    Number.isFinite(fcDidatico)
+    ? `${fmt(fcDidatico)} MPa`
+    : "—";
+
+$("rE").textContent =
+    Number.isFinite(EDidatico)
+    ? `${fmt(EDidatico)} GPa`
+    : "—";
 
 
         $("rOrigem").textContent =
@@ -4176,25 +4193,42 @@ function desenharCurvaSE(
 
 function origemMecanica(){
 
-    if(
-        modoAtual==="didatico"
-    )
+  if (modoAtual === "didatico") {
 
-        return{
+    const rho =
+        Number(
+            $("densidade").value
+        );
 
-            E:1.061,
+    const t =
+        Number(
+            $("idade").value
+        );
 
-            fc:null,
+    const EDidatico =
+        prever(
+            modeloE,
+            rho,
+            t
+        );
 
-            origem:
-            "modo didático",
+    const fcDidatico =
+        prever(
+            modeloFc,
+            rho,
+            t
+        );
 
-            classe:
-            "didatico",
-
-            limiteValido:false
-
-        };
+    return {
+        E: EDidatico,
+        fc: fcDidatico,
+        origem: "modelo didático",
+        classe: "didatico",
+        limiteValido:
+            Number.isFinite(fcDidatico) &&
+            fcDidatico > 0
+    };
+}
 
 
     const rho=
@@ -4833,13 +4867,7 @@ $("botaoReset")
    ENSAIO VIRTUAL DE COMPRESSÃO
 ========================================================= */
 
-$("botaoCarga")
-.addEventListener(
-
-    "click",
-
-    ()=>{
-
+function aplicarCargaEnsaio() {
 
         const PkN=
 
@@ -5068,14 +5096,11 @@ $("botaoCarga")
             );
 
 
-            $("estadoEnsaio").textContent=
+            $("txtEstadoInicial").textContent =
+    "LIMITE DE RESISTÊNCIA ATINGIDO";
 
-                "LIMITE DE RESISTÊNCIA ATINGIDO";
-
-
-            $("estadoEnsaio").className=
-
-                "estadoEnsaio rupturaEstado";
+$("txtEstadoInicial").className =
+    "rupturaEstado";
 
         }
 
@@ -5088,14 +5113,11 @@ $("botaoCarga")
             );
 
 
-            $("estadoEnsaio").textContent=
+            $("txtEstadoInicial").textContent =
+    "ENSAIO CONCLUÍDO";
 
-                "ENSAIO CONCLUÍDO";
-
-
-            $("estadoEnsaio").className=
-
-                "estadoEnsaio concluido";
+$("txtEstadoInicial").className =
+    "concluido";
 
         }
 
@@ -5264,9 +5286,14 @@ E=${fmt(fonte.E)} GPa
     );
 
     }
+// =====================================================
+// BOTAO 2D - APLICAR CARGA
+// =====================================================
 
+$("botaoCarga").addEventListener(
+    "click",
+    aplicarCargaEnsaio
 );
-
 
 
 /* =========================================================
@@ -5660,13 +5687,13 @@ $("txtBancoFc").textContent =
 $("txtBancoE").textContent =
     T.bancoE;
 
-$("btnAdicionarEnsaio").textContent =
+$("txtAdicionarEnsaio").textContent =
     T.btnAdicionarEnsaio;
 
-$("btnRestaurarEnsaios").textContent =
+$("txtRestaurarBase").textContent =
     T.btnRestaurarEnsaios;
 
-$("btnLimparBanco").textContent =
+$("txtLimparBanco").textContent =
     T.btnLimparBanco;
 $("txtLeituraExperimental").textContent =
     T.leituraExperimental;
