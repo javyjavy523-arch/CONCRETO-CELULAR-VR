@@ -5100,6 +5100,7 @@ const fissurasVR =
         "fissurasCorpoProvaVR"
     );
 
+
 if (fissurasVR) {
     fissurasVR.setAttribute(
         "visible",
@@ -5107,9 +5108,43 @@ if (fissurasVR) {
     );
 }
 
+// =====================================================
+// V1.7 - DEFORMACAO VISUAL DO CORPO NA RUPTURA
+// =====================================================
 
-            $("txtEstadoInicial").textContent =
+const corpoVR =
+    document.getElementById("corpoProvaVR");
+
+if (corpoVR) {
+
+    corpoVR.setAttribute(
+        "animation__esmagamento",
+        {
+            property: "scale",
+            from: "1 1 1",
+            to: "1.06 0.93 1.06",
+            dur: 350,
+            easing: "easeOutQuad"
+        }
+    );
+
+    corpoVR.setAttribute(
+        "animation__inclinacao",
+        {
+            property: "rotation",
+            from: "0 0 0",
+            to: "0 0 2.5",
+            dur: 180,
+            dir: "alternate",
+            loop: 2,
+            easing: "easeOutQuad"
+        }
+    );
+}
+
+$("txtEstadoInicial").textContent =
     "LIMITE DE RESISTÊNCIA ATINGIDO";
+
 
 $("txtEstadoInicial").className =
     "rupturaEstado";
