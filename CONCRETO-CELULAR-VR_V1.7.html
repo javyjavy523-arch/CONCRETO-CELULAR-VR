@@ -4867,6 +4867,122 @@ $("botaoReset")
    ENSAIO VIRTUAL DE COMPRESSÃO
 ========================================================= */
 
+function tocarSomRuptura() {
+
+    try {
+
+        const AudioCtx =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        const ctx = new AudioCtx();
+
+        if (ctx.state === "suspended") {
+    ctx.resume();
+}
+
+        // -----------------------------
+        // ESTALO PRINCIPAL
+        // -----------------------------
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "triangle";
+
+        osc.frequency.setValueAtTime(
+            170,
+            ctx.currentTime
+        );
+
+        osc.frequency.exponentialRampToValueAtTime(
+            55,
+            ctx.currentTime + 0.18
+        );
+
+        gain.gain.setValueAtTime(
+            0.85,
+            ctx.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            ctx.currentTime + 0.22
+        );
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.22);
+
+
+        // -----------------------------
+        // RUIDO CURTO DE QUEBRA
+        // -----------------------------
+
+        const duracao = 0.18;
+
+        const buffer =
+            ctx.createBuffer(
+                1,
+                ctx.sampleRate * duracao,
+                ctx.sampleRate
+            );
+
+        const dados =
+            buffer.getChannelData(0);
+
+        for (
+            let i = 0;
+            i < dados.length;
+            i++
+        ) {
+
+            const queda =
+                1 - i / dados.length;
+
+            dados[i] =
+                (Math.random() * 2 - 1) *
+                queda;
+        }
+
+        const ruido =
+            ctx.createBufferSource();
+
+        const ganhoRuido =
+            ctx.createGain();
+
+        ruido.buffer = buffer;
+
+        ganhoRuido.gain.setValueAtTime(
+            0.55,
+            ctx.currentTime
+        );
+
+        ganhoRuido.gain.exponentialRampToValueAtTime(
+            0.001,
+            ctx.currentTime + duracao
+        );
+
+        ruido.connect(ganhoRuido);
+        ganhoRuido.connect(ctx.destination);
+
+        ruido.start();
+
+    }
+
+    catch (erro) {
+
+        console.log(
+            "Som de ruptura não disponível:",
+            erro
+        );
+
+    }
+
+}
+
 function aplicarCargaEnsaio() {
 
         const PkN=
@@ -4874,6 +4990,12 @@ function aplicarCargaEnsaio() {
             Number(
                 $("carga").value
             );
+
+// =====================================================
+// V1.7 - SOM DE RUPTURA DO CORPO DE PROVA
+// =====================================================
+
+
 
 
         if(
@@ -5088,7 +5210,7 @@ function aplicarCargaEnsaio() {
         if(
             curva.rompe
         ){
-
+ tocarSomRuptura();
             $("corpo")
             .classList
             .add(
