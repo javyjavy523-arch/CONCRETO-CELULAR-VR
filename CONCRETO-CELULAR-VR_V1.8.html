@@ -5233,7 +5233,7 @@ const yPonto =
 // =====================================================
 
 // Duracao total da animacao em milissegundos
-const duracaoAnimacaoVR = 2500;
+const duracaoAnimacaoVR = 6000;
 
 // Momento inicial
 const inicioAnimacaoVR = performance.now();
@@ -7591,7 +7591,43 @@ width="1.90"
 
 
 </a-entity>
+<!-- ===================================================== -->
+<!-- V1.8 - BOTAO INICIAR ENSAIO DENTRO DO AMBIENTE VR    -->
+<!-- ===================================================== -->
 
+<a-entity
+    id="botaoIniciarEnsaioVR"
+    position="1.65 1.15 -2.85">
+
+    <a-plane
+        id="botaoIniciarEnsaioVRFundo"
+        class="clickable"
+        position="0 0 0"
+        width="1.65"
+        height="0.48"
+        color="#168bd2"
+        material="roughness: 0.65">
+    </a-plane>
+
+    <a-text
+        value="INICIAR ENSAIO"
+        position="0 0 0.025"
+        width="3.10"
+        align="center"
+        anchor="center"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        value="Olhe por 1 segundo"
+        position="0 -0.36 0.020"
+        width="2.40"
+        align="center"
+        anchor="center"
+        color="#d5e8f5">
+    </a-text>
+
+</a-entity>
     <!-- CÂMERA -->
     <a-entity
         id="rig"
@@ -7622,6 +7658,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const cp450 = document.getElementById("cp450");
     const cp600 = document.getElementById("cp600");
     const cp800 = document.getElementById("cp800");
+
+const botaoIniciarEnsaioVR =
+    document.getElementById(
+        "botaoIniciarEnsaioVRFundo"
+    );
+
 
     const corposDeProva = [
         {
@@ -7758,7 +7800,99 @@ if (porosCorpo) {
 
     });
 
+
+
+// =====================================================
+// V1.8 - BOTAO INICIAR ENSAIO DENTRO DO VR
+// =====================================================
+
+if (botaoIniciarEnsaioVR) {
+
+    botaoIniciarEnsaioVR.addEventListener(
+        "click",
+        function () {
+
+            // Evita múltiplos acionamentos durante o ensaio
+            if (
+                botaoIniciarEnsaioVR.getAttribute(
+                    "data-ensaio-ativo"
+                ) === "true"
+            ) {
+                return;
+            }
+
+
+            botaoIniciarEnsaioVR.setAttribute(
+                "data-ensaio-ativo",
+                "true"
+            );
+
+
+            // Muda a aparência do botão durante o ensaio
+            botaoIniciarEnsaioVR.setAttribute(
+                "color",
+                "#e0a020"
+            );
+
+
+            const textoBotaoVR =
+                document.querySelector(
+                    "#botaoIniciarEnsaioVR a-text"
+                );
+
+
+            if (textoBotaoVR) {
+
+                textoBotaoVR.setAttribute(
+                    "value",
+                    "ENSAIO EM EXECUCAO"
+                );
+
+            }
+
+
+            // Executa exatamente o mesmo ensaio
+            // já utilizado pela interface principal
+            aplicarCargaEnsaio();
+
+
+            // Após 6 segundos libera o botão novamente
+            setTimeout(
+                function () {
+
+                    botaoIniciarEnsaioVR.setAttribute(
+                        "data-ensaio-ativo",
+                        "false"
+                    );
+
+                    botaoIniciarEnsaioVR.setAttribute(
+                        "color",
+                        "#168bd2"
+                    );
+
+
+                    if (textoBotaoVR) {
+
+                        textoBotaoVR.setAttribute(
+                            "value",
+                            "INICIAR ENSAIO"
+                        );
+
+                    }
+
+                },
+                6000
+            );
+
+    }
+);
+
+}
+
+// FECHA DOMContentLoaded
 });
+
+
 </script>
 
 
