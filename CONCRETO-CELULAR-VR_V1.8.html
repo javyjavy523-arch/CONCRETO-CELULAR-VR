@@ -6532,6 +6532,10 @@ aplicarIdiomaV12();
     material="emissive: #ffffff; emissiveIntensity: 0.8">
 </a-box>
 
+<!-- PAREDE PRINCIPAL - LABORATORIO UFSC P&D -->
+<!-- ===================================================== -->
+<!-- BANCADA + CORPOS DE PROVA - CONJUNTO UNICO-->
+
 <!-- ===================================================== -->
 <!-- PAREDE PRINCIPAL - LABORATORIO UFSC P&D              -->
 <!-- ===================================================== -->
@@ -6560,55 +6564,53 @@ aplicarIdiomaV12();
         material="roughness: 0.85">
     </a-box>
 
-   
-<!-- ===================================================== -->
-<!-- V1.8 - CONJUNTO IDENTIFICACAO UFSC AFASTADO DA PAREDE -->
-<!-- Separacao de 20 mm para eliminar z-fighting           -->
-<!-- ===================================================== -->
+    <!-- IDENTIFICACAO LABORATORIO UFSC -->
+    <a-entity
+        id="identificacaoLaboratorioUFSC"
+        position="0 0 0.22">
 
-<a-entity
-    id="identificacaoLaboratorioUFSC"
-    position="0 0 0.020">
-   
-    <!-- TITULO PRINCIPAL -->
-<a-text
-    value="LABORATORIO UFSC P&D"
-    position="0 4.55 0.30"
-    width="7.5"
-    align="center"
-    anchor="center"
-    color="#102c3d">
-</a-text>
+        <!-- TITULO PRINCIPAL -->
+        <a-text
+            value="LABORATORIO UFSC P&D"
+            position="0 4.55 0.0020"
+            width="7.5"
+            align="center"
+            anchor="center"
+            color="#102c3d">
+        </a-text>
 
-<!-- LINHA DECORATIVA -->
-<a-box
-    position="0 4.18 0.18"
-    width="4.8"
-    height="0.035"
-    depth="0.025"
-    color="#102c3d">
-</a-box>
+        <!-- LINHA DECORATIVA -->
+        <a-box
+            position="0 4.18 0.003"
+            width="4.8"
+            height="0.035"
+            depth="0.025"
+            color="#102c3d">
+        </a-box>
 
-<!-- NOMES -->
-<a-text
-    value="Eng. Javier Sanabria / Eng. Marcos Lenzi"
-    position="0 3.82 0.30"
-    width="5.5"
-    align="center"
-    anchor="center"
-    color="#18384b">
-</a-text>
+        <!-- NOMES -->
+        <a-text
+            value="Eng. Javier Sanabria / Eng. Marcos Lenzi"
+            position="0 3.82 0.002"
+            width="5.5"
+            align="center"
+            anchor="center"
+            color="#18384b">
+        </a-text>
+
+    </a-entity>
 
 </a-entity>
 
+
 <!-- LUZ PRINCIPAL DO LABORATORIO -->
 <a-entity
+    id="luzPrincipalLaboratorio"
     light="type: point; intensity: 0.8; distance: 14; decay: 1.5"
     position="0 5.5 -3">
 </a-entity>
 
-<!-- ===================================================== -->
-<!-- BANCADA + CORPOS DE PROVA - CONJUNTO UNICO             -->
+
 <!-- ATRAS E A ESQUERDA DA PRENSA                           -->
 <!-- ===================================================== -->
 
@@ -7366,7 +7368,7 @@ width="1.90"
 
 <a-entity
     id="graficoTensaoDeformacaoVR"
-     position="6.78 2.65 -1.50"
+     position="6.97 2.65 -3.00"
     rotation="0 -90 0">
 
     <!-- ================================================= -->
