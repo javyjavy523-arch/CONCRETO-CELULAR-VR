@@ -7022,8 +7022,8 @@ width="1.90"
 
 <a-entity
     id="graficoTensaoDeformacaoVR"
-    position="5.85 2.45 -4.80"
-    rotation="0 -68 0">
+    position="6.20 2.55 -5.35"
+    rotation="0 -90 0">
 
     <!-- ================================================= -->
     <!-- PAINEL PRINCIPAL                                  -->
@@ -7031,23 +7031,23 @@ width="1.90"
 
     <a-plane
         position="0 0 0"
-        width="3.40"
-        height="2.45"
+        width="3.80"
+        height="2.55"
         color="#102433"
         material="roughness: 0.90">
     </a-plane>
 
 
     <!-- ================================================= -->
-    <!-- BORDA SUPERIOR AZUL                               -->
+    <!-- BORDA SUPERIOR                                    -->
     <!-- ================================================= -->
 
     <a-box
-        position="0 1.20 0.025"
-        width="3.40"
-        height="0.045"
+        position="0 1.245 0.025"
+        width="3.80"
+        height="0.050"
         depth="0.025"
-        color="#21b7e5">
+        color="#20c8f5">
     </a-box>
 
 
@@ -7057,8 +7057,8 @@ width="1.90"
 
     <a-text
         value="TENSAO x DEFORMACAO"
-        position="0 0.98 0.035"
-        width="3.80"
+        position="0 1.02 0.040"
+        width="4.20"
         align="center"
         anchor="center"
         color="#ffffff">
@@ -7066,61 +7066,61 @@ width="1.90"
 
 
     <!-- ================================================= -->
-    <!-- VALORES ATUAIS DO ENSAIO                          -->
+    <!-- RESULTADOS ATUAIS                                 -->
     <!-- ================================================= -->
 
     <a-text
         id="valorSigmaVR"
         value="sigma = 0.000 MPa"
-        position="-0.95 0.72 0.040"
-        width="2.20"
-        color="#27d7ff">
+        position="-1.15 0.76 0.045"
+        width="2.45"
+        color="#24d8ff">
     </a-text>
 
     <a-text
         id="valorEpsilonVR"
         value="epsilon = 0.000000"
-        position="-0.95 0.52 0.040"
-        width="2.20"
-        color="#27d7ff">
+        position="-1.15 0.56 0.045"
+        width="2.45"
+        color="#24d8ff">
     </a-text>
 
 
     <!-- ================================================= -->
-    <!-- EIXO VERTICAL - TENSAO                             -->
+    <!-- EIXO Y                                            -->
     <!-- ================================================= -->
 
     <a-box
-        position="-1.15 -0.15 0.045"
-        width="0.025"
-        height="1.55"
+        position="-1.30 -0.12 0.050"
+        width="0.028"
+        height="1.62"
         depth="0.020"
         color="#ffffff">
     </a-box>
 
 
     <!-- ================================================= -->
-    <!-- EIXO HORIZONTAL - DEFORMACAO                       -->
+    <!-- EIXO X                                            -->
     <!-- ================================================= -->
 
     <a-box
-        position="0.05 -0.92 0.045"
-        width="2.42"
-        height="0.025"
+        position="0.00 -0.92 0.050"
+        width="2.65"
+        height="0.028"
         depth="0.020"
         color="#ffffff">
     </a-box>
 
 
     <!-- ================================================= -->
-    <!-- ROTULO EIXO Y                                     -->
+    <!-- ROTULO DO EIXO Y                                  -->
     <!-- ================================================= -->
 
     <a-text
         value="sigma MPa"
-        position="-1.48 -0.15 0.055"
+        position="-1.65 -0.12 0.060"
         rotation="0 0 90"
-        width="1.90"
+        width="2.00"
         align="center"
         anchor="center"
         color="#ffffff">
@@ -7128,13 +7128,13 @@ width="1.90"
 
 
     <!-- ================================================= -->
-    <!-- ROTULO EIXO X                                     -->
+    <!-- ROTULO DO EIXO X                                  -->
     <!-- ================================================= -->
 
     <a-text
         value="epsilon"
-        position="0.10 -1.12 0.055"
-        width="1.80"
+        position="0.05 -1.14 0.060"
+        width="1.90"
         align="center"
         anchor="center"
         color="#ffffff">
@@ -7147,44 +7147,44 @@ width="1.90"
 
     <a-text
         value="10"
-        position="-1.38 0.58 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.52 0.62 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="8"
-        position="-1.36 0.28 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.49 0.34 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="6"
-        position="-1.36 -0.02 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.49 0.06 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="4"
-        position="-1.36 -0.32 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.49 -0.22 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="2"
-        position="-1.36 -0.62 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.49 -0.50 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="0"
-        position="-1.36 -0.94 0.055"
-        width="0.75"
-        color="#bfcbd3">
+        position="-1.49 -0.92 0.060"
+        width="0.80"
+        color="#c8d2d9">
     </a-text>
 
 
@@ -7194,64 +7194,63 @@ width="1.90"
 
     <a-text
         value="0"
-        position="-1.17 -1.04 0.055"
-        width="0.65"
-        color="#bfcbd3">
+        position="-1.33 -1.05 0.060"
+        width="0.70"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="0.001"
-        position="-0.62 -1.04 0.055"
-        width="0.70"
-        color="#bfcbd3">
+        position="-0.73 -1.05 0.060"
+        width="0.75"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="0.002"
-        position="-0.02 -1.04 0.055"
-        width="0.70"
-        color="#bfcbd3">
+        position="-0.08 -1.05 0.060"
+        width="0.75"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="0.003"
-        position="0.58 -1.04 0.055"
-        width="0.70"
-        color="#bfcbd3">
+        position="0.58 -1.05 0.060"
+        width="0.75"
+        color="#c8d2d9">
     </a-text>
 
     <a-text
         value="0.004"
-        position="1.13 -1.04 0.055"
-        width="0.70"
-        color="#bfcbd3">
+        position="1.18 -1.05 0.060"
+        width="0.75"
+        color="#c8d2d9">
     </a-text>
 
 
     <!-- ================================================= -->
-    <!-- CURVA TENSAO x DEFORMACAO                          -->
-    <!-- ESTADO INICIAL - SERA DINAMICA DEPOIS             -->
+    <!-- CURVA INICIAL                                     -->
     <!-- ================================================= -->
 
     <a-box
         id="linhaCurvaVR"
-        position="-0.55 -0.43 0.075"
-        width="1.55"
-        height="0.035"
-        depth="0.022"
+        position="-0.52 -0.42 0.080"
+        width="1.75"
+        height="0.040"
+        depth="0.025"
         rotation="0 0 31"
         color="#00d9ff">
     </a-box>
 
 
     <!-- ================================================= -->
-    <!-- PONTO ATUAL DO ENSAIO                              -->
+    <!-- PONTO ATUAL                                       -->
     <!-- ================================================= -->
 
     <a-sphere
         id="pontoCurvaVR"
-        position="-1.15 -0.92 0.095"
-        radius="0.065"
+        position="-1.30 -0.92 0.105"
+        radius="0.070"
         color="#00e5ff"
         material="emissive: #00bde8; emissiveIntensity: 0.35">
     </a-sphere>
