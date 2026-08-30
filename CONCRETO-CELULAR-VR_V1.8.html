@@ -5090,6 +5090,262 @@ function aplicarCargaEnsaio() {
 
             -curva.epsilonFim;
 
+// =====================================================
+// V1.8 - ATUALIZACAO DO GRAFICO TENSAO x DEFORMACAO VR
+// =====================================================
+
+// Valores mecanicos ja calculados pelo ensaio
+const sigmaGrafico =
+    Math.max(
+        0,
+        sigmaUsada
+    );
+
+const epsilonGrafico =
+    Math.max(
+        0,
+        Math.abs(
+            curva.epsilonFim
+        )
+    );
+
+
+// -----------------------------------------------------
+// ELEMENTOS DO GRAFICO VR
+// -----------------------------------------------------
+
+const pontoCurvaVR =
+    document.getElementById(
+        "pontoCurvaVR"
+    );
+
+const linhaCurvaVR =
+    document.getElementById(
+        "linhaCurvaVR"
+    );
+
+const valorSigmaVR =
+    document.getElementById(
+        "valorSigmaVR"
+    );
+
+const valorEpsilonVR =
+    document.getElementById(
+        "valorEpsilonVR"
+    );
+
+
+// -----------------------------------------------------
+// ATUALIZACAO DOS VALORES NUMERICOS
+// -----------------------------------------------------
+
+if (valorSigmaVR) {
+
+    valorSigmaVR.setAttribute(
+        "value",
+        `sigma = ${sigmaGrafico.toFixed(3)} MPa`
+    );
+
+}
+
+
+if (valorEpsilonVR) {
+
+    valorEpsilonVR.setAttribute(
+        "value",
+        `epsilon = ${epsilonGrafico.toFixed(6)}`
+    );
+
+}
+
+
+// -----------------------------------------------------
+// ESCALA DO GRAFICO
+//
+// eixo X: epsilon = 0 ate 0.004
+// eixo Y: sigma   = 0 ate 10 MPa
+// -----------------------------------------------------
+
+const epsilonMaxGrafico =
+    0.004;
+
+const sigmaMaxGrafico =
+    10;
+
+
+// Dimensoes uteis dos eixos no painel VR
+
+const larguraGrafico =
+    2.65;
+
+const alturaGrafico =
+    1.62;
+
+
+// Origem dos eixos no painel
+
+const xOrigem =
+    -1.30;
+
+const yOrigem =
+    -0.92;
+
+
+// -----------------------------------------------------
+// POSICAO NORMALIZADA DO PONTO
+// -----------------------------------------------------
+
+const proporcaoX =
+    Math.min(
+        epsilonGrafico
+        /
+        epsilonMaxGrafico,
+        1
+    );
+
+const proporcaoY =
+    Math.min(
+        sigmaGrafico
+        /
+        sigmaMaxGrafico,
+        1
+    );
+
+
+const xPonto =
+    xOrigem
+    +
+    proporcaoX
+    *
+    larguraGrafico;
+
+
+const yPonto =
+    yOrigem
+    +
+    proporcaoY
+    *
+    alturaGrafico;
+
+
+// -----------------------------------------------------
+// MOVIMENTO DO PONTO DO ENSAIO
+// -----------------------------------------------------
+
+if (pontoCurvaVR) {
+
+    pontoCurvaVR.setAttribute(
+        "position",
+        `${xPonto} ${yPonto} 0.105`
+    );
+
+}
+
+
+// -----------------------------------------------------
+// LINHA ENTRE A ORIGEM E O PONTO ATUAL
+// -----------------------------------------------------
+
+if (linhaCurvaVR) {
+
+    const deltaX =
+        xPonto
+        -
+        xOrigem;
+
+    const deltaY =
+        yPonto
+        -
+        yOrigem;
+
+
+    const comprimento =
+        Math.sqrt(
+            deltaX * deltaX
+            +
+            deltaY * deltaY
+        );
+
+
+    const centroX =
+        (
+            xOrigem
+            +
+            xPonto
+        )
+        /
+        2;
+
+
+    const centroY =
+        (
+            yOrigem
+            +
+            yPonto
+        )
+        /
+        2;
+
+
+    const angulo =
+        Math.atan2(
+            deltaY,
+            deltaX
+        )
+        *
+        180
+        /
+        Math.PI;
+
+
+    linhaCurvaVR.setAttribute(
+        "position",
+        `${centroX} ${centroY} 0.080`
+    );
+
+
+    linhaCurvaVR.setAttribute(
+        "width",
+        Math.max(
+            comprimento,
+            0.01
+        )
+    );
+
+
+    linhaCurvaVR.setAttribute(
+        "rotation",
+        `0 0 ${angulo}`
+    );
+
+}
+
+
+// -----------------------------------------------------
+// DESTAQUE VISUAL QUANDO OCORRER RUPTURA
+// -----------------------------------------------------
+
+if (curva.rompe) {
+
+    if (pontoCurvaVR) {
+
+        pontoCurvaVR.setAttribute(
+            "color",
+            "#ff4040"
+        );
+
+    }
+
+    if (linhaCurvaVR) {
+
+        linhaCurvaVR.setAttribute(
+            "color",
+            "#ff6060"
+        );
+
+    }
+
+}
 
         const nu=
             .20;
