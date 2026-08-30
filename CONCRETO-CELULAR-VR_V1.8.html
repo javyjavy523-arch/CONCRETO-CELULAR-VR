@@ -5228,98 +5228,176 @@ const yPonto =
     alturaGrafico;
 
 
-// -----------------------------------------------------
-// MOVIMENTO DO PONTO DO ENSAIO
-// -----------------------------------------------------
+// =====================================================
+// V1.8 - ANIMACAO PROGRESSIVA DO GRAFICO VR
+// =====================================================
 
+// Duracao total da animacao em milissegundos
+const duracaoAnimacaoVR = 2500;
+
+// Momento inicial
+const inicioAnimacaoVR = performance.now();
+
+
+// Estado inicial do grafico
 if (pontoCurvaVR) {
 
     pontoCurvaVR.setAttribute(
         "position",
-        `${xPonto} ${yPonto} 0.105`
+        `${xOrigem} ${yOrigem} 0.105`
     );
 
 }
-
-
-// -----------------------------------------------------
-// LINHA ENTRE A ORIGEM E O PONTO ATUAL
-// -----------------------------------------------------
 
 if (linhaCurvaVR) {
 
-    const deltaX =
-        xPonto
-        -
-        xOrigem;
-
-    const deltaY =
-        yPonto
-        -
-        yOrigem;
-
-
-    const comprimento =
-        Math.sqrt(
-            deltaX * deltaX
-            +
-            deltaY * deltaY
-        );
-
-
-    const centroX =
-        (
-            xOrigem
-            +
-            xPonto
-        )
-        /
-        2;
-
-
-    const centroY =
-        (
-            yOrigem
-            +
-            yPonto
-        )
-        /
-        2;
-
-
-    const angulo =
-        Math.atan2(
-            deltaY,
-            deltaX
-        )
-        *
-        180
-        /
-        Math.PI;
-
-
     linhaCurvaVR.setAttribute(
         "position",
-        `${centroX} ${centroY} 0.080`
+        `${xOrigem} ${yOrigem} 0.080`
     );
-
 
     linhaCurvaVR.setAttribute(
         "width",
-        Math.max(
-            comprimento,
-            0.01
-        )
-    );
-
-
-    linhaCurvaVR.setAttribute(
-        "rotation",
-        `0 0 ${angulo}`
+        "0.01"
     );
 
 }
 
+
+// -----------------------------------------------------
+// FUNCAO DE ANIMACAO
+// -----------------------------------------------------
+
+function animarGraficoVR(tempoAtual) {
+
+    const tempoDecorrido =
+        tempoAtual - inicioAnimacaoVR;
+
+    const progresso =
+        Math.min(
+            tempoDecorrido / duracaoAnimacaoVR,
+            1
+        );
+
+
+    // Suavizacao da animacao
+    // Comeca devagar, acelera e termina suavemente
+    const progressoSuave =
+        progresso * progresso * (3 - 2 * progresso);
+
+
+    // -------------------------------------------------
+    // POSICAO PROGRESSIVA DO PONTO
+    // -------------------------------------------------
+
+    const xAtual =
+        xOrigem +
+        (xPonto - xOrigem) *
+        progressoSuave;
+
+    const yAtual =
+        yOrigem +
+        (yPonto - yOrigem) *
+        progressoSuave;
+
+
+    if (pontoCurvaVR) {
+
+        pontoCurvaVR.setAttribute(
+            "position",
+            `${xAtual} ${yAtual} 0.105`
+        );
+
+    }
+
+
+    // -------------------------------------------------
+    // LINHA PROGRESSIVA ENTRE ORIGEM E PONTO
+    // -------------------------------------------------
+
+    if (linhaCurvaVR) {
+
+        const deltaXAtual =
+            xAtual - xOrigem;
+
+        const deltaYAtual =
+            yAtual - yOrigem;
+
+
+        const comprimentoAtual =
+            Math.sqrt(
+                deltaXAtual * deltaXAtual +
+                deltaYAtual * deltaYAtual
+            );
+
+
+        const centroXAtual =
+            (
+                xOrigem +
+                xAtual
+            ) / 2;
+
+
+        const centroYAtual =
+            (
+                yOrigem +
+                yAtual
+            ) / 2;
+
+
+        const anguloAtual =
+            Math.atan2(
+                deltaYAtual,
+                deltaXAtual
+            )
+            *
+            180
+            /
+            Math.PI;
+
+
+        linhaCurvaVR.setAttribute(
+            "position",
+            `${centroXAtual} ${centroYAtual} 0.080`
+        );
+
+
+        linhaCurvaVR.setAttribute(
+            "width",
+            Math.max(
+                comprimentoAtual,
+                0.01
+            )
+        );
+
+
+        linhaCurvaVR.setAttribute(
+            "rotation",
+            `0 0 ${anguloAtual}`
+        );
+
+    }
+
+
+    // -------------------------------------------------
+    // CONTINUA A ANIMACAO
+    // -------------------------------------------------
+
+    if (progresso < 1) {
+
+        requestAnimationFrame(
+            animarGraficoVR
+        );
+
+    }
+
+}
+
+
+// Inicia o movimento
+requestAnimationFrame(
+    animarGraficoVR
+);
 
 // -----------------------------------------------------
 // DESTAQUE VISUAL QUANDO OCORRER RUPTURA
