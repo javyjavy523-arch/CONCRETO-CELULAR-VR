@@ -6794,106 +6794,112 @@ aplicarIdiomaV12();
 
 <!-- ===================================================== -->
 <!-- V1.7 - FISSURAS DE RUPTURA DO CORPO DE PROVA          -->
-<!-- Estilo: fissura principal quase vertical e irregular  -->
+<!-- Inicialmente invisiveis; ativadas somente na ruptura  -->
 <!-- ===================================================== -->
 
 <a-entity
     id="fissurasCorpoProvaVR"
     visible="false">
 
-    <!-- ================================================= -->
-    <!-- FISSURA PRINCIPAL                                 -->
-    <!-- ================================================= -->
+    <!-- FISSURA PRINCIPAL - trajetoria irregular -->
 
     <a-box
-        position="-0.070 1.44 0.368"
-        width="0.018"
+        position="-0.10 1.42 0.356"
+        width="0.012"
+        height="0.18"
+        depth="0.008"
+        rotation="0 0 -18"
+        color="#1b1b1b">
+    </a-box>
+
+    <a-box
+        position="-0.055 1.29 0.357"
+        width="0.012"
+        height="0.16"
+        depth="0.008"
+        rotation="0 0 22"
+        color="#1b1b1b">
+    </a-box>
+
+    <a-box
+        position="-0.085 1.16 0.358"
+        width="0.011"
+        height="0.15"
+        depth="0.008"
+        rotation="0 0 -28"
+        color="#181818">
+    </a-box>
+
+    <a-box
+        position="-0.02 1.04 0.359"
+        width="0.012"
         height="0.17"
-        depth="0.012"
-        rotation="0 0 -8"
-        color="#0b0b0b">
+        depth="0.008"
+        rotation="0 0 30"
+        color="#181818">
     </a-box>
 
     <a-box
-        position="-0.045 1.30 0.369"
-        width="0.018"
+        position="-0.055 0.90 0.358"
+        width="0.011"
         height="0.16"
-        depth="0.012"
-        rotation="0 0 10"
-        color="#0b0b0b">
+        depth="0.008"
+        rotation="0 0 -20"
+        color="#202020">
+    </a-box>
+
+    <!-- RAMIFICACAO SUPERIOR ESQUERDA -->
+
+    <a-box
+        position="-0.16 1.31 0.359"
+        width="0.009"
+        height="0.12"
+        depth="0.008"
+        rotation="0 0 58"
+        color="#202020">
     </a-box>
 
     <a-box
-        position="-0.055 1.16 0.369"
-        width="0.018"
-        height="0.16"
-        depth="0.012"
-        rotation="0 0 -7"
-        color="#0b0b0b">
-    </a-box>
-
-    <a-box
-        position="-0.025 1.02 0.370"
-        width="0.018"
-        height="0.17"
-        depth="0.012"
-        rotation="0 0 9"
-        color="#0b0b0b">
-    </a-box>
-
-    <a-box
-        position="-0.040 0.87 0.370"
-        width="0.018"
-        height="0.16"
-        depth="0.012"
-        rotation="0 0 -8"
-        color="#0b0b0b">
-    </a-box>
-
-
-    <!-- ================================================= -->
-    <!-- PEQUENA RAMIFICACAO SUPERIOR                      -->
-    <!-- ================================================= -->
-
-    <a-box
-        position="-0.105 1.37 0.370"
-        width="0.014"
-        height="0.085"
-        depth="0.012"
-        rotation="0 0 42"
-        color="#111111">
-    </a-box>
-
-
-    <!-- ================================================= -->
-    <!-- PEQUENA RAMIFICACAO CENTRAL                       -->
-    <!-- ================================================= -->
-
-    <a-box
-        position="0.010 1.08 0.371"
-        width="0.014"
-        height="0.080"
-        depth="0.012"
-        rotation="0 0 -38"
-        color="#111111">
-    </a-box>
-
-
-    <!-- ================================================= -->
-    <!-- PEQUENA RAMIFICACAO INFERIOR                      -->
-    <!-- ================================================= -->
-
-    <a-box
-        position="-0.085 0.92 0.371"
-        width="0.014"
-        height="0.075"
-        depth="0.012"
+        position="-0.205 1.27 0.359"
+        width="0.008"
+        height="0.08"
+        depth="0.008"
         rotation="0 0 38"
-        color="#111111">
+        color="#252525">
     </a-box>
 
+    <!-- RAMIFICACAO CENTRAL DIREITA -->
 
-    https://javyjavy523-arch.github.io/CONCRETO-CELULAR-VR/CONCRETO-CELULAR-VR_V1.7.html?utm_source=chatgpt.com
+    <a-box
+        position="0.055 1.10 0.359"
+        width="0.010"
+        height="0.13"
+        depth="0.008"
+        rotation="0 0 -55"
+        color="#202020">
+    </a-box>
+
+    <a-box
+        position="0.115 1.075 0.359"
+        width="0.008"
+        height="0.08"
+        depth="0.008"
+        rotation="0 0 -35"
+        color="#252525">
+    </a-box>
+
+    <!-- RAMIFICACAO INFERIOR -->
+
+    <a-box
+        position="-0.13 0.92 0.359"
+        width="0.009"
+        height="0.11"
+        depth="0.008"
+        rotation="0 0 55"
+        color="#202020">
+    </a-box>
+
+</a-entity>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
