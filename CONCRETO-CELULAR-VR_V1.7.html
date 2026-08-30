@@ -6229,7 +6229,7 @@ aplicarIdiomaV12();
    <!-- TITULO PRINCIPAL -->
 <a-text
     value="LABORATORIO UFSC P&D"
-    position="0 4.55 0.26"
+    position="0 4.55 0.20"
     width="7.5"
     align="center"
     anchor="center"
@@ -6238,7 +6238,7 @@ aplicarIdiomaV12();
 
 <!-- LINHA DECORATIVA -->
 <a-box
-    position="0 4.18 0.24"
+    position="0 4.18 0.18"
     width="4.8"
     height="0.035"
     depth="0.025"
@@ -6248,7 +6248,7 @@ aplicarIdiomaV12();
 <!-- NOMES -->
 <a-text
     value="Eng. Javier Sanabria / Eng. Marcos Lenzi"
-    position="0 3.82 0.26"
+    position="0 3.82 0.20"
     width="5.5"
     align="center"
     anchor="center"
@@ -6900,6 +6900,145 @@ aplicarIdiomaV12();
     </a-box>
 
 </a-entity>
+
+<!-- POROS VISUAIS FRONTAIS -->
+
+<a-entity id="porosCorpoProvaVR">
+
+    <a-sphere
+        position="-0.12 1.42 0.33"
+        radius="0.045"
+        color="#7e8588">
+    </a-sphere>
+
+    <a-sphere
+        position="0.13 1.30 0.33"
+        radius="0.055"
+        color="#747b7f">
+    </a-sphere>
+
+    <a-sphere
+        position="-0.08 1.05 0.34"
+        radius="0.040"
+        color="#82898c">
+    </a-sphere>
+
+    <a-sphere
+        position="0.16 0.88 0.32"
+        radius="0.038"
+        color="#70777b">
+    </a-sphere>
+
+    <a-sphere
+        position="-0.15 0.74 0.31"
+        radius="0.030"
+        color="#858c8f">
+    </a-sphere>
+
+</a-entity>
+           
+
+            <!-- PRATO INFERIOR -->
+    <a-cylinder
+        position="0 0.45 0"
+        radius="0.50"
+        height="0.14"
+        color="#555d63"
+        metalness="0.70"
+        roughness="0.25">
+    </a-cylinder>
+
+    <!-- BASE DE APOIO DO CORPO DE PROVA -->
+    <a-cylinder
+        position="0 0.36 0"
+        radius="0.62"
+        height="0.10"
+        color="#30363b"
+        metalness="0.75"
+        roughness="0.30">
+    </a-cylinder>
+
+    </a-entity>
+
+    <!-- ===============================
+         PAINEL DIDÁTICO
+         =============================== -->
+
+    <a-plane
+        position="2.4 1.8 -3"
+        width="2.3"
+        height="1.6"
+        color="#172b3a">
+    </a-plane>
+
+    <a-text
+        value="CONCRETO CELULAR\nENSAIO DE COMPRESSAO"
+        position="1.45 2.35 -2.98"
+        width="2.8"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        id="painelDensidadeVR"
+    value="Densidade: 600 kg/m3"
+        position="1.45 1.95 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+
+    <a-text
+        value="Idade: 28 dias"
+        position="1.45 1.65 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+<!-- RESISTENCIA A COMPRESSAO -->
+<a-text
+    id="painelFcVR"
+    value="fc: 1.80 MPa"
+   position="1.30 1.48 -2.98"
+width="1.90"
+    color="#8ed8ff">
+</a-text>
+
+<!-- MODULO DE ELASTICIDADE -->
+<a-text
+    id="painelEVR"
+    value="E: 2.10 GPa"
+    position="2.35 1.48 -2.98"
+width="1.90"
+    color="#8ed8ff">
+</a-text>
+    <a-text
+        value="Carga: 50 kN"
+        position="1.45 1.35 -2.98"
+        width="2.6"
+        color="#ffffff">
+    </a-text>
+
+    <!-- CÂMERA -->
+    <a-entity
+        id="rig"
+        position="0 1.6 0">
+
+       <a-camera
+    look-controls="pointerLockEnabled: false">
+
+    <!-- CURSOR CENTRAL PARA SELECAO NO VR -->
+    <a-cursor
+        id="cursorVR"
+        fuse="true"
+        fuse-timeout="1000"
+        raycaster="objects: .clickable"
+        color="#40c4ff"
+        scale="0.7 0.7 0.7">
+    </a-cursor>
+
+</a-camera>
+
+</a-entity>
+
+</a-scene>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
