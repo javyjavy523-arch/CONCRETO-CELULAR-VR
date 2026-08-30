@@ -7016,6 +7016,132 @@ width="1.90"
         color="#ffffff">
     </a-text>
 
+<!-- ===================================================== -->
+<!-- V1.8 - GRAFICO TENSAO x DEFORMACAO NO LABORATORIO VR -->
+<!-- ===================================================== -->
+
+<a-entity
+    id="graficoTensaoDeformacaoVR"
+    position="3.45 2.05 -3.00">
+
+    <!-- FUNDO DO PAINEL -->
+    <a-plane
+        width="2.70"
+        height="1.95"
+        color="#102433"
+        material="roughness: 0.90">
+    </a-plane>
+
+    <!-- BORDA SUPERIOR -->
+    <a-box
+        position="0 0.94 0.025"
+        width="2.70"
+        height="0.035"
+        depth="0.02"
+        color="#2b83a8">
+    </a-box>
+
+    <!-- TITULO -->
+    <a-text
+        value="TENSAO x DEFORMACAO"
+        position="0 0.76 0.03"
+        width="3.00"
+        align="center"
+        color="#ffffff">
+    </a-text>
+
+    <!-- EIXO Y -->
+    <a-box
+        position="-0.92 -0.05 0.035"
+        width="0.025"
+        height="1.15"
+        depth="0.018"
+        color="#ffffff">
+    </a-box>
+
+    <!-- EIXO X -->
+    <a-box
+        position="0.03 -0.62 0.035"
+        width="1.92"
+        height="0.025"
+        depth="0.018"
+        color="#ffffff">
+    </a-box>
+
+    <!-- ROTULO Y -->
+    <a-text
+        value="sigma MPa"
+        position="-1.16 -0.04 0.04"
+        rotation="0 0 90"
+        width="1.70"
+        align="center"
+        color="#ffffff">
+    </a-text>
+
+    <!-- ROTULO X -->
+    <a-text
+        value="epsilon"
+        position="0.10 -0.81 0.04"
+        width="1.60"
+        align="center"
+        color="#ffffff">
+    </a-text>
+
+    <!-- MARCAS EIXO Y -->
+    <a-text
+        value="0"
+        position="-1.08 -0.62 0.04"
+        width="0.70"
+        color="#cccccc">
+    </a-text>
+
+    <a-text
+        value="fc"
+        position="-1.10 0.47 0.04"
+        width="0.70"
+        color="#cccccc">
+    </a-text>
+
+    <!-- CURVA INICIAL -->
+    <a-box
+        id="linhaCurvaVR"
+        position="-0.46 -0.32 0.06"
+        width="1.08"
+        height="0.025"
+        depth="0.018"
+        rotation="0 0 28"
+        color="#00d7ff">
+    </a-box>
+
+    <!-- PONTO ATUAL DO ENSAIO -->
+    <a-sphere
+        id="pontoCurvaVR"
+        position="-0.92 -0.62 0.08"
+        radius="0.055"
+        color="#00d7ff">
+    </a-sphere>
+
+    <!-- VALOR DA TENSAO -->
+    <a-text
+        id="valorSigmaVR"
+        value="sigma = 0.000 MPa"
+        position="-0.78 0.55 0.04"
+        width="1.75"
+        color="#7fe7ff">
+    </a-text>
+
+    <!-- VALOR DA DEFORMACAO -->
+    <a-text
+        id="valorEpsilonVR"
+        value="epsilon = 0.000000"
+        position="-0.78 0.40 0.04"
+        width="1.75"
+        color="#7fe7ff">
+    </a-text>
+
+</a-entity>
+
+
     <!-- CÂMERA -->
     <a-entity
         id="rig"
