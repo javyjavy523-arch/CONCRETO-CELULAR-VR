@@ -4983,7 +4983,107 @@ function tocarSomRuptura() {
 
 }
 
+// =====================================================
+// V1.8 - INICIO DO ENSAIO DIRETAMENTE DENTRO DO VR
+// =====================================================
+
+function iniciarEnsaioDentroVR() {
+
+    const pontoCurvaVR =
+        document.getElementById(
+            "pontoCurvaVR"
+        );
+
+    const linhaCurvaVR =
+        document.getElementById(
+            "linhaCurvaVR"
+        );
+
+    const valorSigmaVR =
+        document.getElementById(
+            "valorSigmaVR"
+        );
+
+    const valorEpsilonVR =
+        document.getElementById(
+            "valorEpsilonVR"
+        );
+
+
+    if (pontoCurvaVR) {
+
+        pontoCurvaVR.setAttribute(
+            "position",
+            "-1.30 -0.92 0.105"
+        );
+
+        pontoCurvaVR.setAttribute(
+            "color",
+            "#00e5ff"
+        );
+    }
+
+
+    if (linhaCurvaVR) {
+
+        linhaCurvaVR.setAttribute(
+            "position",
+            "-1.30 -0.92 0.080"
+        );
+
+        linhaCurvaVR.setAttribute(
+            "width",
+            "0.01"
+        );
+
+        linhaCurvaVR.setAttribute(
+            "rotation",
+            "0 0 0"
+        );
+
+        linhaCurvaVR.setAttribute(
+            "color",
+            "#00d9ff"
+        );
+    }
+
+
+    if (valorSigmaVR) {
+
+        valorSigmaVR.setAttribute(
+            "value",
+            "sigma = 0.000 MPa"
+        );
+    }
+
+
+    if (valorEpsilonVR) {
+
+        valorEpsilonVR.setAttribute(
+            "value",
+            "epsilon = 0.000000"
+        );
+    }
+
+
+    setTimeout(
+        function () {
+
+            aplicarCargaEnsaio();
+
+        },
+        300
+    );
+
+}
+
+
+// =====================================================
+// FUNCAO PRINCIPAL DO ENSAIO
+// =====================================================
+
 function aplicarCargaEnsaio() {
+
 
         const PkN=
 
@@ -7824,7 +7924,10 @@ if (botaoIniciarEnsaioVR) {
         "click",
         function () {
 
-            // Evita múltiplos acionamentos durante o ensaio
+            // ---------------------------------------------
+            // EVITA MULTIPLOS ACIONAMENTOS
+            // ---------------------------------------------
+
             if (
                 botaoIniciarEnsaioVR.getAttribute(
                     "data-ensaio-ativo"
@@ -7840,7 +7943,10 @@ if (botaoIniciarEnsaioVR) {
             );
 
 
-            // Muda a aparência do botão durante o ensaio
+            // ---------------------------------------------
+            // MUDA A COR DO BOTAO DURANTE O ENSAIO
+            // ---------------------------------------------
+
             botaoIniciarEnsaioVR.setAttribute(
                 "color",
                 "#e0a020"
@@ -7863,12 +7969,17 @@ if (botaoIniciarEnsaioVR) {
             }
 
 
-            // Executa exatamente o mesmo ensaio
-            // já utilizado pela interface principal
-            aplicarCargaEnsaio();
+            // ---------------------------------------------
+            // INICIA O ENSAIO DIRETAMENTE NO AMBIENTE VR
+            // ---------------------------------------------
+
+            iniciarEnsaioDentroVR();
 
 
-            // Após 6 segundos libera o botão novamente
+            // ---------------------------------------------
+            // LIBERA NOVAMENTE O BOTAO APOS 8 SEGUNDOS
+            // ---------------------------------------------
+
             setTimeout(
                 function () {
 
@@ -7876,6 +7987,7 @@ if (botaoIniciarEnsaioVR) {
                         "data-ensaio-ativo",
                         "false"
                     );
+
 
                     botaoIniciarEnsaioVR.setAttribute(
                         "color",
@@ -7893,11 +8005,11 @@ if (botaoIniciarEnsaioVR) {
                     }
 
                 },
-                6000
+                8000
             );
 
-    }
-);
+        }
+    );
 
 }
 
