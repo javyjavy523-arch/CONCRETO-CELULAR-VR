@@ -5333,7 +5333,7 @@ const yPonto =
 // =====================================================
 
 // Duracao total da animacao em milissegundos
-const duracaoAnimacaoVR = 6000;
+const duracaoAnimacaoVR = 8000;
 
 // Momento inicial
 const inicioAnimacaoVR = performance.now();
@@ -5483,20 +5483,50 @@ function animarGraficoVR(tempoAtual) {
     // CONTINUA A ANIMACAO
     // -------------------------------------------------
 
-    if (progresso < 1) {
-
-        requestAnimationFrame(
-            animarGraficoVR
-        );
-
-    }
+    // O avanço da animação será controlado externamente.
+// Compatível com navegador, celular e Meta Quest/WebXR.
+ 
 
 }
 
 
-// Inicia o movimento
-requestAnimationFrame(
-    animarGraficoVR
+// =====================================================
+// V1.8 - MOTOR DE ANIMACAO COMPATIVEL COM META QUEST
+// =====================================================
+
+const intervaloGraficoVR = setInterval(
+    function () {
+
+        const tempoAtualVR =
+            performance.now();
+
+        animarGraficoVR(
+            tempoAtualVR
+        );
+
+
+        if (
+            tempoAtualVR - inicioAnimacaoVR
+            >=
+            duracaoAnimacaoVR
+        ) {
+
+            clearInterval(
+                intervaloGraficoVR
+            );
+
+
+            // Garante exatamente o estado final
+            animarGraficoVR(
+                inicioAnimacaoVR
+                +
+                duracaoAnimacaoVR
+            );
+
+        }
+
+    },
+    50
 );
 
 // -----------------------------------------------------
