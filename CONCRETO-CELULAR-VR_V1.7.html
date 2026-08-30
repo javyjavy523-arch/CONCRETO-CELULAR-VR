@@ -6794,148 +6794,119 @@ aplicarIdiomaV12();
 
 <!-- ===================================================== -->
 <!-- V1.7 - FISSURAS DE RUPTURA DO CORPO DE PROVA          -->
-<!-- Inicialmente invisiveis; ativadas somente na ruptura  -->
+<!-- Estilo: fissura principal quase vertical e irregular  -->
 <!-- ===================================================== -->
 
 <a-entity
     id="fissurasCorpoProvaVR"
     visible="false">
 
-    <!-- FISSURA PRINCIPAL - trajetoria irregular -->
+    <!-- ================================================= -->
+    <!-- FISSURA PRINCIPAL                                 -->
+    <!-- ================================================= -->
 
     <a-box
-        position="-0.10 1.42 0.365"
-        width="0.026"
-        height="0.20"
-        depth="0.012"
-        rotation="0 0 -18"
-        color="#111111">
-    </a-box>
-
-    <a-box
-        position="-0.055 1.29 0.366"
-        width="0.026"
-        height="0.18"
-        depth="0.012"
-        rotation="0 0 22"
-        color="#111111">
-    </a-box>
-
-    <a-box
-        position="-0.085 1.16 0.367"
-        width="0.024"
+        position="-0.070 1.44 0.368"
+        width="0.018"
         height="0.17"
         depth="0.012"
-        rotation="0 0 -28"
-        color="#101010">
+        rotation="0 0 -8"
+        color="#0b0b0b">
     </a-box>
 
     <a-box
-        position="-0.02 1.04 0.367"
-        width="0.026"
-        height="0.19"
-        depth="0.012"
-        rotation="0 0 30"
-        color="#101010">
-    </a-box>
-
-    <a-box
-        position="-0.055 0.90 0.366"
-        width="0.024"
-        height="0.18"
-        depth="0.012"
-        rotation="0 0 -20"
-        color="#151515">
-    </a-box>
-
-    <!-- RAMIFICACAO SUPERIOR ESQUERDA -->
-
-    <a-box
-        position="-0.16 1.31 0.367"
-        width="0.020"
-        height="0.14"
-        depth="0.012"
-        rotation="0 0 58"
-        color="#151515">
-    </a-box>
-
-    <a-box
-        position="-0.205 1.27 0.367"
+        position="-0.045 1.30 0.369"
         width="0.018"
-        height="0.10"
+        height="0.16"
+        depth="0.012"
+        rotation="0 0 10"
+        color="#0b0b0b">
+    </a-box>
+
+    <a-box
+        position="-0.055 1.16 0.369"
+        width="0.018"
+        height="0.16"
+        depth="0.012"
+        rotation="0 0 -7"
+        color="#0b0b0b">
+    </a-box>
+
+    <a-box
+        position="-0.025 1.02 0.370"
+        width="0.018"
+        height="0.17"
+        depth="0.012"
+        rotation="0 0 9"
+        color="#0b0b0b">
+    </a-box>
+
+    <a-box
+        position="-0.040 0.87 0.370"
+        width="0.018"
+        height="0.16"
+        depth="0.012"
+        rotation="0 0 -8"
+        color="#0b0b0b">
+    </a-box>
+
+
+    <!-- ================================================= -->
+    <!-- PEQUENA RAMIFICACAO SUPERIOR                      -->
+    <!-- ================================================= -->
+
+    <a-box
+        position="-0.105 1.37 0.370"
+        width="0.014"
+        height="0.085"
+        depth="0.012"
+        rotation="0 0 42"
+        color="#111111">
+    </a-box>
+
+
+    <!-- ================================================= -->
+    <!-- PEQUENA RAMIFICACAO CENTRAL                       -->
+    <!-- ================================================= -->
+
+    <a-box
+        position="0.010 1.08 0.371"
+        width="0.014"
+        height="0.080"
+        depth="0.012"
+        rotation="0 0 -38"
+        color="#111111">
+    </a-box>
+
+
+    <!-- ================================================= -->
+    <!-- PEQUENA RAMIFICACAO INFERIOR                      -->
+    <!-- ================================================= -->
+
+    <a-box
+        position="-0.085 0.92 0.371"
+        width="0.014"
+        height="0.075"
         depth="0.012"
         rotation="0 0 38"
-        color="#181818">
+        color="#111111">
     </a-box>
 
-    <!-- RAMIFICACAO CENTRAL DIREITA -->
+
+    <!-- ================================================= -->
+    <!-- PEQUENA QUEBRA FINAL INFERIOR                     -->
+    <!-- ================================================= -->
 
     <a-box
-        position="0.055 1.10 0.367"
-        width="0.022"
-        height="0.15"
+        position="-0.020 0.78 0.371"
+        width="0.016"
+        height="0.075"
         depth="0.012"
-        rotation="0 0 -55"
-        color="#151515">
+        rotation="0 0 35"
+        color="#0b0b0b">
     </a-box>
 
-    <a-box
-        position="0.115 1.075 0.367"
-        width="0.018"
-        height="0.10"
-        depth="0.012"
-        rotation="0 0 -35"
-        color="#181818">
-    </a-box>
-
-    <!-- RAMIFICACAO INFERIOR -->
-
-    <a-box
-        position="-0.13 0.92 0.367"
-        width="0.020"
-        height="0.13"
-        depth="0.012"
-        rotation="0 0 55"
-        color="#151515">
-    </a-box>
-
-</a-entity>
-<!-- POROS VISUAIS FRONTAIS -->
-
-<a-entity id="porosCorpoProvaVR">
-
-    <a-sphere
-        position="-0.12 1.42 0.33"
-        radius="0.045"
-        color="#7e8588">
-    </a-sphere>
-
-    <a-sphere
-        position="0.13 1.30 0.33"
-        radius="0.055"
-        color="#747b7f">
-    </a-sphere>
-
-    <a-sphere
-        position="-0.08 1.05 0.34"
-        radius="0.040"
-        color="#82898c">
-    </a-sphere>
-
-    <a-sphere
-        position="0.16 0.88 0.32"
-        radius="0.038"
-        color="#70777b">
-    </a-sphere>
-
-    <a-sphere
-        position="-0.15 0.74 0.31"
-        radius="0.030"
-        color="#858c8f">
-    </a-sphere>
-
-</a-entity>
-           
+</a-entity>           
 
             <!-- PRATO INFERIOR -->
     <a-cylinder
